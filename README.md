@@ -10,13 +10,8 @@ GUI-first Lovelace card for building a visual solar array map with live panel di
 Overview of the card (GIF) Right click and select "Play animation" on Safari MacOS: <br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-overview.gif" width=65% height=65%>
 
-Overview of the card: <br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/spv-overview.png" width=50% height=50%>
 
-
-spv-overview
-
-## ✨ Instant Overview
+## ✨ Quick Facts
 
 - Built for visual clarity: panel tiles, KPI row, status labeling, and popup diagnostics, for small and big screens.
 - GUI-first setup: start with rows/columns, then configure each panel slot.
@@ -28,6 +23,41 @@ spv-overview
 - In-card history graphs in panel and KPI popups (`1h`, `6h`, `24h`).
 - Auto-populate sensors by prefix (fill empty slots in order) during config
 - Full YAML parity for advanced users.
+
+<br>
+
+Overview of the card: <br>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/spv-overview.png" width=60% height=60%>
+
+
+Full GUI setup, NO yaml needed: <br>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-configuration-setup.png" width=60% height=60%>
+
+<details>
+<summary>Panel health overview </summary><br>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/panel-detail1.png" width=40% height=40%> 
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/panel-detail2.png" width=40% height=40%>
+</details>
+
+
+<details>
+<summary>TOC, (Tap to configure) panels (Quick setup)</summary><br>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/tap-to-configure.png" width=40% height=40%> 
+</details>
+
+
+<details>
+<summary>Array health overview </summary><br>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/system-health-error.png" width=40% height=40%> 
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/system-health-error-message.png" width=40% height=40%>
+</details>
+
+
+<details>
+<summary>KPI sensors (Key point of interest) </summary><br>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/kpi-energy.png" width=40% height=40%> 
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/kpi-custom.png" width=40% height=40%>
+</details>
 
 <br>
 
