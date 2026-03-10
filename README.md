@@ -18,63 +18,40 @@ GUI-first Lovelace card for building a visual solar array map with live panel di
 - Auto-populate sensors by prefix (fill empty slots in order) during config
 - Full YAML parity for advanced users.
 
-## 📦 Installation (HACS Recommended)
+<br>
 
-1. In HACS, add this repository as a **Custom repository**:
-   - URL: `https://github.com/NoUsername10/Solar-Panel-Visualizer`
-   - Category: **Dashboard**
-2. Install **Solar Panel Visualizer**.
-3. Reload Home Assistant frontend (or restart Home Assistant).
-4. Add card type: `custom:solar-panel-visualizer`.
+## 🖱️ Card Interactions
 
-If the resource is not auto-added:
+<details>
+<summary><b>Drag and Drop Panels</b></summary><br>
 
-```yaml
-url: /hacsfiles/Solar-Panel-Visualizer/solar-panel-visualizer.js
-type: module
-```
+- Press and drag any panel tile onto another tile.
+- The two panel slots swap positions.
+- Order is saved to card config so layout remains consistent.
 
-## 🧩 Add The Card In GUI
+</details>
 
-1. Open dashboard.
-2. Click **Edit dashboard**.
-3. Click **+ Add card**.
-4. Select **Solar Panel Visualizer**.
-5. Save.
+<details>
+<summary><b>Tap-To-Config (Quick Setup)</b></summary><br>
 
-If not listed in picker, use **Manual card**:
+- Tap an unconfigured panel tile.
+- Quick Setup popup opens with:
+  - **Select panel power sensor**
+  - **Disable Panel (hide but keep slot when off)**
+- After selecting power sensor, normal panel detail popup behavior is used.
 
-```yaml
-type: custom:solar-panel-visualizer
-```
+</details>
 
-## ⚡ Minimal YAML (GUI-first baseline)
+<details>
+<summary><b>Panel and KPI Popups</b></summary><br>
 
-GUI Only config:
-```yaml
-type: custom:solar-panel-visualizer
-```
+- Panel popup shows status, power, energy, deviation context, inverter status, and history graph.
+- Power, Energy, and Custom KPI cards open their own popup views.
+- History range chips (`1h`, `6h`, `24h`) switch graph window.
 
-Minimal yaml only config:
-```yaml
-type: custom:solar-panel-visualizer
-title: My Array
-rows: 1
-columns: 4
-panels:
-  - id: panel-1
-    name: Panel 1
-    power_entity: sensor.panel_1_power
-  - id: panel-2
-    name: Panel 2
-    power_entity: sensor.panel_2_power
-  - id: panel-3
-    name: Panel 3
-    power_entity: sensor.panel_3_power
-  - id: panel-4
-    name: Panel 4
-    power_entity: sensor.panel_4_power
-```
+</details>
+
+<br>
 
 ## ⚙️ Setup Manual (GUI Sections)
 
@@ -166,36 +143,67 @@ Tools:
 
 </details>
 
-## 🖱️ Card Interactions
+<br>
 
-<details>
-<summary><b>Drag and Drop Panels</b></summary><br>
+## 📦 Installation (HACS Recommended)
 
-- Press and drag any panel tile onto another tile.
-- The two panel slots swap positions.
-- Order is saved to card config so layout remains consistent.
+1. In HACS, add this repository as a **Custom repository**:
+   - URL: `https://github.com/NoUsername10/Solar-Panel-Visualizer`
+   - Category: **Dashboard**
+2. Install **Solar Panel Visualizer**.
+3. Reload Home Assistant frontend (or restart Home Assistant).
+4. Add card type: `custom:solar-panel-visualizer`.
 
-</details>
+If the resource is not auto-added:
 
-<details>
-<summary><b>Tap-To-Config (Quick Setup)</b></summary><br>
+```yaml
+url: /hacsfiles/Solar-Panel-Visualizer/solar-panel-visualizer.js
+type: module
+```
 
-- Tap an unconfigured panel tile.
-- Quick Setup popup opens with:
-  - **Select panel power sensor**
-  - **Disable Panel (hide but keep slot when off)**
-- After selecting power sensor, normal panel detail popup behavior is used.
+## 🧩 Add The Card In GUI
 
-</details>
+1. Open dashboard.
+2. Click **Edit dashboard**.
+3. Click **+ Add card**.
+4. Select **Solar Panel Visualizer**.
+5. Save.
 
-<details>
-<summary><b>Panel and KPI Popups</b></summary><br>
+If not listed in picker, use **Manual card**:
 
-- Panel popup shows status, power, energy, deviation context, inverter status, and history graph.
-- Power, Energy, and Custom KPI cards open their own popup views.
-- History range chips (`1h`, `6h`, `24h`) switch graph window.
+```yaml
+type: custom:solar-panel-visualizer
+```
 
-</details>
+## ⚡ Minimal YAML (GUI-first baseline)
+
+GUI Only config:
+```yaml
+type: custom:solar-panel-visualizer
+```
+
+Minimal yaml only config:
+```yaml
+type: custom:solar-panel-visualizer
+title: My Array
+rows: 1
+columns: 4
+panels:
+  - id: panel-1
+    name: Panel 1
+    power_entity: sensor.panel_1_power
+  - id: panel-2
+    name: Panel 2
+    power_entity: sensor.panel_2_power
+  - id: panel-3
+    name: Panel 3
+    power_entity: sensor.panel_3_power
+  - id: panel-4
+    name: Panel 4
+    power_entity: sensor.panel_4_power
+```
+
+
 
 ## 📄 License
 
