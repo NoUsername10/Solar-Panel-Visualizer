@@ -53,7 +53,7 @@ GUI-first Lovelace card for building a visual solar array map with live panel di
 
 <br>
 
-## ⚙️ Setup Manual (GUI Sections)
+## ⚙️ Setup (GUI Sections)
 
 <details>
 <summary><b>Layout</b></summary><br>
