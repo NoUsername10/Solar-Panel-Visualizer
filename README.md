@@ -7,7 +7,7 @@ GUI-first Lovelace card for building a visual solar array map with live panel di
 [![coffee_badge](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-orange.svg)](https://www.buymeacoffee.com/DefaultLogin)
 
 
-Overview of the card (GIF) Right click and select "Play animation" on Safari MacOS: <br>
+Overview of the card (GIF). Right-click and select "Play animation" on Safari macOS: <br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-overview.gif" width=65% height=65%>
 
 
@@ -21,7 +21,7 @@ Overview of the card (GIF) Right click and select "Play animation" on Safari Mac
 - Array Health Check for peer comparison and underperformance detection.
 - Inverter status matching with configurable working/fault terms.
 - In-card history graphs in panel and KPI popups (`1h`, `6h`, `24h`).
-- Auto-populate sensors by prefix (fill empty slots in order) during config
+- Auto-populate sensors by prefix (fill empty slots in order) during setup.
 - Full YAML parity for advanced users.
 
 <br>
@@ -29,11 +29,11 @@ Overview of the card (GIF) Right click and select "Play animation" on Safari Mac
 
 ## 🖼️ Pictures from the GUI
 Overview of the card: <br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/spv-overview.png" width=60% height=60%>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/spv-overview.png" width=50% height=50%>
 
 
-Full GUI setup, NO yaml needed: <br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-configuration-setup.png" width=60% height=60%>
+Full GUI setup, no YAML needed: <br>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-configuration-setup.png" width=50% height=50%>
 
 <details>
 <summary><b>Panel health overview</b></summary><br>
@@ -43,7 +43,7 @@ Full GUI setup, NO yaml needed: <br>
 
 
 <details>
-<summary><b>TOC, (Tap to configure) panels (Quick setup)</b></summary><br>
+<summary><b>TOC (Tap-to-Configure) panels (Quick Setup)</b></summary><br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/tap-to-configure.png" width=40% height=40%> 
 </details>
 
@@ -56,7 +56,7 @@ Full GUI setup, NO yaml needed: <br>
 
 
 <details>
-<summary><b>KPI sensors (Key point of interest)</b></summary><br>
+<summary><b>KPI sensors (Key Performance Indicators)</b></summary><br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/kpi-energy.png" width=40% height=40%> 
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/kpi-custom.png" width=40% height=40%>
 </details>
@@ -220,12 +220,12 @@ type: custom:solar-panel-visualizer
 
 ## ⚡ Minimal YAML (GUI-first baseline)
 
-GUI Only config:
+GUI-only config:
 ```yaml
 type: custom:solar-panel-visualizer
 ```
 
-Minimal yaml only config:
+Minimal YAML-only config:
 ```yaml
 type: custom:solar-panel-visualizer
 title: My Array
