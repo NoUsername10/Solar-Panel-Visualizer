@@ -7,12 +7,14 @@ GUI-first Lovelace card for building a visual solar array map with live panel di
 [![coffee_badge](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-orange.svg)](https://www.buymeacoffee.com/DefaultLogin)
 
 
-Total System information (this system contains 3 micro-inverters): <br>
-<img src="https://raw.githubusercontent.com/NoUsername10/Solax-Cloud-API-for-Home-assistant/main/assets/info%20system.png" width=50% height=50%>
+Overview of the card (GIF) Right click and select "Play animation" on Safari MacOS: <br>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-overview.gif" width=65% height=65%>
 
-Single-inverter info: <br>
-<img src="https://raw.githubusercontent.com/NoUsername10/Solax-Cloud-API-for-Home-assistant/main/assets/info%20inverter.png" width=50% height=50%>
+Overview of the card: <br>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/spv-overview.png" width=50% height=50%>
 
+
+spv-overview
 
 ## ✨ Instant Overview
 
