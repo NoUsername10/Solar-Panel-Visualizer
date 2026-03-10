@@ -4,6 +4,15 @@ GUI-first Lovelace card for building a visual solar array map with live panel di
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Frontend-41BDF5.svg)](https://hacs.xyz/)
 [![ha_badge](https://img.shields.io/badge/Home%20Assistant-Custom%20Card-18BCF2.svg)](https://www.home-assistant.io/lovelace/)
+[![coffee_badge](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-orange.svg)](https://www.buymeacoffee.com/DefaultLogin)
+
+
+Total System information (this system contains 3 micro-inverters): <br>
+<img src="https://raw.githubusercontent.com/NoUsername10/Solax-Cloud-API-for-Home-assistant/main/assets/info%20system.png" width=50% height=50%>
+
+Single-inverter info: <br>
+<img src="https://raw.githubusercontent.com/NoUsername10/Solax-Cloud-API-for-Home-assistant/main/assets/info%20inverter.png" width=50% height=50%>
+
 
 ## ✨ Instant Overview
 
