@@ -7,7 +7,7 @@ GUI-first Lovelace card for building a visual solar array map with live panel di
 
 ## ✨ Instant Overview
 
-- Built for visual clarity: panel tiles, KPI row, status labeling, and popup diagnostics.
+- Built for visual clarity: panel tiles, KPI row, status labeling, and popup diagnostics, for small and big screens.
 - GUI-first setup: start with rows/columns, then configure each panel slot.
 - Supports large systems: scales to **100+ panels** when needed.
 - Drag-and-drop panel reordering directly on the card.
