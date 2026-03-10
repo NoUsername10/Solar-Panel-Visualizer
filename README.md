@@ -29,11 +29,11 @@ Overview of the card (GIF). Right-click and select "Play animation" on Safari ma
 
 ## 🖼️ Pictures from the GUI
 Overview of the card: <br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/spv-overview.png" width=50% height=50%>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/spv-overview.png" width=40% height=40%>
 
 
 Full GUI setup, no YAML needed: <br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-configuration-setup.png" width=50% height=50%>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-configuration-setup.png" width=40% height=40%>
 
 <details>
 <summary><b>Panel health overview</b></summary><br>
