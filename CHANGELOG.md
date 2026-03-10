@@ -1,0 +1,33 @@
+# Changelog
+
+All notable changes to this project are documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [Unreleased]
+- Documentation and release hardening updates.
+
+## [0.1.0] - 2026-03-10
+
+### Added
+- Initial HACS-ready release of the Solar Panel Visualizer custom Lovelace card.
+- GUI-first editor with YAML parity for all card options.
+- Row/column-driven panel slot generation.
+- Per-panel controls for power, energy, rated power, inverter status, enable/disable, and deviation derate.
+- Drag-and-drop tile reordering in the card.
+- Quick Setup mode for unconfigured panels.
+- Status-aware tile rendering (`normal`, `deviation`, `inverter`, `error`, `offline`, `unconfigured`, `disabled`).
+- Production color spectrum (`production_start`, `production_mid`, `production_end`) with intensity control.
+- Array Health Check with configurable thresholds, runtime/sample gates, smoothing, dynamic floor, and shared history window.
+- Inverter term matching (`fault` and `working` terms).
+- Popup diagnostics with custom in-card history graph (1h/6h/24h) and overlays.
+- KPI row for Power, Energy, Alerts, and Custom KPI with precision controls.
+- Optional system power/energy sensor overrides for top KPIs.
+- Prefix-based panel sensor auto-fill and bulk remove tools in editor.
+- Scales to large systems, including 100+ panel slots when required.
+
+### Changed
+- Shared history window default set to `12h`.
+
+### Notes
+- This is the first public release baseline for GitHub/HACS distribution.
