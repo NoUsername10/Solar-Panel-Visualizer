@@ -8,7 +8,7 @@ GUI-first Lovelace card for building a visual solar array map with live panel di
 
 
 Overview of the card (GIF). Right-click and select "Play animation" on Safari macOS: <br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-overview.gif" width=65% height=65%>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/card-overview.gif" width=65% height=65%>
 
 
 ## ✨ Quick Facts
@@ -29,36 +29,36 @@ Overview of the card (GIF). Right-click and select "Play animation" on Safari ma
 
 ## 🖼️ Pictures from the GUI
 Overview of the card: <br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/spv-overview.png" width=40% height=40%>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/spv-overview.png" width=40% height=40%>
 
 
 Full GUI setup, no YAML needed: <br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/card-configuration-setup.png" width=40% height=40%>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/card-configuration-setup.png" width=40% height=40%>
 
 <details>
 <summary><b>Panel health overview</b></summary><br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/panel-detail1.png" width=40% height=40%> 
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/panel-detail2.png" width=40% height=40%>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/panel-detail1.png" width=40% height=40%> 
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/panel-detail2.png" width=40% height=40%>
 </details>
 
 
 <details>
 <summary><b>TTC (Tap-To-Configure) panels (Quick Setup)</b></summary><br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/tap-to-configure.png" width=40% height=40%> 
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/tap-to-configure.png" width=40% height=40%> 
 </details>
 
 
 <details>
 <summary><b>Array health overview</b></summary><br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/system-health-error.png" width=40% height=40%> 
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/system-health-error-message.png" width=40% height=40%>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/system-health-error.png" width=40% height=40%> 
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/system-health-error-message.png" width=40% height=40%>
 </details>
 
 
 <details>
 <summary><b>KPI sensors (Key Performance Indicators)</b></summary><br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/kpi-energy.png" width=40% height=40%> 
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/kpi-custom.png" width=40% height=40%>
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/kpi-energy.png" width=40% height=40%> 
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/kpi-custom.png" width=40% height=40%>
 </details>
 
 <br>
