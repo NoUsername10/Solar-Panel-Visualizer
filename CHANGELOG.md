@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Planned updates]
+- Support for string inverters setups with multiple panels / string.
+  - The string power and string energy sensor values will be split on the panels selected in that string.
+  - Smart way of visualising the string setup in the panel overview.
+
+
+
 ## [Unreleased]
 - Documentation and release hardening updates.
 
