@@ -43,7 +43,7 @@ Full GUI setup, no YAML needed: <br>
 
 
 <details>
-<summary><b>TOC (Tap-to-Configure) panels (Quick Setup)</b></summary><br>
+<summary><b>TTC (Tap-To-Configure) panels (Quick Setup)</b></summary><br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/dev/assets/tap-to-configure.png" width=40% height=40%> 
 </details>
 
