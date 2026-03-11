@@ -8,11 +8,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Support for string inverters setups with multiple panels / string.
   - The string power and string energy sensor values will be split on the panels selected in that string.
   - Smart way of visualising the string setup in the panel overview.
+- Auto populate panel names from sensor names in setup
+- Potential "save" button in the GUI when drag and dropping panels for clarity.
+- Panel health data statistics on each panel
+- Make the inverter evaluation information more clear.
+- Home assistant notification on panel event, deviation or error.
+- Add language support
+  
 
-
+## [Planned fixes]
+- 6h time indications when we have 0w for long perionds.
+  
 
 ## [Unreleased]
-- Documentation and release hardening updates.
+- Nothing here yet
 
 
 ## [0.1.1] - 2026-03-10
