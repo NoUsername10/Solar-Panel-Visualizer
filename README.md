@@ -2,10 +2,9 @@
 
 GUI-first Lovelace card for building a visual solar array map with live panel diagnostics, smart status coloring, and in-card configuration workflows.
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Frontend-41BDF5.svg)](https://hacs.xyz/)
-[![ha_badge](https://img.shields.io/badge/Home%20Assistant-Custom%20Card-18BCF2.svg)](https://www.home-assistant.io/lovelace/)
 [![coffee_badge](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-orange.svg)](https://www.buymeacoffee.com/DefaultLogin)
 
+[<img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance and open Solar Panel Visualizer in HACS." />](https://my.home-assistant.io/redirect/hacs_repository/?owner=NoUsername10&repository=Solar-Panel-Visualizer&category=frontend)
 
 Overview of the card (GIF). Right-click and select "Play animation" on Safari macOS: <br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/card-overview.gif" width=65% height=65%>
