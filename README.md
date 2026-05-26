@@ -1,10 +1,13 @@
 # Solar Panel Visualizer
 
-A GUI-first Home Assistant Lovelace card for visualizing solar panel arrays, panel health, production history, forecasts, and inverter status in one polished dashboard card.
+A GUI-first Home Assistant Lovelace card that turns panel-level sensors into a polished solar dashboard with live production, health checks, forecasts, history graphs, inverter telemetry, and animated power flow.
 
-[![HACS](https://img.shields.io/badge/HACS-Frontend-41BDF5.svg)](https://hacs.xyz/)
+[![HACS Default](https://img.shields.io/badge/HACS-Default%20Store-41BDF5.svg)](https://hacs.xyz/)
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-Custom%20Card-18BCF2.svg)](https://www.home-assistant.io/dashboards/)
+[![GUI First](https://img.shields.io/badge/config-GUI%20first-7ED957.svg)](#gui-setup-guide)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](LICENSE)
+
+> **Now available directly in HACS.** Search for **Solar Panel Visualizer** in HACS and install it from the default store. No custom repository is required for normal installations.
 
 Overview of the card (GIF). Safari on macOS may require right-clicking and selecting **Play animation**:
 
@@ -12,16 +15,80 @@ Overview of the card (GIF). Safari on macOS may require right-clicking and selec
 
 ## Why This Card
 
-- **GUI-first setup**: add the card with empty YAML, then configure everything visually.
-- **Beautiful solar array map**: panel tiles, KPI row, status chip, panel position, and responsive layout.
+- **Install from HACS**: the card is available in the default HACS store.
+- **GUI-first setup**: add the card with empty YAML, then configure rows, panels, sensors, colors, checks, forecasts, and motion visually.
+- **Beautiful solar array map**: panel tiles, KPI row, status chip, panel positions, production accents, and responsive layout.
 - **Light and dark theme support**: Auto follows the active Home Assistant theme, or force Light/Dark in the editor.
 - **Scales from small arrays to 100+ panels**: responsive columns, optional tile width cap, hidden slots, and large-system friendly rendering.
 - **Panel health intelligence**: Array Health Check compares panel performance against peers using history, thresholds, derating, and guardrails.
 - **Forecast.Solar overlay**: optional comparison against Home Assistant’s default Forecast.Solar sensors.
 - **Built-in graphs**: Power, Energy, Custom KPI, per-panel history, and panel comparison graphs with 1h/6h/24h ranges.
+- **Animated power rails**: optional left-collector rail animation with one-at-a-time panel pulses into the Power KPI.
 - **Advanced per-panel telemetry**: optional popup-only fields for inverter AC power, voltage, current, temperature, panel voltage/current, and panel power.
 - **Fast setup tools**: tap unconfigured panels for Quick Setup, drag/drop panels, auto-populate by prefix, and bulk-remove sensors.
-- **Experimental dev card**: optional second card with power-rail animations for testing future visual effects.
+
+## 0.2.0 Release Highlights
+
+- **HACS default-store availability** for simple installs and updates.
+- **Production-ready light and dark themes** with readable text, panels, popups, graphs, rails, and forecast overlays.
+- **Animated power rail system** built into the main card, with one-at-a-time panel pulses flowing into the Power KPI.
+- **Cleaner responsive layout** with a stable top-right system health chip and smarter KPI spacing on wide cards.
+- **Smarter panel labels** that use `45% of 505W Panel`, `45% of 505W`, or `45%` depending on available space.
+- **Cleaner panel detail text** where optional details stay readable and scroll affordances appear only when they are actually needed.
+- **Forecast.Solar integration** using Home Assistant’s default forecast sensors without manual entity setup.
+- **Advanced telemetry popups** for inverter and panel electrical details without cluttering the array view.
+
+## Feature Set
+
+<details open>
+<summary><b>Dashboard Experience</b></summary><br>
+
+- Responsive panel array with configurable rows and columns.
+- Hidden/disabled slots keep physical spacing for real-world array layouts.
+- Live Power, Energy, Alerts, and optional Custom KPI cards.
+- Top-right system status chip with grouped issue popup.
+- Tap any panel for a dedicated detail popup.
+- Drag and drop panels directly on the card and save the order to config.
+- Light, Dark, and Auto appearance modes.
+- Optional animated power rails and KPI impact effects.
+
+</details>
+
+<details>
+<summary><b>Solar Intelligence</b></summary><br>
+
+- Array Health Check compares panels against peer panels instead of unrealistic rated-output expectations.
+- Startup/runtime guardrails reduce false positives from slow inverter/API updates.
+- Shared history window improves checks across browser reloads and different devices.
+- Per-panel derating helps naturally shaded panels avoid false deviation alerts.
+- Complete-term inverter matching separates working, deviation, and fault states.
+- Fault colors override production colors so important issues stay visible.
+
+</details>
+
+<details>
+<summary><b>Graphs and Forecasts</b></summary><br>
+
+- Lazy-loaded recorder history graphs for Power, Energy, Custom KPI, and individual panels.
+- Panel comparison graphs for power and energy.
+- `1h`, `6h`, and `24h` graph ranges.
+- Max, median, and min reference lines.
+- Forecast.Solar dashed overlays for power and energy when Home Assistant’s default forecast sensors exist.
+- Forecast overlays stop at the current time so historical graphs are not distorted by future predictions.
+
+</details>
+
+<details>
+<summary><b>Setup and Configuration</b></summary><br>
+
+- Add the card with only `type: custom:solar-panel-visualizer`, then configure visually.
+- Filtered Home Assistant entity selectors for power, energy, voltage, current, temperature, and telemetry fields.
+- Prefix-based auto-populate for panel power and energy sensors.
+- Bulk remove sensors when rebuilding a layout.
+- Quick Setup from unconfigured panel tiles.
+- GUI settings for every supported card feature.
+
+</details>
 
 ## Screenshots
 
@@ -69,23 +136,35 @@ Full GUI setup:
 ### HACS
 
 1. Open HACS.
-2. Add this repository as a **Custom repository**.
-3. Use category **Dashboard**.
-4. Install **Solar Panel Visualizer**.
-5. Refresh the browser cache or restart Home Assistant.
-6. Add a card with type `custom:solar-panel-visualizer`.
+2. Search for **Solar Panel Visualizer**.
+3. Select **Download** / **Install**.
+4. Reload the Home Assistant frontend if HACS asks you to.
+5. Add the card from the dashboard card picker.
+
+The card is included in the default HACS store, so a custom repository is not required for normal installs.
+
+If Home Assistant does not add the frontend resource automatically, add it manually:
+
+```yaml
+url: /hacsfiles/Solar-Panel-Visualizer/solar-panel-visualizer.js
+type: module
+```
+
+### HACS Custom Repository Fallback
+
+Use this only if you are testing a pre-release branch, local fork, or a HACS index cache has not updated yet.
+
+1. Open HACS.
+2. Select the three-dot menu.
+3. Select **Custom repositories**.
+4. Add this repository URL.
+5. Use category **Dashboard**.
+6. Install **Solar Panel Visualizer**.
 
 Repository URL:
 
 ```text
 https://github.com/NoUsername10/Solar-Panel-Visualizer
-```
-
-If the resource is not added automatically:
-
-```yaml
-url: /hacsfiles/Solar-Panel-Visualizer/solar-panel-visualizer.js
-type: module
 ```
 
 ### Manual
@@ -222,6 +301,18 @@ panels:
 </details>
 
 <details>
+<summary><b>Motion</b></summary><br>
+
+- **Enable motion** turns all card animation on/off.
+- **Power-rail flow to Power KPI** shows producing panels sending one pulse at a time into the Power KPI.
+- Rails use a left-collector layout that scales across different row/column counts.
+- **Power/Energy KPI update effect** gives KPI value changes a subtle impact animation.
+- **Alert ripple** repeats gently while deviation, inverter, or error states remain active.
+- Motion respects reduced-motion preferences automatically.
+
+</details>
+
+<details>
 <summary><b>Panels</b></summary><br>
 
 Each panel slot supports:
@@ -291,27 +382,9 @@ The panel tile shows a compact **INFO** affordance. The popup shows configured t
 - Max, median, and min reference lines are shown.
 - Panel comparison graphs show multiple panel traces with a legend.
 - Forecast overlays are dashed and independent from panel health calculations.
+- Zero-to-production graph transitions are corrected visually without changing recorded history.
 
 </details>
-
-## Experimental Dev Card
-
-The repo also builds an optional development card:
-
-```yaml
-type: custom:solar-panel-visualizer-dev
-```
-
-The dev card shares the production card’s config, data model, layout, popups, and editor, but adds experimental motion controls:
-
-- Left-collector power rail routing.
-- One-at-a-time power pulse animation toward the Power KPI.
-- Power KPI impact when a pulse arrives.
-- Power/Energy KPI update shimmer.
-- Repeating alert ripple for deviation, inverter, and error states.
-- Reduced-motion aware behavior.
-
-The HACS release points to the production file only. The dev file is meant for local/manual testing.
 
 ## Troubleshooting
 
@@ -326,6 +399,8 @@ type: module
 ```
 
 Then clear browser cache or reload Home Assistant frontend.
+
+After updating from HACS, a hard browser refresh may be required because Home Assistant aggressively caches frontend resources.
 
 </details>
 
@@ -364,10 +439,6 @@ For HACS, the important root files are:
 - `CHANGELOG.md`
 - `LICENSE`
 - `solar-panel-visualizer.js`
-
-Optional local testing file:
-
-- `solar-panel-visualizer-dev.js`
 
 ## License
 
