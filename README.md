@@ -1,6 +1,7 @@
 # Solar Panel Visualizer
 
 [![coffee_badge](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-orange.svg)](https://www.buymeacoffee.com/DefaultLogin)
+[![HACS Default](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/default)
 
 [<img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance and open Solar Panel Visualizer in HACS." />](https://my.home-assistant.io/redirect/hacs_repository/?owner=NoUsername10&repository=Solar-Panel-Visualizer&category=frontend)
 
@@ -8,16 +9,47 @@ Solar Panel Visualizer is a Home Assistant Lovelace card for building a live, pa
 
 It gives you a clear visual map of each panel slot, live power and energy KPIs, health coloring, popup graphs, inverter status checks, Forecast.Solar overlays, and practical setup tools without requiring YAML.
 
-Overview of the card (GIF). Right-click and select "Play animation" on Safari macOS:<br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/card-overview.gif" width=65% height=65%>
+## ✨ Highlights
 
-## ✨ Features in short
+- **Default HACS install, no YAML required**: install from the normal HACS store and configure everything in the Home Assistant GUI editor.
+- **Live panel-level array overview**: see each panel slot with power, energy, status color, row/column labels, and system KPIs in one card.
+- **Fast setup tools**: tap unconfigured panels, auto-populate sensors by entity ID or friendly name, and drag panels into the right slots.
+- **Array Health Check**: compare panels against peers to spot underperformance, deviation, inverter faults, and unavailable sensors.
+- **Useful diagnostics popups**: open panel, Power, Energy, and Custom KPI popups with recorder graphs, comparison graphs, and `1h`, `6h`, and `24h` ranges.
+- **Forecast.Solar, themes, and motion**: add forecast overlays, inverter status checks, light/dark modes, power-flow animation, and alert effects.
+
+## 🎬 Animated tour
+
+Right-click and select "Play animation" on Safari macOS if a GIF does not start automatically.
+
+### Tap-to-configure, drag-and-drop, and panel diagnostics
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/drag-and-drop-panel-info.gif" width=65% height=65%>
+
+### GUI auto-populate setup
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/auto-populate.gif" width=65% height=65%>
+
+### KPI popups and graph ranges
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/KPI-info.gif" width=65% height=65%>
+
+### Panel fault detection
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/panel-fault.gif" width=65% height=65%>
+
+### Panel deviation detection
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/panel-deviation.gif" width=65% height=65%>
+
+## ✨ All features
 
 - Available directly in the default HACS store, no custom repository needed for normal installs.
 - 100% GUI configuration in the Home Assistant card editor.
 - Visual solar array layout with rows, columns, fixed slots, status chips, and row/column labels.
 - Live Power, Energy, Alerts, and optional Custom KPI summary cards.
 - Panel tiles with production coloring, rated-power percentage, optional energy, and optional inverter status text.
+- Live tile values update directly from Home Assistant entity states; recorder data is used only for graphs and health history.
 - Array Health Check for peer comparison, underperformance detection, warm-up handling, smoothing, and low-light guardrails.
 - Panel, Power, Energy, and Custom KPI popups with recorder history graphs.
 - Panel comparison graphs inside Power and Energy KPI popups.
@@ -28,11 +60,14 @@ Overview of the card (GIF). Right-click and select "Play animation" on Safari ma
 - Built-in motion effects for power flow, KPI updates, and alerts.
 - Tap-to-configure unconfigured panel slots.
 - Drag-and-drop panel reordering directly on the card.
-- Prefix-based sensor auto-fill and bulk sensor removal tools.
+- Entity ID or friendly-name sensor auto-fill, friendly-name panel naming, and bulk sensor removal tools.
 - Advanced per-panel telemetry fields for inverter and panel diagnostics.
 - Scales to large arrays, including 100+ panel slots.
 
-## 🖼️ Pictures from the GUI
+## 🖼️ Static screenshots
+
+<details>
+<summary><b>Open screenshot gallery</b></summary><br>
 
 Overview of the card:<br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/spv-overview.png" width=40% height=40%>
@@ -40,32 +75,18 @@ Overview of the card:<br>
 Full GUI setup, no YAML needed:<br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/card-configuration-setup.png" width=40% height=40%>
 
-<details>
-<summary><b>Panel health overview</b></summary><br>
-
+Panel health overview:<br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/panel-detail1.png" width=40% height=40%>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/panel-detail2.png" width=40% height=40%>
 
-</details>
-
-<details>
-<summary><b>Tap-to-configure panels</b></summary><br>
-
+Tap-to-configure panels:<br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/tap-to-configure.png" width=40% height=40%>
 
-</details>
-
-<details>
-<summary><b>Array health overview</b></summary><br>
-
+Array health overview:<br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/system-health-error.png" width=40% height=40%>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/system-health-error-message.png" width=40% height=40%>
 
-</details>
-
-<details>
-<summary><b>KPI sensors and popups</b></summary><br>
-
+KPI sensors and popups:<br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/kpi-energy.png" width=40% height=40%>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/kpi-custom.png" width=40% height=40%>
 
@@ -203,7 +224,8 @@ The card is built for both small residential arrays and large panel layouts.
 - Disabled panels keep their visual slot but are excluded from active sensor behavior.
 - Drag-and-drop swaps panel slots and saves the order to the card config.
 - Tap-to-configure opens a quick setup popup for unconfigured panels.
-- Prefix auto-fill can fill empty power and energy sensors in slot order.
+- Auto-fill can fill power and energy sensors in slot order by `sensor.` entity ID prefix or friendly-name search.
+- Power sensor auto-fill also refreshes panel display names from the selected sensors' friendly names.
 - Bulk remove clears panel sensors when rebuilding the layout.
 - Panel width limits help keep large dashboards readable.
 

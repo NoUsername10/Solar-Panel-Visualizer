@@ -4,29 +4,79 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Planned updates]
-- Support for string inverters setups with multiple panels / string.
-  - The string power and string energy sensor values will be split on the panels selected in that string.
-  - Smart way of visualising the string setup in the panel overview.
-- Auto populate panel names from sensor names in setup
-- Potential "save" button in the GUI when drag and dropping panels for clarity.
-- Panel health data statistics on each panel
-- Make the inverter evaluation information more clear.
-- Home assistant notification on panel event, deviation or error.
-- Add language support
-  
+## [0.2.0] - 2026-05-26
 
-## [Planned fixes]
-- 6h time indications when we have 0w for long perionds.
-  
+### Added
+- HACS default-store availability; normal installs no longer require adding a custom repository.
+- Light theme support with `Auto`, `Dark`, and `Light` appearance modes.
+- Theme-aware card, panel, popup, graph, and motion styling for readable dark and light dashboards.
+- Forecast.Solar support using Home Assistant default sensors:
+  - `sensor.power_production_now`
+  - `sensor.energy_production_today`
+- Forecast overlays in Power and Energy popups with dashed reference lines up to the current time.
+- Forecast enable/disable setting in the GUI editor.
+- Power, Energy, and Custom KPI popups with lazy-loaded recorder graphs.
+- Panel power and panel energy comparison graphs inside the KPI popups.
+- Max, median, and min reference lines on history and comparison graphs.
+- Advanced per-panel telemetry mappings for:
+  - inverter AC power
+  - inverter AC voltage
+  - inverter AC current
+  - inverter temperature
+  - panel current
+  - panel voltage
+  - panel power
+- Panel `INFO` affordance and popup telemetry section with configured/unconfigured grouping.
+- Custom KPI heading, visibility, decimal precision, and invert-value support.
+- Optional single system power sensor for the Power KPI with invert support.
+- Optional single system daily energy sensor for the Energy KPI.
+- Panel friendly-name auto-fill when selecting a power sensor.
+- Light/dark-ready i18n catalog coverage for new UI surfaces.
+- Built-in left-collector power rail animation with one-at-a-time panel pulses to the Power KPI.
+- Built-in Power/Energy KPI impact effects and repeating alert ripple for deviation, inverter, and error states.
+- Motion controls in the main GUI editor.
 
-## [Unreleased]
-- Nothing here yet
-
-
-## [0.1.1] - 2026-03-10
 ### Changed
-- HACS test approved release.
+- Power KPI label changed from `Live Power` to `Power`.
+- Array Health Check shared history window now defaults to `12h`.
+- Array Health Check copy and behavior clarified around peer comparison, history, guardrails, and natural-shading derate.
+- Panel width cap logic now preserves configured column counts when there is enough space.
+- Panel tiles use thinner, more distinct borders and clearer production/fault accents.
+- Panel tile energy is hidden when no energy sensor is configured.
+- Popups now prioritize graphs before sensor detail blocks for Power and Energy.
+- Forecast detail label shortened to `Forecast production`.
+- Graph rendering avoids artificial overnight ramps by only correcting zero-to-value gaps around actual zero transitions.
+- History fetching is lazy-loaded for popups and comparison graphs to avoid startup load on Home Assistant.
+- Power rail animation is now part of the main card; the former separate animation test card and extra build artifact were removed.
+- System health chip now stays anchored in the top-right corner on wide and compact layouts.
+- Wide layouts move the KPI row down so the system health chip does not collide with the card heading.
+- Panel performance text now uses three display lengths: full text, medium text without `Panel`, and compact percent-only text.
+- Panel detail text now uses more of the available tile width before truncating.
+- Panel detail scrollbars now appear only when the optional text content actually overflows.
+- README installation flow now reflects default HACS availability, with custom repository instructions kept only as a fallback.
+
+### Fixed
+- Empty YAML card creation now works cleanly so users can configure from the visual editor.
+- Sensor selectors remain GUI-first and use Home Assistant selectors.
+- Prefix auto-populate now respects exact entity ID prefixes.
+- Disabled panels keep their grid space and are excluded from sensor auto-fill.
+- Drag-and-drop panel ordering is persisted to card config so it syncs across devices.
+- Missing, unknown, or unavailable entities no longer crash popups or tiles.
+- Forecast.Solar absence is handled with non-blocking messages.
+- Light theme text, panel, graph, forecast, and rail readability issues.
+- Panel comparison graphs rendering blank despite valid recorder data.
+- 24h graph fetch and time-axis behavior for panel/system graphs.
+- Popup close button visibility and popup layout stability during graph loading.
+- Inverter working/fault term matching now avoids single-letter partial false positives.
+- Custom KPI text overflow and mobile formatting.
+- Header eyebrow text no longer truncates unnecessarily on wide cards.
+- False panel tile scrollbars caused by reserved internal padding.
+- System health chip placement drifting between small and large cards.
+- Small-card performance labels falling back to percent-only too aggressively.
+- Popup graph range changes no longer jump the popup scroll position after async graph loads or power-pulse animation updates.
+- Panel performance/detail text no longer collides with row/column labels, and optional detail scroll areas are protected from the slot label.
+- HACS/readme documentation for release files, default-store install flow, and full feature coverage.
+
 
 ## [0.1.0] - 2026-03-10
 
@@ -46,9 +96,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Optional system power/energy sensor overrides for top KPIs.
 - Prefix-based panel sensor auto-fill and bulk remove tools in editor.
 - Scales to large systems, including 100+ panel slots when required.
-
-### Changed
-- Shared history window default set to `12h`.
 
 ### Notes
 - This is the first public release baseline for GitHub/HACS distribution.
