@@ -4,7 +4,10 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [0.2.0] - 2026-05-26
+## [0.2.0] - 2026-05-29
+
+### Release status
+- Released as 0.2.0 in HACS official
 
 ### Added
 - HACS default-store availability; normal installs no longer require adding a custom repository.
@@ -54,11 +57,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Panel detail text now uses more of the available tile width before truncating.
 - Panel detail scrollbars now appear only when the optional text content actually overflows.
 - README installation flow now reflects default HACS availability, with custom repository instructions kept only as a fallback.
+- README now leads with six headline features, shows the uploaded animated feature GIFs directly, and keeps static screenshots collapsed below.
 
 ### Fixed
 - Empty YAML card creation now works cleanly so users can configure from the visual editor.
 - Sensor selectors remain GUI-first and use Home Assistant selectors.
 - Prefix auto-populate now respects exact entity ID prefixes.
+- Sensor auto-populate can search power and energy sensors by friendly name when the search text does not start with `sensor.`.
+- Auto-populated power sensors now refresh panel display names from the selected sensors' friendly names, preventing stale names from previous sensor assignments.
+- Auto-populate help text now explains the difference between `sensor.` entity ID prefix matching and friendly-name search.
 - Disabled panels keep their grid space and are excluded from sensor auto-fill.
 - Drag-and-drop panel ordering is persisted to card config so it syncs across devices.
 - Missing, unknown, or unavailable entities no longer crash popups or tiles.
@@ -76,6 +83,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Popup graph range changes no longer jump the popup scroll position after async graph loads or power-pulse animation updates.
 - Panel performance/detail text no longer collides with row/column labels, and optional detail scroll areas are protected from the slot label.
 - HACS/readme documentation for release files, default-store install flow, and full feature coverage.
+- Panel popup setup now keeps the selected panel open and loads the graph after choosing a power sensor during first setup.
+- Popup close buttons remain clickable after graph range navigation and async graph loading.
+- Power rail/grid lines now align correctly with rendered panel rows when arrays have more than two rows.
+- Power rail/grid lines now keep their content coordinates stable while the card scrolls vertically.
+- Hidden slots and large arrays now keep rail/grid visuals aligned with the visible slot layout.
 
 
 ## [0.1.0] - 2026-03-10
