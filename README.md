@@ -9,10 +9,40 @@ Solar Panel Visualizer is a Home Assistant Lovelace card for building a live, pa
 
 It gives you a clear visual map of each panel slot, live power and energy KPIs, health coloring, popup graphs, inverter status checks, Forecast.Solar overlays, and practical setup tools without requiring YAML.
 
-Overview of the card (GIF). Right-click and select "Play animation" on Safari macOS:<br>
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/card-overview.gif" width=65% height=65%>
+## ✨ Highlights
 
-## ✨ Features in short
+- **Default HACS install, no YAML required**: install from the normal HACS store and configure everything in the Home Assistant GUI editor.
+- **Live panel-level array overview**: see each panel slot with power, energy, status color, row/column labels, and system KPIs in one card.
+- **Fast setup tools**: tap unconfigured panels, auto-populate sensors by entity ID or friendly name, and drag panels into the right slots.
+- **Array Health Check**: compare panels against peers to spot underperformance, deviation, inverter faults, and unavailable sensors.
+- **Useful diagnostics popups**: open panel, Power, Energy, and Custom KPI popups with recorder graphs, comparison graphs, and `1h`, `6h`, and `24h` ranges.
+- **Forecast.Solar, themes, and motion**: add forecast overlays, inverter status checks, light/dark modes, power-flow animation, and alert effects.
+
+## 🎬 Animated tour
+
+Right-click and select "Play animation" on Safari macOS if a GIF does not start automatically.
+
+### Tap-to-configure, drag-and-drop, and panel diagnostics
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/drag-and-drop-panel-info.gif" width=65% height=65%>
+
+### GUI auto-populate setup
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/auto-populate.gif" width=65% height=65%>
+
+### KPI popups and graph ranges
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/KPI-info.gif" width=65% height=65%>
+
+### Panel fault detection
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/panel-fault.gif" width=65% height=65%>
+
+### Panel deviation detection
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/panel-deviation.gif" width=65% height=65%>
+
+## ✨ All features
 
 - Available directly in the default HACS store, no custom repository needed for normal installs.
 - 100% GUI configuration in the Home Assistant card editor.
@@ -34,52 +64,10 @@ Overview of the card (GIF). Right-click and select "Play animation" on Safari ma
 - Advanced per-panel telemetry fields for inverter and panel diagnostics.
 - Scales to large arrays, including 100+ panel slots.
 
-## 🖼️ Feature gallery
-
-<details open>
-<summary><b>Live array overview</b></summary><br>
-
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/card-overview.gif" width=65% height=65%>
-
-</details>
+## 🖼️ Static screenshots
 
 <details>
-<summary><b>GUI auto-populate setup</b></summary><br>
-
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/auto-populate.gif" width=65% height=65%>
-
-</details>
-
-<details>
-<summary><b>Drag-and-drop and panel diagnostics</b></summary><br>
-
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/drag-and-drop-panel-info.gif" width=65% height=65%>
-
-</details>
-
-<details>
-<summary><b>KPI popups and graph ranges</b></summary><br>
-
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/KPI-info.gif" width=65% height=65%>
-
-</details>
-
-<details>
-<summary><b>Panel fault detection</b></summary><br>
-
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/panel-fault.gif" width=65% height=65%>
-
-</details>
-
-<details>
-<summary><b>Panel deviation detection</b></summary><br>
-
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/panel-deviation.gif" width=65% height=65%>
-
-</details>
-
-<details>
-<summary><b>Additional static screenshots</b></summary><br>
+<summary><b>Open screenshot gallery</b></summary><br>
 
 Overview of the card:<br>
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/spv-overview.png" width=40% height=40%>
