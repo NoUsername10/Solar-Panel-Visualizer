@@ -4,10 +4,23 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.2] - 2026-05-30
+
+### Fixed
+- Energy KPI popups now use a virtual total panel energy history when no system energy sensor is selected, so Forecast.Solar production can be compared against the summed configured panel energy sensors.
+- Virtual total KPI graph handling is now shared for Power and Energy, keeping individual panel comparison as an optional secondary graph.
+- Forecast history loading now follows the virtual total graph range for Power and Energy when no primary system sensor is configured.
+- Home Assistant card picker metadata now uses the bare custom element type and includes the `mdi:solar-panel` icon, allowing the card to appear correctly in the picker.
+- Power and Energy popup detail cards now place Current and Forecast production on the same row, with Source shown below as a full-width row.
+- Motion overlay sizing no longer creates a vertical scrollbar when the visible card content fits.
+- Panel comparison graphs now open expanded automatically when a virtual total Power or Energy graph already loaded the required panel history.
+
 ## [0.2.1] - 2026-05-30
 
 ### Fixed
 - Editor text and number fields now use native inputs so Layout row/column fields and Auto-populate search fields remain visible even when Home Assistant has not registered `ha-textfield` in the custom-card editor context.
+- Motion overlay sizing no longer creates card scrollbars when the visible card content fits.
+- The Power KPI popup now builds a virtual total panel power history from configured panel sensors when no system power sensor is selected, so Forecast.Solar production can still be compared against total live panel output.
 
 ## [0.2.0] - 2026-05-29
 
