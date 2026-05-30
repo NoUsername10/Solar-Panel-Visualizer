@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.1] - 2026-05-30
+
+### Fixed
+- Editor text and number fields now use native inputs so Layout row/column fields and Auto-populate search fields remain visible even when Home Assistant has not registered `ha-textfield` in the custom-card editor context.
+
 ## [0.2.0] - 2026-05-29
 
 ### Release status
