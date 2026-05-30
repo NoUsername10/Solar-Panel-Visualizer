@@ -9,13 +9,13 @@ Solar Panel Visualizer is a Home Assistant Lovelace card for building a live, pa
 
 It gives you a clear visual map of each panel slot, live power and energy KPIs, health coloring, popup graphs, inverter status checks, Forecast.Solar overlays, and practical setup tools without requiring YAML.
 
-## ✨ Highlights
+## ✨ Top highlights
 
 - **Default HACS install, no YAML required**: install from the normal HACS store and configure everything in the Home Assistant GUI editor.
 - **Live panel-level array overview**: see each panel slot with power, energy, status color, row/column labels, and system KPIs in one card.
 - **Fast setup tools**: tap unconfigured panels, auto-populate sensors by entity ID or friendly name, and drag panels into the right slots.
 - **Array Health Check**: compare panels against peers to spot underperformance, deviation, inverter faults, and unavailable sensors.
-- **Useful diagnostics popups**: open panel, Power, Energy, and Custom KPI popups with recorder graphs, comparison graphs, and `1h`, `6h`, and `24h` ranges.
+- **Useful diagnostics popups**: open panel, Power, Energy, and Custom KPI popups with recorder graphs, virtual total graphs, comparison graphs, and `1h`, `6h`, and `24h` ranges.
 - **Forecast.Solar, themes, and motion**: add forecast overlays, inverter status checks, light/dark modes, power-flow animation, and alert effects.
 
 ## 🎬 Animated tour
@@ -52,6 +52,7 @@ Right-click and select "Play animation" on Safari macOS if a GIF does not start 
 - Live tile values update directly from Home Assistant entity states; recorder data is used only for graphs and health history.
 - Array Health Check for peer comparison, underperformance detection, warm-up handling, smoothing, and low-light guardrails.
 - Panel, Power, Energy, and Custom KPI popups with recorder history graphs.
+- Virtual total Power and Energy histories from panel sensors when no system KPI sensor is configured.
 - Panel comparison graphs inside Power and Energy KPI popups.
 - `1h`, `6h`, and `24h` graph ranges with max, median, and min reference lines.
 - Forecast.Solar overlay support for Home Assistant's default forecast sensors.
@@ -101,7 +102,7 @@ Solar Panel Visualizer is included in the default HACS store.
 3. Search for **Solar Panel Visualizer** in the Frontend/Dashboard section.
 4. Open the repository and click **Download**.
 5. Reload the Home Assistant frontend, or restart Home Assistant if HACS asks you to.
-6. Add the card to a dashboard from the Home Assistant card picker.
+6. Add the card to a dashboard from the Home Assistant card picker. It appears as **Solar Panel Visualizer** with a solar panel icon after the frontend reloads.
 
 ## ➕ Add and configure the card
 
@@ -145,7 +146,8 @@ Array Health Check compares panels against the rest of the active array so weak 
 Popups turn the card from a simple overview into a diagnostic surface.
 
 - Panel popups show power, energy, status, reason text, inverter evaluation, and optional telemetry.
-- Power and Energy KPI popups can show system sensor history or panel comparison graphs.
+- Power and Energy KPI popups can show system sensor history, or automatically build virtual total histories from configured panel sensors when no system sensor is selected.
+- Panel comparison graphs are available in the KPI popups and open automatically when the same panel history has already been loaded for a virtual total graph.
 - Custom KPI popup shows the configured custom sensor and graph.
 - Graphs are lazy-loaded from Home Assistant recorder data.
 - Range chips switch between `1h`, `6h`, and `24h`.
@@ -162,6 +164,7 @@ Forecast overlays can add a dashed reference line to Power and Energy popup grap
   - `sensor.power_production_now`
   - `sensor.energy_production_today`
 - Overlay is optional and controlled from the GUI editor.
+- Overlays work with real system Power/Energy sensors and with virtual totals summed from configured panel sensors.
 - If the forecast sensors are missing, the card shows a non-blocking message instead of failing.
 - Forecast lines are shown only over the selected history range up to the current time.
 
