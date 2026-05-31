@@ -17,7 +17,7 @@ const ur = "solar-panel-visualizer", xt = `custom:${ur}`, Pt = {
 }, Ae = (i, e, t = 0, r = 100) => {
   const s = Number(i);
   return Number.isFinite(s) ? Math.min(Math.max(s, t), r) : e;
-}, W = (i) => {
+}, U = (i) => {
   if (typeof i != "string")
     return;
   const e = i.trim();
@@ -63,7 +63,7 @@ const ur = "solar-panel-visualizer", xt = `custom:${ur}`, Pt = {
   const t = i, r = {};
   let s = !1;
   for (const o of gs) {
-    const n = W(t[o]);
+    const n = U(t[o]);
     r[o] = n, n && (s = !0);
   }
   if (s)
@@ -71,13 +71,13 @@ const ur = "solar-panel-visualizer", xt = `custom:${ur}`, Pt = {
 }, vs = (i, e) => {
   const t = H(i?.enabled, !0);
   return {
-    id: W(i?.id) ?? us(e),
-    name: W(i?.name),
-    power_entity: t ? W(i?.power_entity) : void 0,
-    energy_entity: t ? W(i?.energy_entity) : void 0,
+    id: U(i?.id) ?? us(e),
+    name: U(i?.name),
+    power_entity: t ? U(i?.power_entity) : void 0,
+    energy_entity: t ? U(i?.energy_entity) : void 0,
     show_energy: H(i?.show_energy, !1),
-    inverter_status_entity: t ? W(i?.inverter_status_entity) ?? W(i?.error_entity) : void 0,
-    error_entity: t ? W(i?.error_entity) : void 0,
+    inverter_status_entity: t ? U(i?.inverter_status_entity) ?? U(i?.error_entity) : void 0,
+    error_entity: t ? U(i?.error_entity) : void 0,
     advanced_metrics: ys(i?.advanced_metrics, t),
     enabled: t,
     rated_power_w: Gr(i?.rated_power_w, 1, et),
@@ -139,8 +139,8 @@ const ur = "solar-panel-visualizer", xt = `custom:${ur}`, Pt = {
     ...i.colors ?? {}
   };
   return {
-    type: W(i.type) ?? xt,
-    title: W(i.title),
+    type: U(i.type) ?? xt,
+    title: U(i.title),
     theme_mode: ms(i.theme_mode),
     rows: e,
     columns: t,
@@ -201,7 +201,7 @@ const ur = "solar-panel-visualizer", xt = `custom:${ur}`, Pt = {
       0,
       5e3
     ),
-    deviation_restart_entity: W(i.deviation_restart_entity),
+    deviation_restart_entity: U(i.deviation_restart_entity),
     deviation_history_hours: j(
       i.deviation_history_hours,
       Pr,
@@ -217,10 +217,10 @@ const ur = "solar-panel-visualizer", xt = `custom:${ur}`, Pt = {
     ),
     show_energy: !0,
     use_system_power_entity: H(i.use_system_power_entity, !1),
-    system_power_entity: W(i.system_power_entity),
+    system_power_entity: U(i.system_power_entity),
     invert_system_power: H(i.invert_system_power, !1),
     use_system_energy_entity: H(i.use_system_energy_entity, !1),
-    system_energy_entity: W(i.system_energy_entity),
+    system_energy_entity: U(i.system_energy_entity),
     enable_forecast_overlay: H(
       i.enable_forecast_overlay,
       Fr
@@ -240,7 +240,7 @@ const ur = "solar-panel-visualizer", xt = `custom:${ur}`, Pt = {
     ),
     show_custom_kpi: H(i.show_custom_kpi, !0),
     custom_kpi_title: hs(i.custom_kpi_title) ?? "Custom KPI",
-    custom_kpi_entity: W(i.custom_kpi_entity),
+    custom_kpi_entity: U(i.custom_kpi_entity),
     custom_kpi_decimals: j(
       i.custom_kpi_decimals,
       Cr,
@@ -335,7 +335,7 @@ const ur = "solar-panel-visualizer", xt = `custom:${ur}`, Pt = {
   t
 ), Br = (i, e, t) => tt(i?.locale?.language, e, t);
 const Xe = globalThis, $t = Xe.ShadowRoot && (Xe.ShadyCSS === void 0 || Xe.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, St = /* @__PURE__ */ Symbol(), Nt = /* @__PURE__ */ new WeakMap();
-let Wr = class {
+let Ur = class {
   constructor(e, t, r) {
     if (this._$cssResult$ = !0, r !== St) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = e, this.t = t;
@@ -353,13 +353,13 @@ let Wr = class {
     return this.cssText;
   }
 };
-const As = (i) => new Wr(typeof i == "string" ? i : i + "", void 0, St), Ct = (i, ...e) => {
+const As = (i) => new Ur(typeof i == "string" ? i : i + "", void 0, St), Ct = (i, ...e) => {
   const t = i.length === 1 ? i[0] : e.reduce((r, s, o) => r + ((n) => {
     if (n._$cssResult$ === !0) return n.cssText;
     if (typeof n == "number") return n;
     throw Error("Value passed to 'css' function must be a 'css' function result: " + n + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
   })(s) + i[o + 1], i[0]);
-  return new Wr(t, i, St);
+  return new Ur(t, i, St);
 }, Rs = (i, e) => {
   if ($t) i.adoptedStyleSheets = e.map((t) => t instanceof CSSStyleSheet ? t : t.styleSheet);
   else for (const t of e) {
@@ -399,7 +399,7 @@ const { is: Ns, defineProperty: Ls, getOwnPropertyDescriptor: Ds, getOwnProperty
       }
   }
   return t;
-} }, Ur = (i, e) => !Ns(i, e), Ot = { attribute: !0, type: String, converter: yt, reflect: !1, useDefault: !1, hasChanged: Ur };
+} }, Wr = (i, e) => !Ns(i, e), Ot = { attribute: !0, type: String, converter: yt, reflect: !1, useDefault: !1, hasChanged: Wr };
 Symbol.metadata ?? (Symbol.metadata = /* @__PURE__ */ Symbol("metadata")), oe.litPropertyMetadata ?? (oe.litPropertyMetadata = /* @__PURE__ */ new WeakMap());
 let be = class extends HTMLElement {
   static addInitializer(e) {
@@ -514,7 +514,7 @@ let be = class extends HTMLElement {
   requestUpdate(e, t, r, s = !1, o) {
     if (e !== void 0) {
       const n = this.constructor;
-      if (s === !1 && (o = this[e]), r ?? (r = n.getPropertyOptions(e)), !((r.hasChanged ?? Ur)(o, t) || r.useDefault && r.reflect && o === this._$Ej?.get(e) && !this.hasAttribute(n._$Eu(e, r)))) return;
+      if (s === !1 && (o = this[e]), r ?? (r = n.getPropertyOptions(e)), !((r.hasChanged ?? Wr)(o, t) || r.useDefault && r.reflect && o === this._$Ej?.get(e) && !this.hasAttribute(n._$Eu(e, r)))) return;
       this.C(e, t, r);
     }
     this.isUpdatePending === !1 && (this._$ES = this._$EP());
@@ -583,9 +583,9 @@ let be = class extends HTMLElement {
   }
 };
 be.elementStyles = [], be.shadowRootOptions = { mode: "open" }, be[Ne("elementProperties")] = /* @__PURE__ */ new Map(), be[Ne("finalized")] = /* @__PURE__ */ new Map(), Bs?.({ ReactiveElement: be }), (oe.reactiveElementVersions ?? (oe.reactiveElementVersions = [])).push("2.1.2");
-const Le = globalThis, Gt = (i) => i, rt = Le.trustedTypes, Ht = rt ? rt.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, Kr = "$lit$", ie = `lit$${Math.random().toFixed(9).slice(2)}$`, Vr = "?" + ie, Ws = `<${Vr}>`, he = document, Oe = () => he.createComment(""), Ge = (i) => i === null || typeof i != "object" && typeof i != "function", Et = Array.isArray, Us = (i) => Et(i) || typeof i?.[Symbol.iterator] == "function", ut = `[ 	
+const Le = globalThis, Gt = (i) => i, rt = Le.trustedTypes, Ht = rt ? rt.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, Kr = "$lit$", ie = `lit$${Math.random().toFixed(9).slice(2)}$`, Vr = "?" + ie, Us = `<${Vr}>`, he = document, Oe = () => he.createComment(""), Ge = (i) => i === null || typeof i != "object" && typeof i != "function", Et = Array.isArray, Ws = (i) => Et(i) || typeof i?.[Symbol.iterator] == "function", ut = `[ 	
 \f\r]`, Ie = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, zt = /-->/g, Bt = />/g, ne = RegExp(`>|${ut}(?:([^\\s"'>=/]+)(${ut}*=${ut}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), Wt = /'/g, Ut = /"/g, jr = /^(?:script|style|textarea|title)$/i, Yr = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), y = Yr(1), z = Yr(2), xe = /* @__PURE__ */ Symbol.for("lit-noChange"), b = /* @__PURE__ */ Symbol.for("lit-nothing"), Kt = /* @__PURE__ */ new WeakMap(), de = he.createTreeWalker(he, 129);
+\f\r"'\`<>=]|("|')|))|$)`, "g"), Ut = /'/g, Wt = /"/g, jr = /^(?:script|style|textarea|title)$/i, Yr = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), y = Yr(1), z = Yr(2), xe = /* @__PURE__ */ Symbol.for("lit-noChange"), b = /* @__PURE__ */ Symbol.for("lit-nothing"), Kt = /* @__PURE__ */ new WeakMap(), de = he.createTreeWalker(he, 129);
 function qr(i, e) {
   if (!Et(i) || !i.hasOwnProperty("raw")) throw Error("invalid template strings array");
   return Ht !== void 0 ? Ht.createHTML(e) : e;
@@ -596,9 +596,9 @@ const Ks = (i, e) => {
   for (let a = 0; a < t; a++) {
     const l = i[a];
     let c, p, d = -1, h = 0;
-    for (; h < l.length && (n.lastIndex = h, p = n.exec(l), p !== null); ) h = n.lastIndex, n === Ie ? p[1] === "!--" ? n = zt : p[1] !== void 0 ? n = Bt : p[2] !== void 0 ? (jr.test(p[2]) && (s = RegExp("</" + p[2], "g")), n = ne) : p[3] !== void 0 && (n = ne) : n === ne ? p[0] === ">" ? (n = s ?? Ie, d = -1) : p[1] === void 0 ? d = -2 : (d = n.lastIndex - p[2].length, c = p[1], n = p[3] === void 0 ? ne : p[3] === '"' ? Ut : Wt) : n === Ut || n === Wt ? n = ne : n === zt || n === Bt ? n = Ie : (n = ne, s = void 0);
+    for (; h < l.length && (n.lastIndex = h, p = n.exec(l), p !== null); ) h = n.lastIndex, n === Ie ? p[1] === "!--" ? n = zt : p[1] !== void 0 ? n = Bt : p[2] !== void 0 ? (jr.test(p[2]) && (s = RegExp("</" + p[2], "g")), n = ne) : p[3] !== void 0 && (n = ne) : n === ne ? p[0] === ">" ? (n = s ?? Ie, d = -1) : p[1] === void 0 ? d = -2 : (d = n.lastIndex - p[2].length, c = p[1], n = p[3] === void 0 ? ne : p[3] === '"' ? Wt : Ut) : n === Wt || n === Ut ? n = ne : n === zt || n === Bt ? n = Ie : (n = ne, s = void 0);
     const u = n === ne && i[a + 1].startsWith("/>") ? " " : "";
-    o += n === Ie ? l + Ws : d >= 0 ? (r.push(c), l.slice(0, d) + Kr + l.slice(d) + ie + u) : l + ie + (d === -2 ? a : u);
+    o += n === Ie ? l + Us : d >= 0 ? (r.push(c), l.slice(0, d) + Kr + l.slice(d) + ie + u) : l + ie + (d === -2 ? a : u);
   }
   return [qr(i, o + (i[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), r];
 };
@@ -692,7 +692,7 @@ class Be {
     return this._$AB;
   }
   _$AI(e, t = this) {
-    e = Pe(this, e, t), Ge(e) ? e === b || e == null || e === "" ? (this._$AH !== b && this._$AR(), this._$AH = b) : e !== this._$AH && e !== xe && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : Us(e) ? this.k(e) : this._(e);
+    e = Pe(this, e, t), Ge(e) ? e === b || e == null || e === "" ? (this._$AH !== b && this._$AR(), this._$AH = b) : e !== this._$AH && e !== xe && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : Ws(e) ? this.k(e) : this._(e);
   }
   O(e) {
     return this._$AA.parentNode.insertBefore(e, this._$AB);
@@ -1179,7 +1179,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
         { x: S, y: m.busY },
         { x: S, y: e.y },
         e
-      ], U = qt(
+      ], W = qt(
         C
       );
       if (p(
@@ -1196,13 +1196,13 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
         r: Y(t * 0.18, 2.6, 4.4),
         color: Te,
         opacity: 0.3
-      }), !v.producing || !U.d)
+      }), !v.producing || !W.d)
         continue;
-      const K = Math.max(Yt, U.length), te = K + Yt;
+      const K = Math.max(Yt, W.length), te = K + Yt;
       n.push({
         id: `flow-${v.id}`,
         panelId: v.id,
-        d: U.d,
+        d: W.d,
         color: v.accentColor,
         opacity: 0.62 + Math.min(v.intensity, 1) * 0.2,
         delayMs: 0,
@@ -1911,7 +1911,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
     (_) => _.status === "normal" && _.power !== null
   ).map((_) => _.power ?? 0), R = D.length > 0 ? Math.max(...D) : 0;
   let m = 0, w = 0, k = 0, T = 0, F = 0, O = 0, ee = 0, v, C = !1;
-  const U = $.filter((_) => _.status === "normal" && _.power !== null).flatMap((_) => {
+  const W = $.filter((_) => _.status === "normal" && _.power !== null).flatMap((_) => {
     const N = _.config.rated_power_w ?? i.default_panel_rated_power_w ?? null;
     if (N === null || N <= 0 || !_.config.power_entity)
       return [];
@@ -1939,7 +1939,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
         firstSampleTs: X.firstSampleTs
       }
     ];
-  }), K = U.filter((_) => !_.isDerated), te = K.length > 0 ? Math.min(...K.map((_) => _.sampleCount)) : 0, _e = K.length > 0 ? Math.min(
+  }), K = W.filter((_) => !_.isDerated), te = K.length > 0 ? Math.min(...K.map((_) => _.sampleCount)) : 0, _e = K.length > 0 ? Math.min(
     ...K.map(
       (_) => _.firstSampleTs === null ? 0 : (n - _.firstSampleTs) / 6e4
     )
@@ -1969,7 +1969,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
     let M = _.status, L = null;
     const G = _.config.rated_power_w ?? i.default_panel_rated_power_w ?? null, Q = G !== null && _.power !== null && G > 0 ? se(_.power / G * 100, 0, 999) : null;
     if (M === "normal" && G === null && (_.reason = s("state.reason.rated_not_configured")), C && M === "normal" && G !== null && _.power !== null) {
-      const dt = U.find(
+      const dt = W.find(
         (ke) => ke.id === _.config.id
       );
       if (dt) {
@@ -2193,7 +2193,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
     return;
   const e = i.replace(/[\u200B-\u200D\uFEFF]/g, "").replace(/\s+/g, " ").trim();
   return e.length > 0 ? e : void 0;
-}, sr = 1, zi = "spv:history:", Bi = "spv-card-config-updated", Wi = 6e4, qe = [1, 6, 24], mt = 150, Ui = 45e3, Ki = 45e3, Vi = 64, ji = /* @__PURE__ */ new Set(["unknown", "unavailable", "none", "null", ""]), ir = [
+}, sr = 1, zi = "spv:history:", Bi = "spv-card-config-updated", Ui = 6e4, qe = [1, 6, 24], mt = 150, Wi = 45e3, Ki = 45e3, Vi = 64, ji = /* @__PURE__ */ new Set(["unknown", "unavailable", "none", "null", ""]), ir = [
   "#8ed072",
   "#6fc9ff",
   "#ffbf66",
@@ -2268,6 +2268,10 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
         }
         this._ensurePopupGraphLoadedByEntity(t, s);
       }
+    }, this._handlePopupUserInteraction = (e) => {
+      e.stopPropagation(), this._clearPopupScrollRestore();
+    }, this._stopPopupEventPropagation = (e) => {
+      e.stopPropagation();
     }, this._closeDialog = () => {
       this._closeAllPopups(), this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 };
     }, this._openLivePowerPopup = () => {
@@ -2756,7 +2760,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
     const r = this._getPanelConfig(e.id)?.energy_entity ? e.energyDisplay ?? this._t("common.unavailable") : this._t("common.not_configured");
     return e.status === "unconfigured" ? y`
         <div class="spv-popup-backdrop" @click=${this._closeDialog}>
-          <div class="spv-popup" @click=${(s) => s.stopPropagation()}>
+          <div
+            class="spv-popup"
+            @pointerdown=${this._handlePopupUserInteraction}
+            @wheel=${this._handlePopupUserInteraction}
+            @click=${this._stopPopupEventPropagation}
+          >
             ${this._renderPopupCloseButton(this._closeDialog, this._t("card.popup.close_detail"))}
             <div class="spv-popup-header">
               <div>
@@ -2772,7 +2781,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
         </div>
       ` : y`
       <div class="spv-popup-backdrop" @click=${this._closeDialog}>
-        <div class="spv-popup" @click=${(s) => s.stopPropagation()}>
+        <div
+          class="spv-popup"
+          @pointerdown=${this._handlePopupUserInteraction}
+          @wheel=${this._handlePopupUserInteraction}
+          @click=${this._stopPopupEventPropagation}
+        >
           ${this._renderPopupCloseButton(this._closeDialog, this._t("card.popup.close_detail"))}
           <div class="spv-popup-header">
             <div>
@@ -3227,7 +3241,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
                   ${f ? this._t("card.popup.panel_compare.diagnostics_reason_render_failure") : this._t("card.popup.panel_compare.diagnostics_reason_suspect")}
                 </span>
                 ${p.map((v) => {
-      const C = h.get(v.panelId), U = this._getUnitForEntity(v.entityId, P);
+      const C = h.get(v.panelId), W = this._getUnitForEntity(v.entityId, P);
       return y`
                     <span class="compare-diagnostics-row">
                       ${this._t("card.popup.panel_compare.diagnostics_row", {
@@ -3237,8 +3251,8 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
         pathLen: C?.linePath.length ?? 0,
         first: this._formatGraphDiagnosticTime(C?.firstTs ?? null),
         last: this._formatGraphDiagnosticTime(C?.lastTs ?? null),
-        min: C?.minValue === null || C?.minValue === void 0 ? "--" : this._formatGraphPower(C.minValue, U),
-        max: C?.maxValue === null || C?.maxValue === void 0 ? "--" : this._formatGraphPower(C.maxValue, U)
+        min: C?.minValue === null || C?.minValue === void 0 ? "--" : this._formatGraphPower(C.minValue, W),
+        max: C?.maxValue === null || C?.maxValue === void 0 ? "--" : this._formatGraphPower(C.maxValue, W)
       })}
                     </span>
                   `;
@@ -3479,7 +3493,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
     }), a = !this._isForecastOverlayEnabled() && !!s.entityId, l = this.hass?.locale?.language ?? "en";
     return y`
       <div class="spv-popup-backdrop" @click=${this._closeLivePowerPopup}>
-        <div class="spv-popup" @click=${(c) => c.stopPropagation()}>
+        <div
+          class="spv-popup"
+          @pointerdown=${this._handlePopupUserInteraction}
+          @wheel=${this._handlePopupUserInteraction}
+          @click=${this._stopPopupEventPropagation}
+        >
           ${this._renderPopupCloseButton(
       this._closeLivePowerPopup,
       this._t("card.popup.close_live_power")
@@ -3545,7 +3564,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
     }), a = !this._isForecastOverlayEnabled() && !!s.entityId, l = this.hass?.locale?.language ?? "en";
     return y`
       <div class="spv-popup-backdrop" @click=${this._closeEnergyPopup}>
-        <div class="spv-popup" @click=${(c) => c.stopPropagation()}>
+        <div
+          class="spv-popup"
+          @pointerdown=${this._handlePopupUserInteraction}
+          @wheel=${this._handlePopupUserInteraction}
+          @click=${this._stopPopupEventPropagation}
+        >
           ${this._renderPopupCloseButton(this._closeEnergyPopup, this._t("card.popup.close_energy"))}
           <div class="spv-popup-header">
             <div>
@@ -3602,7 +3626,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
     const e = this._resolveCustomKpi(), t = e.title.length > 0 ? this._resolveCustomKpiTitle(e.title) : this._t("card.summary.custom_default_title"), r = this._getCustomKpiEntityId();
     return y`
       <div class="spv-popup-backdrop" @click=${this._closeCustomKpiPopup}>
-        <div class="spv-popup" @click=${(s) => s.stopPropagation()}>
+        <div
+          class="spv-popup"
+          @pointerdown=${this._handlePopupUserInteraction}
+          @wheel=${this._handlePopupUserInteraction}
+          @click=${this._stopPopupEventPropagation}
+        >
           ${this._renderPopupCloseButton(
       this._closeCustomKpiPopup,
       this._t("card.popup.close_custom_kpi")
@@ -3643,7 +3672,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
     const t = this._buildSystemHealthSections(e), r = t.length > 0;
     return y`
       <div class="spv-popup-backdrop" @click=${this._closeSystemHealthPopup}>
-        <div class="spv-popup" @click=${(s) => s.stopPropagation()}>
+        <div
+          class="spv-popup"
+          @pointerdown=${this._handlePopupUserInteraction}
+          @wheel=${this._handlePopupUserInteraction}
+          @click=${this._stopPopupEventPropagation}
+        >
           ${this._renderPopupCloseButton(
       this._closeSystemHealthPopup,
       this._t("card.popup.close_system_health")
@@ -3776,13 +3810,13 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
       endTs: $,
       minValue: T,
       maxValue: F
-    } : null, ee = O !== null ? this._buildAlignedGraphLinePath(S, O, 320, 132, 10) : "", v = O !== null ? this._buildAlignedGraphAreaPath(S, O, 320, 132, 10) : "", C = O !== null && E.length > 0 ? this._buildAlignedGraphLinePath(E, O, 320, 132, 10) : "", U = this._buildGraphHourTicks(
+    } : null, ee = O !== null ? this._buildAlignedGraphLinePath(S, O, 320, 132, 10) : "", v = O !== null ? this._buildAlignedGraphAreaPath(S, O, 320, 132, 10) : "", C = O !== null && E.length > 0 ? this._buildAlignedGraphLinePath(E, O, 320, 132, 10) : "", W = this._buildGraphHourTicks(
       {
         startTs: A,
         endTs: $
       },
       s
-    ), K = this._buildGraphAxisTicks(U), te = x.max !== null && T !== null && F !== null ? this._toGraphY(x.max, T, F, 132, 10) : null, _e = x.median !== null && T !== null && F !== null ? this._toGraphY(x.median, T, F, 132, 10) : null, Se = x.min !== null && T !== null && F !== null ? this._toGraphY(x.min, T, F, 132, 10) : null, Ce = `spv-graph-${e.replace(/[^a-zA-Z0-9_-]/g, "-")}`, me = x.max !== null ? this._t("card.popup.history.max", {
+    ), K = this._buildGraphAxisTicks(W), te = x.max !== null && T !== null && F !== null ? this._toGraphY(x.max, T, F, 132, 10) : null, _e = x.median !== null && T !== null && F !== null ? this._toGraphY(x.median, T, F, 132, 10) : null, Se = x.min !== null && T !== null && F !== null ? this._toGraphY(x.min, T, F, 132, 10) : null, Ce = `spv-graph-${e.replace(/[^a-zA-Z0-9_-]/g, "-")}`, me = x.max !== null ? this._t("card.popup.history.max", {
       value: this._formatGraphPower(x.max, t)
     }) : null, Ke = x.median !== null ? this._t("card.popup.history.median", {
       value: this._formatGraphPower(x.median, t)
@@ -3809,7 +3843,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
             d=${v}
             fill=${`url(#${Ce})`}
           ></path>
-          ${U.map(
+          ${W.map(
       (B) => z`
               <line
                 class="graph-hour-line"
@@ -3931,7 +3965,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
     if (!this._config || !this.hass)
       return;
     const s = this._getPopupGraphCacheKey(e, t), o = this._popupGraphCache[s], n = Date.now();
-    if (o?.loading || o && !o.error && o.loadedAt && n - o.loadedAt < Ui)
+    if (o?.loading || o && !o.error && o.loadedAt && n - o.loadedAt < Wi)
       return;
     const a = ++this._popupGraphRequestToken;
     if (this._popupGraphLatestTokenByKey[s] = a, this._popupGraphCache = {
@@ -4851,7 +4885,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - 
       this._historySignature = e;
       return;
     }
-    if (t === this._historyQuerySignature && this._historyState !== "idle" && r - this._historyLastLoadMs < Wi) {
+    if (t === this._historyQuerySignature && this._historyState !== "idle" && r - this._historyLastLoadMs < Ui) {
       this._historySignature = e;
       return;
     }
@@ -5602,7 +5636,7 @@ ce.properties = {
     }
 
     .spv-popup-backdrop {
-      position: absolute;
+      position: fixed;
       inset: 0;
       display: grid;
       place-items: center;
@@ -5630,11 +5664,12 @@ ce.properties = {
       position: sticky;
       top: 8px;
       z-index: 30;
+      width: 36px;
       height: 36px;
-      margin-bottom: -36px;
+      margin: 0 0 -36px auto;
       display: flex;
       justify-content: flex-end;
-      pointer-events: none;
+      pointer-events: auto;
     }
 
     .spv-popup-header {
@@ -5664,10 +5699,6 @@ ce.properties = {
       margin-left: auto;
       cursor: pointer;
       touch-action: manipulation;
-    }
-
-    .spv-popup-close-anchor .spv-popup-close {
-      pointer-events: auto;
     }
 
     .detail-grid {
@@ -6249,7 +6280,7 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
       return { sortBy: e, tokenIndex: o };
   }
   return null;
-}, We = (i, e = {}) => {
+}, Ue = (i, e = {}) => {
   const t = ["entityId", "friendlyName"];
   for (const r of t) {
     const s = Ji(i, r, e);
@@ -6264,7 +6295,7 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
   );
   return s !== 0 ? s : q(t.entityId, r.entityId);
 }), or = (i, e, t = {}) => {
-  const r = We(i, t);
+  const r = Ue(i, t);
   return r ? [...i].sort((s, o) => {
     const n = ze($e(s, r.sortBy)), a = ze($e(o, r.sortBy)), l = n[r.tokenIndex] ?? "", c = a[r.tokenIndex] ?? "", p = q(l, c);
     if (p !== 0)
@@ -6272,7 +6303,7 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
     const d = n.filter((f, g) => g !== r.tokenIndex).join(" "), h = a.filter((f, g) => g !== r.tokenIndex).join(" "), u = q(d, h);
     return u !== 0 ? u : q(s.entityId, o.entityId);
   }) : ts(i, e);
-}, eo = (i, e = "auto", t = "entityId") => (e === "grouped" ? or(i, t, { allowNumericGroup: !0 }) : e === "auto" && We(i) ? or(i, t) : ts(
+}, eo = (i, e = "auto", t = "entityId") => (e === "grouped" ? or(i, t, { allowNumericGroup: !0 }) : e === "auto" && Ue(i) ? or(i, t) : ts(
   i,
   e === "friendlyName" || e === "entityId" ? e : t
 )).map((s) => ({
@@ -6356,7 +6387,7 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
       entityId: f.power_entity ?? "",
       friendlyName: ue(g)
     };
-  }), l = We(a, {
+  }), l = Ue(a, {
     allowNumericGroup: !0,
     allowSingleGroup: !0,
     minCandidates: 2
@@ -6376,7 +6407,7 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
     return g ? [{
       entityId: f.entityId,
       entity: g,
-      tokens: Ue(f.entityId, g)
+      tokens: We(f.entityId, g)
     }] : [];
   });
   return {
@@ -6414,7 +6445,7 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
     return;
   const t = e.trim();
   return t.length > 0 ? t : void 0;
-}, is = (i, e) => typeof e.entity_id == "string" && e.entity_id.trim().length > 0 ? e.entity_id : i, so = (i) => i.split(".")[0] ?? "", Ue = (i, e) => ze(`${i} ${ue(e) ?? ""}`).map((t) => t.toLowerCase()), pt = (i, e) => i.filter((t) => e && t === e.toLowerCase() || es.has(t) ? !1 : t.length > 0), os = (i, e) => {
+}, is = (i, e) => typeof e.entity_id == "string" && e.entity_id.trim().length > 0 ? e.entity_id : i, so = (i) => i.split(".")[0] ?? "", We = (i, e) => ze(`${i} ${ue(e) ?? ""}`).map((t) => t.toLowerCase()), pt = (i, e) => i.filter((t) => e && t === e.toLowerCase() || es.has(t) ? !1 : t.length > 0), os = (i, e) => {
   const t = new Set(e);
   return i.filter((r) => t.has(r)).length;
 }, Je = (i, e) => {
@@ -6426,14 +6457,14 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
 })).filter(({ entityId: t, entity: r }) => t.startsWith("sensor.") && e(r)).map(({ entityId: t, entity: r }) => ({
   entityId: t,
   entity: r,
-  tokens: Ue(t, r)
+  tokens: We(t, r)
 })).sort((t, r) => q(t.entityId, r.entityId)), io = (i) => i.tokens.some((e) => Xi.has(e)), oo = (i) => Object.entries(i).map(([e, t]) => ({
   entityId: is(e, t),
   entity: t
 })).filter(({ entityId: e }) => Qi.has(so(e))).map(({ entityId: e, entity: t }) => ({
   entityId: e,
   entity: t,
-  tokens: Ue(e, t)
+  tokens: We(e, t)
 })).filter(io).sort((e, t) => q(e.entityId, t.entityId)), st = (i, e) => {
   const t = i.map((r) => ({
     candidate: r,
@@ -6466,10 +6497,10 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
     )
   )[t.tokenIndex]?.toLowerCase() ?? null;
 }, wt = (i, e, t) => i.power_entity ? pt(
-  Ue(i.power_entity, e[i.power_entity]),
+  We(i.power_entity, e[i.power_entity]),
   t ?? void 0
 ) : [], ao = (i, e) => i.power_entity ? pt(
-  Ue(i.power_entity, e[i.power_entity])
+  We(i.power_entity, e[i.power_entity])
 ).filter((t) => Jr.test(t)) : [], lo = (i, e, t) => {
   const r = ct(i, e, t), s = ao(i, e), o = r && Jr.test(r) ? [r, ...s] : [...s, r];
   return [
@@ -6530,7 +6561,7 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
       entityId: p.power_entity ?? "",
       friendlyName: ue(d)
     };
-  }), s = We(r, {
+  }), s = Ue(r, {
     allowNumericGroup: !0,
     allowSingleGroup: !0,
     minCandidates: 2
@@ -6571,7 +6602,7 @@ const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i,
       entityId: c.power_entity ?? "",
       friendlyName: ue(p)
     };
-  }), s = We(r, {
+  }), s = Ue(r, {
     allowNumericGroup: !0,
     allowSingleGroup: !0,
     minCandidates: 2
