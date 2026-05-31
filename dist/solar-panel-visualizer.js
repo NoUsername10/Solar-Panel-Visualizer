@@ -1,55 +1,55 @@
-const qt = "solar-panel-visualizer", at = `custom:${qt}`, lt = {
+const ur = "solar-panel-visualizer", xt = `custom:${ur}`, Pt = {
   production_start: "#8dcf72",
   production_mid: "#bfe36a",
   production_end: "#ffd35a",
   deviation: "#ff9667",
   error: "#ff627f",
   unavailable: "#586779"
-}, Xt = 2, Qt = 3, Zt = 15, Jt = 50, es = 3, ts = 3, ss = 20, rs = 0, is = 30, os = 12, ns = 0, as = 2, ls = 0, ps = !1, cs = 220, ds = 980, hs = 1, us = !1, _s = !0, ms = !0, gs = !0, fs = !0, ys = "auto", vs = ["fault", "alarm", "error", "failed", "failure", "trip"], bs = [
+}, _r = 2, mr = 3, fr = 15, gr = 50, yr = 3, vr = 3, br = 20, wr = 0, xr = 30, Pr = 12, $r = 0, Sr = 2, Cr = 0, Er = !1, kr = 220, Ir = 980, Tr = 1, Fr = !1, Mr = !0, Ar = !0, Rr = !0, Nr = !0, Lr = "auto", et = 1e4, Dr = ["fault", "alarm", "error", "failed", "failure", "trip"], Or = [
   "normal",
   "ok",
   "running",
   "waiting for operation",
   "producing"
-], j = (i, e, t = 1, s = 12) => {
-  const r = Number(i);
-  return Number.isFinite(r) ? Math.min(Math.max(Math.round(r), t), s) : e;
-}, Fe = (i, e, t = 0, s = 100) => {
-  const r = Number(i);
-  return Number.isFinite(r) ? Math.min(Math.max(r, t), s) : e;
+], j = (i, e, t = 1, r = 12) => {
+  const s = Number(i);
+  return Number.isFinite(s) ? Math.min(Math.max(Math.round(s), t), r) : e;
+}, Ae = (i, e, t = 0, r = 100) => {
+  const s = Number(i);
+  return Number.isFinite(s) ? Math.min(Math.max(s, t), r) : e;
 }, W = (i) => {
   if (typeof i != "string")
     return;
   const e = i.trim();
   return e.length > 0 ? e : void 0;
-}, zs = (i) => {
+}, hs = (i) => {
   if (typeof i == "string")
     return i.trim();
-}, z = (i, e) => typeof i == "boolean" ? i : e, mt = (i, e) => {
-  const s = (Array.isArray(i) ? i : typeof i == "string" ? i.split(",") : []).map((r) => typeof r == "string" ? r.trim().toLowerCase() : "").filter((r) => r.length > 0);
-  return s.length === 0 ? [...e] : [...new Set(s)];
-}, gt = (i, e, t) => {
+}, H = (i, e) => typeof i == "boolean" ? i : e, Tt = (i, e) => {
+  const r = (Array.isArray(i) ? i : typeof i == "string" ? i.split(",") : []).map((s) => typeof s == "string" ? s.trim().toLowerCase() : "").filter((s) => s.length > 0);
+  return r.length === 0 ? [...e] : [...new Set(r)];
+}, Ft = (i, e, t) => {
   if (i == null || i === "")
     return;
-  const s = Number(i);
-  if (Number.isFinite(s))
-    return Math.min(Math.max(s, e), t);
-}, ws = (i, e, t) => {
+  const r = Number(i);
+  if (Number.isFinite(r))
+    return Math.min(Math.max(r, e), t);
+}, Gr = (i, e, t) => {
   if (i == null || i === "")
     return;
-  const s = Number(i);
-  if (!(!Number.isFinite(s) || s < e))
-    return Math.min(s, t);
-}, Bs = (i) => `panel-${i + 1}`, Gs = (i) => i === "none" ? "none" : "details", Ws = (i) => i === "dark" || i === "light" ? i : ys, Us = (i) => {
+  const r = Number(i);
+  if (!(!Number.isFinite(r) || r < e))
+    return Math.min(r, t);
+}, us = (i) => `panel-${i + 1}`, _s = (i) => i === "none" ? "none" : "details", ms = (i) => i === "dark" || i === "light" ? i : Lr, fs = (i) => {
   if (typeof i != "object" || i === null)
     return;
-  const e = i, t = e.columns === "full" || typeof e.columns == "number" ? e.columns : void 0, s = e.rows === "auto" || typeof e.rows == "number" ? e.rows : void 0;
-  if (!(t === void 0 && s === void 0))
+  const e = i, t = e.columns === "full" || typeof e.columns == "number" ? e.columns : void 0, r = e.rows === "auto" || typeof e.rows == "number" ? e.rows : void 0;
+  if (!(t === void 0 && r === void 0))
     return {
       columns: t,
-      rows: s
+      rows: r
     };
-}, Ks = [
+}, gs = [
   "inverter_ac_power_entity",
   "inverter_ac_voltage_entity",
   "inverter_ac_current_entity",
@@ -57,295 +57,295 @@ const qt = "solar-panel-visualizer", at = `custom:${qt}`, lt = {
   "panel_current_entity",
   "panel_voltage_entity",
   "panel_power_entity"
-], Vs = (i, e) => {
+], ys = (i, e) => {
   if (!e || typeof i != "object" || i === null)
     return;
-  const t = i, s = {};
-  let r = !1;
-  for (const o of Ks) {
+  const t = i, r = {};
+  let s = !1;
+  for (const o of gs) {
     const n = W(t[o]);
-    s[o] = n, n && (r = !0);
+    r[o] = n, n && (s = !0);
   }
-  if (r)
-    return s;
-}, js = (i, e) => {
-  const t = z(i?.enabled, !0);
+  if (s)
+    return r;
+}, vs = (i, e) => {
+  const t = H(i?.enabled, !0);
   return {
-    id: W(i?.id) ?? Bs(e),
+    id: W(i?.id) ?? us(e),
     name: W(i?.name),
     power_entity: t ? W(i?.power_entity) : void 0,
     energy_entity: t ? W(i?.energy_entity) : void 0,
-    show_energy: z(i?.show_energy, !1),
+    show_energy: H(i?.show_energy, !1),
     inverter_status_entity: t ? W(i?.inverter_status_entity) ?? W(i?.error_entity) : void 0,
     error_entity: t ? W(i?.error_entity) : void 0,
-    advanced_metrics: Vs(i?.advanced_metrics, t),
+    advanced_metrics: ys(i?.advanced_metrics, t),
     enabled: t,
-    rated_power_w: ws(i?.rated_power_w, 1, 2e3),
-    deviation_derate_percent: Fe(i?.deviation_derate_percent, 100, 1, 100)
+    rated_power_w: Gr(i?.rated_power_w, 1, et),
+    deviation_derate_percent: Ae(i?.deviation_derate_percent, 100, 1, 100)
   };
-}, xs = (i, e, t = []) => {
-  const s = i * e;
+}, Hr = (i, e, t = []) => {
+  const r = i * e;
   return Array.from(
-    { length: s },
-    (r, o) => js(t[o], o)
+    { length: r },
+    (s, o) => vs(t[o], o)
   );
-}, Ys = (i = Xt, e = Qt) => ({
-  type: at,
+}, bs = (i = _r, e = mr) => ({
+  type: xt,
   title: "Solar Array",
-  theme_mode: ys,
+  theme_mode: Lr,
   rows: i,
   columns: e,
-  panels: xs(i, e),
+  panels: Hr(i, e),
   enable_inverter_status: !1,
-  inverter_fault_terms: [...vs],
-  inverter_working_terms: [...bs],
+  inverter_fault_terms: [...Dr],
+  inverter_working_terms: [...Or],
   show_inverter_status_on_tiles: !1,
   enable_array_checks: !1,
-  deviation_threshold_percent: Zt,
-  deviation_absolute_w_threshold: Jt,
-  deviation_min_active_panels: es,
-  deviation_min_samples: ts,
-  deviation_min_runtime_minutes: ss,
-  deviation_smoothing_minutes: rs,
-  deviation_dynamic_floor_w: is,
-  deviation_history_hours: os,
-  colors: lt,
-  production_color_intensity: hs,
+  deviation_threshold_percent: fr,
+  deviation_absolute_w_threshold: gr,
+  deviation_min_active_panels: yr,
+  deviation_min_samples: vr,
+  deviation_min_runtime_minutes: br,
+  deviation_smoothing_minutes: wr,
+  deviation_dynamic_floor_w: xr,
+  deviation_history_hours: Pr,
+  colors: Pt,
+  production_color_intensity: Tr,
   show_energy: !0,
   use_system_power_entity: !1,
   system_power_entity: void 0,
   invert_system_power: !1,
   use_system_energy_entity: !1,
   system_energy_entity: void 0,
-  enable_forecast_overlay: us,
-  motion_enabled: _s,
-  motion_power_flow: ms,
-  motion_update_shimmer: gs,
-  motion_alert_ripple: fs,
+  enable_forecast_overlay: Fr,
+  motion_enabled: Mr,
+  motion_power_flow: Ar,
+  motion_update_shimmer: Rr,
+  motion_alert_ripple: Nr,
   show_custom_kpi: !0,
   custom_kpi_title: "Custom KPI",
   custom_kpi_entity: void 0,
-  custom_kpi_decimals: ls,
+  custom_kpi_decimals: Cr,
   invert_custom_kpi: !1,
   panel_tap_action: "details",
-  power_decimals: ns,
-  energy_decimals: as,
-  limit_panel_width: ps,
-  panel_max_width_px: cs,
-  max_card_width_px: ds
-}), Me = (i = {}) => {
-  const e = j(i.rows, Xt), t = j(i.columns, Qt), s = {
-    ...lt,
+  power_decimals: $r,
+  energy_decimals: Sr,
+  limit_panel_width: Er,
+  panel_max_width_px: kr,
+  max_card_width_px: Ir
+}), Re = (i = {}) => {
+  const e = j(i.rows, _r), t = j(i.columns, mr), r = {
+    ...Pt,
     ...i.colors ?? {}
   };
   return {
-    type: W(i.type) ?? at,
+    type: W(i.type) ?? xt,
     title: W(i.title),
-    theme_mode: Ws(i.theme_mode),
+    theme_mode: ms(i.theme_mode),
     rows: e,
     columns: t,
-    panels: xs(e, t, i.panels ?? []),
-    enable_inverter_status: z(i.enable_inverter_status, !1),
-    inverter_fault_terms: mt(
+    panels: Hr(e, t, i.panels ?? []),
+    enable_inverter_status: H(i.enable_inverter_status, !1),
+    inverter_fault_terms: Tt(
       i.inverter_fault_terms,
-      vs
+      Dr
     ),
-    inverter_working_terms: mt(
+    inverter_working_terms: Tt(
       i.inverter_working_terms,
-      bs
+      Or
     ),
-    show_inverter_status_on_tiles: z(
+    show_inverter_status_on_tiles: H(
       i.show_inverter_status_on_tiles,
       !1
     ),
-    enable_array_checks: z(i.enable_array_checks, !1),
-    deviation_threshold_percent: Fe(
+    enable_array_checks: H(i.enable_array_checks, !1),
+    deviation_threshold_percent: Ae(
       i.deviation_threshold_percent,
-      Zt,
+      fr,
       1,
       100
     ),
-    deviation_absolute_w_threshold: Fe(
+    deviation_absolute_w_threshold: Ae(
       i.deviation_absolute_w_threshold,
-      Jt,
+      gr,
       0,
       5e3
     ),
     deviation_min_active_panels: j(
       i.deviation_min_active_panels,
-      es,
+      yr,
       2,
       30
     ),
     deviation_min_samples: j(
       i.deviation_min_samples,
-      ts,
+      vr,
       1,
       120
     ),
     deviation_min_runtime_minutes: j(
       i.deviation_min_runtime_minutes,
-      ss,
+      br,
       0,
       1440
     ),
     deviation_smoothing_minutes: j(
       i.deviation_smoothing_minutes,
-      rs,
+      wr,
       0,
       1440
     ),
-    deviation_dynamic_floor_w: Fe(
+    deviation_dynamic_floor_w: Ae(
       i.deviation_dynamic_floor_w,
-      is,
+      xr,
       0,
       5e3
     ),
     deviation_restart_entity: W(i.deviation_restart_entity),
     deviation_history_hours: j(
       i.deviation_history_hours,
-      os,
+      Pr,
       1,
       168
     ),
-    colors: s,
-    production_color_intensity: Fe(
+    colors: r,
+    production_color_intensity: Ae(
       i.production_color_intensity,
-      hs,
+      Tr,
       0.2,
       1.6
     ),
     show_energy: !0,
-    use_system_power_entity: z(i.use_system_power_entity, !1),
+    use_system_power_entity: H(i.use_system_power_entity, !1),
     system_power_entity: W(i.system_power_entity),
-    invert_system_power: z(i.invert_system_power, !1),
-    use_system_energy_entity: z(i.use_system_energy_entity, !1),
+    invert_system_power: H(i.invert_system_power, !1),
+    use_system_energy_entity: H(i.use_system_energy_entity, !1),
     system_energy_entity: W(i.system_energy_entity),
-    enable_forecast_overlay: z(
+    enable_forecast_overlay: H(
       i.enable_forecast_overlay,
-      us
+      Fr
     ),
-    motion_enabled: z(i.motion_enabled, _s),
-    motion_power_flow: z(
+    motion_enabled: H(i.motion_enabled, Mr),
+    motion_power_flow: H(
       i.motion_power_flow,
-      ms
+      Ar
     ),
-    motion_update_shimmer: z(
+    motion_update_shimmer: H(
       i.motion_update_shimmer,
-      gs
+      Rr
     ),
-    motion_alert_ripple: z(
+    motion_alert_ripple: H(
       i.motion_alert_ripple,
-      fs
+      Nr
     ),
-    show_custom_kpi: z(i.show_custom_kpi, !0),
-    custom_kpi_title: zs(i.custom_kpi_title) ?? "Custom KPI",
+    show_custom_kpi: H(i.show_custom_kpi, !0),
+    custom_kpi_title: hs(i.custom_kpi_title) ?? "Custom KPI",
     custom_kpi_entity: W(i.custom_kpi_entity),
     custom_kpi_decimals: j(
       i.custom_kpi_decimals,
-      ls,
+      Cr,
       0,
       4
     ),
-    invert_custom_kpi: z(i.invert_custom_kpi, !1),
-    panel_tap_action: Gs(i.panel_tap_action),
+    invert_custom_kpi: H(i.invert_custom_kpi, !1),
+    panel_tap_action: _s(i.panel_tap_action),
     power_decimals: j(
       i.power_decimals,
-      ns,
+      $r,
       0,
       4
     ),
     energy_decimals: j(
       i.energy_decimals,
-      as,
+      Sr,
       0,
       4
     ),
-    limit_panel_width: z(
+    limit_panel_width: H(
       i.limit_panel_width,
-      ps
+      Er
     ),
     panel_max_width_px: j(
       i.panel_max_width_px,
-      cs,
+      kr,
       120,
       320
     ),
-    default_panel_rated_power_w: ws(
+    default_panel_rated_power_w: Gr(
       i.default_panel_rated_power_w,
       1,
-      2e3
+      et
     ),
-    max_card_width_px: gt(i.max_card_width_px, 300, 2400) ?? ds,
-    max_card_height_px: gt(i.max_card_height_px, 300, 2600),
-    grid_options: Us(i.grid_options)
+    max_card_width_px: Ft(i.max_card_width_px, 300, 2400) ?? Ir,
+    max_card_height_px: Ft(i.max_card_height_px, 300, 2600),
+    grid_options: fs(i.grid_options)
   };
-}, qs = (i) => {
+}, ws = (i) => {
   const e = [];
-  return typeof i != "object" || i === null ? ["Configuration must be an object."] : (i.rows !== void 0 && (!Number.isFinite(Number(i.rows)) || Number(i.rows) < 1) && e.push("`rows` must be a positive number."), i.columns !== void 0 && (!Number.isFinite(Number(i.columns)) || Number(i.columns) < 1) && e.push("`columns` must be a positive number."), i.max_card_width_px !== void 0 && !Number.isFinite(Number(i.max_card_width_px)) && e.push("`max_card_width_px` must be a number if set."), i.panel_max_width_px !== void 0 && (!Number.isFinite(Number(i.panel_max_width_px)) || Number(i.panel_max_width_px) < 120 || Number(i.panel_max_width_px) > 320) && e.push("`panel_max_width_px` must be between 120 and 320."), i.max_card_height_px !== void 0 && !Number.isFinite(Number(i.max_card_height_px)) && e.push("`max_card_height_px` must be a number if set."), i.custom_kpi_decimals !== void 0 && (!Number.isFinite(Number(i.custom_kpi_decimals)) || Number(i.custom_kpi_decimals) < 0 || Number(i.custom_kpi_decimals) > 4) && e.push("`custom_kpi_decimals` must be between 0 and 4."), i.production_color_intensity !== void 0 && (!Number.isFinite(Number(i.production_color_intensity)) || Number(i.production_color_intensity) < 0.2 || Number(i.production_color_intensity) > 1.6) && e.push("`production_color_intensity` must be between 0.2 and 1.6."), i.deviation_absolute_w_threshold !== void 0 && (!Number.isFinite(Number(i.deviation_absolute_w_threshold)) || Number(i.deviation_absolute_w_threshold) < 0) && e.push("`deviation_absolute_w_threshold` must be 0 or higher."), i.deviation_min_active_panels !== void 0 && (!Number.isFinite(Number(i.deviation_min_active_panels)) || Number(i.deviation_min_active_panels) < 2) && e.push("`deviation_min_active_panels` must be 2 or higher."), i.deviation_min_samples !== void 0 && (!Number.isFinite(Number(i.deviation_min_samples)) || Number(i.deviation_min_samples) < 1) && e.push("`deviation_min_samples` must be 1 or higher."), i.deviation_min_runtime_minutes !== void 0 && (!Number.isFinite(Number(i.deviation_min_runtime_minutes)) || Number(i.deviation_min_runtime_minutes) < 0) && e.push("`deviation_min_runtime_minutes` must be 0 or higher."), i.deviation_smoothing_minutes !== void 0 && (!Number.isFinite(Number(i.deviation_smoothing_minutes)) || Number(i.deviation_smoothing_minutes) < 0) && e.push("`deviation_smoothing_minutes` must be 0 or higher."), i.deviation_dynamic_floor_w !== void 0 && (!Number.isFinite(Number(i.deviation_dynamic_floor_w)) || Number(i.deviation_dynamic_floor_w) < 0) && e.push("`deviation_dynamic_floor_w` must be 0 or higher."), i.deviation_history_hours !== void 0 && (!Number.isFinite(Number(i.deviation_history_hours)) || Number(i.deviation_history_hours) < 1) && e.push("`deviation_history_hours` must be 1 or higher."), Array.isArray(i.panels) && i.panels.forEach((t, s) => {
-    const r = t?.deviation_derate_percent;
-    r !== void 0 && (!Number.isFinite(Number(r)) || Number(r) < 1 || Number(r) > 100) && e.push(
-      `\`panels[${s}].deviation_derate_percent\` must be between 1 and 100.`
+  return typeof i != "object" || i === null ? ["Configuration must be an object."] : (i.rows !== void 0 && (!Number.isFinite(Number(i.rows)) || Number(i.rows) < 1) && e.push("`rows` must be a positive number."), i.columns !== void 0 && (!Number.isFinite(Number(i.columns)) || Number(i.columns) < 1) && e.push("`columns` must be a positive number."), i.max_card_width_px !== void 0 && !Number.isFinite(Number(i.max_card_width_px)) && e.push("`max_card_width_px` must be a number if set."), i.panel_max_width_px !== void 0 && (!Number.isFinite(Number(i.panel_max_width_px)) || Number(i.panel_max_width_px) < 120 || Number(i.panel_max_width_px) > 320) && e.push("`panel_max_width_px` must be between 120 and 320."), i.max_card_height_px !== void 0 && !Number.isFinite(Number(i.max_card_height_px)) && e.push("`max_card_height_px` must be a number if set."), i.custom_kpi_decimals !== void 0 && (!Number.isFinite(Number(i.custom_kpi_decimals)) || Number(i.custom_kpi_decimals) < 0 || Number(i.custom_kpi_decimals) > 4) && e.push("`custom_kpi_decimals` must be between 0 and 4."), i.production_color_intensity !== void 0 && (!Number.isFinite(Number(i.production_color_intensity)) || Number(i.production_color_intensity) < 0.2 || Number(i.production_color_intensity) > 1.6) && e.push("`production_color_intensity` must be between 0.2 and 1.6."), i.deviation_absolute_w_threshold !== void 0 && (!Number.isFinite(Number(i.deviation_absolute_w_threshold)) || Number(i.deviation_absolute_w_threshold) < 0) && e.push("`deviation_absolute_w_threshold` must be 0 or higher."), i.deviation_min_active_panels !== void 0 && (!Number.isFinite(Number(i.deviation_min_active_panels)) || Number(i.deviation_min_active_panels) < 2) && e.push("`deviation_min_active_panels` must be 2 or higher."), i.deviation_min_samples !== void 0 && (!Number.isFinite(Number(i.deviation_min_samples)) || Number(i.deviation_min_samples) < 1) && e.push("`deviation_min_samples` must be 1 or higher."), i.deviation_min_runtime_minutes !== void 0 && (!Number.isFinite(Number(i.deviation_min_runtime_minutes)) || Number(i.deviation_min_runtime_minutes) < 0) && e.push("`deviation_min_runtime_minutes` must be 0 or higher."), i.deviation_smoothing_minutes !== void 0 && (!Number.isFinite(Number(i.deviation_smoothing_minutes)) || Number(i.deviation_smoothing_minutes) < 0) && e.push("`deviation_smoothing_minutes` must be 0 or higher."), i.deviation_dynamic_floor_w !== void 0 && (!Number.isFinite(Number(i.deviation_dynamic_floor_w)) || Number(i.deviation_dynamic_floor_w) < 0) && e.push("`deviation_dynamic_floor_w` must be 0 or higher."), i.deviation_history_hours !== void 0 && (!Number.isFinite(Number(i.deviation_history_hours)) || Number(i.deviation_history_hours) < 1) && e.push("`deviation_history_hours` must be 1 or higher."), Array.isArray(i.panels) && i.panels.forEach((t, r) => {
+    const s = t?.deviation_derate_percent;
+    s !== void 0 && (!Number.isFinite(Number(s)) || Number(s) < 1 || Number(s) > 100) && e.push(
+      `\`panels[${r}].deviation_derate_percent\` must be between 1 and 100.`
     );
   }), e);
-}, Xs = { card_name: "Solar Panel Visualizer", card_description: "GUI-first solar array card with panel health, animated power rails, forecasts, history graphs, and light/dark themes." }, Qs = { unavailable: "Unavailable", not_configured: "Not configured", disabled: "Disabled", unknown_recorder_error: "Unknown recorder error" }, Zs = { default_title: "Solar Array", eyebrow: "Solar Panel Visualizer", subtitle: { loading_history: "Loading shared {hours}h solar panel history...", warmup: "Deviation checks are warming up.", deviation_detected: "{count} panel{suffix} below expected output", tap_diagnostics: "Tap a panel for detailed diagnostics", drag_hint: "Drag and drop panel tiles to swap positions." }, summary: { power: "Power", energy: "Energy", alerts: "Alerts", system_sensor: "System sensor", sum_panel_sensors: "Sum of panel sensors", custom_sensor: "Custom KPI sensor", custom_default_title: "Custom KPI" }, panel: { hidden: "hidden", hidden_name: "Hidden Panel", hidden_performance: "Hidden", info_label: "Info", info_title: "Open panel details", inverter_prefix: "Inverter: {status}", inverter_short: { ok: "Inverter: OK", deviation: "Inverter: Deviation", error: "Inverter: Error" }, performance_compact: "{percent}%", performance_medium: "{percent}% of {rated}W", performance_full: "{percent}% of {rated}W Panel", slot_label: "R{row}C{column}", status: { normal: "normal", deviation: "deviation", inverter: "inverter", error: "error", offline: "offline", unconfigured: "unconfigured", disabled: "hidden" } }, popup: { close_detail: "Close detail", close_live_power: "Close live power detail", close_energy: "Close energy detail", close_custom_kpi: "Close custom KPI detail", close_system_health: "Close system health", panel_eyebrow: "Panel Detail {slot}", power_eyebrow: "Power Detail", power_title: "Live Power", energy_eyebrow: "Energy Detail", energy_title: "Energy", custom_eyebrow: "Custom KPI Detail", system_health_eyebrow: "System Health", system_health_title: "Overview", detail: { status: "Status", power: "Power", energy: "Energy", estimated_power_now: "Forecast production", estimated_energy_now: "Forecast production", deviation: "Deviation", rated_performance: "Rated / Performance", information: "Information", current: "Current", source: "Source" }, deviation: { inverter_mismatch: "Inverter status mismatch", below_peers: "{percent}% below peers", within_range: "Within range" }, rated_performance: { format: "{rated} W / {percent}", na: "n/a" }, info: { power_source: "Power source: {value}", current_inverter_status: 'Current inverter status: "{value}"', inverter_evaluation: "Inverter evaluation: {value}", inverter_source: "Inverter source: {value}" }, inverter_eval: { no_status: "No status available", fault_match: "Fault term matched", working_match: "Working term matched", no_match: "No configured term matched" }, telemetry: { title: "Panel / Inverter Info", configured_title: "Configured", unconfigured_title: "Unconfigured", none_configured: "No advanced telemetry configured for this panel.", setup_hint: "Configure in Panels > Advanced telemetry.", label: { inverter_status: "Inverter status", inverter_ac_power: "Inverter AC power", inverter_ac_voltage: "Inverter AC voltage", inverter_ac_current: "Inverter AC current", inverter_temp: "Inverter temperature", panel_current: "Panel current", panel_voltage: "Panel voltage", panel_power: "Panel power" } }, history: { power: "Power History", system_power: "System Power History", total_panel_power: "Total Panel Power History", system_energy: "System Energy History", total_panel_energy: "Total Panel Energy History", panel_power_values: "Panel Power Values", panel_energy_values: "Panel Energy Values", panel_compare: "Panel Performance Comparison", panel_compare_power: "Panel Power Comparison", panel_compare_energy: "Panel Energy Comparison", overlay_forecast: "Forecast", graph_not_configured: "No sensor configured for graph.", custom_not_configured: "No sensor configured for Custom KPI.", loading: "Loading sensor history...", no_data: "No history data for selected range.", unable_load: "Unable to load panel history ({error})", unable_load_plain: "Unable to load panel history", max: "Max {value}", median: "Median {value}", min: "Min {value}", time_range: "{start} - {end}" }, forecast: { enable_button: "Enable forecasts", disabled_hint: "Forecast overlay is disabled.", not_configured: "Forecast.Solar not configured.", default_sensor_not_found: "Default forecast sensor not found ({entity}).", power_compare_requires_system: "System power sensor is required for power forecast comparison.", energy_compare_requires_system: "System energy sensor is required for energy forecast comparison." }, panel_compare: { toggle: "Compare Panel Performance", toggle_power: "Compare Panel Power", toggle_energy: "Compare Panel Energy", loading: "Loading panel comparison history...", no_panels: "No configured panel sensors available for comparison.", no_panels_power: "No configured panel power sensors available for comparison.", no_panels_energy: "No configured panel energy sensors available for comparison.", no_data: "No comparison data for selected range.", unable_load: "Unable to load panel comparison history ({error}).", render_failure: "Comparison data loaded, but traces could not be drawn.", diagnostics_title: "Compare graph diagnostics (temporary)", diagnostics_summary: "model hasData={hasData}, drawable={drawable}, series={series}, range={range}h", diagnostics_reason_render_failure: "Series exist but no drawable traces were produced.", diagnostics_reason_suspect: "One or more series produced an invalid drawable shape.", diagnostics_row: "{label}: samples={samples}, points={points}, first={first}, last={last}, min={min}, max={max}" }, system_health: { everything_ok: "Everything is working well.", section: { inverter: "Inverter", error: "Error", deviation: "Deviation", offline: "Unavailable", setup: "Needs setup" }, item: "Panel on {slot} ({label}): {reason}" } }, quick_setup: { title: "Quick Setup:", select_power_sensor: "Select panel power sensor:", selector_label: "Select panel power sensor", no_sensors: "No available W sensors found.", disable_panel: "Disable Panel (hide but keep slot when off)" }, system_health_chip: { faults: "{count} Fault{suffix}", unavailable: "{count} Unavailable", deviation: "{count} Deviation", needs_setup: "{count} Needs Setup", ok: "System OK" } }, Js = { reason: { slot_hidden: "Panel slot is hidden in the card configuration.", select_power_sensor: "Select a power sensor to activate this panel slot.", power_entity_missing: "Power entity {entity} was not found.", power_entity_unavailable: "{entity} is unavailable.", inverter_fault_match: 'Current inverter status: "{status}" matches configured fault terms.', inverter_working_mismatch: 'Current inverter status: "{status}" does not match configured working terms.', producing_expected: "Producing within the expected array range.", producing_adjusted: "Producing within array-adjusted target range.", rated_not_configured: "Rated power not configured; excluded from deviation checks.", output_below_target: "Output is {percent}% and {shortfall} W below array target.", array_check_disabled: "Array Health Check is disabled.", need_non_derated_panels: "Need at least {count} non-derated active rated panels for deviation checks.", collecting_samples: "Collecting samples ({current}/{required}).", warmup_progress: "Warm-up in progress ({current}/{required} min).", low_light_pause: "Low-light pause: waiting above {floor} W target floor." }, status_display: { disabled: "Disabled", not_configured: "Not configured" }, energy: { default_unit: "kWh" }, power: { default_unit: "W" } }, er = { section: { layout_title: "Layout", layout_copy: "Set the array size first. Panel slots expand automatically from the row and column values.", display_title: "Display", display_copy: "Tune precision and panel detail behavior.", appearance_title: "Appearance", appearance_copy: "Auto follows the active Home Assistant theme. Force Light or Dark if a dashboard theme needs a specific card style.", forecast_title: "Forecast.Solar", forecast_copy: "Auto-detects Home Assistant default forecast sensors and overlays estimated production in Power/Energy KPI popups.", array_health_title: "Array Health Check", array_health_copy: "Automatically checks panel health by comparing active panels against each other using rated power, shared solar panel history, and configurable guardrails.", array_health_smoothing_help: "Smoothing window averages recent samples before checks; 0 means no smoothing.", inverter_title: "Inverter Status", inverter_copy: "Track textual status from each panel’s inverter status sensor. A panel turns red only when status text contains one of the configured fault terms. The current inverter status is shown in the panel popup.", status_colors_title: "Status Colors", status_colors_copy: "Production colors blend based on panel output. Alert colors override the production scale.", motion_title: "Motion", motion_copy: "Animate live production with left-collector power rails, Power/Energy KPI impact effects, and repeated alert ripples. Motion automatically respects reduced-motion preferences.", panels_title: "Panels", panels_copy: "Each generated slot can be configured with its own power, energy, and optional inverter status sensor. Disable a slot to hide that panel while keeping grid spacing.", panels_drag_hint: "In the card view, drag and drop panel tiles to swap their positions.", panel_defaults_title: "Panel default rated power", panel_defaults_copy: "Set a common default panel power and apply it to all panel slots.", autofill_title: "Auto-populate sensors", autofill_copy: "Fill panel sensors in slot order. Use sensor. for exact entity ID prefixes, or type friendly-name text to search sensor names.", advanced_title: "Advanced telemetry", advanced_copy: "Optional manual telemetry mappings shown in the panel popup when pressing INFO." }, field: { title: "Title", rows: "Rows", columns: "Columns", max_card_width: "Max card width (px)", max_card_height: "Max card height (px)", theme_mode: "Theme mode", power_decimals: "Power decimals", energy_decimals: "Energy decimals", custom_kpi_decimals: "Custom KPI decimals", panel_tap_action: "Panel tap action", system_power_sensor: "System power sensor (W)", system_energy_sensor: "System daily energy sensor", custom_kpi_sensor: "Custom KPI sensor", custom_kpi_heading: "Custom KPI heading", max_panel_tile_width: "Max panel tile width (px)", deviation_threshold: "Deviation threshold (%)", deviation_absolute_shortfall: "Absolute shortfall threshold (W)", deviation_check_time: "Deviation check time (minutes)", deviation_min_active_panels: "Minimum active panels", deviation_min_samples: "Minimum samples per panel", deviation_smoothing: "Smoothing window (minutes)", deviation_dynamic_floor: "Dynamic floor start (W)", deviation_history_window: "Shared history window (hours)", fault_terms: "Fault terms (comma-separated)", working_terms: "Working terms (comma-separated)", production_base: "Production base", production_mid: "Production mid", production_peak: "Production peak", deviation_color: "Deviation", error_color: "Error", unavailable_color: "Unavailable", production_intensity: "Production color intensity ({value})", default_panel_rated_power: "Default panel rated power (W)", power_prefix: "Power search", energy_prefix: "Energy search (optional)", display_name: "Display name", power_sensor: "Power sensor P(W)", energy_sensor: "Energy sensor (kWh/Wh)", panel_rated_power: "Panel rated power (W)", deviation_derate: "Deviation derate (%)", inverter_status_sensor: "Inverter status sensor (optional)", advanced_inverter_ac_power: "Inverter AC power (W)", advanced_inverter_ac_voltage: "Inverter AC voltage (V)", advanced_inverter_ac_current: "Inverter AC current (A)", advanced_inverter_temp: "Inverter temperature (°C/°F)", advanced_panel_current: "Panel current (A)", advanced_panel_voltage: "Panel voltage (V)", advanced_panel_power: "Panel power (W)", panel_energy_toggle: "Show panel energy", panel_enabled_toggle: "Show panel tile (hide but keep slot when off)" }, toggle: { use_system_power: "Use one system power sensor for top KPI", invert_system_power: "Invert system power value", use_system_energy: "Use one system daily energy sensor for top KPI", invert_custom_kpi: "Invert Custom KPI value", enable_forecast_overlay: "Enable forecast overlays in popups", motion_enabled: "Enable motion", motion_power_flow: "Power-rail flow to Power KPI", motion_update_shimmer: "Power/Energy KPI update effect", motion_alert_ripple: "Alert ripple for deviation/inverter/error", show_custom_kpi: "Show Custom KPI box", limit_panel_width: "Limit panel tile max width", enable_array_health: "Enable Array Health Check", enable_inverter_status: "Enable inverter status checks", show_inverter_status_tiles: "Show inverter status on panel tiles" }, select: { theme_auto: "Auto", theme_dark: "Dark", theme_light: "Light", panel_tap_details: "Open detail popover", panel_tap_none: "No action" }, button: { apply_default_rated_power: "Apply default rated W to all panels", autofill_sensors: "Auto-fill panel sensors", remove_all_sensors: "Remove all sensors" }, helper: { fault_example: "Example: fault, alarm, error, failed, failure, trip", working_example: "Working example: normal, ok, running, waiting for operation, producing", derate_help: "Used only by Array Health Check for naturally shaded panels.", autofill_search_help: "Tip: enter sensor.panel_ to match entity IDs exactly by prefix. Enter text such as Roof Panel or Daily Energy to search sensor friendly names instead. The same rule applies to Power and Energy search." }, forecast: { default_sensors: "Uses: sensor.power_production_now and sensor.energy_production_today.", line_help: "The forecast reference is a thin dashed line shown only for the selected history range up to the current time, with no future projection.", detected: "Forecast.Solar default sensors detected.", missing: "Forecast.Solar default sensors not fully detected. Expected: sensor.power_production_now and sensor.energy_production_today." }, panel_slot_title: "Row {row}, Column {column}", autofill: { enter_prefix: "Enter at least one prefix to run auto-fill.", power_summary: "Power matched {matched}, filled {filled}, skipped {skipped}.", energy_summary: "Energy matched {matched}, filled {filled}, skipped {skipped}.", cleared: "Cleared power, energy, inverter, and advanced telemetry sensors on all panels." } }, $s = {
-  meta: Xs,
-  common: Qs,
-  card: Zs,
-  state: Js,
-  editor: er
-}, tr = { DEV: !1 }, sr = {
-  en: $s
-}, ft = /* @__PURE__ */ new Set(), rr = () => typeof import.meta < "u" ? tr.DEV : typeof process < "u" ? process.env.NODE_ENV !== "production" : !1, ir = (i, e) => {
-  if (!rr())
+}, xs = { card_name: "Solar Panel Visualizer", card_description: "GUI-first solar array card with panel health, animated power rails, forecasts, history graphs, and light/dark themes." }, Ps = { unavailable: "Unavailable", not_configured: "Not configured", disabled: "Disabled", unknown_recorder_error: "Unknown recorder error" }, $s = { default_title: "Solar Array", eyebrow: "Solar Panel Visualizer", subtitle: { loading_history: "Loading shared {hours}h solar panel history...", warmup: "Deviation checks are warming up.", deviation_detected: "{count} panel{suffix} below expected output", tap_diagnostics: "Tap a panel for detailed diagnostics", drag_hint: "Drag and drop panel tiles to swap positions." }, summary: { power: "Power", energy: "Energy", alerts: "Alerts", system_sensor: "System sensor", sum_panel_sensors: "Sum of panel sensors", custom_sensor: "Custom KPI sensor", custom_default_title: "Custom KPI" }, panel: { hidden: "hidden", hidden_name: "Hidden Panel", hidden_performance: "Hidden", info_label: "Info", info_title: "Open panel details", inverter_prefix: "Inverter: {status}", inverter_short: { ok: "Inverter: OK", deviation: "Inverter: Deviation", error: "Inverter: Error" }, performance_compact: "{percent}%", performance_medium: "{percent}% of {rated}W", performance_full: "{percent}% of {rated}W Panel", slot_label: "R{row}C{column}", status: { normal: "normal", deviation: "deviation", inverter: "inverter", error: "error", offline: "offline", unconfigured: "unconfigured", disabled: "hidden" } }, popup: { close_detail: "Close detail", close_live_power: "Close live power detail", close_energy: "Close energy detail", close_custom_kpi: "Close custom KPI detail", close_system_health: "Close system health", panel_eyebrow: "Panel Detail {slot}", power_eyebrow: "Power Detail", power_title: "Live Power", energy_eyebrow: "Energy Detail", energy_title: "Energy", custom_eyebrow: "Custom KPI Detail", system_health_eyebrow: "System Health", system_health_title: "Overview", detail: { status: "Status", power: "Power", energy: "Energy", estimated_power_now: "Forecast production", estimated_energy_now: "Forecast production", deviation: "Deviation", rated_performance: "Rated / Performance", information: "Information", current: "Current", source: "Source" }, deviation: { inverter_mismatch: "Inverter status mismatch", below_peers: "{percent}% below peers", within_range: "Within range" }, rated_performance: { format: "{rated} W / {percent}", na: "n/a" }, info: { power_source: "Power source: {value}", current_inverter_status: 'Current inverter status: "{value}"', inverter_evaluation: "Inverter evaluation: {value}", inverter_source: "Inverter source: {value}" }, inverter_eval: { no_status: "No status available", fault_match: "Fault term matched", working_match: "Working term matched", no_match: "No configured term matched" }, telemetry: { title: "Panel / Inverter Info", configured_title: "Configured", unconfigured_title: "Unconfigured", none_configured: "No advanced telemetry configured for this panel.", setup_hint: "Configure in Panels > Advanced telemetry.", label: { inverter_status: "Inverter status", inverter_ac_power: "Inverter AC power", inverter_ac_voltage: "Inverter AC voltage", inverter_ac_current: "Inverter AC current", inverter_temp: "Inverter temperature", panel_current: "Panel current", panel_voltage: "Panel voltage", panel_power: "Panel power" } }, history: { power: "Power History", system_power: "System Power History", total_panel_power: "Total Panel Power History", system_energy: "System Energy History", total_panel_energy: "Total Panel Energy History", panel_power_values: "Panel Power Values", panel_energy_values: "Panel Energy Values", panel_compare: "Panel Performance Comparison", panel_compare_power: "Panel Power Comparison", panel_compare_energy: "Panel Energy Comparison", overlay_forecast: "Forecast", graph_not_configured: "No sensor configured for graph.", custom_not_configured: "No sensor configured for Custom KPI.", loading: "Loading sensor history...", no_data: "No history data for selected range.", unable_load: "Unable to load panel history ({error})", unable_load_plain: "Unable to load panel history", max: "Max {value}", median: "Median {value}", min: "Min {value}", time_range: "{start} - {end}" }, forecast: { enable_button: "Enable forecasts", disabled_hint: "Forecast overlay is disabled.", not_configured: "Forecast.Solar not configured.", default_sensor_not_found: "Default forecast sensor not found ({entity}).", power_compare_requires_system: "System power sensor is required for power forecast comparison.", energy_compare_requires_system: "System energy sensor is required for energy forecast comparison." }, panel_compare: { toggle: "Compare Panel Performance", toggle_power: "Compare Panel Power", toggle_energy: "Compare Panel Energy", loading: "Loading panel comparison history...", no_panels: "No configured panel sensors available for comparison.", no_panels_power: "No configured panel power sensors available for comparison.", no_panels_energy: "No configured panel energy sensors available for comparison.", no_data: "No comparison data for selected range.", unable_load: "Unable to load panel comparison history ({error}).", render_failure: "Comparison data loaded, but traces could not be drawn.", diagnostics_title: "Compare graph diagnostics (temporary)", diagnostics_summary: "model hasData={hasData}, drawable={drawable}, series={series}, range={range}h", diagnostics_reason_render_failure: "Series exist but no drawable traces were produced.", diagnostics_reason_suspect: "One or more series produced an invalid drawable shape.", diagnostics_row: "{label}: samples={samples}, points={points}, first={first}, last={last}, min={min}, max={max}" }, system_health: { everything_ok: "Everything is working well.", section: { inverter: "Inverter", error: "Error", deviation: "Deviation", offline: "Unavailable", setup: "Needs setup" }, item: "Panel on {slot} ({label}): {reason}" } }, quick_setup: { title: "Quick Setup:", select_power_sensor: "Select panel power sensor:", selector_label: "Select panel power sensor", no_sensors: "No available W sensors found.", disable_panel: "Disable Panel (hide but keep slot when off)" }, system_health_chip: { faults: "{count} Fault{suffix}", unavailable: "{count} Unavailable", deviation: "{count} Deviation", needs_setup: "{count} Needs Setup", ok: "System OK" } }, Ss = { reason: { slot_hidden: "Panel slot is hidden in the card configuration.", select_power_sensor: "Select a power sensor to activate this panel slot.", power_entity_missing: "Power entity {entity} was not found.", power_entity_unavailable: "{entity} is unavailable.", inverter_fault_match: 'Current inverter status: "{status}" matches configured fault terms.', inverter_working_mismatch: 'Current inverter status: "{status}" does not match configured working terms.', producing_expected: "Producing within the expected array range.", producing_adjusted: "Producing within array-adjusted target range.", rated_not_configured: "Rated power not configured; excluded from deviation checks.", output_below_target: "Output is {percent}% and {shortfall} W below array target.", array_check_disabled: "Array Health Check is disabled.", need_non_derated_panels: "Need at least {count} non-derated active rated panels for deviation checks.", collecting_samples: "Collecting samples ({current}/{required}).", warmup_progress: "Warm-up in progress ({current}/{required} min).", low_light_pause: "Low-light pause: waiting above {floor} W target floor." }, status_display: { disabled: "Disabled", not_configured: "Not configured" }, energy: { default_unit: "kWh" }, power: { default_unit: "W" } }, Cs = { section: { layout_title: "Layout", layout_copy: "Set the array size first. Panel slots expand automatically from the row and column values.", display_title: "Display", display_copy: "Tune precision and panel detail behavior.", appearance_title: "Appearance", appearance_copy: "Auto follows the active Home Assistant theme. Force Light or Dark if a dashboard theme needs a specific card style.", forecast_title: "Forecast.Solar", forecast_copy: "Auto-detects Home Assistant default forecast sensors and overlays estimated production in Power/Energy KPI popups.", array_health_title: "Array Health Check", array_health_copy: "Automatically checks panel health by comparing active panels against each other using rated power, shared solar panel history, and configurable guardrails.", array_health_smoothing_help: "Smoothing window averages recent samples before checks; 0 means no smoothing.", inverter_title: "Inverter Status", inverter_copy: "Track textual status from each panel’s inverter status sensor. A panel turns red only when status text contains one of the configured fault terms. The current inverter status is shown in the panel popup.", status_colors_title: "Status Colors", status_colors_copy: "Production colors blend based on panel output. Alert colors override the production scale.", motion_title: "Motion", motion_copy: "Animate live production with left-collector power rails, Power/Energy KPI impact effects, and repeated alert ripples. Motion automatically respects reduced-motion preferences.", panels_title: "Panels", panels_copy: "Each generated slot can be configured with its own power, energy, and optional inverter status sensor. Disable a slot to hide that panel while keeping grid spacing.", panels_drag_hint: "In the card view, drag and drop panel tiles to swap their positions.", panel_defaults_title: "Panel default rated power", panel_defaults_copy: "Set a common default panel power and apply it to all panel slots.", autofill_title: "Auto-populate sensors", autofill_copy: "Fill panel sensors in slot order. Use sensor. for exact entity ID prefixes, or type friendly-name text to search sensor names.", advanced_title: "Advanced telemetry", advanced_copy: "Optional manual telemetry mappings shown in the panel popup when pressing INFO." }, field: { title: "Title", rows: "Rows", columns: "Columns", max_card_width: "Max card width (px)", max_card_height: "Max card height (px)", theme_mode: "Theme mode", power_decimals: "Power decimals", energy_decimals: "Energy decimals", custom_kpi_decimals: "Custom KPI decimals", panel_tap_action: "Panel tap action", system_power_sensor: "System power sensor (W)", system_energy_sensor: "System daily energy sensor", custom_kpi_sensor: "Custom KPI sensor", custom_kpi_heading: "Custom KPI heading", max_panel_tile_width: "Max panel tile width (px)", deviation_threshold: "Deviation threshold (%)", deviation_absolute_shortfall: "Absolute shortfall threshold (W)", deviation_check_time: "Deviation check time (minutes)", deviation_min_active_panels: "Minimum active panels", deviation_min_samples: "Minimum samples per panel", deviation_smoothing: "Smoothing window (minutes)", deviation_dynamic_floor: "Dynamic floor start (W)", deviation_history_window: "Shared history window (hours)", fault_terms: "Fault terms (comma-separated)", working_terms: "Working terms (comma-separated)", production_base: "Production base", production_mid: "Production mid", production_peak: "Production peak", deviation_color: "Deviation", error_color: "Error", unavailable_color: "Unavailable", production_intensity: "Production color intensity ({value})", default_panel_rated_power: "Default panel rated power (W)", power_prefix: "Power search", energy_prefix: "Energy search (optional)", autofill_sort_mode: "Auto-fill sort order", display_name: "Display name", power_sensor: "Power sensor P(W)", energy_sensor: "Energy sensor (kWh/Wh)", panel_rated_power: "Panel rated power (W)", deviation_derate: "Deviation derate (%)", inverter_status_sensor: "Inverter status sensor (optional)", advanced_inverter_ac_power: "Inverter AC power (W)", advanced_inverter_ac_voltage: "Inverter AC voltage (V)", advanced_inverter_ac_current: "Inverter AC current (A)", advanced_inverter_temp: "Inverter temperature (°C/°F)", advanced_panel_current: "Panel current (A)", advanced_panel_voltage: "Panel voltage (V)", advanced_panel_power: "Panel power (W)", panel_energy_toggle: "Show panel energy", panel_enabled_toggle: "Show panel tile (hide but keep slot when off)" }, toggle: { use_system_power: "Use one system power sensor for top KPI", invert_system_power: "Invert system power value", use_system_energy: "Use one system daily energy sensor for top KPI", invert_custom_kpi: "Invert Custom KPI value", enable_forecast_overlay: "Enable forecast overlays in popups", motion_enabled: "Enable motion", motion_power_flow: "Power-rail flow to Power KPI", motion_update_shimmer: "Power/Energy KPI update effect", motion_alert_ripple: "Alert ripple for deviation/inverter/error", show_custom_kpi: "Show Custom KPI box", limit_panel_width: "Limit panel tile max width", enable_array_health: "Enable Array Health Check", enable_inverter_status: "Enable inverter status checks", show_inverter_status_tiles: "Show inverter status on panel tiles", autofill_inverter_status: "Fill inverter status", autofill_advanced_telemetry: "Fill advanced telemetry" }, select: { theme_auto: "Auto", theme_dark: "Dark", theme_light: "Light", panel_tap_details: "Open detail popover", panel_tap_none: "No action", autofill_sort_auto: "Auto detect (recommended)", autofill_sort_entity: "Literal entity ID order", autofill_sort_friendly: "Literal friendly name order", autofill_sort_grouped: "Group by repeated suffix" }, button: { apply_default_rated_power: "Apply default rated W to all panels", autofill_sensors: "Auto-fill panel sensors", remove_all_sensors: "Remove all sensors" }, helper: { fault_example: "Example: fault, alarm, error, failed, failure, trip", working_example: "Working example: normal, ok, running, waiting for operation, producing", derate_help: "Used only by Array Health Check for naturally shaded panels.", autofill_search_help: "Search with sensor.panel_ to match entity IDs by prefix, or type words like Roof Panel or Daily Energy to search friendly names. Auto detect is recommended for most setups: it uses natural sorting and can group matching sensors by repeated serial/device parts when that better matches the physical layout. Use the other sort modes only when Auto does not match your array.", autofill_inverter_status_help: "When enabled, inverter status is filled from configured panel power sensors by matching the same repeated serial/device/group. One same-group status sensor can be reused for all panels on that inverter.", autofill_advanced_help: "When enabled, advanced telemetry is filled from configured panel power sensors by matching the same repeated serial/device/group. Existing advanced telemetry choices are preserved." }, forecast: { default_sensors: "Uses: sensor.power_production_now and sensor.energy_production_today.", line_help: "The forecast reference is a thin dashed line shown only for the selected history range up to the current time, with no future projection.", detected: "Forecast.Solar default sensors detected.", missing: "Forecast.Solar default sensors not fully detected. Expected: sensor.power_production_now and sensor.energy_production_today." }, panel_slot_title: "Row {row}, Column {column}", autofill: { enter_prefix: "Enter at least one prefix to run auto-fill.", power_summary: "Power matched {matched}, filled {filled}, skipped {skipped}.", energy_summary: "Energy matched {matched}, filled {filled}, skipped {skipped}.", inverter_status_summary: "Inverter status filled {filled} panels, skipped {skipped} panels.", advanced_summary: "Advanced telemetry filled {filled} fields, skipped {skipped} panels.", cleared: "Cleared power, energy, inverter, and advanced telemetry sensors on all panels." } }, zr = {
+  meta: xs,
+  common: Ps,
+  card: $s,
+  state: Ss,
+  editor: Cs
+}, Es = { DEV: !1 }, ks = {
+  en: zr
+}, Mt = /* @__PURE__ */ new Set(), Is = () => typeof import.meta < "u" ? Es.DEV : typeof process < "u" ? process.env.NODE_ENV !== "production" : !1, Ts = (i, e) => {
+  if (!Is())
     return;
   const t = `${e ?? "unknown"}:${i}`;
-  ft.has(t) || (ft.add(t), console.warn(
+  Mt.has(t) || (Mt.add(t), console.warn(
     `[Solar Panel Visualizer i18n] Missing translation key "${i}" for locale "${e ?? "unknown"}".`
   ));
-}, yt = (i, e) => {
+}, At = (i, e) => {
   if (i)
     return e.split(".").reduce(
-      (t, s) => typeof t == "object" && t !== null ? t[s] : void 0,
+      (t, r) => typeof t == "object" && t !== null ? t[r] : void 0,
       i
     );
-}, vt = (i, e) => e ? i.replace(/\{([a-zA-Z0-9_]+)\}/g, (t, s) => {
-  const r = e[s];
-  return r === void 0 ? `{${s}}` : String(r);
-}) : i, or = (i) => {
+}, Rt = (i, e) => e ? i.replace(/\{([a-zA-Z0-9_]+)\}/g, (t, r) => {
+  const s = e[r];
+  return s === void 0 ? `{${r}}` : String(s);
+}) : i, Fs = (i) => {
   if (!i)
     return ["en"];
   const e = i.trim().toLowerCase();
   if (e.length === 0)
     return ["en"];
-  const t = e.split("-")[0], s = [e, t, "en"];
-  return [...new Set(s)];
-}, nr = (i, e, t, s) => {
-  for (const o of or(e)) {
-    const n = yt(i[o], t);
+  const t = e.split("-")[0], r = [e, t, "en"];
+  return [...new Set(r)];
+}, Ms = (i, e, t, r) => {
+  for (const o of Fs(e)) {
+    const n = At(i[o], t);
     if (typeof n == "string")
-      return vt(n, s);
+      return Rt(n, r);
   }
-  const r = yt(i.en ?? $s, t);
-  return typeof r == "string" ? vt(r, s) : (ir(t, e), "");
-}, Ke = (i, e, t) => nr(
-  sr,
+  const s = At(i.en ?? zr, t);
+  return typeof s == "string" ? Rt(s, r) : (Ts(t, e), "");
+}, tt = (i, e, t) => Ms(
+  ks,
   i,
   e,
   t
-), Ps = (i, e, t) => Ke(i?.locale?.language, e, t);
-const Ge = globalThis, pt = Ge.ShadowRoot && (Ge.ShadyCSS === void 0 || Ge.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, ct = /* @__PURE__ */ Symbol(), bt = /* @__PURE__ */ new WeakMap();
-let Ss = class {
-  constructor(e, t, s) {
-    if (this._$cssResult$ = !0, s !== ct) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
+), Br = (i, e, t) => tt(i?.locale?.language, e, t);
+const Xe = globalThis, $t = Xe.ShadowRoot && (Xe.ShadyCSS === void 0 || Xe.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, St = /* @__PURE__ */ Symbol(), Nt = /* @__PURE__ */ new WeakMap();
+let Wr = class {
+  constructor(e, t, r) {
+    if (this._$cssResult$ = !0, r !== St) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = e, this.t = t;
   }
   get styleSheet() {
     let e = this.o;
     const t = this.t;
-    if (pt && e === void 0) {
-      const s = t !== void 0 && t.length === 1;
-      s && (e = bt.get(t)), e === void 0 && ((this.o = e = new CSSStyleSheet()).replaceSync(this.cssText), s && bt.set(t, e));
+    if ($t && e === void 0) {
+      const r = t !== void 0 && t.length === 1;
+      r && (e = Nt.get(t)), e === void 0 && ((this.o = e = new CSSStyleSheet()).replaceSync(this.cssText), r && Nt.set(t, e));
     }
     return e;
   }
@@ -353,28 +353,28 @@ let Ss = class {
     return this.cssText;
   }
 };
-const ar = (i) => new Ss(typeof i == "string" ? i : i + "", void 0, ct), dt = (i, ...e) => {
-  const t = i.length === 1 ? i[0] : e.reduce((s, r, o) => s + ((n) => {
+const As = (i) => new Wr(typeof i == "string" ? i : i + "", void 0, St), Ct = (i, ...e) => {
+  const t = i.length === 1 ? i[0] : e.reduce((r, s, o) => r + ((n) => {
     if (n._$cssResult$ === !0) return n.cssText;
     if (typeof n == "number") return n;
     throw Error("Value passed to 'css' function must be a 'css' function result: " + n + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
-  })(r) + i[o + 1], i[0]);
-  return new Ss(t, i, ct);
-}, lr = (i, e) => {
-  if (pt) i.adoptedStyleSheets = e.map((t) => t instanceof CSSStyleSheet ? t : t.styleSheet);
+  })(s) + i[o + 1], i[0]);
+  return new Wr(t, i, St);
+}, Rs = (i, e) => {
+  if ($t) i.adoptedStyleSheets = e.map((t) => t instanceof CSSStyleSheet ? t : t.styleSheet);
   else for (const t of e) {
-    const s = document.createElement("style"), r = Ge.litNonce;
-    r !== void 0 && s.setAttribute("nonce", r), s.textContent = t.cssText, i.appendChild(s);
+    const r = document.createElement("style"), s = Xe.litNonce;
+    s !== void 0 && r.setAttribute("nonce", s), r.textContent = t.cssText, i.appendChild(r);
   }
-}, wt = pt ? (i) => i : (i) => i instanceof CSSStyleSheet ? ((e) => {
+}, Lt = $t ? (i) => i : (i) => i instanceof CSSStyleSheet ? ((e) => {
   let t = "";
-  for (const s of e.cssRules) t += s.cssText;
-  return ar(t);
+  for (const r of e.cssRules) t += r.cssText;
+  return As(t);
 })(i) : i;
-const { is: pr, defineProperty: cr, getOwnPropertyDescriptor: dr, getOwnPropertyNames: hr, getOwnPropertySymbols: ur, getPrototypeOf: _r } = Object, ie = globalThis, xt = ie.trustedTypes, mr = xt ? xt.emptyScript : "", gr = ie.reactiveElementPolyfillSupport, Ie = (i, e) => i, it = { toAttribute(i, e) {
+const { is: Ns, defineProperty: Ls, getOwnPropertyDescriptor: Ds, getOwnPropertyNames: Os, getOwnPropertySymbols: Gs, getPrototypeOf: Hs } = Object, oe = globalThis, Dt = oe.trustedTypes, zs = Dt ? Dt.emptyScript : "", Bs = oe.reactiveElementPolyfillSupport, Ne = (i, e) => i, yt = { toAttribute(i, e) {
   switch (e) {
     case Boolean:
-      i = i ? mr : null;
+      i = i ? zs : null;
       break;
     case Object:
     case Array:
@@ -399,69 +399,69 @@ const { is: pr, defineProperty: cr, getOwnPropertyDescriptor: dr, getOwnProperty
       }
   }
   return t;
-} }, Cs = (i, e) => !pr(i, e), $t = { attribute: !0, type: String, converter: it, reflect: !1, useDefault: !1, hasChanged: Cs };
-Symbol.metadata ?? (Symbol.metadata = /* @__PURE__ */ Symbol("metadata")), ie.litPropertyMetadata ?? (ie.litPropertyMetadata = /* @__PURE__ */ new WeakMap());
-let fe = class extends HTMLElement {
+} }, Ur = (i, e) => !Ns(i, e), Ot = { attribute: !0, type: String, converter: yt, reflect: !1, useDefault: !1, hasChanged: Ur };
+Symbol.metadata ?? (Symbol.metadata = /* @__PURE__ */ Symbol("metadata")), oe.litPropertyMetadata ?? (oe.litPropertyMetadata = /* @__PURE__ */ new WeakMap());
+let be = class extends HTMLElement {
   static addInitializer(e) {
     this._$Ei(), (this.l ?? (this.l = [])).push(e);
   }
   static get observedAttributes() {
     return this.finalize(), this._$Eh && [...this._$Eh.keys()];
   }
-  static createProperty(e, t = $t) {
+  static createProperty(e, t = Ot) {
     if (t.state && (t.attribute = !1), this._$Ei(), this.prototype.hasOwnProperty(e) && ((t = Object.create(t)).wrapped = !0), this.elementProperties.set(e, t), !t.noAccessor) {
-      const s = /* @__PURE__ */ Symbol(), r = this.getPropertyDescriptor(e, s, t);
-      r !== void 0 && cr(this.prototype, e, r);
+      const r = /* @__PURE__ */ Symbol(), s = this.getPropertyDescriptor(e, r, t);
+      s !== void 0 && Ls(this.prototype, e, s);
     }
   }
-  static getPropertyDescriptor(e, t, s) {
-    const { get: r, set: o } = dr(this.prototype, e) ?? { get() {
+  static getPropertyDescriptor(e, t, r) {
+    const { get: s, set: o } = Ds(this.prototype, e) ?? { get() {
       return this[t];
     }, set(n) {
       this[t] = n;
     } };
-    return { get: r, set(n) {
-      const a = r?.call(this);
-      o?.call(this, n), this.requestUpdate(e, a, s);
+    return { get: s, set(n) {
+      const a = s?.call(this);
+      o?.call(this, n), this.requestUpdate(e, a, r);
     }, configurable: !0, enumerable: !0 };
   }
   static getPropertyOptions(e) {
-    return this.elementProperties.get(e) ?? $t;
+    return this.elementProperties.get(e) ?? Ot;
   }
   static _$Ei() {
-    if (this.hasOwnProperty(Ie("elementProperties"))) return;
-    const e = _r(this);
+    if (this.hasOwnProperty(Ne("elementProperties"))) return;
+    const e = Hs(this);
     e.finalize(), e.l !== void 0 && (this.l = [...e.l]), this.elementProperties = new Map(e.elementProperties);
   }
   static finalize() {
-    if (this.hasOwnProperty(Ie("finalized"))) return;
-    if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(Ie("properties"))) {
-      const t = this.properties, s = [...hr(t), ...ur(t)];
-      for (const r of s) this.createProperty(r, t[r]);
+    if (this.hasOwnProperty(Ne("finalized"))) return;
+    if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(Ne("properties"))) {
+      const t = this.properties, r = [...Os(t), ...Gs(t)];
+      for (const s of r) this.createProperty(s, t[s]);
     }
     const e = this[Symbol.metadata];
     if (e !== null) {
       const t = litPropertyMetadata.get(e);
-      if (t !== void 0) for (const [s, r] of t) this.elementProperties.set(s, r);
+      if (t !== void 0) for (const [r, s] of t) this.elementProperties.set(r, s);
     }
     this._$Eh = /* @__PURE__ */ new Map();
-    for (const [t, s] of this.elementProperties) {
-      const r = this._$Eu(t, s);
-      r !== void 0 && this._$Eh.set(r, t);
+    for (const [t, r] of this.elementProperties) {
+      const s = this._$Eu(t, r);
+      s !== void 0 && this._$Eh.set(s, t);
     }
     this.elementStyles = this.finalizeStyles(this.styles);
   }
   static finalizeStyles(e) {
     const t = [];
     if (Array.isArray(e)) {
-      const s = new Set(e.flat(1 / 0).reverse());
-      for (const r of s) t.unshift(wt(r));
-    } else e !== void 0 && t.push(wt(e));
+      const r = new Set(e.flat(1 / 0).reverse());
+      for (const s of r) t.unshift(Lt(s));
+    } else e !== void 0 && t.push(Lt(e));
     return t;
   }
   static _$Eu(e, t) {
-    const s = t.attribute;
-    return s === !1 ? void 0 : typeof s == "string" ? s : typeof e == "string" ? e.toLowerCase() : void 0;
+    const r = t.attribute;
+    return r === !1 ? void 0 : typeof r == "string" ? r : typeof e == "string" ? e.toLowerCase() : void 0;
   }
   constructor() {
     super(), this._$Ep = void 0, this.isUpdatePending = !1, this.hasUpdated = !1, this._$Em = null, this._$Ev();
@@ -477,12 +477,12 @@ let fe = class extends HTMLElement {
   }
   _$E_() {
     const e = /* @__PURE__ */ new Map(), t = this.constructor.elementProperties;
-    for (const s of t.keys()) this.hasOwnProperty(s) && (e.set(s, this[s]), delete this[s]);
+    for (const r of t.keys()) this.hasOwnProperty(r) && (e.set(r, this[r]), delete this[r]);
     e.size > 0 && (this._$Ep = e);
   }
   createRenderRoot() {
     const e = this.shadowRoot ?? this.attachShadow(this.constructor.shadowRootOptions);
-    return lr(e, this.constructor.elementStyles), e;
+    return Rs(e, this.constructor.elementStyles), e;
   }
   connectedCallback() {
     this.renderRoot ?? (this.renderRoot = this.createRenderRoot()), this.enableUpdating(!0), this._$EO?.forEach((e) => e.hostConnected?.());
@@ -492,35 +492,35 @@ let fe = class extends HTMLElement {
   disconnectedCallback() {
     this._$EO?.forEach((e) => e.hostDisconnected?.());
   }
-  attributeChangedCallback(e, t, s) {
-    this._$AK(e, s);
+  attributeChangedCallback(e, t, r) {
+    this._$AK(e, r);
   }
   _$ET(e, t) {
-    const s = this.constructor.elementProperties.get(e), r = this.constructor._$Eu(e, s);
-    if (r !== void 0 && s.reflect === !0) {
-      const o = (s.converter?.toAttribute !== void 0 ? s.converter : it).toAttribute(t, s.type);
-      this._$Em = e, o == null ? this.removeAttribute(r) : this.setAttribute(r, o), this._$Em = null;
+    const r = this.constructor.elementProperties.get(e), s = this.constructor._$Eu(e, r);
+    if (s !== void 0 && r.reflect === !0) {
+      const o = (r.converter?.toAttribute !== void 0 ? r.converter : yt).toAttribute(t, r.type);
+      this._$Em = e, o == null ? this.removeAttribute(s) : this.setAttribute(s, o), this._$Em = null;
     }
   }
   _$AK(e, t) {
-    const s = this.constructor, r = s._$Eh.get(e);
-    if (r !== void 0 && this._$Em !== r) {
-      const o = s.getPropertyOptions(r), n = typeof o.converter == "function" ? { fromAttribute: o.converter } : o.converter?.fromAttribute !== void 0 ? o.converter : it;
-      this._$Em = r;
+    const r = this.constructor, s = r._$Eh.get(e);
+    if (s !== void 0 && this._$Em !== s) {
+      const o = r.getPropertyOptions(s), n = typeof o.converter == "function" ? { fromAttribute: o.converter } : o.converter?.fromAttribute !== void 0 ? o.converter : yt;
+      this._$Em = s;
       const a = n.fromAttribute(t, o.type);
-      this[r] = a ?? this._$Ej?.get(r) ?? a, this._$Em = null;
+      this[s] = a ?? this._$Ej?.get(s) ?? a, this._$Em = null;
     }
   }
-  requestUpdate(e, t, s, r = !1, o) {
+  requestUpdate(e, t, r, s = !1, o) {
     if (e !== void 0) {
       const n = this.constructor;
-      if (r === !1 && (o = this[e]), s ?? (s = n.getPropertyOptions(e)), !((s.hasChanged ?? Cs)(o, t) || s.useDefault && s.reflect && o === this._$Ej?.get(e) && !this.hasAttribute(n._$Eu(e, s)))) return;
-      this.C(e, t, s);
+      if (s === !1 && (o = this[e]), r ?? (r = n.getPropertyOptions(e)), !((r.hasChanged ?? Ur)(o, t) || r.useDefault && r.reflect && o === this._$Ej?.get(e) && !this.hasAttribute(n._$Eu(e, r)))) return;
+      this.C(e, t, r);
     }
     this.isUpdatePending === !1 && (this._$ES = this._$EP());
   }
-  C(e, t, { useDefault: s, reflect: r, wrapped: o }, n) {
-    s && !(this._$Ej ?? (this._$Ej = /* @__PURE__ */ new Map())).has(e) && (this._$Ej.set(e, n ?? t ?? this[e]), o !== !0 || n !== void 0) || (this._$AL.has(e) || (this.hasUpdated || s || (t = void 0), this._$AL.set(e, t)), r === !0 && this._$Em !== e && (this._$Eq ?? (this._$Eq = /* @__PURE__ */ new Set())).add(e));
+  C(e, t, { useDefault: r, reflect: s, wrapped: o }, n) {
+    r && !(this._$Ej ?? (this._$Ej = /* @__PURE__ */ new Map())).has(e) && (this._$Ej.set(e, n ?? t ?? this[e]), o !== !0 || n !== void 0) || (this._$AL.has(e) || (this.hasUpdated || r || (t = void 0), this._$AL.set(e, t)), s === !0 && this._$Em !== e && (this._$Eq ?? (this._$Eq = /* @__PURE__ */ new Set())).add(e));
   }
   async _$EP() {
     this.isUpdatePending = !0;
@@ -539,21 +539,21 @@ let fe = class extends HTMLElement {
     if (!this.isUpdatePending) return;
     if (!this.hasUpdated) {
       if (this.renderRoot ?? (this.renderRoot = this.createRenderRoot()), this._$Ep) {
-        for (const [r, o] of this._$Ep) this[r] = o;
+        for (const [s, o] of this._$Ep) this[s] = o;
         this._$Ep = void 0;
       }
-      const s = this.constructor.elementProperties;
-      if (s.size > 0) for (const [r, o] of s) {
-        const { wrapped: n } = o, a = this[r];
-        n !== !0 || this._$AL.has(r) || a === void 0 || this.C(r, void 0, o, a);
+      const r = this.constructor.elementProperties;
+      if (r.size > 0) for (const [s, o] of r) {
+        const { wrapped: n } = o, a = this[s];
+        n !== !0 || this._$AL.has(s) || a === void 0 || this.C(s, void 0, o, a);
       }
     }
     let e = !1;
     const t = this._$AL;
     try {
-      e = this.shouldUpdate(t), e ? (this.willUpdate(t), this._$EO?.forEach((s) => s.hostUpdate?.()), this.update(t)) : this._$EM();
-    } catch (s) {
-      throw e = !1, this._$EM(), s;
+      e = this.shouldUpdate(t), e ? (this.willUpdate(t), this._$EO?.forEach((r) => r.hostUpdate?.()), this.update(t)) : this._$EM();
+    } catch (r) {
+      throw e = !1, this._$EM(), r;
     }
     e && this._$AE(t);
   }
@@ -582,70 +582,70 @@ let fe = class extends HTMLElement {
   firstUpdated(e) {
   }
 };
-fe.elementStyles = [], fe.shadowRootOptions = { mode: "open" }, fe[Ie("elementProperties")] = /* @__PURE__ */ new Map(), fe[Ie("finalized")] = /* @__PURE__ */ new Map(), gr?.({ ReactiveElement: fe }), (ie.reactiveElementVersions ?? (ie.reactiveElementVersions = [])).push("2.1.2");
-const Te = globalThis, Pt = (i) => i, Ve = Te.trustedTypes, St = Ve ? Ve.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, Es = "$lit$", re = `lit$${Math.random().toFixed(9).slice(2)}$`, ks = "?" + re, fr = `<${ks}>`, ce = document, Re = () => ce.createComment(""), Ne = (i) => i === null || typeof i != "object" && typeof i != "function", ht = Array.isArray, yr = (i) => ht(i) || typeof i?.[Symbol.iterator] == "function", Ze = `[ 	
-\f\r]`, Se = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Ct = /-->/g, Et = />/g, oe = RegExp(`>|${Ze}(?:([^\\s"'>=/]+)(${Ze}*=${Ze}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), kt = /'/g, Ft = /"/g, Fs = /^(?:script|style|textarea|title)$/i, Ms = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), f = Ms(1), B = Ms(2), ve = /* @__PURE__ */ Symbol.for("lit-noChange"), v = /* @__PURE__ */ Symbol.for("lit-nothing"), Mt = /* @__PURE__ */ new WeakMap(), pe = ce.createTreeWalker(ce, 129);
-function Is(i, e) {
-  if (!ht(i) || !i.hasOwnProperty("raw")) throw Error("invalid template strings array");
-  return St !== void 0 ? St.createHTML(e) : e;
+be.elementStyles = [], be.shadowRootOptions = { mode: "open" }, be[Ne("elementProperties")] = /* @__PURE__ */ new Map(), be[Ne("finalized")] = /* @__PURE__ */ new Map(), Bs?.({ ReactiveElement: be }), (oe.reactiveElementVersions ?? (oe.reactiveElementVersions = [])).push("2.1.2");
+const Le = globalThis, Gt = (i) => i, rt = Le.trustedTypes, Ht = rt ? rt.createPolicy("lit-html", { createHTML: (i) => i }) : void 0, Kr = "$lit$", ie = `lit$${Math.random().toFixed(9).slice(2)}$`, Vr = "?" + ie, Ws = `<${Vr}>`, he = document, Oe = () => he.createComment(""), Ge = (i) => i === null || typeof i != "object" && typeof i != "function", Et = Array.isArray, Us = (i) => Et(i) || typeof i?.[Symbol.iterator] == "function", ut = `[ 	
+\f\r]`, Ie = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, zt = /-->/g, Bt = />/g, ne = RegExp(`>|${ut}(?:([^\\s"'>=/]+)(${ut}*=${ut}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), Wt = /'/g, Ut = /"/g, jr = /^(?:script|style|textarea|title)$/i, Yr = (i) => (e, ...t) => ({ _$litType$: i, strings: e, values: t }), y = Yr(1), z = Yr(2), xe = /* @__PURE__ */ Symbol.for("lit-noChange"), b = /* @__PURE__ */ Symbol.for("lit-nothing"), Kt = /* @__PURE__ */ new WeakMap(), de = he.createTreeWalker(he, 129);
+function qr(i, e) {
+  if (!Et(i) || !i.hasOwnProperty("raw")) throw Error("invalid template strings array");
+  return Ht !== void 0 ? Ht.createHTML(e) : e;
 }
-const vr = (i, e) => {
-  const t = i.length - 1, s = [];
-  let r, o = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", n = Se;
+const Ks = (i, e) => {
+  const t = i.length - 1, r = [];
+  let s, o = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", n = Ie;
   for (let a = 0; a < t; a++) {
     const l = i[a];
-    let c, d, p = -1, h = 0;
-    for (; h < l.length && (n.lastIndex = h, d = n.exec(l), d !== null); ) h = n.lastIndex, n === Se ? d[1] === "!--" ? n = Ct : d[1] !== void 0 ? n = Et : d[2] !== void 0 ? (Fs.test(d[2]) && (r = RegExp("</" + d[2], "g")), n = oe) : d[3] !== void 0 && (n = oe) : n === oe ? d[0] === ">" ? (n = r ?? Se, p = -1) : d[1] === void 0 ? p = -2 : (p = n.lastIndex - d[2].length, c = d[1], n = d[3] === void 0 ? oe : d[3] === '"' ? Ft : kt) : n === Ft || n === kt ? n = oe : n === Ct || n === Et ? n = Se : (n = oe, r = void 0);
-    const _ = n === oe && i[a + 1].startsWith("/>") ? " " : "";
-    o += n === Se ? l + fr : p >= 0 ? (s.push(c), l.slice(0, p) + Es + l.slice(p) + re + _) : l + re + (p === -2 ? a : _);
+    let c, p, d = -1, h = 0;
+    for (; h < l.length && (n.lastIndex = h, p = n.exec(l), p !== null); ) h = n.lastIndex, n === Ie ? p[1] === "!--" ? n = zt : p[1] !== void 0 ? n = Bt : p[2] !== void 0 ? (jr.test(p[2]) && (s = RegExp("</" + p[2], "g")), n = ne) : p[3] !== void 0 && (n = ne) : n === ne ? p[0] === ">" ? (n = s ?? Ie, d = -1) : p[1] === void 0 ? d = -2 : (d = n.lastIndex - p[2].length, c = p[1], n = p[3] === void 0 ? ne : p[3] === '"' ? Ut : Wt) : n === Ut || n === Wt ? n = ne : n === zt || n === Bt ? n = Ie : (n = ne, s = void 0);
+    const u = n === ne && i[a + 1].startsWith("/>") ? " " : "";
+    o += n === Ie ? l + Ws : d >= 0 ? (r.push(c), l.slice(0, d) + Kr + l.slice(d) + ie + u) : l + ie + (d === -2 ? a : u);
   }
-  return [Is(i, o + (i[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), s];
+  return [qr(i, o + (i[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), r];
 };
-class Le {
-  constructor({ strings: e, _$litType$: t }, s) {
-    let r;
+class He {
+  constructor({ strings: e, _$litType$: t }, r) {
+    let s;
     this.parts = [];
     let o = 0, n = 0;
-    const a = e.length - 1, l = this.parts, [c, d] = vr(e, t);
-    if (this.el = Le.createElement(c, s), pe.currentNode = this.el.content, t === 2 || t === 3) {
-      const p = this.el.content.firstChild;
-      p.replaceWith(...p.childNodes);
+    const a = e.length - 1, l = this.parts, [c, p] = Ks(e, t);
+    if (this.el = He.createElement(c, r), de.currentNode = this.el.content, t === 2 || t === 3) {
+      const d = this.el.content.firstChild;
+      d.replaceWith(...d.childNodes);
     }
-    for (; (r = pe.nextNode()) !== null && l.length < a; ) {
-      if (r.nodeType === 1) {
-        if (r.hasAttributes()) for (const p of r.getAttributeNames()) if (p.endsWith(Es)) {
-          const h = d[n++], _ = r.getAttribute(p).split(re), g = /([.?@])?(.*)/.exec(h);
-          l.push({ type: 1, index: o, name: g[2], strings: _, ctor: g[1] === "." ? wr : g[1] === "?" ? xr : g[1] === "@" ? $r : qe }), r.removeAttribute(p);
-        } else p.startsWith(re) && (l.push({ type: 6, index: o }), r.removeAttribute(p));
-        if (Fs.test(r.tagName)) {
-          const p = r.textContent.split(re), h = p.length - 1;
+    for (; (s = de.nextNode()) !== null && l.length < a; ) {
+      if (s.nodeType === 1) {
+        if (s.hasAttributes()) for (const d of s.getAttributeNames()) if (d.endsWith(Kr)) {
+          const h = p[n++], u = s.getAttribute(d).split(ie), f = /([.?@])?(.*)/.exec(h);
+          l.push({ type: 1, index: o, name: f[2], strings: u, ctor: f[1] === "." ? js : f[1] === "?" ? Ys : f[1] === "@" ? qs : nt }), s.removeAttribute(d);
+        } else d.startsWith(ie) && (l.push({ type: 6, index: o }), s.removeAttribute(d));
+        if (jr.test(s.tagName)) {
+          const d = s.textContent.split(ie), h = d.length - 1;
           if (h > 0) {
-            r.textContent = Ve ? Ve.emptyScript : "";
-            for (let _ = 0; _ < h; _++) r.append(p[_], Re()), pe.nextNode(), l.push({ type: 2, index: ++o });
-            r.append(p[h], Re());
+            s.textContent = rt ? rt.emptyScript : "";
+            for (let u = 0; u < h; u++) s.append(d[u], Oe()), de.nextNode(), l.push({ type: 2, index: ++o });
+            s.append(d[h], Oe());
           }
         }
-      } else if (r.nodeType === 8) if (r.data === ks) l.push({ type: 2, index: o });
+      } else if (s.nodeType === 8) if (s.data === Vr) l.push({ type: 2, index: o });
       else {
-        let p = -1;
-        for (; (p = r.data.indexOf(re, p + 1)) !== -1; ) l.push({ type: 7, index: o }), p += re.length - 1;
+        let d = -1;
+        for (; (d = s.data.indexOf(ie, d + 1)) !== -1; ) l.push({ type: 7, index: o }), d += ie.length - 1;
       }
       o++;
     }
   }
   static createElement(e, t) {
-    const s = ce.createElement("template");
-    return s.innerHTML = e, s;
+    const r = he.createElement("template");
+    return r.innerHTML = e, r;
   }
 }
-function be(i, e, t = i, s) {
-  if (e === ve) return e;
-  let r = s !== void 0 ? t._$Co?.[s] : t._$Cl;
-  const o = Ne(e) ? void 0 : e._$litDirective$;
-  return r?.constructor !== o && (r?._$AO?.(!1), o === void 0 ? r = void 0 : (r = new o(i), r._$AT(i, t, s)), s !== void 0 ? (t._$Co ?? (t._$Co = []))[s] = r : t._$Cl = r), r !== void 0 && (e = be(i, r._$AS(i, e.values), r, s)), e;
+function Pe(i, e, t = i, r) {
+  if (e === xe) return e;
+  let s = r !== void 0 ? t._$Co?.[r] : t._$Cl;
+  const o = Ge(e) ? void 0 : e._$litDirective$;
+  return s?.constructor !== o && (s?._$AO?.(!1), o === void 0 ? s = void 0 : (s = new o(i), s._$AT(i, t, r)), r !== void 0 ? (t._$Co ?? (t._$Co = []))[r] = s : t._$Cl = s), s !== void 0 && (e = Pe(i, s._$AS(i, e.values), s, r)), e;
 }
-class br {
+class Vs {
   constructor(e, t) {
     this._$AV = [], this._$AN = void 0, this._$AD = e, this._$AM = t;
   }
@@ -656,29 +656,29 @@ class br {
     return this._$AM._$AU;
   }
   u(e) {
-    const { el: { content: t }, parts: s } = this._$AD, r = (e?.creationScope ?? ce).importNode(t, !0);
-    pe.currentNode = r;
-    let o = pe.nextNode(), n = 0, a = 0, l = s[0];
+    const { el: { content: t }, parts: r } = this._$AD, s = (e?.creationScope ?? he).importNode(t, !0);
+    de.currentNode = s;
+    let o = de.nextNode(), n = 0, a = 0, l = r[0];
     for (; l !== void 0; ) {
       if (n === l.index) {
         let c;
-        l.type === 2 ? c = new De(o, o.nextSibling, this, e) : l.type === 1 ? c = new l.ctor(o, l.name, l.strings, this, e) : l.type === 6 && (c = new Pr(o, this, e)), this._$AV.push(c), l = s[++a];
+        l.type === 2 ? c = new Be(o, o.nextSibling, this, e) : l.type === 1 ? c = new l.ctor(o, l.name, l.strings, this, e) : l.type === 6 && (c = new Xs(o, this, e)), this._$AV.push(c), l = r[++a];
       }
-      n !== l?.index && (o = pe.nextNode(), n++);
+      n !== l?.index && (o = de.nextNode(), n++);
     }
-    return pe.currentNode = ce, r;
+    return de.currentNode = he, s;
   }
   p(e) {
     let t = 0;
-    for (const s of this._$AV) s !== void 0 && (s.strings !== void 0 ? (s._$AI(e, s, t), t += s.strings.length - 2) : s._$AI(e[t])), t++;
+    for (const r of this._$AV) r !== void 0 && (r.strings !== void 0 ? (r._$AI(e, r, t), t += r.strings.length - 2) : r._$AI(e[t])), t++;
   }
 }
-class De {
+class Be {
   get _$AU() {
     return this._$AM?._$AU ?? this._$Cv;
   }
-  constructor(e, t, s, r) {
-    this.type = 2, this._$AH = v, this._$AN = void 0, this._$AA = e, this._$AB = t, this._$AM = s, this.options = r, this._$Cv = r?.isConnected ?? !0;
+  constructor(e, t, r, s) {
+    this.type = 2, this._$AH = b, this._$AN = void 0, this._$AA = e, this._$AB = t, this._$AM = r, this.options = s, this._$Cv = s?.isConnected ?? !0;
   }
   get parentNode() {
     let e = this._$AA.parentNode;
@@ -692,7 +692,7 @@ class De {
     return this._$AB;
   }
   _$AI(e, t = this) {
-    e = be(this, e, t), Ne(e) ? e === v || e == null || e === "" ? (this._$AH !== v && this._$AR(), this._$AH = v) : e !== this._$AH && e !== ve && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : yr(e) ? this.k(e) : this._(e);
+    e = Pe(this, e, t), Ge(e) ? e === b || e == null || e === "" ? (this._$AH !== b && this._$AR(), this._$AH = b) : e !== this._$AH && e !== xe && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : Us(e) ? this.k(e) : this._(e);
   }
   O(e) {
     return this._$AA.parentNode.insertBefore(e, this._$AB);
@@ -701,115 +701,115 @@ class De {
     this._$AH !== e && (this._$AR(), this._$AH = this.O(e));
   }
   _(e) {
-    this._$AH !== v && Ne(this._$AH) ? this._$AA.nextSibling.data = e : this.T(ce.createTextNode(e)), this._$AH = e;
+    this._$AH !== b && Ge(this._$AH) ? this._$AA.nextSibling.data = e : this.T(he.createTextNode(e)), this._$AH = e;
   }
   $(e) {
-    const { values: t, _$litType$: s } = e, r = typeof s == "number" ? this._$AC(e) : (s.el === void 0 && (s.el = Le.createElement(Is(s.h, s.h[0]), this.options)), s);
-    if (this._$AH?._$AD === r) this._$AH.p(t);
+    const { values: t, _$litType$: r } = e, s = typeof r == "number" ? this._$AC(e) : (r.el === void 0 && (r.el = He.createElement(qr(r.h, r.h[0]), this.options)), r);
+    if (this._$AH?._$AD === s) this._$AH.p(t);
     else {
-      const o = new br(r, this), n = o.u(this.options);
+      const o = new Vs(s, this), n = o.u(this.options);
       o.p(t), this.T(n), this._$AH = o;
     }
   }
   _$AC(e) {
-    let t = Mt.get(e.strings);
-    return t === void 0 && Mt.set(e.strings, t = new Le(e)), t;
+    let t = Kt.get(e.strings);
+    return t === void 0 && Kt.set(e.strings, t = new He(e)), t;
   }
   k(e) {
-    ht(this._$AH) || (this._$AH = [], this._$AR());
+    Et(this._$AH) || (this._$AH = [], this._$AR());
     const t = this._$AH;
-    let s, r = 0;
-    for (const o of e) r === t.length ? t.push(s = new De(this.O(Re()), this.O(Re()), this, this.options)) : s = t[r], s._$AI(o), r++;
-    r < t.length && (this._$AR(s && s._$AB.nextSibling, r), t.length = r);
+    let r, s = 0;
+    for (const o of e) s === t.length ? t.push(r = new Be(this.O(Oe()), this.O(Oe()), this, this.options)) : r = t[s], r._$AI(o), s++;
+    s < t.length && (this._$AR(r && r._$AB.nextSibling, s), t.length = s);
   }
   _$AR(e = this._$AA.nextSibling, t) {
     for (this._$AP?.(!1, !0, t); e !== this._$AB; ) {
-      const s = Pt(e).nextSibling;
-      Pt(e).remove(), e = s;
+      const r = Gt(e).nextSibling;
+      Gt(e).remove(), e = r;
     }
   }
   setConnected(e) {
     this._$AM === void 0 && (this._$Cv = e, this._$AP?.(e));
   }
 }
-class qe {
+class nt {
   get tagName() {
     return this.element.tagName;
   }
   get _$AU() {
     return this._$AM._$AU;
   }
-  constructor(e, t, s, r, o) {
-    this.type = 1, this._$AH = v, this._$AN = void 0, this.element = e, this.name = t, this._$AM = r, this.options = o, s.length > 2 || s[0] !== "" || s[1] !== "" ? (this._$AH = Array(s.length - 1).fill(new String()), this.strings = s) : this._$AH = v;
+  constructor(e, t, r, s, o) {
+    this.type = 1, this._$AH = b, this._$AN = void 0, this.element = e, this.name = t, this._$AM = s, this.options = o, r.length > 2 || r[0] !== "" || r[1] !== "" ? (this._$AH = Array(r.length - 1).fill(new String()), this.strings = r) : this._$AH = b;
   }
-  _$AI(e, t = this, s, r) {
+  _$AI(e, t = this, r, s) {
     const o = this.strings;
     let n = !1;
-    if (o === void 0) e = be(this, e, t, 0), n = !Ne(e) || e !== this._$AH && e !== ve, n && (this._$AH = e);
+    if (o === void 0) e = Pe(this, e, t, 0), n = !Ge(e) || e !== this._$AH && e !== xe, n && (this._$AH = e);
     else {
       const a = e;
       let l, c;
-      for (e = o[0], l = 0; l < o.length - 1; l++) c = be(this, a[s + l], t, l), c === ve && (c = this._$AH[l]), n || (n = !Ne(c) || c !== this._$AH[l]), c === v ? e = v : e !== v && (e += (c ?? "") + o[l + 1]), this._$AH[l] = c;
+      for (e = o[0], l = 0; l < o.length - 1; l++) c = Pe(this, a[r + l], t, l), c === xe && (c = this._$AH[l]), n || (n = !Ge(c) || c !== this._$AH[l]), c === b ? e = b : e !== b && (e += (c ?? "") + o[l + 1]), this._$AH[l] = c;
     }
-    n && !r && this.j(e);
+    n && !s && this.j(e);
   }
   j(e) {
-    e === v ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
+    e === b ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
   }
 }
-class wr extends qe {
+class js extends nt {
   constructor() {
     super(...arguments), this.type = 3;
   }
   j(e) {
-    this.element[this.name] = e === v ? void 0 : e;
+    this.element[this.name] = e === b ? void 0 : e;
   }
 }
-class xr extends qe {
+class Ys extends nt {
   constructor() {
     super(...arguments), this.type = 4;
   }
   j(e) {
-    this.element.toggleAttribute(this.name, !!e && e !== v);
+    this.element.toggleAttribute(this.name, !!e && e !== b);
   }
 }
-class $r extends qe {
-  constructor(e, t, s, r, o) {
-    super(e, t, s, r, o), this.type = 5;
+class qs extends nt {
+  constructor(e, t, r, s, o) {
+    super(e, t, r, s, o), this.type = 5;
   }
   _$AI(e, t = this) {
-    if ((e = be(this, e, t, 0) ?? v) === ve) return;
-    const s = this._$AH, r = e === v && s !== v || e.capture !== s.capture || e.once !== s.once || e.passive !== s.passive, o = e !== v && (s === v || r);
-    r && this.element.removeEventListener(this.name, this, s), o && this.element.addEventListener(this.name, this, e), this._$AH = e;
+    if ((e = Pe(this, e, t, 0) ?? b) === xe) return;
+    const r = this._$AH, s = e === b && r !== b || e.capture !== r.capture || e.once !== r.once || e.passive !== r.passive, o = e !== b && (r === b || s);
+    s && this.element.removeEventListener(this.name, this, r), o && this.element.addEventListener(this.name, this, e), this._$AH = e;
   }
   handleEvent(e) {
     typeof this._$AH == "function" ? this._$AH.call(this.options?.host ?? this.element, e) : this._$AH.handleEvent(e);
   }
 }
-class Pr {
-  constructor(e, t, s) {
-    this.element = e, this.type = 6, this._$AN = void 0, this._$AM = t, this.options = s;
+class Xs {
+  constructor(e, t, r) {
+    this.element = e, this.type = 6, this._$AN = void 0, this._$AM = t, this.options = r;
   }
   get _$AU() {
     return this._$AM._$AU;
   }
   _$AI(e) {
-    be(this, e);
+    Pe(this, e);
   }
 }
-const Sr = Te.litHtmlPolyfillSupport;
-Sr?.(Le, De), (Te.litHtmlVersions ?? (Te.litHtmlVersions = [])).push("3.3.2");
-const Cr = (i, e, t) => {
-  const s = t?.renderBefore ?? e;
-  let r = s._$litPart$;
-  if (r === void 0) {
+const Qs = Le.litHtmlPolyfillSupport;
+Qs?.(He, Be), (Le.litHtmlVersions ?? (Le.litHtmlVersions = [])).push("3.3.2");
+const Zs = (i, e, t) => {
+  const r = t?.renderBefore ?? e;
+  let s = r._$litPart$;
+  if (s === void 0) {
     const o = t?.renderBefore ?? null;
-    s._$litPart$ = r = new De(e.insertBefore(Re(), o), o, void 0, t ?? {});
+    r._$litPart$ = s = new Be(e.insertBefore(Oe(), o), o, void 0, t ?? {});
   }
-  return r._$AI(i), r;
+  return s._$AI(i), s;
 };
-const Ae = globalThis;
-class ye extends fe {
+const De = globalThis;
+class we extends be {
   constructor() {
     super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
   }
@@ -820,7 +820,7 @@ class ye extends fe {
   }
   update(e) {
     const t = this.render();
-    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = Cr(t, this.renderRoot, this.renderOptions);
+    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = Zs(t, this.renderRoot, this.renderOptions);
   }
   connectedCallback() {
     super.connectedCallback(), this._$Do?.setConnected(!0);
@@ -829,30 +829,30 @@ class ye extends fe {
     super.disconnectedCallback(), this._$Do?.setConnected(!1);
   }
   render() {
-    return ve;
+    return xe;
   }
 }
-ye._$litElement$ = !0, ye.finalized = !0, Ae.litElementHydrateSupport?.({ LitElement: ye });
-const Er = Ae.litElementPolyfillSupport;
-Er?.({ LitElement: ye });
-(Ae.litElementVersions ?? (Ae.litElementVersions = [])).push("4.2.2");
-const kr = (i) => Object.is(i, -0) ? 0 : i, Fr = (i) => Math.min(Math.max(Math.round(i), 0), 4), Mr = (i, e, t, s) => {
-  const r = Number(i);
-  if (!Number.isFinite(r))
+we._$litElement$ = !0, we.finalized = !0, De.litElementHydrateSupport?.({ LitElement: we });
+const Js = De.litElementPolyfillSupport;
+Js?.({ LitElement: we });
+(De.litElementVersions ?? (De.litElementVersions = [])).push("4.2.2");
+const ei = (i) => Object.is(i, -0) ? 0 : i, ti = (i) => Math.min(Math.max(Math.round(i), 0), 4), ri = (i, e, t, r) => {
+  const s = Number(i);
+  if (!Number.isFinite(s))
     return null;
-  const o = Fr(t), n = new Intl.NumberFormat(e, {
+  const o = ti(t), n = new Intl.NumberFormat(e, {
     minimumFractionDigits: o,
     maximumFractionDigits: o
-  }).format(kr(r)), a = s?.trim();
+  }).format(ei(s)), a = r?.trim();
   return a ? `${n} ${a}` : n;
-}, Ir = "sensor.power_production_now", Tr = "sensor.energy_production_today", Ar = {
-  power: Ir,
-  energy: Tr
-}, We = (i) => Ar[i], Rr = (i, e) => {
-  const t = We(e);
+}, si = "sensor.power_production_now", ii = "sensor.energy_production_today", oi = {
+  power: si,
+  energy: ii
+}, Qe = (i) => oi[i], ni = (i, e) => {
+  const t = Qe(e);
   return i?.states?.[t] ? t : null;
-}, Nr = 1100, Lr = 900, It = 900, Dr = 6e3, Or = 5e3, Hr = 16e3, Je = /* @__PURE__ */ new Set(["deviation", "inverter", "error"]);
-class zr {
+}, ai = 1100, li = 900, Vt = 900, pi = 6e3, ci = 5e3, di = 16e3, _t = /* @__PURE__ */ new Set(["deviation", "inverter", "error"]);
+class hi {
   constructor(e) {
     this._flags = {
       enabled: !1,
@@ -869,12 +869,12 @@ class zr {
     typeof window < "u" && window.document.removeEventListener("visibilitychange", this._visibilityHandler), this._mediaQuery?.removeEventListener("change", this._mediaQueryHandler), this._clearAllMotion(), this._clearTimeoutByKey("flow-pulse-step"), this._clearTimeoutByKey("flow-pulse-timeout");
   }
   update(e, t) {
-    const s = this._snapshot;
+    const r = this._snapshot;
     if (this._flags = e, this._snapshot = t, !e.enabled || this._reducedMotion) {
       this._clearAllMotion(), this._refreshFlowPulseLoop(t);
       return;
     }
-    e.updateShimmer && s && this._triggerKpiShimmers(s, t), e.alertRipple && s && this._triggerAlertRipples(s, t), this._syncAlertRippleLoops(t), this._refreshFlowPulseLoop(t);
+    e.updateShimmer && r && this._triggerKpiShimmers(r, t), e.alertRipple && r && this._triggerAlertRipples(r, t), this._syncAlertRippleLoops(t), this._refreshFlowPulseLoop(t);
   }
   getState() {
     const e = this._snapshot;
@@ -889,7 +889,7 @@ class zr {
   }
   triggerPowerImpactFromPulse() {
     const e = this._snapshot;
-    e && (!this._flags.enabled || !this._flags.powerFlow || this._reducedMotion || e.popupOpen || e.totalPower <= 0 || this._armTransient("power", this._kpiShimmers, Lr, "kpi-shimmer"));
+    e && (!this._flags.enabled || !this._flags.powerFlow || this._reducedMotion || e.popupOpen || e.totalPower <= 0 || this._armTransient("power", this._kpiShimmers, li, "kpi-shimmer"));
   }
   completeFlowPulse() {
     const e = this._flowPulsePanelId;
@@ -901,12 +901,12 @@ class zr {
       this._clearFlowPulseLoop();
       return;
     }
-    const r = t.join("|"), o = this._flowPulsePanelOrder.join("|");
-    r !== o && (this._flowPulsePanelOrder = t, this._flowPulseIndex = 0, this._clearTimeoutByKey("flow-pulse-step"), this._clearTimeoutByKey("flow-pulse-timeout"), this._flowPulsePanelId !== null && (this._flowPulsePanelId = null, this._notify())), !(this._timers.has("flow-pulse-step") || this._timers.has("flow-pulse-timeout") || this._flowPulsePanelId !== null) && this._triggerNextFlowPulse();
+    const s = t.join("|"), o = this._flowPulsePanelOrder.join("|");
+    s !== o && (this._flowPulsePanelOrder = t, this._flowPulseIndex = 0, this._clearTimeoutByKey("flow-pulse-step"), this._clearTimeoutByKey("flow-pulse-timeout"), this._flowPulsePanelId !== null && (this._flowPulsePanelId = null, this._notify())), !(this._timers.has("flow-pulse-step") || this._timers.has("flow-pulse-timeout") || this._flowPulsePanelId !== null) && this._triggerNextFlowPulse();
   }
   _canRunFlowPulse(e, t) {
-    const s = typeof document < "u" ? document.hidden : !1;
-    return !!(this._flags.enabled && this._flags.powerFlow && !this._reducedMotion && !s && e && e.totalPower > 0 && !e.popupOpen && t > 0);
+    const r = typeof document < "u" ? document.hidden : !1;
+    return !!(this._flags.enabled && this._flags.powerFlow && !this._reducedMotion && !r && e && e.totalPower > 0 && !e.popupOpen && t > 0);
   }
   _triggerNextFlowPulse() {
     if (!this._canRunFlowPulse(this._snapshot, this._flowPulsePanelOrder.length)) {
@@ -917,14 +917,14 @@ class zr {
     this._flowPulseIndex = (this._flowPulseIndex + 1) % Math.max(this._flowPulsePanelOrder.length, 1), this._flowPulsePanelId = e, this._notify(), this._clearTimeoutByKey("flow-pulse-timeout");
     const t = window.setTimeout(() => {
       this._timers.delete("flow-pulse-timeout"), this._finalizeActiveFlowPulse(e);
-    }, Hr);
+    }, di);
     this._timers.set("flow-pulse-timeout", t);
   }
   _scheduleNextFlowPulse() {
     this._clearTimeoutByKey("flow-pulse-step");
     const e = window.setTimeout(() => {
       this._timers.delete("flow-pulse-step"), this._triggerNextFlowPulse();
-    }, Or);
+    }, ci);
     this._timers.set("flow-pulse-step", e);
   }
   _finalizeActiveFlowPulse(e) {
@@ -934,63 +934,63 @@ class zr {
     this._clearTimeoutByKey("flow-pulse-step"), this._clearTimeoutByKey("flow-pulse-timeout"), this._flowPulsePanelOrder = [], this._flowPulseIndex = 0, this._flowPulsePanelId !== null && (this._flowPulsePanelId = null, this._notify());
   }
   _triggerKpiShimmers(e, t) {
-    e.energyKpiValue !== t.energyKpiValue && this._armTransient("energy", this._kpiShimmers, Nr, "kpi-shimmer");
+    e.energyKpiValue !== t.energyKpiValue && this._armTransient("energy", this._kpiShimmers, ai, "kpi-shimmer");
   }
   _triggerAlertRipples(e, t) {
-    for (const [s, r] of Object.entries(t.panelStatuses)) {
-      const o = e.panelStatuses[s];
-      r !== o && Je.has(r) && this._armTransient(s, this._alertRipples, It, "alert-ripple");
+    for (const [r, s] of Object.entries(t.panelStatuses)) {
+      const o = e.panelStatuses[r];
+      s !== o && _t.has(s) && this._armTransient(r, this._alertRipples, Vt, "alert-ripple");
     }
   }
   _syncAlertRippleLoops(e) {
     if (!this._flags.alertRipple) {
-      for (const s of [...this._timers.keys()])
-        s.startsWith("alert-ripple-loop:") && this._clearTimeoutByKey(s);
+      for (const r of [...this._timers.keys()])
+        r.startsWith("alert-ripple-loop:") && this._clearTimeoutByKey(r);
       return;
     }
     const t = new Set(
-      Object.entries(e.panelStatuses).filter(([, s]) => Je.has(s)).map(([s]) => s)
+      Object.entries(e.panelStatuses).filter(([, r]) => _t.has(r)).map(([r]) => r)
     );
-    for (const s of t) {
-      const r = this._alertRippleLoopKey(s);
-      this._timers.has(r) || this._armAlertRippleLoop(s);
+    for (const r of t) {
+      const s = this._alertRippleLoopKey(r);
+      this._timers.has(s) || this._armAlertRippleLoop(r);
     }
-    for (const s of [...this._timers.keys()]) {
-      if (!s.startsWith("alert-ripple-loop:"))
+    for (const r of [...this._timers.keys()]) {
+      if (!r.startsWith("alert-ripple-loop:"))
         continue;
-      const r = s.slice(18);
-      t.has(r) || this._clearTimeoutByKey(s);
+      const s = r.slice(18);
+      t.has(s) || this._clearTimeoutByKey(r);
     }
   }
   _armAlertRippleLoop(e) {
     const t = this._alertRippleLoopKey(e);
     this._clearTimeoutByKey(t);
-    const s = window.setTimeout(() => {
+    const r = window.setTimeout(() => {
       if (!this._canRepeatAlertRipple(e)) {
         this._clearTimeoutByKey(t);
         return;
       }
-      this._armTransient(e, this._alertRipples, It, "alert-ripple"), this._armAlertRippleLoop(e);
-    }, Dr);
-    this._timers.set(t, s);
+      this._armTransient(e, this._alertRipples, Vt, "alert-ripple"), this._armAlertRippleLoop(e);
+    }, pi);
+    this._timers.set(t, r);
   }
   _canRepeatAlertRipple(e) {
     const t = this._snapshot;
     if (!t || !this._flags.enabled || !this._flags.alertRipple || this._reducedMotion)
       return !1;
-    const s = t.panelStatuses[e];
-    return Je.has(s);
+    const r = t.panelStatuses[e];
+    return _t.has(r);
   }
   _alertRippleLoopKey(e) {
     return `alert-ripple-loop:${e}`;
   }
-  _armTransient(e, t, s, r) {
+  _armTransient(e, t, r, s) {
     t.add(e), this._notify();
-    const o = `${r}:${e}`;
+    const o = `${s}:${e}`;
     this._clearTimeoutByKey(o);
     const n = window.setTimeout(() => {
       t.delete(e), this._timers.delete(o), this._notify();
-    }, s);
+    }, r);
     this._timers.set(o, n);
   }
   _clearAllMotion() {
@@ -1003,221 +1003,221 @@ class zr {
     t !== void 0 && (window.clearTimeout(t), this._timers.delete(e));
   }
 }
-const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - e) < 0.01, Br = (i, e) => Math.hypot(e.x - i.x, e.y - i.y), Gr = (i, e) => ({
+const Y = (i, e, t) => Math.max(e, Math.min(t, i)), jt = (i, e) => Math.abs(i - e) < 0.01, ui = (i, e) => Math.hypot(e.x - i.x, e.y - i.y), _i = (i, e) => ({
   x: i.left - e.left + i.width / 2,
   y: i.top - e.top + i.height / 2
-}), Ce = "rgba(224, 232, 242, 1)", Wr = 8, At = 28, Be = 14, Ur = (i) => {
+}), Te = "rgba(224, 232, 242, 1)", mi = 8, Yt = 28, Ye = 14, fi = (i) => {
   const e = [];
   for (const t of i) {
-    const s = e[e.length - 1];
-    s && Tt(s.x, t.x) && Tt(s.y, t.y) || e.push(t);
+    const r = e[e.length - 1];
+    r && jt(r.x, t.x) && jt(r.y, t.y) || e.push(t);
   }
   return e;
-}, Rt = (i) => {
-  const e = Ur(i);
+}, qt = (i) => {
+  const e = fi(i);
   if (e.length < 2)
     return { d: "", length: 0 };
-  let t = `M ${e[0].x.toFixed(2)} ${e[0].y.toFixed(2)}`, s = 0;
-  for (let r = 1; r < e.length; r += 1) {
-    const o = e[r - 1], n = e[r];
-    t += ` L ${n.x.toFixed(2)} ${n.y.toFixed(2)}`, s += Br(o, n);
+  let t = `M ${e[0].x.toFixed(2)} ${e[0].y.toFixed(2)}`, r = 0;
+  for (let s = 1; s < e.length; s += 1) {
+    const o = e[s - 1], n = e[s];
+    t += ` L ${n.x.toFixed(2)} ${n.y.toFixed(2)}`, r += ui(o, n);
   }
-  return { d: t, length: s };
-}, Kr = (i, e, t, s) => {
-  const r = t - e;
-  if (!Number.isFinite(i) || !Number.isFinite(e) || !Number.isFinite(t) || !Number.isFinite(s) || i <= 0 || r <= 0)
+  return { d: t, length: r };
+}, gi = (i, e, t, r) => {
+  const s = t - e;
+  if (!Number.isFinite(i) || !Number.isFinite(e) || !Number.isFinite(t) || !Number.isFinite(r) || i <= 0 || s <= 0)
     return !1;
-  const o = e + r * 0.28, n = i * 0.36;
-  return s >= Math.max(o, n) && s <= t;
-}, Vr = (i, e, t = !1, s = { x: 0, y: 0 }) => {
-  const r = Gr(e, i), o = e.left - i.left, n = e.bottom - i.top;
+  const o = e + s * 0.28, n = i * 0.36;
+  return r >= Math.max(o, n) && r <= t;
+}, yi = (i, e, t = !1, r = { x: 0, y: 0 }) => {
+  const s = _i(e, i), o = e.left - i.left, n = e.bottom - i.top;
   return {
     entry: {
-      x: (t ? r.x : o - 0.5) + s.x,
-      y: (t ? n + 0.5 : r.y) + s.y
+      x: (t ? s.x : o - 0.5) + r.x,
+      y: (t ? n + 0.5 : s.y) + r.y
     }
   };
-}, jr = (i) => {
+}, vi = (i) => {
   const e = i.left + (i.right - i.left) * 0.22;
   return Y(i.statusCenterX || e, i.left + 10, i.right - 10);
-}, Yr = (i) => {
+}, bi = (i) => {
   if (i.length === 0)
     return [];
-  const e = i.reduce((a, l) => a + Math.max(1, l.bottom - l.top), 0) / i.length, t = Y(e * 0.32, 6, 28), s = [], r = [], o = new Array(i.length).fill(0), n = i.map((a, l) => ({ item: a, index: l })).sort((a, l) => a.item.top - l.item.top || a.item.left - l.item.left);
+  const e = i.reduce((a, l) => a + Math.max(1, l.bottom - l.top), 0) / i.length, t = Y(e * 0.32, 6, 28), r = [], s = [], o = new Array(i.length).fill(0), n = i.map((a, l) => ({ item: a, index: l })).sort((a, l) => a.item.top - l.item.top || a.item.left - l.item.left);
   for (const { item: a, index: l } of n) {
     const c = a.top + (a.bottom - a.top) / 2;
-    let d = s.findIndex((p) => Math.abs(p - c) <= t);
-    d < 0 ? (d = s.length, s.push(c), r.push(1)) : (r[d] += 1, s[d] = s[d] + (c - s[d]) / r[d]), o[l] = d;
+    let p = r.findIndex((d) => Math.abs(d - c) <= t);
+    p < 0 ? (p = r.length, r.push(c), s.push(1)) : (s[p] += 1, r[p] = r[p] + (c - r[p]) / s[p]), o[l] = p;
   }
   return o;
-}, qr = (i, e, t, s, r = Math.min(...i.map((n) => n.left)), o = "left-collector") => {
-  const n = [], a = [], l = [], c = [], d = (m, b, k) => {
-    const F = Rt(b);
-    F.d && a.push({
+}, wi = (i, e, t, r, s = Math.min(...i.map((n) => n.left)), o = "left-collector") => {
+  const n = [], a = [], l = [], c = [], p = (m, w, k) => {
+    const T = qt(w);
+    T.d && a.push({
       id: m,
-      d: F.d,
-      color: Ce,
+      d: T.d,
+      color: Te,
       opacity: k,
       delayMs: 0,
       durationMs: 1200,
-      travelPx: Math.max(24, F.length)
+      travelPx: Math.max(24, T.length)
     });
-  }, p = (m) => {
+  }, d = (m) => {
     l.some((k) => {
-      const F = k.cx - m.cx, M = k.cy - m.cy;
-      return Math.hypot(F, M) < Math.max(k.r, m.r) * 0.9;
+      const T = k.cx - m.cx, F = k.cy - m.cy;
+      return Math.hypot(T, F) < Math.max(k.r, m.r) * 0.9;
     }) || l.push(m);
   }, h = /* @__PURE__ */ new Map();
   for (const m of i) {
-    const b = h.get(m.row) ?? [];
-    b.push(m), h.set(m.row, b);
+    const w = h.get(m.row) ?? [];
+    w.push(m), h.set(m.row, w);
   }
-  const _ = [...h.entries()].sort((m, b) => m[0] - b[0]).map(([m, b]) => ({
+  const u = [...h.entries()].sort((m, w) => m[0] - w[0]).map(([m, w]) => ({
     row: m,
     busY: 0,
-    minTop: Math.min(...b.map((k) => k.top)),
-    maxBottom: Math.max(...b.map((k) => k.bottom))
+    minTop: Math.min(...w.map((k) => k.top)),
+    maxBottom: Math.max(...w.map((k) => k.bottom))
   }));
-  if (_.length === 0)
-    return { flowPaths: n, topologyPaths: a, topologyNodes: l, collectorX: Be, rowBuses: c };
-  const g = Math.max(0, Math.min(r, ...i.map((m) => m.left))), x = Math.max(6, Be * 0.5), C = Math.max(x, g - 8), P = Y(
-    g / 2,
-    x,
-    Math.min(C, Math.max(Be, s - Be))
-  ), w = e.y + 8;
-  for (let m = 0; m < _.length; m += 1) {
-    const b = _[m], k = _[m - 1], F = b.minTop - 12, M = m === 0 ? w : Math.max(k.maxBottom + 8, k.busY + 8), O = b.minTop - 6;
-    b.busY = O > M ? Y(F, M, O) : Math.max(w, b.minTop - 6);
+  if (u.length === 0)
+    return { flowPaths: n, topologyPaths: a, topologyNodes: l, collectorX: Ye, rowBuses: c };
+  const f = Math.max(0, Math.min(s, ...i.map((m) => m.left))), g = Math.max(6, Ye * 0.5), P = Math.max(g, f - 8), S = Y(
+    f / 2,
+    g,
+    Math.min(P, Math.max(Ye, r - Ye))
+  ), x = e.y + 8;
+  for (let m = 0; m < u.length; m += 1) {
+    const w = u[m], k = u[m - 1], T = w.minTop - 12, F = m === 0 ? x : Math.max(k.maxBottom + 8, k.busY + 8), O = w.minTop - 6;
+    w.busY = O > F ? Y(T, F, O) : Math.max(x, w.minTop - 6);
   }
-  const T = Y(0.24 / Math.sqrt(Math.max(_.length, 1)), 0.15, 0.22), R = Y(0.24 / Math.sqrt(Math.max(i.length, 1)), 0.09, 0.16);
-  p({
+  const I = Y(0.24 / Math.sqrt(Math.max(u.length, 1)), 0.15, 0.22), A = Y(0.24 / Math.sqrt(Math.max(i.length, 1)), 0.09, 0.16);
+  d({
     id: "power-socket-node",
     cx: e.x,
     cy: e.y,
     r: Y(t * 0.18, 2.8, 4.8),
-    color: Ce,
+    color: Te,
     opacity: 0.36
   });
-  const $ = _[0], E = Math.max(..._.map((m) => m.busY)), D = o === "direct-first-row", A = _.length > 1;
-  D ? (d(
+  const $ = u[0], E = Math.max(...u.map((m) => m.busY)), D = o === "direct-first-row", R = u.length > 1;
+  D ? (p(
     "power-drop-rail",
     [
       e,
       { x: e.x, y: $.busY }
     ],
-    T
-  ), p({
+    I
+  ), d({
     id: "power-drop-node",
     cx: e.x,
     cy: $.busY,
     r: Y(t * 0.18, 2.8, 4.8),
-    color: Ce,
+    color: Te,
     opacity: 0.36
-  }), A && d(
+  }), R && p(
     "collector-rail",
     [
-      { x: P, y: $.busY },
-      { x: P, y: E }
+      { x: S, y: $.busY },
+      { x: S, y: E }
     ],
-    T
-  )) : (d(
+    I
+  )) : (p(
     "collector-rail",
     [
-      { x: P, y: e.y },
-      { x: P, y: E }
+      { x: S, y: e.y },
+      { x: S, y: E }
     ],
-    T
-  ), d(
+    I
+  ), p(
     "power-entry-rail",
     [
-      { x: P, y: e.y },
+      { x: S, y: e.y },
       e
     ],
-    T
+    I
   ));
-  for (const m of _) {
-    const b = h.get(m.row) ?? [];
-    if (b.length === 0)
+  for (const m of u) {
+    const w = h.get(m.row) ?? [];
+    if (w.length === 0)
       continue;
-    const k = b.map((y) => y.anchorX), F = m.row === $.row, M = D && F ? [e.x, ...k, ...A ? [P] : []] : [P, ...k], O = Math.min(...M), J = Math.max(...M);
+    const k = w.map((v) => v.anchorX), T = m.row === $.row, F = D && T ? [e.x, ...k, ...R ? [S] : []] : [S, ...k], O = Math.min(...F), ee = Math.max(...F);
     c.push({
       row: m.row,
       y: m.busY,
       startX: O,
-      endX: J
-    }), d(
+      endX: ee
+    }), p(
       `row-rail-${m.row}`,
       [
         { x: O, y: m.busY },
-        { x: J, y: m.busY }
+        { x: ee, y: m.busY }
       ],
-      T
-    ), (!D || !F || A) && p({
+      I
+    ), (!D || !T || R) && d({
       id: `row-node-${m.row}`,
-      cx: P,
+      cx: S,
       cy: m.busY,
       r: Y(t * 0.2, 2.8, 4.8),
-      color: Ce,
+      color: Te,
       opacity: 0.32
     });
-    for (const y of b) {
-      const S = D && F ? [
-        { x: y.anchorX, y: y.anchorY },
-        { x: y.anchorX, y: m.busY },
+    for (const v of w) {
+      const C = D && T ? [
+        { x: v.anchorX, y: v.anchorY },
+        { x: v.anchorX, y: m.busY },
         { x: e.x, y: m.busY },
         e
       ] : D ? [
-        { x: y.anchorX, y: y.anchorY },
-        { x: y.anchorX, y: m.busY },
-        { x: P, y: m.busY },
-        { x: P, y: $.busY },
+        { x: v.anchorX, y: v.anchorY },
+        { x: v.anchorX, y: m.busY },
+        { x: S, y: m.busY },
+        { x: S, y: $.busY },
         { x: e.x, y: $.busY },
         e
       ] : [
-        { x: y.anchorX, y: y.anchorY },
-        { x: y.anchorX, y: m.busY },
-        { x: P, y: m.busY },
-        { x: P, y: e.y },
+        { x: v.anchorX, y: v.anchorY },
+        { x: v.anchorX, y: m.busY },
+        { x: S, y: m.busY },
+        { x: S, y: e.y },
         e
-      ], U = Rt(
-        S
+      ], U = qt(
+        C
       );
-      if (d(
-        `tap-rail-${y.id}`,
+      if (p(
+        `tap-rail-${v.id}`,
         [
-          { x: y.anchorX, y: y.anchorY },
-          { x: y.anchorX, y: m.busY }
+          { x: v.anchorX, y: v.anchorY },
+          { x: v.anchorX, y: m.busY }
         ],
-        R
-      ), p({
-        id: `tap-node-${y.id}`,
-        cx: y.anchorX,
+        A
+      ), d({
+        id: `tap-node-${v.id}`,
+        cx: v.anchorX,
         cy: m.busY,
         r: Y(t * 0.18, 2.6, 4.4),
-        color: Ce,
+        color: Te,
         opacity: 0.3
-      }), !y.producing || !U.d)
+      }), !v.producing || !U.d)
         continue;
-      const K = Math.max(At, U.length), ee = K + At;
+      const K = Math.max(Yt, U.length), te = K + Yt;
       n.push({
-        id: `flow-${y.id}`,
-        panelId: y.id,
+        id: `flow-${v.id}`,
+        panelId: v.id,
         d: U.d,
-        color: y.accentColor,
-        opacity: 0.62 + Math.min(y.intensity, 1) * 0.2,
+        color: v.accentColor,
+        opacity: 0.62 + Math.min(v.intensity, 1) * 0.2,
         delayMs: 0,
-        durationMs: Math.round(ee * Wr),
+        durationMs: Math.round(te * mi),
         travelPx: K,
-        offsetPx: -ee
+        offsetPx: -te
       });
     }
   }
-  return { flowPaths: n, topologyPaths: a, topologyNodes: l, collectorX: P, rowBuses: c };
-}, Xr = (i, e, t, s, r, o, n) => {
+  return { flowPaths: n, topologyPaths: a, topologyNodes: l, collectorX: S, rowBuses: c };
+}, xi = (i, e, t, r, s, o, n) => {
   const a = i.map((c) => ({
     id: c.panel.id,
     row: c.row,
-    anchorX: jr(c),
+    anchorX: vi(c),
     anchorY: c.top + 1.5,
     left: c.left,
     right: c.right,
@@ -1226,11 +1226,11 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     accentColor: c.panel.accentColor,
     intensity: c.panel.intensity,
     producing: e.has(c.panel.id)
-  })), l = qr(
+  })), l = wi(
     a,
     t.entry,
-    s,
     r,
+    s,
     o,
     n
   );
@@ -1239,105 +1239,105 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     topologyPaths: l.topologyPaths,
     topologyNodes: l.topologyNodes
   };
-}, Qr = (i, e, t, s) => {
-  const r = e.querySelector("ha-card");
-  if (!r)
+}, Pi = (i, e, t, r) => {
+  const s = e.querySelector("ha-card");
+  if (!s)
     return null;
-  const o = r.getBoundingClientRect();
+  const o = s.getBoundingClientRect();
   if (o.width <= 0 || o.height <= 0)
     return null;
   const n = {
-    x: r.scrollLeft,
-    y: r.scrollTop
+    x: s.scrollLeft,
+    y: s.scrollTop
   }, a = e.querySelector('[data-kpi="power"]');
   if (!a)
     return null;
-  const l = s.panels.map((m) => e.querySelector(`[data-panel-id="${m.id}"]`)).filter((m) => !!m).map((m) => {
-    const b = m.getBoundingClientRect();
+  const l = r.panels.map((m) => e.querySelector(`[data-panel-id="${m.id}"]`)).filter((m) => !!m).map((m) => {
+    const w = m.getBoundingClientRect();
     return {
-      left: b.left - o.left + n.x,
-      right: b.right - o.left + n.x,
-      top: b.top - o.top + n.y,
-      bottom: b.bottom - o.top + n.y
+      left: w.left - o.left + n.x,
+      right: w.right - o.left + n.x,
+      top: w.top - o.top + n.y,
+      bottom: w.bottom - o.top + n.y
     };
-  }).filter((m) => Number.isFinite(m.left) && Number.isFinite(m.right)), c = l.length > 0 ? Math.min(...l.map((m) => m.left)) : 0, d = l.length > 0 ? Math.max(...l.map((m) => m.right)) : o.width, p = s.panels.filter(
+  }).filter((m) => Number.isFinite(m.left) && Number.isFinite(m.right)), c = l.length > 0 ? Math.min(...l.map((m) => m.left)) : 0, p = l.length > 0 ? Math.max(...l.map((m) => m.right)) : o.width, d = r.panels.filter(
     (m) => !m.hiddenSlot && m.enabled && !!m.powerEntityName
   );
-  if (p.length === 0)
+  if (d.length === 0)
     return null;
   const h = new Set(
-    p.filter((m) => typeof m.power == "number" && m.power > 0).map((m) => m.id)
-  ), _ = p.map((m) => ({
+    d.filter((m) => typeof m.power == "number" && m.power > 0).map((m) => m.id)
+  ), u = d.map((m) => ({
     panel: m,
     element: e.querySelector(`[data-panel-id="${m.id}"]`)
   })).filter(
     (m) => !!m.element
   ).map((m) => {
-    const b = m.element.getBoundingClientRect(), k = {
-      x: b.left - o.left + n.x + b.width / 2,
-      y: b.top - o.top + n.y + b.height / 2
-    }, M = m.element.querySelector(".status")?.getBoundingClientRect(), O = M && M.width > 0 ? M.left - o.left + n.x + M.width * 0.33 : k.x;
+    const w = m.element.getBoundingClientRect(), k = {
+      x: w.left - o.left + n.x + w.width / 2,
+      y: w.top - o.top + n.y + w.height / 2
+    }, F = m.element.querySelector(".status")?.getBoundingClientRect(), O = F && F.width > 0 ? F.left - o.left + n.x + F.width * 0.33 : k.x;
     return {
       panel: m.panel,
       row: 0,
       center: k,
       statusCenterX: O,
-      left: b.left - o.left + n.x,
-      right: b.right - o.left + n.x,
-      top: b.top - o.top + n.y,
-      bottom: b.bottom - o.top + n.y
+      left: w.left - o.left + n.x,
+      right: w.right - o.left + n.x,
+      top: w.top - o.top + n.y,
+      bottom: w.bottom - o.top + n.y
     };
-  }), g = Yr(_), x = _.map((m, b) => ({
+  }), f = bi(u), g = u.map((m, w) => ({
     ...m,
-    row: g[b] ?? 0
+    row: f[w] ?? 0
   }));
-  if (x.length === 0)
+  if (g.length === 0)
     return null;
-  const C = x.reduce((m, b) => {
-    const k = b.right - b.left, F = b.bottom - b.top;
-    return m + Math.min(k, F);
-  }, 0) / x.length, P = Y(Math.round(C * 0.2), 18, 34), w = a.getBoundingClientRect(), T = w.left - o.left + n.x + w.width / 2, R = Kr(
+  const P = g.reduce((m, w) => {
+    const k = w.right - w.left, T = w.bottom - w.top;
+    return m + Math.min(k, T);
+  }, 0) / g.length, S = Y(Math.round(P * 0.2), 18, 34), x = a.getBoundingClientRect(), I = x.left - o.left + n.x + x.width / 2, A = gi(
     o.width,
     c,
-    d,
-    T
-  ), $ = Vr(
+    p,
+    I
+  ), $ = yi(
     o,
-    w,
-    R,
-    n
-  ), { flowPaths: E, topologyPaths: D, topologyNodes: A } = Xr(
     x,
+    A,
+    n
+  ), { flowPaths: E, topologyPaths: D, topologyNodes: R } = xi(
+    g,
     h,
     $,
-    P,
+    S,
     o.width,
     c,
-    R ? "direct-first-row" : "left-collector"
+    A ? "direct-first-row" : "left-collector"
   );
   return {
     width: Math.max(
-      r.clientWidth,
+      s.clientWidth,
       o.width,
-      d,
+      p,
       $.entry.x
     ),
     height: Math.max(
-      r.clientHeight,
-      ...x.map((m) => m.bottom),
+      s.clientHeight,
+      ...g.map((m) => m.bottom),
       $.entry.y
     ),
     flowPaths: E,
     topologyPaths: D,
-    topologyNodes: A
+    topologyNodes: R
   };
-}, Zr = (i, e) => {
+}, $i = (i, e) => {
   if (!i || i.flowPaths.length === 0 && i.topologyPaths.length === 0)
-    return v;
+    return b;
   const t = i.flowPaths.filter(
-    (s) => e.showFlow && e.activeFlowPanelId !== null && s.panelId === e.activeFlowPanelId
+    (r) => e.showFlow && e.activeFlowPanelId !== null && r.panelId === e.activeFlowPanelId
   );
-  return f`
+  return y`
     <svg
       class="spv-motion-overlay-svg"
       viewBox=${`0 0 ${i.width} ${i.height}`}
@@ -1345,33 +1345,33 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       aria-hidden="true"
     >
       ${e.showTopology ? i.topologyPaths.map(
-    (s) => B`<path
+    (r) => z`<path
               class="spv-motion-backbone"
-              d=${s.d}
-              style=${`--spv-motion-color:${s.color}; --spv-motion-opacity:${s.opacity};`}
+              d=${r.d}
+              style=${`--spv-motion-color:${r.color}; --spv-motion-opacity:${r.opacity};`}
             ></path>`
-  ) : v}
+  ) : b}
 
       ${e.showTopology ? i.topologyNodes.map(
-    (s) => B`<circle
+    (r) => z`<circle
               class="spv-motion-node"
-              cx=${s.cx}
-              cy=${s.cy}
-              r=${s.r}
-              style=${`--spv-motion-color:${s.color}; --spv-motion-opacity:${s.opacity};`}
+              cx=${r.cx}
+              cy=${r.cy}
+              r=${r.r}
+              style=${`--spv-motion-color:${r.color}; --spv-motion-opacity:${r.opacity};`}
             ></circle>`
-  ) : v}
+  ) : b}
 
       ${t.map(
-    (s) => B`<path
+    (r) => z`<path
           class="spv-motion-flow"
-          d=${s.d}
-          style=${`--spv-motion-color:${s.color}; --spv-motion-opacity:${s.opacity}; --spv-flow-duration:${s.durationMs}ms; --spv-flow-delay:${s.delayMs}ms; --spv-flow-travel:${s.travelPx}px; --spv-flow-offset:${s.offsetPx ?? -s.travelPx}px;`}
+          d=${r.d}
+          style=${`--spv-motion-color:${r.color}; --spv-motion-opacity:${r.opacity}; --spv-flow-duration:${r.durationMs}ms; --spv-flow-delay:${r.delayMs}ms; --spv-flow-travel:${r.travelPx}px; --spv-flow-offset:${r.offsetPx ?? -r.travelPx}px;`}
         ></path>`
   )}
     </svg>
   `;
-}, Jr = dt`
+}, Si = Ct`
   .chrome {
     display: none;
   }
@@ -1673,29 +1673,35 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       box-shadow: 0 0 0 0 rgba(255, 98, 127, 0);
     }
   }
-`, Ts = 1.2, ei = /* @__PURE__ */ new Set(["unknown", "unavailable", "none", "null", ""]), se = (i, e = 0, t = 1) => Math.min(Math.max(i, e), t), me = (i) => {
+`, Ci = new Intl.Collator("en", {
+  numeric: !0,
+  sensitivity: "base"
+}), q = (i, e) => {
+  const t = Ci.compare(i, e);
+  return t !== 0 ? t : i === e ? 0 : i < e ? -1 : 1;
+}, Xr = 1.2, Ei = /* @__PURE__ */ new Set(["unknown", "unavailable", "none", "null", ""]), se = (i, e = 0, t = 1) => Math.min(Math.max(i, e), t), ye = (i) => {
   if (!i)
     return null;
   const e = i.state?.toString().trim().toLowerCase();
-  if (ei.has(e))
+  if (Ei.has(e))
     return null;
   const t = Number(i.state);
   return Number.isFinite(t) ? t : null;
-}, ti = (i) => {
+}, ki = (i) => {
   if (i == null)
     return;
   const e = i.toString().replace(/[\u200B-\u200D\uFEFF]/g, "").replace(/\s+/g, " ").trim();
   return e.length > 0 ? e : void 0;
-}, Nt = (i) => i.toLowerCase().match(/[a-z0-9]+/g) ?? [], Lt = (i, e) => {
-  const t = Nt(i);
-  return t.length === 0 ? !1 : e.some((s) => {
-    const r = Nt(s);
-    if (r.length === 0 || r.length > t.length)
+}, Xt = (i) => i.toLowerCase().match(/[a-z0-9]+/g) ?? [], Qt = (i, e) => {
+  const t = Xt(i);
+  return t.length === 0 ? !1 : e.some((r) => {
+    const s = Xt(r);
+    if (s.length === 0 || s.length > t.length)
       return !1;
-    for (let o = 0; o <= t.length - r.length; o += 1) {
+    for (let o = 0; o <= t.length - s.length; o += 1) {
       let n = !0;
-      for (let a = 0; a < r.length; a += 1)
-        if (t[o + a] !== r[a]) {
+      for (let a = 0; a < s.length; a += 1)
+        if (t[o + a] !== s[a]) {
           n = !1;
           break;
         }
@@ -1704,401 +1710,401 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     }
     return !1;
   });
-}, Ee = (i, e) => {
+}, Fe = (i, e) => {
   const t = i?.attributes?.friendly_name;
   return typeof t == "string" && t.trim().length > 0 ? t : e;
-}, Dt = (i, e, t, s, r = "en") => {
+}, Zt = (i, e, t, r, s = "en") => {
   if (i === null)
-    return s;
-  const o = Object.is(i, -0) ? 0 : i, n = new Intl.NumberFormat(r, {
+    return r;
+  const o = Object.is(i, -0) ? 0 : i, n = new Intl.NumberFormat(s, {
     minimumFractionDigits: t,
     maximumFractionDigits: t
   }).format(o);
   return e ? `${n} ${e}` : n;
-}, Ot = (i) => {
-  const e = i.replace("#", ""), t = e.length === 3 ? e.split("").map((s) => `${s}${s}`).join("") : e;
+}, Jt = (i) => {
+  const e = i.replace("#", ""), t = e.length === 3 ? e.split("").map((r) => `${r}${r}`).join("") : e;
   return [
     parseInt(t.slice(0, 2), 16),
     parseInt(t.slice(2, 4), 16),
     parseInt(t.slice(4, 6), 16)
   ];
-}, Ht = (i, e, t) => {
-  const s = se(t), [r, o, n] = Ot(i), [a, l, c] = Ot(e), d = (p, h) => Math.round(p + (h - p) * s);
-  return `rgb(${d(r, a)}, ${d(o, l)}, ${d(n, c)})`;
-}, si = (i, e, t, s) => {
-  const r = se(s);
-  return r <= 0.5 ? Ht(i, e, r * 2) : Ht(e, t, (r - 0.5) * 2);
-}, ri = (i) => {
+}, er = (i, e, t) => {
+  const r = se(t), [s, o, n] = Jt(i), [a, l, c] = Jt(e), p = (d, h) => Math.round(d + (h - d) * r);
+  return `rgb(${p(s, a)}, ${p(o, l)}, ${p(n, c)})`;
+}, Ii = (i, e, t, r) => {
+  const s = se(r);
+  return s <= 0.5 ? er(i, e, s * 2) : er(e, t, (s - 0.5) * 2);
+}, Ti = (i) => {
   if (i.length === 0)
     return 0;
-  const e = [...i].sort((o, n) => o - n), t = Math.floor(e.length * 0.4), s = e.slice(t), r = s.reduce((o, n) => o + n, 0) / Math.max(s.length, 1);
-  return se(r, 0, Ts);
-}, ii = (i, e, t) => {
+  const e = [...i].sort((o, n) => o - n), t = Math.floor(e.length * 0.4), r = e.slice(t), s = r.reduce((o, n) => o + n, 0) / Math.max(r.length, 1);
+  return se(s, 0, Xr);
+}, Fi = (i, e, t) => {
   if (t <= 0)
     return i;
-  const s = e - t * 60 * 1e3;
-  return i.filter((r) => r.ts >= s);
-}, oi = (i) => {
+  const r = e - t * 60 * 1e3;
+  return i.filter((s) => s.ts >= r);
+}, Mi = (i) => {
   if (i.length < 2)
     return 1;
   const e = [];
-  for (let s = 1; s < i.length; s += 1) {
-    const r = (i[s].ts - i[s - 1].ts) / 6e4;
-    Number.isFinite(r) && r > 0 && e.push(r);
+  for (let r = 1; r < i.length; r += 1) {
+    const s = (i[r].ts - i[r - 1].ts) / 6e4;
+    Number.isFinite(s) && s > 0 && e.push(s);
   }
   if (e.length === 0)
     return 1;
-  e.sort((s, r) => s - r);
+  e.sort((r, s) => r - s);
   const t = Math.floor(e.length / 2);
   return e.length % 2 === 0 ? (e[t - 1] + e[t]) / 2 : e[t];
-}, ni = (i, e, t, s) => {
+}, Ai = (i, e, t, r) => {
   if (!e || e.length === 0)
     return {
       value: i,
       sampleCount: 1,
       firstSampleTs: t
     };
-  const r = e.filter((d) => Number.isFinite(d.value)).sort((d, p) => d.ts - p.ts);
-  if (r.length === 0)
+  const s = e.filter((p) => Number.isFinite(p.value)).sort((p, d) => p.ts - d.ts);
+  if (s.length === 0)
     return {
       value: i,
       sampleCount: 1,
       firstSampleTs: t
     };
-  const o = ii(r, t, s), n = oi(r), a = s > 0 ? Math.max(2, Math.ceil(s / Math.max(n, 0.1)) + 1) : 1;
-  let l = o.length > 0 ? o : r;
-  return s > 0 && l.length < a && r.length > l.length && (l = r.slice(-a)), {
-    value: l.reduce((d, p) => d + p.value, 0) / Math.max(l.length, 1),
+  const o = Fi(s, t, r), n = Mi(s), a = r > 0 ? Math.max(2, Math.ceil(r / Math.max(n, 0.1)) + 1) : 1;
+  let l = o.length > 0 ? o : s;
+  return r > 0 && l.length < a && s.length > l.length && (l = s.slice(-a)), {
+    value: l.reduce((p, d) => p + d.value, 0) / Math.max(l.length, 1),
     sampleCount: l.length,
-    firstSampleTs: r[0].ts ?? null
+    firstSampleTs: s[0].ts ?? null
   };
-}, ge = (i, e, t) => {
-  const s = e?.locale?.language ?? "en", r = (u, N) => Ke(s, u, N), o = r("common.unavailable"), n = t?.nowMs ?? Date.now(), a = { ...lt, ...i.colors ?? {} }, l = i.enable_inverter_status ?? !1, c = (i.inverter_fault_terms ?? []).map((u) => u.trim().toLowerCase()).filter((u) => u.length > 0), d = (i.inverter_working_terms ?? []).map((u) => u.trim().toLowerCase()).filter((u) => u.length > 0), p = i.production_color_intensity ?? 1, h = t?.deviationEnabled ?? !0, _ = i.deviation_min_active_panels ?? 3, g = i.deviation_min_samples ?? 3, x = i.deviation_min_runtime_minutes ?? 15, C = i.deviation_smoothing_minutes ?? 0, P = i.deviation_dynamic_floor_w ?? 20, w = i.deviation_threshold_percent ?? 15, T = i.deviation_absolute_w_threshold ?? 50, R = t?.historyByEntityId ?? {}, $ = i.panels.map((u, N) => {
-    const ue = u.enabled ?? !0, V = u.name ?? `Panel ${N + 1}`, q = u.inverter_status_entity ?? u.error_entity, I = q ? e?.states?.[q] : void 0, L = q ? ti(I?.state) ?? o : void 0, H = Ee(
-      I,
-      q
-    ), X = L !== void 0 && L !== o && Lt(L, c), Q = L !== void 0 && L !== o && Lt(L, d);
-    if (!ue)
+}, ve = (i, e, t) => {
+  const r = e?.locale?.language ?? "en", s = (_, N) => tt(r, _, N), o = s("common.unavailable"), n = t?.nowMs ?? Date.now(), a = { ...Pt, ...i.colors ?? {} }, l = i.enable_inverter_status ?? !1, c = (i.inverter_fault_terms ?? []).map((_) => _.trim().toLowerCase()).filter((_) => _.length > 0), p = (i.inverter_working_terms ?? []).map((_) => _.trim().toLowerCase()).filter((_) => _.length > 0), d = i.production_color_intensity ?? 1, h = t?.deviationEnabled ?? !0, u = i.deviation_min_active_panels ?? 3, f = i.deviation_min_samples ?? 3, g = i.deviation_min_runtime_minutes ?? 15, P = i.deviation_smoothing_minutes ?? 0, S = i.deviation_dynamic_floor_w ?? 20, x = i.deviation_threshold_percent ?? 15, I = i.deviation_absolute_w_threshold ?? 50, A = t?.historyByEntityId ?? {}, $ = i.panels.map((_, N) => {
+    const fe = _.enabled ?? !0, V = _.name ?? `Panel ${N + 1}`, X = _.inverter_status_entity ?? _.error_entity, M = X ? e?.states?.[X] : void 0, L = X ? ki(M?.state) ?? o : void 0, G = Fe(
+      M,
+      X
+    ), Q = L !== void 0 && L !== o && Qt(L, c), Z = L !== void 0 && L !== o && Qt(L, p);
+    if (!fe)
       return {
-        config: u,
+        config: _,
         slotIndex: N,
         label: V,
         power: null,
         energy: null,
-        inverterStatusEntityName: H,
+        inverterStatusEntityName: G,
         inverterStatusDisplay: L,
-        inverterFaultMatched: X,
-        inverterWorkingMatched: Q,
-        reason: r("state.reason.slot_hidden"),
+        inverterFaultMatched: Q,
+        inverterWorkingMatched: Z,
+        reason: s("state.reason.slot_hidden"),
         status: "disabled",
         enabled: !1,
         hiddenSlot: !0
       };
-    if (!u.power_entity)
+    if (!_.power_entity)
       return {
-        config: u,
+        config: _,
         slotIndex: N,
         label: V,
         power: null,
         energy: null,
-        inverterStatusEntityName: H,
+        inverterStatusEntityName: G,
         inverterStatusDisplay: L,
-        inverterFaultMatched: X,
-        inverterWorkingMatched: Q,
-        reason: r("state.reason.select_power_sensor"),
+        inverterFaultMatched: Q,
+        inverterWorkingMatched: Z,
+        reason: s("state.reason.select_power_sensor"),
         status: "unconfigured",
         enabled: !0,
         hiddenSlot: !1
       };
-    const Z = e?.states?.[u.power_entity], _e = u.energy_entity ? e?.states?.[u.energy_entity] : void 0;
-    if (!Z)
+    const J = e?.states?.[_.power_entity], ge = _.energy_entity ? e?.states?.[_.energy_entity] : void 0;
+    if (!J)
       return {
-        config: u,
+        config: _,
         slotIndex: N,
         label: V,
         power: null,
         energy: null,
-        inverterStatusEntityName: H,
+        inverterStatusEntityName: G,
         inverterStatusDisplay: L,
-        inverterFaultMatched: X,
-        inverterWorkingMatched: Q,
-        reason: r("state.reason.power_entity_missing", {
-          entity: u.power_entity
+        inverterFaultMatched: Q,
+        inverterWorkingMatched: Z,
+        reason: s("state.reason.power_entity_missing", {
+          entity: _.power_entity
         }),
         status: "offline",
         enabled: !0,
         hiddenSlot: !1
       };
-    if (l && L && L !== o && X)
+    if (l && L && L !== o && Q)
       return {
-        config: u,
+        config: _,
         slotIndex: N,
         label: V,
-        power: me(Z),
-        energy: me(_e),
-        powerEntityName: Ee(Z, u.power_entity),
-        inverterStatusEntityName: H,
+        power: ye(J),
+        energy: ye(ge),
+        powerEntityName: Fe(J, _.power_entity),
+        inverterStatusEntityName: G,
         inverterStatusDisplay: L,
-        inverterFaultMatched: X,
-        inverterWorkingMatched: Q,
-        reason: r("state.reason.inverter_fault_match", {
+        inverterFaultMatched: Q,
+        inverterWorkingMatched: Z,
+        reason: s("state.reason.inverter_fault_match", {
           status: L
         }),
         status: "error",
         enabled: !0,
         hiddenSlot: !1
       };
-    if (l && L && L !== o && d.length > 0 && !Q)
+    if (l && L && L !== o && p.length > 0 && !Z)
       return {
-        config: u,
+        config: _,
         slotIndex: N,
         label: V,
-        power: me(Z),
-        energy: me(_e),
-        powerEntityName: Ee(Z, u.power_entity),
-        inverterStatusEntityName: H,
+        power: ye(J),
+        energy: ye(ge),
+        powerEntityName: Fe(J, _.power_entity),
+        inverterStatusEntityName: G,
         inverterStatusDisplay: L,
-        inverterFaultMatched: X,
-        inverterWorkingMatched: Q,
-        reason: r("state.reason.inverter_working_mismatch", {
+        inverterFaultMatched: Q,
+        inverterWorkingMatched: Z,
+        reason: s("state.reason.inverter_working_mismatch", {
           status: L
         }),
         status: "inverter",
         enabled: !0,
         hiddenSlot: !1
       };
-    const He = me(Z), ze = me(_e);
-    return He === null ? {
-      config: u,
+    const Ve = ye(J), je = ye(ge);
+    return Ve === null ? {
+      config: _,
       slotIndex: N,
       label: V,
       power: null,
-      energy: ze,
-      powerEntityName: Ee(Z, u.power_entity),
-      inverterStatusEntityName: H,
+      energy: je,
+      powerEntityName: Fe(J, _.power_entity),
+      inverterStatusEntityName: G,
       inverterStatusDisplay: L,
-      inverterFaultMatched: X,
-      inverterWorkingMatched: Q,
-      reason: r("state.reason.power_entity_unavailable", {
-        entity: u.power_entity
+      inverterFaultMatched: Q,
+      inverterWorkingMatched: Z,
+      reason: s("state.reason.power_entity_unavailable", {
+        entity: _.power_entity
       }),
       status: "offline",
       enabled: !0,
       hiddenSlot: !1
     } : {
-      config: u,
+      config: _,
       slotIndex: N,
       label: V,
-      power: He,
-      energy: ze,
-      powerEntityName: Ee(Z, u.power_entity),
-      inverterStatusEntityName: H,
+      power: Ve,
+      energy: je,
+      powerEntityName: Fe(J, _.power_entity),
+      inverterStatusEntityName: G,
       inverterStatusDisplay: L,
-      inverterFaultMatched: X,
-      inverterWorkingMatched: Q,
-      reason: r("state.reason.producing_expected"),
+      inverterFaultMatched: Q,
+      inverterWorkingMatched: Z,
+      reason: s("state.reason.producing_expected"),
       status: "normal",
       enabled: !0,
       hiddenSlot: !1
     };
   }), D = $.filter(
-    (u) => u.status === "normal" && u.power !== null
-  ).map((u) => u.power ?? 0), A = D.length > 0 ? Math.max(...D) : 0;
-  let m = 0, b = 0, k = 0, F = 0, M = 0, O = 0, J = 0, y, S = !1;
-  const U = $.filter((u) => u.status === "normal" && u.power !== null).flatMap((u) => {
-    const N = u.config.rated_power_w ?? i.default_panel_rated_power_w ?? null;
-    if (N === null || N <= 0 || !u.config.power_entity)
+    (_) => _.status === "normal" && _.power !== null
+  ).map((_) => _.power ?? 0), R = D.length > 0 ? Math.max(...D) : 0;
+  let m = 0, w = 0, k = 0, T = 0, F = 0, O = 0, ee = 0, v, C = !1;
+  const U = $.filter((_) => _.status === "normal" && _.power !== null).flatMap((_) => {
+    const N = _.config.rated_power_w ?? i.default_panel_rated_power_w ?? null;
+    if (N === null || N <= 0 || !_.config.power_entity)
       return [];
-    const ue = Math.min(
-      Math.max(u.config.deviation_derate_percent ?? 100, 1),
+    const fe = Math.min(
+      Math.max(_.config.deviation_derate_percent ?? 100, 1),
       100
-    ), V = N * (ue / 100);
+    ), V = N * (fe / 100);
     if (V <= 0)
       return [];
-    const q = ni(
-      u.power,
-      R[u.config.power_entity],
+    const X = Ai(
+      _.power,
+      A[_.config.power_entity],
       n,
-      C
+      P
     );
     return [
       {
-        id: u.config.id,
-        effectivePower: q.value,
-        livePower: u.power,
+        id: _.config.id,
+        effectivePower: X.value,
+        livePower: _.power,
         ratedPowerW: N,
         ratedForDeviationW: V,
-        isDerated: ue < 100,
-        sampleCount: q.sampleCount,
-        firstSampleTs: q.firstSampleTs
+        isDerated: fe < 100,
+        sampleCount: X.sampleCount,
+        firstSampleTs: X.firstSampleTs
       }
     ];
-  }), K = U.filter((u) => !u.isDerated), ee = K.length > 0 ? Math.min(...K.map((u) => u.sampleCount)) : 0, de = K.length > 0 ? Math.min(
+  }), K = U.filter((_) => !_.isDerated), te = K.length > 0 ? Math.min(...K.map((_) => _.sampleCount)) : 0, _e = K.length > 0 ? Math.min(
     ...K.map(
-      (u) => u.firstSampleTs === null ? 0 : (n - u.firstSampleTs) / 6e4
+      (_) => _.firstSampleTs === null ? 0 : (n - _.firstSampleTs) / 6e4
     )
   ) : 0;
-  h ? K.length < _ ? y = r("state.reason.need_non_derated_panels", {
-    count: _
-  }) : ee < g ? y = r("state.reason.collecting_samples", {
-    current: ee,
+  h ? K.length < u ? v = s("state.reason.need_non_derated_panels", {
+    count: u
+  }) : te < f ? v = s("state.reason.collecting_samples", {
+    current: te,
+    required: f
+  }) : _e < g ? v = s("state.reason.warmup_progress", {
+    current: Math.floor(_e),
     required: g
-  }) : de < x ? y = r("state.reason.warmup_progress", {
-    current: Math.floor(de),
-    required: x
-  }) : S = !0 : y = r("state.reason.array_check_disabled");
-  const we = K.map(
-    (u) => se(u.effectivePower / u.ratedForDeviationW, 0, Ts)
-  ), xe = ri(we);
-  S && Math.max(
+  }) : C = !0 : v = s("state.reason.array_check_disabled");
+  const Se = K.map(
+    (_) => se(_.effectivePower / _.ratedForDeviationW, 0, Xr)
+  ), Ce = Ti(Se);
+  C && Math.max(
     ...K.map(
-      (N) => N.ratedForDeviationW * xe
+      (N) => N.ratedForDeviationW * Ce
     ),
     0
-  ) < P && (S = !1, y = r("state.reason.low_light_pause", {
-    floor: P.toFixed(0)
+  ) < S && (C = !1, v = s("state.reason.low_light_pause", {
+    floor: S.toFixed(0)
   }));
-  const he = $.map((u) => {
-    const N = (u.config.power_entity ? e?.states?.[u.config.power_entity]?.attributes?.unit_of_measurement : void 0) ?? r("state.power.default_unit"), ue = u.config.energy_entity ? e?.states?.[u.config.energy_entity]?.attributes?.unit_of_measurement : void 0, V = !!u.config.energy_entity, q = u.config.show_energy ?? !1;
-    let I = u.status, L = null;
-    const H = u.config.rated_power_w ?? i.default_panel_rated_power_w ?? null, X = H !== null && u.power !== null && H > 0 ? se(u.power / H * 100, 0, 999) : null;
-    if (I === "normal" && H === null && (u.reason = r("state.reason.rated_not_configured")), S && I === "normal" && H !== null && u.power !== null) {
-      const Xe = U.find(
-        (Pe) => Pe.id === u.config.id
+  const me = $.map((_) => {
+    const N = (_.config.power_entity ? e?.states?.[_.config.power_entity]?.attributes?.unit_of_measurement : void 0) ?? s("state.power.default_unit"), fe = _.config.energy_entity ? e?.states?.[_.config.energy_entity]?.attributes?.unit_of_measurement : void 0, V = !!_.config.energy_entity, X = _.config.show_energy ?? !1;
+    let M = _.status, L = null;
+    const G = _.config.rated_power_w ?? i.default_panel_rated_power_w ?? null, Q = G !== null && _.power !== null && G > 0 ? se(_.power / G * 100, 0, 999) : null;
+    if (M === "normal" && G === null && (_.reason = s("state.reason.rated_not_configured")), C && M === "normal" && G !== null && _.power !== null) {
+      const dt = U.find(
+        (ke) => ke.id === _.config.id
       );
-      if (Xe) {
-        const Pe = Xe.ratedForDeviationW * xe, Qe = Math.max(Pe - Xe.effectivePower, 0), _t = Pe > 0 ? Qe / Pe * 100 : 0;
-        _t >= w && Qe >= T ? (I = "deviation", L = se(_t, 0, 100), u.reason = r("state.reason.output_below_target", {
+      if (dt) {
+        const ke = dt.ratedForDeviationW * Ce, ht = Math.max(ke - dt.effectivePower, 0), It = ke > 0 ? ht / ke * 100 : 0;
+        It >= x && ht >= I ? (M = "deviation", L = se(It, 0, 100), _.reason = s("state.reason.output_below_target", {
           percent: L.toFixed(0),
-          shortfall: Qe.toFixed(0)
-        })) : u.reason = r("state.reason.producing_adjusted");
+          shortfall: ht.toFixed(0)
+        })) : _.reason = s("state.reason.producing_adjusted");
       }
-    } else I === "normal" && y && (u.reason = y);
-    I === "error" && (k += 1), I === "inverter" && (b += 1), I === "deviation" && (m += 1), I === "offline" && (F += 1), I === "normal" && (M += 1), I === "unconfigured" && (O += 1), I === "disabled" && (J += 1);
-    const Q = H !== null && H > 0 && u.power !== null ? u.power / H : null, Z = u.power !== null && A > 0 ? u.power / A : 0, _e = se(Q ?? Z, 0, 1), He = se((p - 0.2) / 1.4, 0, 1), ze = se(
-      (0.1 + He * 0.9) * (0.15 + _e * 0.85),
+    } else M === "normal" && v && (_.reason = v);
+    M === "error" && (k += 1), M === "inverter" && (w += 1), M === "deviation" && (m += 1), M === "offline" && (T += 1), M === "normal" && (F += 1), M === "unconfigured" && (O += 1), M === "disabled" && (ee += 1);
+    const Z = G !== null && G > 0 && _.power !== null ? _.power / G : null, J = _.power !== null && R > 0 ? _.power / R : 0, ge = se(Z ?? J, 0, 1), Ve = se((d - 0.2) / 1.4, 0, 1), je = se(
+      (0.1 + Ve * 0.9) * (0.15 + ge * 0.85),
       0.06,
       1
-    ), Ds = I === "deviation" || I === "error" || I === "inverter" ? 1 : ze, Os = I === "normal" && u.power !== null && u.power <= 0, Hs = I === "error" || I === "inverter" ? a.error : Os || I === "offline" || I === "unconfigured" || I === "disabled" ? a.unavailable : I === "deviation" ? a.deviation : si(
+    ), ps = M === "deviation" || M === "error" || M === "inverter" ? 1 : je, cs = M === "normal" && _.power !== null && _.power <= 0, ds = M === "error" || M === "inverter" ? a.error : cs || M === "offline" || M === "unconfigured" || M === "disabled" ? a.unavailable : M === "deviation" ? a.deviation : Ii(
       a.production_start,
       a.production_mid,
       a.production_end,
-      _e
+      ge
     );
     return {
-      id: u.config.id,
-      slotIndex: u.slotIndex,
-      label: u.label,
-      status: I,
-      power: u.power,
-      powerDisplay: I === "disabled" ? r("state.status_display.disabled") : I === "unconfigured" ? r("state.status_display.not_configured") : Dt(
-        u.power,
+      id: _.config.id,
+      slotIndex: _.slotIndex,
+      label: _.label,
+      status: M,
+      power: _.power,
+      powerDisplay: M === "disabled" ? s("state.status_display.disabled") : M === "unconfigured" ? s("state.status_display.not_configured") : Zt(
+        _.power,
         N,
         i.power_decimals ?? 0,
         o,
-        s
+        r
       ),
-      energy: u.energy,
-      energyDisplay: u.hiddenSlot || !V || !q ? void 0 : u.energy !== null ? Dt(
-        u.energy,
-        ue ?? r("state.energy.default_unit"),
+      energy: _.energy,
+      energyDisplay: _.hiddenSlot || !V || !X ? void 0 : _.energy !== null ? Zt(
+        _.energy,
+        fe ?? s("state.energy.default_unit"),
         i.energy_decimals ?? 2,
         o,
-        s
+        r
       ) : o,
-      powerEntityName: u.powerEntityName,
-      inverterStatusEntityName: u.inverterStatusEntityName,
-      inverterStatusDisplay: u.inverterStatusDisplay,
-      inverterFaultMatched: u.inverterFaultMatched,
-      inverterWorkingMatched: u.inverterWorkingMatched,
+      powerEntityName: _.powerEntityName,
+      inverterStatusEntityName: _.inverterStatusEntityName,
+      inverterStatusDisplay: _.inverterStatusDisplay,
+      inverterFaultMatched: _.inverterFaultMatched,
+      inverterWorkingMatched: _.inverterWorkingMatched,
       deviationPercent: L,
-      reason: u.reason,
-      accentColor: Hs,
-      intensity: Ds,
-      enabled: u.enabled,
-      hiddenSlot: u.hiddenSlot,
-      ratedPowerW: H,
-      performancePercent: X
+      reason: _.reason,
+      accentColor: ds,
+      intensity: ps,
+      enabled: _.enabled,
+      hiddenSlot: _.hiddenSlot,
+      ratedPowerW: G,
+      performancePercent: Q
     };
-  }), Oe = he.reduce((u, N) => u + (N.power ?? 0), 0), $e = he.map((u) => u.energy).filter((u) => u !== null), G = $e.length > 0 ? $e.reduce((u, N) => u + N, 0) : null;
+  }), Ke = me.reduce((_, N) => _ + (N.power ?? 0), 0), Ee = me.map((_) => _.energy).filter((_) => _ !== null), B = Ee.length > 0 ? Ee.reduce((_, N) => _ + N, 0) : null;
   return {
-    panels: he,
-    totalPower: Oe,
-    totalEnergy: G,
-    maxPower: A,
+    panels: me,
+    totalPower: Ke,
+    totalEnergy: B,
+    maxPower: R,
     deviationCount: m,
-    inverterCount: b,
+    inverterCount: w,
     errorCount: k,
-    offlineCount: F,
-    normalCount: M,
+    offlineCount: T,
+    normalCount: F,
     unconfiguredCount: O,
-    disabledCount: J,
-    deviationReady: S,
-    deviationSuppressedReason: y
+    disabledCount: ee,
+    deviationReady: C,
+    deviationSuppressedReason: v
   };
-}, zt = (i, e = 0) => Math.max(36, i - 36 - Math.max(0, e)), ai = ({
+}, tr = (i, e = 0) => Math.max(36, i - 36 - Math.max(0, e)), Ri = ({
   candidates: i,
   panelWidthPx: e,
   panelHeightPx: t,
-  fontPx: s,
-  reservedRightPx: r = 0,
+  fontPx: r,
+  reservedRightPx: s = 0,
   measureTextWidthPx: o
 }) => {
-  const n = i.find((p) => p.variant === "compact");
+  const n = i.find((d) => d.variant === "compact");
   if (!n)
     throw new Error("Panel performance label requires a compact candidate.");
   if (t < 96 || e < 112)
     return n;
-  const a = i.find((p) => p.variant === "full"), l = zt(e, r);
-  if (a && o(a.text, s) <= l)
+  const a = i.find((d) => d.variant === "full"), l = tr(e, s);
+  if (a && o(a.text, r) <= l)
     return a;
-  const c = zt(e), d = i.find((p) => p.variant === "medium");
-  return d && o(d.text, s) <= c ? d : n;
-}, ut = (i) => Number.isFinite(i.ts) && Number.isFinite(i.value), li = 1e-4, pi = (i) => i === 1 ? 6e4 : i === 6 ? 3 * 6e4 : i === 24 ? 10 * 6e4 : 5 * 6e4, Ue = (i, e, t) => {
-  const s = e - t * 60 * 60 * 1e3;
-  return i.filter(ut).filter((r) => r.ts >= s && r.ts <= e).sort((r, o) => r.ts - o.ts);
-}, As = (i, e) => {
+  const c = tr(e), p = i.find((d) => d.variant === "medium");
+  return p && o(p.text, r) <= c ? p : n;
+}, kt = (i) => Number.isFinite(i.ts) && Number.isFinite(i.value), Ni = 1e-4, Li = (i) => i === 1 ? 6e4 : i === 6 ? 3 * 6e4 : i === 24 ? 10 * 6e4 : 5 * 6e4, Ze = (i, e, t) => {
+  const r = e - t * 60 * 60 * 1e3;
+  return i.filter(kt).filter((s) => s.ts >= r && s.ts <= e).sort((s, o) => s.ts - o.ts);
+}, Qr = (i, e) => {
   if (i.length < 2)
-    return [...i].sort((d, p) => d.ts - p.ts);
-  const t = e?.zeroTolerance ?? li, s = [...i].filter(ut).sort((d, p) => d.ts - p.ts);
-  if (s.length < 2)
-    return s;
-  const r = s.slice(1).map((d, p) => d.ts - s[p].ts).filter((d) => Number.isFinite(d) && d > 0).sort((d, p) => d - p), o = r.length > 0 ? r[Math.floor(r.length / 2)] : Number.NaN, n = pi(e?.rangeHours), a = Math.min(
+    return [...i].sort((p, d) => p.ts - d.ts);
+  const t = e?.zeroTolerance ?? Ni, r = [...i].filter(kt).sort((p, d) => p.ts - d.ts);
+  if (r.length < 2)
+    return r;
+  const s = r.slice(1).map((p, d) => p.ts - r[d].ts).filter((p) => Number.isFinite(p) && p > 0).sort((p, d) => p - d), o = s.length > 0 ? s[Math.floor(s.length / 2)] : Number.NaN, n = Li(e?.rangeHours), a = Math.min(
     Math.max(
       Number.isFinite(e?.stepMs) ? e?.stepMs : Number.isFinite(o) ? o : n,
       3e4
     ),
     n * 2
-  ), l = a * 2, c = [s[0]];
-  for (let d = 1; d < s.length; d += 1) {
-    const p = s[d - 1], h = s[d], _ = h.ts - p.ts, g = Math.abs(p.value) <= t, x = h.value > t;
-    if (g && x && _ >= l) {
-      const C = Math.max(p.ts + 1, h.ts - a);
-      C > p.ts && C < h.ts && c.push({ ts: C, value: 0 });
+  ), l = a * 2, c = [r[0]];
+  for (let p = 1; p < r.length; p += 1) {
+    const d = r[p - 1], h = r[p], u = h.ts - d.ts, f = Math.abs(d.value) <= t, g = h.value > t;
+    if (f && g && u >= l) {
+      const P = Math.max(d.ts + 1, h.ts - a);
+      P > d.ts && P < h.ts && c.push({ ts: P, value: 0 });
     }
     c.push(h);
   }
   return c.filter(
-    (d, p, h) => p === 0 ? !0 : d.ts !== h[p - 1].ts || d.value !== h[p - 1].value
+    (p, d, h) => d === 0 ? !0 : p.ts !== h[d - 1].ts || p.value !== h[d - 1].value
   );
-}, ot = (i, e) => {
+}, vt = (i, e) => {
   if (i.length <= e || e <= 2)
     return [...i];
-  const t = i[0], s = i[i.length - 1], r = i.slice(1, i.length - 1), o = e - 2, n = r.length / o, a = [t];
+  const t = i[0], r = i[i.length - 1], s = i.slice(1, i.length - 1), o = e - 2, n = s.length / o, a = [t];
   let l = -1;
   for (let c = 0; c < o; c += 1) {
-    const d = Math.min(
-      r.length - 1,
+    const p = Math.min(
+      s.length - 1,
       Math.floor(c * n)
     );
-    d !== l && (l = d, a.push(r[d]));
+    p !== l && (l = p, a.push(s[p]));
   }
-  return a.push(s), a.sort((c, d) => c.ts - d.ts).filter(
-    (c, d, p) => d === 0 ? !0 : c.ts !== p[d - 1].ts || c.value !== p[d - 1].value
+  return a.push(r), a.sort((c, p) => c.ts - p.ts).filter(
+    (c, p, d) => p === 0 ? !0 : c.ts !== d[p - 1].ts || c.value !== d[p - 1].value
   ).slice(0, e);
-}, ci = (i) => {
+}, Di = (i) => {
   const e = i.map(
-    (n) => [...n].filter(ut).sort((a, l) => a.ts - l.ts).filter(
+    (n) => [...n].filter(kt).sort((a, l) => a.ts - l.ts).filter(
       (a, l, c) => l === c.length - 1 ? !0 : a.ts !== c[l + 1].ts
     )
   ).filter((n) => n.length > 0);
@@ -2106,19 +2112,19 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     return [];
   const t = [
     ...new Set(e.flatMap((n) => n.map((a) => a.ts)))
-  ].sort((n, a) => n - a), s = e.map(() => 0), r = e.map(() => null), o = [];
+  ].sort((n, a) => n - a), r = e.map(() => 0), s = e.map(() => null), o = [];
   for (const n of t) {
     let a = 0;
     for (let c = 0; c < e.length; c += 1) {
-      const d = e[c];
-      for (; s[c] < d.length && d[s[c]].ts <= n; )
-        r[c] = d[s[c]].value, s[c] += 1;
-      r[c] !== null && (a += 1);
+      const p = e[c];
+      for (; r[c] < p.length && p[r[c]].ts <= n; )
+        s[c] = p[r[c]].value, r[c] += 1;
+      s[c] !== null && (a += 1);
     }
     if (a === 0)
       continue;
-    const l = r.reduce(
-      (c, d) => c + (d ?? 0),
+    const l = s.reduce(
+      (c, p) => c + (p ?? 0),
       0
     );
     o.push({
@@ -2127,31 +2133,31 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     });
   }
   return o;
-}, Bt = (i) => Number.isFinite(i.ts) && Number.isFinite(i.value), di = (i) => i.map(
+}, rr = (i) => Number.isFinite(i.ts) && Number.isFinite(i.value), Oi = (i) => i.map(
   (e, t) => `${t === 0 ? "M" : "L"}${e.x.toFixed(2)},${e.y.toFixed(2)}`
-).join(" "), hi = (i, e, t, s, r = 320, o = 132, n = 10) => {
-  const a = t * 60 * 60 * 1e3, l = e - a, c = e, d = Math.max(c - l, 1), p = Math.max(r - n * 2, 1), h = Math.max(o - n * 2, 1), _ = i.map(($) => {
-    const E = Ue($.samples, e, t).filter(Bt), D = E.length === 1 ? [
+).join(" "), Gi = (i, e, t, r, s = 320, o = 132, n = 10) => {
+  const a = t * 60 * 60 * 1e3, l = e - a, c = e, p = Math.max(c - l, 1), d = Math.max(s - n * 2, 1), h = Math.max(o - n * 2, 1), u = i.map(($) => {
+    const E = Ze($.samples, e, t).filter(rr), D = E.length === 1 ? [
       { ts: l, value: E[0].value },
       { ts: c, value: E[0].value }
-    ] : E, A = As(D, { rangeHours: t }), m = ot(A, s).filter(Bt), b = m.map((k) => k.value);
+    ] : E, R = Qr(D, { rangeHours: t }), m = vt(R, r).filter(rr), w = m.map((k) => k.value);
     return {
       id: $.id,
       samples: m,
       sampleCount: m.length,
       firstTs: m.length > 0 ? m[0].ts : null,
       lastTs: m.length > 0 ? m[m.length - 1].ts : null,
-      minValue: b.length > 0 ? Math.min(...b) : null,
-      maxValue: b.length > 0 ? Math.max(...b) : null
+      minValue: w.length > 0 ? Math.min(...w) : null,
+      maxValue: w.length > 0 ? Math.max(...w) : null
     };
-  }), g = _.flatMap(($) => $.samples.map((E) => E.value)), x = g.length > 0;
-  let C = 0, P = 1;
-  x && (C = Math.min(...g), P = Math.max(...g), C === P && (C -= 1, P += 1));
-  const w = Math.max(P - C, 1), T = _.map(($) => {
-    const E = $.samples.map((A) => {
-      const m = (A.ts - l) / d, b = n + Math.min(Math.max(m, 0), 1) * p, k = o - n - (A.value - C) / w * h;
-      return !Number.isFinite(b) || !Number.isFinite(k) ? null : { x: b, y: k };
-    }).filter((A) => A !== null), D = E.length >= 2 ? di(E) : "";
+  }), f = u.flatMap(($) => $.samples.map((E) => E.value)), g = f.length > 0;
+  let P = 0, S = 1;
+  g && (P = Math.min(...f), S = Math.max(...f), P === S && (P -= 1, S += 1));
+  const x = Math.max(S - P, 1), I = u.map(($) => {
+    const E = $.samples.map((R) => {
+      const m = (R.ts - l) / p, w = n + Math.min(Math.max(m, 0), 1) * d, k = o - n - (R.value - P) / x * h;
+      return !Number.isFinite(w) || !Number.isFinite(k) ? null : { x: w, y: k };
+    }).filter((R) => R !== null), D = E.length >= 2 ? Oi(E) : "";
     return {
       id: $.id,
       samples: $.samples,
@@ -2166,28 +2172,28 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       minValue: $.minValue,
       maxValue: $.maxValue
     };
-  }), R = T.filter(($) => $.pointsCount > 0).length;
+  }), A = I.filter(($) => $.pointsCount > 0).length;
   return {
     startTs: l,
     endTs: c,
-    hasData: x,
-    drawableCount: R,
-    series: T
+    hasData: g,
+    drawableCount: A,
+    series: I
   };
-}, ke = (i, e, t, s, r = "en") => {
+}, Me = (i, e, t, r, s = "en") => {
   if (i === null)
-    return s;
+    return r;
   const o = Object.is(i, -0) ? 0 : i;
-  return `${new Intl.NumberFormat(r, {
+  return `${new Intl.NumberFormat(s, {
     minimumFractionDigits: e,
     maximumFractionDigits: e
   }).format(o)} ${t}`;
-}, te = (i) => Object.is(i, -0) ? 0 : i, ui = (i) => {
+}, re = (i) => Object.is(i, -0) ? 0 : i, Hi = (i) => {
   if (!i)
     return;
   const e = i.replace(/[\u200B-\u200D\uFEFF]/g, "").replace(/\s+/g, " ").trim();
   return e.length > 0 ? e : void 0;
-}, Gt = 1, _i = "spv:history:", mi = "spv-card-config-updated", gi = 6e4, et = [1, 6, 24], tt = 150, fi = 45e3, yi = 45e3, vi = 64, bi = /* @__PURE__ */ new Set(["unknown", "unavailable", "none", "null", ""]), Wt = [
+}, sr = 1, zi = "spv:history:", Bi = "spv-card-config-updated", Wi = 6e4, qe = [1, 6, 24], mt = 150, Ui = 45e3, Ki = 45e3, Vi = 64, ji = /* @__PURE__ */ new Set(["unknown", "unavailable", "none", "null", ""]), ir = [
   "#8ed072",
   "#6fc9ff",
   "#ffbf66",
@@ -2198,7 +2204,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   "#84a8ff",
   "#7be56e",
   "#f58cff"
-], st = (i, e = "Unknown recorder error") => {
+], ft = (i, e = "Unknown recorder error") => {
   if (i instanceof Error && i.message.trim().length > 0)
     return i.message.trim();
   if (typeof i == "string" && i.trim().length > 0)
@@ -2213,59 +2219,59 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       return t.body.message.trim();
   }
   return e;
-}, rt = (i, e = 120) => i.length <= e ? i : `${i.slice(0, e - 1)}…`, le = class le extends ye {
+}, gt = (i, e = 120) => i.length <= e ? i : `${i.slice(0, e - 1)}…`, ce = class ce extends we {
   constructor() {
-    super(...arguments), this._cardWidth = 0, this._selectedPanelId = null, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._dragSourceSlotIndex = null, this._historyByEntityId = {}, this._historyState = "idle", this._historySignature = "", this._historyQuerySignature = "", this._historyLastLoadMs = 0, this._historyLoadToken = 0, this._popupGraphRangeHours = 6, this._popupGraphCache = {}, this._popupGraphRequestToken = 0, this._popupGraphLatestTokenByKey = {}, this._kpiCompareExpanded = {
+    super(...arguments), this._cardWidth = 0, this._selectedPanelId = null, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._dragSourceSlotIndex = null, this._historyByEntityId = {}, this._historyState = "idle", this._historySignature = "", this._historyQuerySignature = "", this._historyLastLoadMs = 0, this._historyLoadToken = 0, this._popupGraphRangeHours = 6, this._popupGraphCache = {}, this._popupGraphRequestToken = 0, this._popupGraphLatestTokenByKey = {}, this._telemetryGraphPanelId = null, this._telemetryGraphEntityId = null, this._telemetryGraphRangeHours = 6, this._kpiCompareExpanded = {
       power: !1,
       energy: !1
     }, this._kpiCompareRangeHours = {
       power: 6,
       energy: 6
-    }, this._kpiCompareCache = {}, this._kpiCompareRequestToken = 0, this._kpiCompareLatestTokenByKey = {}, this._persistConfigToken = 0, this._popupScrollRestoreToken = 0, this._popupScrollRestore = null, this._motionEngine = new zr(() => this.requestUpdate()), this._motionOverlayModel = null, this._motionOverlaySignature = "", this._overlayMeasureFrame = null, this._panelDetailOverflowFrame = null, this._activePulseColor = "rgba(111, 201, 255, 0.72)", this._onMotionAnimationEnd = (e) => {
+    }, this._kpiCompareCache = {}, this._kpiCompareRequestToken = 0, this._kpiCompareLatestTokenByKey = {}, this._persistConfigToken = 0, this._popupScrollRestoreToken = 0, this._popupScrollRestore = null, this._motionEngine = new hi(() => this.requestUpdate()), this._motionOverlayModel = null, this._motionOverlaySignature = "", this._overlayMeasureFrame = null, this._panelDetailOverflowFrame = null, this._activePulseColor = "rgba(111, 201, 255, 0.72)", this._onMotionAnimationEnd = (e) => {
       const t = e;
       if (t.animationName !== "spv-flow-pulse")
         return;
-      const s = t.target;
-      s instanceof SVGPathElement && s.classList.contains("spv-motion-flow") && (this._hasPopupOpen() || this._motionEngine.completeFlowPulse());
+      const r = t.target;
+      r instanceof SVGPathElement && r.classList.contains("spv-motion-flow") && (this._hasPopupOpen() || this._motionEngine.completeFlowPulse());
     }, this._handlePanelDetailScroll = (e) => {
       const t = e.currentTarget;
       if (!t)
         return;
-      const s = this._getPanelDetailMaxScrollTop(t);
-      t.scrollTop > s && (t.scrollTop = s);
+      const r = this._getPanelDetailMaxScrollTop(t);
+      t.scrollTop > r && (t.scrollTop = r);
     }, this._enableForecastOverlayFromPopup = () => {
       if (!this._config || this._isForecastOverlayEnabled())
         return;
       const e = this._getForecastEntityId("power"), t = this._getForecastEntityId("energy");
       if (this._commitConfigFromCard(
-        Me({
+        Re({
           ...this._config,
           enable_forecast_overlay: !0
         })
       ), this._showLivePowerPopup && e) {
-        const s = this._getSystemPowerEntityId(), r = s ? this._popupGraphRangeHours : this._kpiCompareRangeHours.power;
-        if (s)
-          this._ensurePopupGraphLoadedByEntity(s, r);
+        const r = this._getSystemPowerEntityId(), s = r ? this._popupGraphRangeHours : this._kpiCompareRangeHours.power;
+        if (r)
+          this._ensurePopupGraphLoadedByEntity(r, s);
         else {
-          const o = this._derived ?? (this._config && this.hass ? ge(this._config, this.hass) : null);
-          o && this._ensurePanelCompareLoaded(o, "power", r);
+          const o = this._derived ?? (this._config && this.hass ? ve(this._config, this.hass) : null);
+          o && this._ensurePanelCompareLoaded(o, "power", s);
         }
-        this._ensurePopupGraphLoadedByEntity(e, r);
+        this._ensurePopupGraphLoadedByEntity(e, s);
       }
       if (this._showEnergyPopup && t) {
-        const s = this._getSystemEnergyEntityId(), r = s ? this._popupGraphRangeHours : this._kpiCompareRangeHours.energy;
-        if (s)
-          this._ensurePopupGraphLoadedByEntity(s, r);
+        const r = this._getSystemEnergyEntityId(), s = r ? this._popupGraphRangeHours : this._kpiCompareRangeHours.energy;
+        if (r)
+          this._ensurePopupGraphLoadedByEntity(r, s);
         else {
-          const o = this._derived ?? (this._config && this.hass ? ge(this._config, this.hass) : null);
-          o && this._ensurePanelCompareLoaded(o, "energy", r);
+          const o = this._derived ?? (this._config && this.hass ? ve(this._config, this.hass) : null);
+          o && this._ensurePanelCompareLoaded(o, "energy", s);
         }
-        this._ensurePopupGraphLoadedByEntity(t, r);
+        this._ensurePopupGraphLoadedByEntity(t, s);
       }
     }, this._closeDialog = () => {
       this._closeAllPopups(), this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 };
     }, this._openLivePowerPopup = () => {
-      this._selectedPanelId = null;
+      this._selectedPanelId = null, this._clearTelemetryGraph();
       const e = this._getSystemPowerEntityId();
       if (this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 }, this._showLivePowerPopup = !0, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._popupGraphRangeHours = 6, e) {
         if (this._ensurePopupGraphLoadedByEntity(e, 6), this._isForecastOverlayEnabled()) {
@@ -2273,14 +2279,14 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
           t && this._ensurePopupGraphLoadedByEntity(t, 6);
         }
       } else {
-        const t = this._derived ?? (this._config && this.hass ? ge(this._config, this.hass) : null);
+        const t = this._derived ?? (this._config && this.hass ? ve(this._config, this.hass) : null);
         if (t && (this._kpiCompareExpanded = {
           ...this._kpiCompareExpanded,
           power: this._buildPanelCompareTargets(t, "power").length > 0
         }, this._ensurePanelCompareLoaded(t, "power", this._kpiCompareRangeHours.power)), this._isForecastOverlayEnabled()) {
-          const s = this._getForecastEntityId("power");
-          s && this._ensurePopupGraphLoadedByEntity(
-            s,
+          const r = this._getForecastEntityId("power");
+          r && this._ensurePopupGraphLoadedByEntity(
+            r,
             this._kpiCompareRangeHours.power
           );
         }
@@ -2288,7 +2294,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     }, this._closeLivePowerPopup = () => {
       this._closeAllPopups();
     }, this._openEnergyPopup = () => {
-      this._selectedPanelId = null;
+      this._selectedPanelId = null, this._clearTelemetryGraph();
       const e = this._getSystemEnergyEntityId();
       if (this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 }, this._showEnergyPopup = !0, this._showLivePowerPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._popupGraphRangeHours = 6, e) {
         if (this._ensurePopupGraphLoadedByEntity(e, 6), this._isForecastOverlayEnabled()) {
@@ -2296,14 +2302,14 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
           t && this._ensurePopupGraphLoadedByEntity(t, 6);
         }
       } else {
-        const t = this._derived ?? (this._config && this.hass ? ge(this._config, this.hass) : null);
+        const t = this._derived ?? (this._config && this.hass ? ve(this._config, this.hass) : null);
         if (t && (this._kpiCompareExpanded = {
           ...this._kpiCompareExpanded,
           energy: this._buildPanelCompareTargets(t, "energy").length > 0
         }, this._ensurePanelCompareLoaded(t, "energy", this._kpiCompareRangeHours.energy)), this._isForecastOverlayEnabled()) {
-          const s = this._getForecastEntityId("energy");
-          s && this._ensurePopupGraphLoadedByEntity(
-            s,
+          const r = this._getForecastEntityId("energy");
+          r && this._ensurePopupGraphLoadedByEntity(
+            r,
             this._kpiCompareRangeHours.energy
           );
         }
@@ -2311,13 +2317,13 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     }, this._closeEnergyPopup = () => {
       this._closeAllPopups();
     }, this._openCustomKpiPopup = () => {
-      this._selectedPanelId = null, this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 }, this._showCustomKpiPopup = !0, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showSystemHealthPopup = !1, this._popupGraphRangeHours = 6;
+      this._selectedPanelId = null, this._clearTelemetryGraph(), this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 }, this._showCustomKpiPopup = !0, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showSystemHealthPopup = !1, this._popupGraphRangeHours = 6;
       const e = this._getCustomKpiEntityId();
       e && this._ensurePopupGraphLoadedByEntity(e, 6);
     }, this._closeCustomKpiPopup = () => {
       this._closeAllPopups();
     }, this._openSystemHealthPopup = () => {
-      this._showSystemHealthPopup = !0, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._selectedPanelId = null, this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 };
+      this._showSystemHealthPopup = !0, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._selectedPanelId = null, this._clearTelemetryGraph(), this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 };
     }, this._closeSystemHealthPopup = () => {
       this._closeAllPopups();
     }, this._preventRangeChipFocusScroll = (e) => {
@@ -2329,29 +2335,29 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     };
   }
   static async getConfigElement() {
-    return await Promise.resolve().then(() => ki), document.createElement("solar-panel-visualizer-card-editor");
+    return await Promise.resolve().then(() => yo), document.createElement("solar-panel-visualizer-card-editor");
   }
   static getStubConfig() {
-    return Ys();
+    return bs();
   }
   _normalizeCardConfig(e) {
-    return Me(e);
+    return Re(e);
   }
   _renderCardOverlay(e) {
-    const t = this._getCurrentConfig(), s = this._motionEngine.getState();
-    return Zr(this._motionOverlayModel, {
+    const t = this._getCurrentConfig(), r = this._motionEngine.getState();
+    return $i(this._motionOverlayModel, {
       showTopology: !!(t?.motion_enabled ?? !0) && !!(t?.motion_power_flow ?? !0),
-      showFlow: s.powerFlowActive,
-      activeFlowPanelId: s.flowPulsePanelId,
-      powerImpactActive: s.kpiShimmers.has("power")
+      showFlow: r.powerFlowActive,
+      activeFlowPanelId: r.flowPulsePanelId,
+      powerImpactActive: r.kpiShimmers.has("power")
     });
   }
   _afterBaseUpdated(e) {
-    const t = this._getCurrentConfig(), s = this._getCurrentDerived();
-    if (!t || !s)
+    const t = this._getCurrentConfig(), r = this._getCurrentDerived();
+    if (!t || !r)
       return;
-    const r = (t.motion_enabled ?? !0) && (t.motion_power_flow ?? !0);
-    this.toggleAttribute("data-spv-busbars", r), this._motionEngine.update(this._buildMotionFlags(t), this._buildMotionSnapshot(s)), this._syncActivePulseColor(s), this._scheduleOverlayMeasure();
+    const s = (t.motion_enabled ?? !0) && (t.motion_power_flow ?? !0);
+    this.toggleAttribute("data-spv-busbars", s), this._motionEngine.update(this._buildMotionFlags(t), this._buildMotionSnapshot(r)), this._syncActivePulseColor(r), this._scheduleOverlayMeasure();
   }
   _getPanelExtraClass(e) {
     const t = [];
@@ -2373,7 +2379,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     return !!(this._selectedPanelId || this._showLivePowerPopup || this._showEnergyPopup || this._showCustomKpiPopup || this._showSystemHealthPopup);
   }
   _t(e, t) {
-    return Ps(this.hass, e, t);
+    return Br(this.hass, e, t);
   }
   _buildMotionFlags(e) {
     return {
@@ -2384,16 +2390,16 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     };
   }
   _buildMotionSnapshot(e) {
-    const t = {}, s = {};
-    for (const r of e.panels)
-      t[r.id] = r.power, s[r.id] = r.status;
+    const t = {}, r = {};
+    for (const s of e.panels)
+      t[s.id] = s.power, r[s.id] = s.status;
     return {
       totalPower: e.totalPower,
       popupOpen: this._hasPopupOpen(),
       powerKpiValue: this._resolveSummaryPower(e).value?.toString() ?? this._t("state.unavailable"),
       energyKpiValue: this._resolveSummaryEnergy(e).value?.toString() ?? this._t("state.unavailable"),
       panelPowers: t,
-      panelStatuses: s
+      panelStatuses: r
     };
   }
   _scheduleOverlayMeasure() {
@@ -2402,15 +2408,15 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     }));
   }
   _syncActivePulseColor(e) {
-    const t = this._motionEngine.getState().flowPulsePanelId, s = e.panels.find((r) => r.id === t);
-    s?.accentColor && (this._activePulseColor = s.accentColor);
+    const t = this._motionEngine.getState().flowPulsePanelId, r = e.panels.find((s) => s.id === t);
+    r?.accentColor && (this._activePulseColor = r.accentColor);
   }
   _measureOverlay() {
-    const e = this._getCurrentConfig(), t = this._getCurrentDerived(), s = this.shadowRoot;
-    if (!e || !t || !s)
+    const e = this._getCurrentConfig(), t = this._getCurrentDerived(), r = this.shadowRoot;
+    if (!e || !t || !r)
       return;
-    const r = Qr(this, s, e, t), o = JSON.stringify(r);
-    o !== this._motionOverlaySignature && (this._motionOverlayModel = r, this._motionOverlaySignature = o, this.requestUpdate());
+    const s = Pi(this, r, e, t), o = JSON.stringify(s);
+    o !== this._motionOverlaySignature && (this._motionOverlayModel = s, this._motionOverlaySignature = o, this.requestUpdate());
   }
   _startOverlayResizeObserver() {
     typeof ResizeObserver > "u" || (this._overlayResizeObserver?.disconnect(), this._overlayResizeObserver = new ResizeObserver(() => this._scheduleOverlayMeasure()), this._overlayResizeObserver.observe(this));
@@ -2434,25 +2440,25 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     super.firstUpdated(e), this.renderRoot.addEventListener("animationend", this._onMotionAnimationEnd, !0);
   }
   setConfig(e) {
-    const t = qs(e);
+    const t = ws(e);
     if (t.length > 0)
       throw new Error(t.join(" "));
-    const s = this._normalizeCardConfig(e), r = this._config !== void 0 && this._configsEqual(this._config, s);
-    this._sourceConfigRef = e, this._config = s, r || (this._historySignature = "", this._historyQuerySignature = "", this._historyLastLoadMs = 0, this._historyLoadToken = 0, this._popupGraphRangeHours = 6, this._popupGraphCache = {}, this._popupGraphLatestTokenByKey = {}, this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 }, this._kpiCompareCache = {}, this._kpiCompareLatestTokenByKey = {}, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._selectedPanelId = null), this._refreshDerived(), this._ensureHistoryLoaded();
+    const r = this._normalizeCardConfig(e), s = this._config !== void 0 && this._configsEqual(this._config, r);
+    this._sourceConfigRef = e, this._config = r, s || (this._historySignature = "", this._historyQuerySignature = "", this._historyLastLoadMs = 0, this._historyLoadToken = 0, this._popupGraphRangeHours = 6, this._popupGraphCache = {}, this._popupGraphLatestTokenByKey = {}, this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 }, this._kpiCompareCache = {}, this._kpiCompareLatestTokenByKey = {}, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._selectedPanelId = null), this._refreshDerived(), this._ensureHistoryLoaded();
   }
   _configsEqual(e, t) {
     return JSON.stringify(e) === JSON.stringify(t);
   }
   getCardSize() {
-    const e = this._config?.panels.length ?? 6, t = this._config?.columns ?? 3, s = this._computeRenderedColumns(
+    const e = this._config?.panels.length ?? 6, t = this._config?.columns ?? 3, r = this._computeRenderedColumns(
       t,
       this._config?.max_card_width_px
-    ), r = this._computeRenderedRows(e, s), o = this._computePanelHeightPx(
-      r,
-      this._config?.max_card_height_px,
+    ), s = this._computeRenderedRows(e, r), o = this._computePanelHeightPx(
       s,
+      this._config?.max_card_height_px,
+      r,
       this._config?.max_card_width_px
-    ), n = 220 + r * o + Math.max(0, r - 1) * 10, a = this._config?.max_card_height_px ? Math.min(n, this._config.max_card_height_px) : n;
+    ), n = 220 + s * o + Math.max(0, s - 1) * 10, a = this._config?.max_card_height_px ? Math.min(n, this._config.max_card_height_px) : n;
     return Math.max(5, Math.ceil(a / 50));
   }
   updated(e) {
@@ -2473,35 +2479,35 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   }
   _syncPanelDetailOverflow() {
     this.renderRoot.querySelectorAll(".panel-detail-scroll").forEach((t) => {
-      const s = t.closest(".panel");
-      if (!s)
+      const r = t.closest(".panel");
+      if (!r)
         return;
-      if (s.classList.contains("hidden-slot") || t.childElementCount === 0) {
-        s.classList.remove("has-detail-overflow"), t.scrollTop = 0;
+      if (r.classList.contains("hidden-slot") || t.childElementCount === 0) {
+        r.classList.remove("has-detail-overflow"), t.scrollTop = 0;
         return;
       }
-      const r = t.scrollTop;
-      s.classList.remove("has-detail-overflow"), this._syncPerformanceLabelFit(t);
+      const s = t.scrollTop;
+      r.classList.remove("has-detail-overflow"), this._syncPerformanceLabelFit(t);
       const o = t.scrollHeight > t.clientHeight + 1;
-      if (s.classList.toggle("has-detail-overflow", o), o) {
+      if (r.classList.toggle("has-detail-overflow", o), o) {
         this._syncPerformanceLabelFit(t);
         const n = this._getPanelDetailMaxScrollTop(t);
-        t.scrollTop = Math.min(r, n);
+        t.scrollTop = Math.min(s, n);
       } else
         t.scrollTop = 0;
     });
   }
   _getPanelDetailMaxScrollTop(e) {
-    const t = Math.max(0, e.scrollHeight - e.clientHeight), s = Array.from(e.children).filter(
+    const t = Math.max(0, e.scrollHeight - e.clientHeight), r = Array.from(e.children).filter(
       (o) => o instanceof HTMLElement && o.offsetParent !== null && o.offsetHeight > 0
-    ), r = s[s.length - 1];
-    return r ? Math.min(t, Math.max(0, r.offsetTop)) : t;
+    ), s = r[r.length - 1];
+    return s ? Math.min(t, Math.max(0, s.offsetTop)) : t;
   }
   _syncPerformanceLabelFit(e) {
     const t = e.querySelector(".performance");
     if (!t)
       return;
-    const s = t.dataset.performanceFull, r = t.dataset.performanceMedium, o = t.dataset.performanceCompact, n = [s, r, o].filter(
+    const r = t.dataset.performanceFull, s = t.dataset.performanceMedium, o = t.dataset.performanceCompact, n = [r, s, o].filter(
       (c) => !!c
     );
     if (n.length === 0)
@@ -2517,29 +2523,29 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   }
   render() {
     if (!this._config)
-      return v;
-    const e = this._derived ?? ge(this._config, this.hass), t = this.hass?.locale?.language ?? "en", s = this._t("common.unavailable"), r = this._t("common.not_configured"), o = this._resolveDefaultTitle(this._config.title), n = this._resolveThemeMode(), a = this._resolveSummaryPower(e), l = this._resolveSummaryEnergy(e), c = this._resolveCustomKpi(), d = this._isSummaryEnergyConfigured(), p = this._config.show_custom_kpi ?? !0, h = this._computeRenderedColumns(
+      return b;
+    const e = this._derived ?? ve(this._config, this.hass), t = this.hass?.locale?.language ?? "en", r = this._t("common.unavailable"), s = this._t("common.not_configured"), o = this._resolveDefaultTitle(this._config.title), n = this._resolveThemeMode(), a = this._resolveSummaryPower(e), l = this._resolveSummaryEnergy(e), c = this._resolveCustomKpi(), p = this._isSummaryEnergyConfigured(), d = this._config.show_custom_kpi ?? !0, h = this._computeRenderedColumns(
       this._config.columns,
       this._config.max_card_width_px
-    ), _ = this._computeRenderedRows(
+    ), u = this._computeRenderedRows(
       this._config.panels.length,
       h
-    ), g = this._computePanelHeightPx(
-      _,
+    ), f = this._computePanelHeightPx(
+      u,
       this._config.max_card_height_px,
       h,
       this._config.max_card_width_px
-    ), x = this._computePanelWidthPx(
+    ), g = this._computePanelWidthPx(
       h,
       this._config.max_card_width_px
-    ), C = this._computePanelScale(g), P = this._getPanelWidthCapPx(), w = P !== null ? `grid-template-columns: repeat(${h}, minmax(0, ${P}px)); justify-content: center;` : `grid-template-columns: repeat(${h}, minmax(0, 1fr));`, T = this._config.deviation_history_hours ?? 12, R = `--spv-max-width:${this._config.max_card_width_px ?? 980}px; ${this._config.max_card_height_px ? `--spv-max-height:${this._config.max_card_height_px}px;` : "--spv-max-height:none;"} --spv-panel-height:${g}px; --spv-panel-scale:${C}; --spv-panel-max-width:${P ? `${P}px` : "100%"};`, $ = this._buildSystemHealthState(e), E = e.inverterCount + e.errorCount + e.offlineCount + e.deviationCount, D = this._motionOverlayModel ? `width:${this._motionOverlayModel.width}px; height:${this._motionOverlayModel.height}px;` : "", A = (this._config.enable_array_checks ?? !1) && this._historyState === "loading" ? this._t("card.subtitle.loading_history", { hours: T }) : e.deviationReady ? e.deviationCount > 0 ? this._t("card.subtitle.deviation_detected", {
+    ), P = this._computePanelScale(f), S = this._getPanelWidthCapPx(), x = S !== null ? `grid-template-columns: repeat(${h}, minmax(0, ${S}px)); justify-content: center;` : `grid-template-columns: repeat(${h}, minmax(0, 1fr));`, I = this._config.deviation_history_hours ?? 12, A = `--spv-max-width:${this._config.max_card_width_px ?? 980}px; ${this._config.max_card_height_px ? `--spv-max-height:${this._config.max_card_height_px}px;` : "--spv-max-height:none;"} --spv-panel-height:${f}px; --spv-panel-scale:${P}; --spv-panel-max-width:${S ? `${S}px` : "100%"};`, $ = this._buildSystemHealthState(e), E = e.inverterCount + e.errorCount + e.offlineCount + e.deviationCount, D = this._motionOverlayModel ? `width:${this._motionOverlayModel.width}px; height:${this._motionOverlayModel.height}px;` : "", R = (this._config.enable_array_checks ?? !1) && this._historyState === "loading" ? this._t("card.subtitle.loading_history", { hours: I }) : e.deviationReady ? e.deviationCount > 0 ? this._t("card.subtitle.deviation_detected", {
       count: e.deviationCount,
       suffix: e.deviationCount === 1 ? "" : "s"
     }) : this._t("card.subtitle.tap_diagnostics") : this._historyStateReason ?? e.deviationSuppressedReason ?? this._t("card.subtitle.warmup"), m = e.panels.find(
-      (b) => b.id === this._selectedPanelId
+      (w) => w.id === this._selectedPanelId
     );
-    return f`
-      <ha-card style=${R} data-spv-theme=${n}>
+    return y`
+      <ha-card style=${A} data-spv-theme=${n}>
         <div class="chrome"></div>
         <div class="spv-overlay-anchor" style=${D}>
           ${this._renderCardOverlay(e)}
@@ -2558,10 +2564,10 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
               </button>
             </div>
             <h1 class="title">${o}</h1>
-            <p class="subtitle">${A}</p>
+            <p class="subtitle">${R}</p>
             <p class="subtitle subtitle-hint">${this._t("card.subtitle.drag_hint")}</p>
           </div>
-          <div class="summary ${p ? "with-custom" : "without-custom"}">
+          <div class="summary ${d ? "with-custom" : "without-custom"}">
             <button
               class="summary-chip summary-button ${this._getSummaryExtraClass("power")}"
               style=${this._getSummaryExtraStyle("power")}
@@ -2571,11 +2577,11 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             >
               <span class="summary-label">${this._t("card.summary.power")}</span>
               <span class="summary-value">
-                ${ke(
+                ${Me(
       a.value,
       this._config.power_decimals ?? 0,
       a.unit,
-      s,
+      r,
       t
     )}
               </span>
@@ -2589,13 +2595,13 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             >
               <span class="summary-label">${this._t("card.summary.energy")}</span>
               <span class="summary-value">
-                ${d ? ke(
+                ${p ? Me(
       l.value,
       this._config.energy_decimals ?? 2,
       l.unit,
-      s,
+      r,
       t
-    ) : r}
+    ) : s}
               </span>
             </button>
             <div
@@ -2608,7 +2614,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
                 ${E}
               </span>
             </div>
-            ${p ? f`
+            ${d ? y`
                   <button
                     class="summary-chip summary-button ${this._getSummaryExtraClass("custom")}"
                     style=${this._getSummaryExtraStyle("custom")}
@@ -2619,22 +2625,22 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
                     <span class="summary-label">${this._resolveCustomKpiTitle(c.title)}</span>
                     <span class="summary-value custom-kpi-value">${c.value}</span>
                   </button>
-                ` : v}
+                ` : b}
           </div>
         </div>
 
         <div
           class="grid"
-          style=${w}
+          style=${x}
         >
-          ${e.panels.map((b) => this._renderPanel(b, g, x))}
+          ${e.panels.map((w) => this._renderPanel(w, f, g))}
         </div>
 
-        ${this._showLivePowerPopup ? this._renderLivePowerDialog(e) : v}
-        ${this._showEnergyPopup ? this._renderEnergyDialog(e) : v}
-        ${this._showCustomKpiPopup ? this._renderCustomKpiDialog() : v}
-        ${this._showSystemHealthPopup ? this._renderSystemHealthDialog(e) : v}
-        ${m ? this._renderPanelDialog(m) : v}
+        ${this._showLivePowerPopup ? this._renderLivePowerDialog(e) : b}
+        ${this._showEnergyPopup ? this._renderEnergyDialog(e) : b}
+        ${this._showCustomKpiPopup ? this._renderCustomKpiDialog() : b}
+        ${this._showSystemHealthPopup ? this._renderSystemHealthDialog(e) : b}
+        ${m ? this._renderPanelDialog(m) : b}
       </ha-card>
     `;
   }
@@ -2643,34 +2649,34 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       this._derived = void 0;
       return;
     }
-    this._derived = ge(this._config, this.hass, {
+    this._derived = ve(this._config, this.hass, {
       deviationEnabled: this._config.enable_array_checks ?? !1,
       historyByEntityId: this._historyByEntityId,
       nowMs: Date.now()
     });
   }
   _formatSlotLabel(e) {
-    const t = this._config?.columns ?? 1, s = Math.floor(e / t) + 1, r = e % t + 1;
-    return this._t("card.panel.slot_label", { row: s, column: r });
+    const t = this._config?.columns ?? 1, r = Math.floor(e / t) + 1, s = e % t + 1;
+    return this._t("card.panel.slot_label", { row: r, column: s });
   }
-  _renderPanel(e, t, s) {
-    const r = this._shouldShowPerformance(e, t, s), o = this._getPanelExtraClass(e), n = ui(e.inverterStatusDisplay), a = this._formatInverterTileSummary(e, n), l = Math.max(0, Math.min(e.intensity, 1)), c = Math.round(24 + l * 62), d = Math.round(6 + l * 24), p = Math.round(4 + l * 18), h = [
+  _renderPanel(e, t, r) {
+    const s = this._shouldShowPerformance(e, t, r), o = this._getPanelExtraClass(e), n = Hi(e.inverterStatusDisplay), a = this._formatInverterTileSummary(e, n), l = Math.max(0, Math.min(e.intensity, 1)), c = Math.round(24 + l * 62), p = Math.round(6 + l * 24), d = Math.round(4 + l * 18), h = [
       `--panel-accent:${e.accentColor}`,
       `--panel-intensity:${l.toFixed(3)}`,
       `--panel-border-accent:color-mix(in srgb, ${e.accentColor} ${c}%, var(--spv-panel-accent-mix-base))`,
-      `--panel-fill-accent:color-mix(in srgb, ${e.accentColor} ${d}%, transparent)`,
-      `--panel-glow-accent:color-mix(in srgb, ${e.accentColor} ${p}%, transparent)`
-    ].join("; "), _ = r ? this._buildPanelPerformanceLabelCandidates(e) : null;
-    return e.hiddenSlot ? f`
+      `--panel-fill-accent:color-mix(in srgb, ${e.accentColor} ${p}%, transparent)`,
+      `--panel-glow-accent:color-mix(in srgb, ${e.accentColor} ${d}%, transparent)`
+    ].join("; "), u = s ? this._buildPanelPerformanceLabelCandidates(e) : null;
+    return e.hiddenSlot ? y`
         <button
           class="panel hidden-slot ${o}"
           type="button"
           data-panel-id=${e.id}
           data-slot-index=${String(e.slotIndex)}
           draggable="true"
-          @dragstart=${(g) => this._handleDragStart(g, e.slotIndex)}
+          @dragstart=${(f) => this._handleDragStart(f, e.slotIndex)}
           @dragover=${this._handleDragOver}
-          @drop=${(g) => this._handleDrop(g, e.slotIndex)}
+          @drop=${(f) => this._handleDrop(f, e.slotIndex)}
           @dragend=${this._handleDragEnd}
         >
           <span class="status">${this._t("card.panel.hidden")}</span>
@@ -2686,17 +2692,17 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
           </div>
           <span class="slot">${this._formatSlotLabel(e.slotIndex)}</span>
         </button>
-      ` : f`
+      ` : y`
       <button
-        class="panel ${e.status} ${r ? "has-performance" : ""} ${o}"
+        class="panel ${e.status} ${s ? "has-performance" : ""} ${o}"
         type="button"
         style=${h}
         data-panel-id=${e.id}
         data-slot-index=${String(e.slotIndex)}
         draggable="true"
-        @dragstart=${(g) => this._handleDragStart(g, e.slotIndex)}
+        @dragstart=${(f) => this._handleDragStart(f, e.slotIndex)}
         @dragover=${this._handleDragOver}
-        @drop=${(g) => this._handleDrop(g, e.slotIndex)}
+        @drop=${(f) => this._handleDrop(f, e.slotIndex)}
         @dragend=${this._handleDragEnd}
         @click=${() => this._handlePanelClick(e)}
       >
@@ -2706,33 +2712,33 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
           <p class="power">${e.powerDisplay}</p>
         </div>
         <div class="panel-detail-scroll" @scroll=${this._handlePanelDetailScroll}>
-          ${r ? f`<p
+          ${s ? y`<p
                 class="performance"
-                data-performance-full=${_?.[0]?.text ?? ""}
-                data-performance-medium=${_?.[1]?.text ?? ""}
-                data-performance-compact=${_?.[2]?.text ?? ""}
+                data-performance-full=${u?.[0]?.text ?? ""}
+                data-performance-medium=${u?.[1]?.text ?? ""}
+                data-performance-compact=${u?.[2]?.text ?? ""}
               >
                 ${this._formatPanelPerformanceText(
       e,
-      s,
+      r,
       t,
-      _
+      u
     )}
-              </p>` : v}
-          ${e.energyDisplay ? f`<p class="energy">${e.energyDisplay}</p>` : v}
-          ${(this._config?.show_inverter_status_on_tiles ?? !1) && a ? f`<p class="inverter-status">${a}</p>` : v}
+              </p>` : b}
+          ${e.energyDisplay ? y`<p class="energy">${e.energyDisplay}</p>` : b}
+          ${(this._config?.show_inverter_status_on_tiles ?? !1) && a ? y`<p class="inverter-status">${a}</p>` : b}
         </div>
         <span class="slot">${this._formatSlotLabel(e.slotIndex)}</span>
       </button>
     `;
   }
   _renderPopupCloseButton(e, t) {
-    return f`
+    return y`
       <div class="spv-popup-close-anchor">
         <button
           class="spv-popup-close"
           type="button"
-          @click=${(s) => this._handlePopupCloseClick(s, e)}
+          @click=${(r) => this._handlePopupCloseClick(r, e)}
           aria-label=${t}
         >
           ×
@@ -2747,10 +2753,10 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       });
   }
   _renderPanelDialog(e) {
-    const s = this._getPanelConfig(e.id)?.energy_entity ? e.energyDisplay ?? this._t("common.unavailable") : this._t("common.not_configured");
-    return e.status === "unconfigured" ? f`
+    const r = this._getPanelConfig(e.id)?.energy_entity ? e.energyDisplay ?? this._t("common.unavailable") : this._t("common.not_configured");
+    return e.status === "unconfigured" ? y`
         <div class="spv-popup-backdrop" @click=${this._closeDialog}>
-          <div class="spv-popup" @click=${(r) => r.stopPropagation()}>
+          <div class="spv-popup" @click=${(s) => s.stopPropagation()}>
             ${this._renderPopupCloseButton(this._closeDialog, this._t("card.popup.close_detail"))}
             <div class="spv-popup-header">
               <div>
@@ -2764,9 +2770,9 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             ${this._renderPanelTelemetrySection(e)}
           </div>
         </div>
-      ` : f`
+      ` : y`
       <div class="spv-popup-backdrop" @click=${this._closeDialog}>
-        <div class="spv-popup" @click=${(r) => r.stopPropagation()}>
+        <div class="spv-popup" @click=${(s) => s.stopPropagation()}>
           ${this._renderPopupCloseButton(this._closeDialog, this._t("card.popup.close_detail"))}
           <div class="spv-popup-header">
             <div>
@@ -2791,7 +2797,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             <div class="detail-card">
               <span class="detail-label">${this._t("card.popup.detail.energy")}</span>
               <span class="detail-value">
-                ${s}
+                ${r}
               </span>
             </div>
             <div class="detail-card">
@@ -2817,9 +2823,9 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             <span class="detail-label">${this._t("card.popup.detail.information")}</span>
             <div class="info-lines">
               <p class="info-line">${e.reason}</p>
-              ${e.powerEntityName ? f`<p class="info-line">${this._t("card.popup.info.power_source", {
+              ${e.powerEntityName ? y`<p class="info-line">${this._t("card.popup.info.power_source", {
       value: e.powerEntityName
-    })}</p>` : v}
+    })}</p>` : b}
               <p class="info-line">
                 ${this._t("card.popup.info.current_inverter_status", {
       value: e.inverterStatusDisplay ?? this._t("common.not_configured")
@@ -2846,47 +2852,105 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   _renderPanelTelemetrySection(e) {
     const t = this._getPanelConfig(e.id);
     if (!t)
-      return v;
-    const s = this._getPanelTelemetryMetrics(t), r = s.filter((a) => !!a.entityId), o = s.filter((a) => !a.entityId), n = r.length > 0;
-    return f`
+      return b;
+    const r = this._getPanelTelemetryMetrics(t), s = r.filter((l) => !!l.entityId), o = r.filter((l) => !l.entityId), n = s.length > 0, a = this._telemetryGraphPanelId === e.id ? this._telemetryGraphEntityId : null;
+    return y`
       <section class="telemetry-section">
         <h3 class="telemetry-title">${this._t("card.popup.telemetry.title")}</h3>
 
-        ${n ? f`
+        ${n ? y`
               <div class="telemetry-group">
                 <h4 class="telemetry-title">${this._t("card.popup.telemetry.configured_title")}</h4>
                 <div class="telemetry-grid">
-                  ${r.map(
-      (a) => f`
-                      <div class="detail-card">
-                        <span class="detail-label">${a.label}</span>
-                        <span class="detail-value">
-                          ${this._formatTelemetryMetricValue(a.entityId ?? "")}
-                        </span>
-                      </div>
-                    `
+                  ${s.map(
+      (l) => this._renderTelemetryMetricCard(
+        e.id,
+        l,
+        l.entityId === a
+      )
     )}
                 </div>
               </div>
-            ` : v}
+            ` : b}
 
-        ${o.length > 0 ? f`
+        ${o.length > 0 ? y`
               <div class="telemetry-group">
                 <h4 class="telemetry-title">${this._t("card.popup.telemetry.unconfigured_title")}</h4>
                 <p class="telemetry-empty">${this._t("card.popup.telemetry.setup_hint")}</p>
                 <div class="telemetry-grid">
                   ${o.map(
-      (a) => f`
-                      <div class="detail-card">
-                        <span class="detail-label">${a.label}</span>
+      (l) => y`
+                      <div class="detail-card telemetry-card">
+                        <span class="detail-label">${l.label}</span>
                         <span class="detail-value">${this._t("common.not_configured")}</span>
                       </div>
                     `
     )}
                 </div>
               </div>
-            ` : n ? v : f`<p class="telemetry-empty">${this._t("card.popup.telemetry.setup_hint")}</p>`}
+            ` : n ? b : y`<p class="telemetry-empty">${this._t("card.popup.telemetry.setup_hint")}</p>`}
       </section>
+    `;
+  }
+  _renderTelemetryMetricCard(e, t, r) {
+    const s = t.entityId;
+    return s ? y`
+      <div class="detail-card telemetry-card is-expandable ${r ? "is-open" : ""}">
+        <button
+          class="telemetry-card-toggle"
+          type="button"
+          aria-expanded=${r ? "true" : "false"}
+          @click=${(o) => this._toggleTelemetryGraph(o, e, s)}
+        >
+          <span class="telemetry-card-main">
+            <span class="detail-label">${t.label}</span>
+            <span class="detail-value">
+              ${this._formatTelemetryMetricValue(s)}
+            </span>
+          </span>
+          <span class="telemetry-card-affordance" aria-hidden="true">
+            ${r ? "-" : "+"}
+          </span>
+        </button>
+        ${r ? this._renderTelemetryMetricGraph(t) : b}
+      </div>
+    ` : b;
+  }
+  _renderTelemetryMetricGraph(e) {
+    const t = e.entityId;
+    if (!t)
+      return b;
+    const r = this._telemetryGraphRangeHours, s = this._getPopupGraphCacheKey(t, r), o = this._popupGraphCache[s], n = o?.samples ?? [], a = this._adjustGraphSamplesForEntity(t, n), l = this._getUnitForEntity(t, "");
+    return y`
+      <div class="telemetry-card-graph">
+        <div class="graph-header">
+          <span class="graph-title">${e.label}</span>
+          <div class="range-chips">
+            ${qe.map(
+      (c) => y`
+                <button
+                  class="range-chip ${this._telemetryGraphRangeHours === c ? "active" : ""}"
+                  type="button"
+                  @pointerdown=${this._preventRangeChipFocusScroll}
+                  @mousedown=${this._preventRangeChipFocusScroll}
+                  @click=${(p) => this._handleTelemetryGraphRangeChange(p, t, c)}
+                >
+                  ${c}h
+                </button>
+              `
+    )}
+          </div>
+        </div>
+        ${this._renderPopupGraphBodyFromSamples(
+      s,
+      l,
+      a,
+      r,
+      o?.loading ?? !1,
+      o?.error,
+      { fillStartWithFirstSample: !0 }
+    )}
+      </div>
     `;
   }
   _getPanelTelemetryMetrics(e) {
@@ -2930,175 +2994,175 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     const t = this.hass?.states?.[e];
     if (!t)
       return this._t("common.unavailable");
-    const s = t.state?.toString().trim() ?? "", r = s.toLowerCase();
-    if (r.length === 0 || bi.has(r))
+    const r = t.state?.toString().trim() ?? "", s = r.toLowerCase();
+    if (s.length === 0 || ji.has(s))
       return this._t("common.unavailable");
     const o = Number(t.state), n = typeof t.attributes?.unit_of_measurement == "string" ? t.attributes.unit_of_measurement.trim() : "";
     if (Number.isFinite(o)) {
-      const a = this.hass?.locale?.language ?? "en", l = Object.is(o, -0) ? 0 : o, c = Number.isInteger(l) ? 0 : 2, d = new Intl.NumberFormat(a, {
+      const a = this.hass?.locale?.language ?? "en", l = Object.is(o, -0) ? 0 : o, c = Number.isInteger(l) ? 0 : 2, p = new Intl.NumberFormat(a, {
         minimumFractionDigits: 0,
         maximumFractionDigits: c
       }).format(l);
-      return n ? `${d} ${n}` : d;
+      return n ? `${p} ${n}` : p;
     }
-    return n ? `${s} ${n}` : s;
+    return n ? `${r} ${n}` : r;
   }
   _renderKpiCompareControls(e, t) {
-    const s = this._kpiCompareExpanded[t], r = t === "power" ? this._t("card.popup.panel_compare.toggle_power") : this._t("card.popup.panel_compare.toggle_energy");
-    return f`
+    const r = this._kpiCompareExpanded[t], s = t === "power" ? this._t("card.popup.panel_compare.toggle_power") : this._t("card.popup.panel_compare.toggle_energy");
+    return y`
       <div class="compare-toggle-row">
         <button
           class="inline-button"
           type="button"
           @click=${(o) => this._togglePanelCompareGraph(o, t, e)}
         >
-          ${r}
+          ${s}
         </button>
       </div>
-      ${s ? this._renderPanelCompareGraph(e, t) : v}
+      ${r ? this._renderPanelCompareGraph(e, t) : b}
     `;
   }
-  _togglePanelCompareGraph(e, t, s) {
-    const r = this._captureScrollPositionsForPopupGraph(e), o = !this._kpiCompareExpanded[t];
+  _togglePanelCompareGraph(e, t, r) {
+    const s = this._captureScrollPositionsForPopupGraph(e), o = !this._kpiCompareExpanded[t];
     this._kpiCompareExpanded = {
       ...this._kpiCompareExpanded,
       [t]: o
-    }, this._scheduleCapturedScrollRestore(r), o && this._ensurePanelCompareLoaded(
-      s,
+    }, this._scheduleCapturedScrollRestore(s), o && this._ensurePanelCompareLoaded(
+      r,
       t,
       this._kpiCompareRangeHours[t],
-      r
+      s
     );
   }
   _renderPanelCompareGraph(e, t) {
-    const s = this._buildPanelCompareTargets(e, t), r = this._kpiCompareRangeHours[t];
-    if (s.length === 0)
-      return f`
+    const r = this._buildPanelCompareTargets(e, t), s = this._kpiCompareRangeHours[t];
+    if (r.length === 0)
+      return y`
         <p class="graph-state">
           ${t === "energy" ? this._t("card.popup.panel_compare.no_panels_energy") : this._t("card.popup.panel_compare.no_panels_power")}
         </p>
       `;
-    const o = this._getPanelCompareSignature(t, s), n = this._getPanelCompareCacheKey(t, o, r), a = this._kpiCompareCache[n], l = a?.loading ?? !1, c = a?.error, d = s.map((y, S) => ({
-      ...y,
-      color: Wt[S % Wt.length],
+    const o = this._getPanelCompareSignature(t, r), n = this._getPanelCompareCacheKey(t, o, s), a = this._kpiCompareCache[n], l = a?.loading ?? !1, c = a?.error, p = r.map((v, C) => ({
+      ...v,
+      color: ir[C % ir.length],
       samples: this._adjustGraphSamplesForEntity(
-        y.entityId,
-        a?.samplesByPanelId[y.panelId] ?? []
+        v.entityId,
+        a?.samplesByPanelId[v.panelId] ?? []
       )
-    })), p = hi(
-      d.map((y) => ({
-        id: y.panelId,
-        samples: y.samples
+    })), d = Gi(
+      p.map((v) => ({
+        id: v.panelId,
+        samples: v.samples
       })),
       Date.now(),
-      r,
-      tt,
+      s,
+      mt,
       320,
       132,
       10
-    ), h = new Map(p.series.map((y) => [y.id, y])), _ = p.series.some(
-      (y) => y.sampleCount > 0 && (y.pointsCount === 0 || y.sampleCount > 1 && y.pointsCount < 2)
-    ), g = p.hasData && p.drawableCount === 0, x = g || _, C = t === "energy" ? "kWh" : "W", P = p.series.flatMap(
-      (y) => y.samples.map((S) => S.value).filter((S) => Number.isFinite(S))
-    ), w = P.length > 0 ? this._computeGraphStats(
-      P.map((y, S) => ({
-        ts: S,
-        value: y
+    ), h = new Map(d.series.map((v) => [v.id, v])), u = d.series.some(
+      (v) => v.sampleCount > 0 && (v.pointsCount === 0 || v.sampleCount > 1 && v.pointsCount < 2)
+    ), f = d.hasData && d.drawableCount === 0, g = f || u, P = t === "energy" ? "kWh" : "W", S = d.series.flatMap(
+      (v) => v.samples.map((C) => C.value).filter((C) => Number.isFinite(C))
+    ), x = S.length > 0 ? this._computeGraphStats(
+      S.map((v, C) => ({
+        ts: C,
+        value: v
       }))
-    ) : { min: null, max: null, median: null }, T = P.length > 0 ? Math.min(...P) : null, R = P.length > 0 ? Math.max(...P) : null, $ = T === null || R === null ? null : T === R ? T - 1 : T, E = T === null || R === null ? null : T === R ? R + 1 : R, D = w.max !== null && $ !== null && E !== null ? this._toGraphY(w.max, $, E, 132, 10) : null, A = w.median !== null && $ !== null && E !== null ? this._toGraphY(w.median, $, E, 132, 10) : null, m = w.min !== null && $ !== null && E !== null ? this._toGraphY(w.min, $, E, 132, 10) : null, b = w.max !== null ? this._t("card.popup.history.max", {
-      value: this._formatGraphPower(w.max, C)
-    }) : null, k = w.median !== null ? this._t("card.popup.history.median", {
-      value: this._formatGraphPower(w.median, C)
-    }) : null, F = w.min !== null ? this._t("card.popup.history.min", {
-      value: this._formatGraphPower(w.min, C)
-    }) : null, M = this._buildGraphHourTicks(
+    ) : { min: null, max: null, median: null }, I = S.length > 0 ? Math.min(...S) : null, A = S.length > 0 ? Math.max(...S) : null, $ = I === null || A === null ? null : I === A ? I - 1 : I, E = I === null || A === null ? null : I === A ? A + 1 : A, D = x.max !== null && $ !== null && E !== null ? this._toGraphY(x.max, $, E, 132, 10) : null, R = x.median !== null && $ !== null && E !== null ? this._toGraphY(x.median, $, E, 132, 10) : null, m = x.min !== null && $ !== null && E !== null ? this._toGraphY(x.min, $, E, 132, 10) : null, w = x.max !== null ? this._t("card.popup.history.max", {
+      value: this._formatGraphPower(x.max, P)
+    }) : null, k = x.median !== null ? this._t("card.popup.history.median", {
+      value: this._formatGraphPower(x.median, P)
+    }) : null, T = x.min !== null ? this._t("card.popup.history.min", {
+      value: this._formatGraphPower(x.min, P)
+    }) : null, F = this._buildGraphHourTicks(
       {
-        startTs: p.startTs,
-        endTs: p.endTs
+        startTs: d.startTs,
+        endTs: d.endTs
       },
-      r
-    ), O = this._buildGraphAxisTicks(M), J = t === "energy" ? this._t("card.popup.history.panel_compare_energy") : this._t("card.popup.history.panel_compare_power");
-    return f`
+      s
+    ), O = this._buildGraphAxisTicks(F), ee = t === "energy" ? this._t("card.popup.history.panel_compare_energy") : this._t("card.popup.history.panel_compare_power");
+    return y`
       <div class="graph-section">
         <div class="graph-header">
-          <span class="graph-title">${J}</span>
+          <span class="graph-title">${ee}</span>
           <div class="range-chips">
-            ${et.map(
-      (y) => f`
+            ${qe.map(
+      (v) => y`
                 <button
-                  class="range-chip ${this._kpiCompareRangeHours[t] === y ? "active" : ""}"
+                  class="range-chip ${this._kpiCompareRangeHours[t] === v ? "active" : ""}"
                   type="button"
                   @pointerdown=${this._preventRangeChipFocusScroll}
                   @mousedown=${this._preventRangeChipFocusScroll}
-                  @click=${(S) => this._handlePanelCompareRangeChange(S, e, t, y)}
+                  @click=${(C) => this._handlePanelCompareRangeChange(C, e, t, v)}
                 >
-                  ${y}h
+                  ${v}h
                 </button>
               `
     )}
           </div>
         </div>
 
-        ${l ? f`<p class="graph-state">${this._t("card.popup.panel_compare.loading")}</p>` : c ? f`<p class="graph-state">${c}</p>` : p.hasData ? g ? f`<p class="graph-state">${this._t("card.popup.panel_compare.render_failure")}</p>` : f`
+        ${l ? y`<p class="graph-state">${this._t("card.popup.panel_compare.loading")}</p>` : c ? y`<p class="graph-state">${c}</p>` : d.hasData ? f ? y`<p class="graph-state">${this._t("card.popup.panel_compare.render_failure")}</p>` : y`
                   <div class="graph-box">
-                    ${b ? f`<span class="graph-overlay graph-overlay-max">${b}</span>` : v}
-                    ${k ? f`
+                    ${w ? y`<span class="graph-overlay graph-overlay-max">${w}</span>` : b}
+                    ${k ? y`
                           <span class="graph-overlay graph-overlay-median">
                             ${k}
                           </span>
-                        ` : v}
-                    ${F ? f`<span class="graph-overlay graph-overlay-min">${F}</span>` : v}
+                        ` : b}
+                    ${T ? y`<span class="graph-overlay graph-overlay-min">${T}</span>` : b}
                     <svg class="graph-svg" viewBox="0 0 320 132" preserveAspectRatio="none">
-                      ${M.map(
-      (y) => B`
+                      ${F.map(
+      (v) => z`
                           <line
                             class="graph-hour-line"
-                            x1=${y.x.toFixed(2)}
-                            x2=${y.x.toFixed(2)}
+                            x1=${v.x.toFixed(2)}
+                            x2=${v.x.toFixed(2)}
                             y1="10"
                             y2="122"
                           ></line>
                         `
     )}
-                      ${d.map((y) => {
-      const S = h.get(y.panelId);
-      return !S || S.pointsCount === 0 ? v : S.pointsCount >= 2 ? B`
+                      ${p.map((v) => {
+      const C = h.get(v.panelId);
+      return !C || C.pointsCount === 0 ? b : C.pointsCount >= 2 ? z`
                             <path
-                              d=${S.linePath}
+                              d=${C.linePath}
                               fill="none"
-                              stroke=${y.color}
+                              stroke=${v.color}
                               stroke-width="1.08"
                               stroke-linejoin="round"
                               stroke-linecap="round"
                               opacity="0.88"
                             ></path>
-                            ${S.firstPoint && S.lastPoint ? B`
+                            ${C.firstPoint && C.lastPoint ? z`
                                   <circle
-                                    cx=${S.firstPoint.x.toFixed(2)}
-                                    cy=${S.firstPoint.y.toFixed(2)}
+                                    cx=${C.firstPoint.x.toFixed(2)}
+                                    cy=${C.firstPoint.y.toFixed(2)}
                                     r="1.7"
-                                    fill=${y.color}
+                                    fill=${v.color}
                                     opacity="0.95"
                                   ></circle>
                                   <circle
-                                    cx=${S.lastPoint.x.toFixed(2)}
-                                    cy=${S.lastPoint.y.toFixed(2)}
+                                    cx=${C.lastPoint.x.toFixed(2)}
+                                    cy=${C.lastPoint.y.toFixed(2)}
                                     r="1.7"
-                                    fill=${y.color}
+                                    fill=${v.color}
                                     opacity="0.95"
                                   ></circle>
-                                ` : v}
-                          ` : S.firstPoint ? B`
+                                ` : b}
+                          ` : C.firstPoint ? z`
                           <circle
-                            cx=${S.firstPoint.x.toFixed(2)}
-                            cy=${S.firstPoint.y.toFixed(2)}
+                            cx=${C.firstPoint.x.toFixed(2)}
+                            cy=${C.firstPoint.y.toFixed(2)}
                             r="2.4"
-                            fill=${y.color}
+                            fill=${v.color}
                             opacity="0.95"
                           ></circle>
-                        ` : v;
+                        ` : b;
     })}
-                      ${D !== null ? B`
+                      ${D !== null ? z`
                             <line
                               class="graph-stat-line graph-stat-max"
                               x1="10"
@@ -3106,17 +3170,17 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
                               y1=${D.toFixed(2)}
                               y2=${D.toFixed(2)}
                             ></line>
-                          ` : v}
-                      ${A !== null ? B`
+                          ` : b}
+                      ${R !== null ? z`
                             <line
                               class="graph-stat-line graph-stat-median"
                               x1="10"
                               x2="310"
-                              y1=${A.toFixed(2)}
-                              y2=${A.toFixed(2)}
+                              y1=${R.toFixed(2)}
+                              y2=${R.toFixed(2)}
                             ></line>
-                          ` : v}
-                      ${m !== null ? B`
+                          ` : b}
+                      ${m !== null ? z`
                             <line
                               class="graph-stat-line graph-stat-min"
                               x1="10"
@@ -3124,14 +3188,14 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
                               y1=${m.toFixed(2)}
                               y2=${m.toFixed(2)}
                             ></line>
-                          ` : v}
+                          ` : b}
                     </svg>
                   </div>
                   <div class="graph-axis">
                     ${O.map(
-      (y) => f`
-                        <span class="graph-axis-label" style=${`left:${y.leftPercent.toFixed(2)}%;`}>
-                          ${y.label}
+      (v) => y`
+                        <span class="graph-axis-label" style=${`left:${v.leftPercent.toFixed(2)}%;`}>
+                          ${v.label}
                         </span>
                       `
     )}
@@ -3139,58 +3203,58 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
                   <div class="graph-meta">
                     <span>
                       ${this._t("card.popup.history.time_range", {
-      start: this._formatGraphTime(p.startTs),
-      end: this._formatGraphTime(p.endTs)
+      start: this._formatGraphTime(d.startTs),
+      end: this._formatGraphTime(d.endTs)
     })}
                     </span>
                   </div>
-                ` : f`<p class="graph-state">${this._t("card.popup.panel_compare.no_data")}</p>`}
+                ` : y`<p class="graph-state">${this._t("card.popup.panel_compare.no_data")}</p>`}
 
-        ${x ? f`
+        ${g ? y`
               <div class="compare-diagnostics">
                 <span class="compare-diagnostics-title">
                   ${this._t("card.popup.panel_compare.diagnostics_title")}
                 </span>
                 <span class="compare-diagnostics-row">
                   ${this._t("card.popup.panel_compare.diagnostics_summary", {
-      hasData: p.hasData ? "true" : "false",
-      drawable: p.drawableCount,
-      series: p.series.length,
-      range: r
+      hasData: d.hasData ? "true" : "false",
+      drawable: d.drawableCount,
+      series: d.series.length,
+      range: s
     })}
                 </span>
                 <span class="compare-diagnostics-row">
-                  ${g ? this._t("card.popup.panel_compare.diagnostics_reason_render_failure") : this._t("card.popup.panel_compare.diagnostics_reason_suspect")}
+                  ${f ? this._t("card.popup.panel_compare.diagnostics_reason_render_failure") : this._t("card.popup.panel_compare.diagnostics_reason_suspect")}
                 </span>
-                ${d.map((y) => {
-      const S = h.get(y.panelId), U = this._getUnitForEntity(y.entityId, C);
-      return f`
+                ${p.map((v) => {
+      const C = h.get(v.panelId), U = this._getUnitForEntity(v.entityId, P);
+      return y`
                     <span class="compare-diagnostics-row">
                       ${this._t("card.popup.panel_compare.diagnostics_row", {
-        label: y.label,
-        samples: S?.sampleCount ?? 0,
-        points: S?.pointsCount ?? 0,
-        pathLen: S?.linePath.length ?? 0,
-        first: this._formatGraphDiagnosticTime(S?.firstTs ?? null),
-        last: this._formatGraphDiagnosticTime(S?.lastTs ?? null),
-        min: S?.minValue === null || S?.minValue === void 0 ? "--" : this._formatGraphPower(S.minValue, U),
-        max: S?.maxValue === null || S?.maxValue === void 0 ? "--" : this._formatGraphPower(S.maxValue, U)
+        label: v.label,
+        samples: C?.sampleCount ?? 0,
+        points: C?.pointsCount ?? 0,
+        pathLen: C?.linePath.length ?? 0,
+        first: this._formatGraphDiagnosticTime(C?.firstTs ?? null),
+        last: this._formatGraphDiagnosticTime(C?.lastTs ?? null),
+        min: C?.minValue === null || C?.minValue === void 0 ? "--" : this._formatGraphPower(C.minValue, U),
+        max: C?.maxValue === null || C?.maxValue === void 0 ? "--" : this._formatGraphPower(C.maxValue, U)
       })}
                     </span>
                   `;
     })}
               </div>
-            ` : v}
+            ` : b}
 
         <div class="compare-legend">
-          ${d.map(
-      (y) => f`
+          ${p.map(
+      (v) => y`
               <div class="compare-legend-item">
                 <span
                   class="compare-legend-chip"
-                  style=${`background:${y.color};`}
+                  style=${`background:${v.color};`}
                 ></span>
-                <span class="compare-legend-label">${y.label}</span>
+                <span class="compare-legend-label">${v.label}</span>
               </div>
             `
     )}
@@ -3198,43 +3262,43 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       </div>
     `;
   }
-  _renderAggregatedPanelGraph(e, t, s = {}) {
-    const r = this._buildPanelCompareTargets(e, t), o = this._kpiCompareRangeHours[t];
-    if (r.length === 0)
-      return f`
+  _renderAggregatedPanelGraph(e, t, r = {}) {
+    const s = this._buildPanelCompareTargets(e, t), o = this._kpiCompareRangeHours[t];
+    if (s.length === 0)
+      return y`
         <p class="graph-state">
           ${t === "energy" ? this._t("card.popup.panel_compare.no_panels_energy") : this._t("card.popup.panel_compare.no_panels_power")}
         </p>
       `;
-    const n = this._getPanelCompareSignature(t, r), a = this._getPanelCompareCacheKey(t, n, o), l = this._kpiCompareCache[a], c = l?.loading ?? !1, d = l?.error, p = ci(
-      r.map(
-        (g) => this._adjustGraphSamplesForEntity(
-          g.entityId,
-          l?.samplesByPanelId[g.panelId] ?? []
+    const n = this._getPanelCompareSignature(t, s), a = this._getPanelCompareCacheKey(t, n, o), l = this._kpiCompareCache[a], c = l?.loading ?? !1, p = l?.error, d = Di(
+      s.map(
+        (f) => this._adjustGraphSamplesForEntity(
+          f.entityId,
+          l?.samplesByPanelId[f.panelId] ?? []
         )
       )
-    ), h = t === "energy" ? this._resolveUnit("energy_entity", "kWh") : this._resolveUnit("power_entity", "W"), _ = t === "energy" ? this._t("card.popup.history.total_panel_energy") : this._t("card.popup.history.total_panel_power");
-    return f`
+    ), h = t === "energy" ? this._resolveUnit("energy_entity", "kWh") : this._resolveUnit("power_entity", "W"), u = t === "energy" ? this._t("card.popup.history.total_panel_energy") : this._t("card.popup.history.total_panel_power");
+    return y`
       <div class="graph-section">
         <div class="graph-header">
-          <span class="graph-title">${_}</span>
+          <span class="graph-title">${u}</span>
           <div class="range-chips">
-            ${et.map(
-      (g) => f`
+            ${qe.map(
+      (f) => y`
                 <button
-                  class="range-chip ${this._kpiCompareRangeHours[t] === g ? "active" : ""}"
+                  class="range-chip ${this._kpiCompareRangeHours[t] === f ? "active" : ""}"
                   type="button"
                   @pointerdown=${this._preventRangeChipFocusScroll}
                   @mousedown=${this._preventRangeChipFocusScroll}
-                  @click=${(x) => this._handleAggregatedPanelRangeChange(
-        x,
+                  @click=${(g) => this._handleAggregatedPanelRangeChange(
+        g,
         e,
         t,
-        g,
-        s.overlayEntityId ?? void 0
+        f,
+        r.overlayEntityId ?? void 0
       )}
                 >
-                  ${g}h
+                  ${f}h
                 </button>
               `
     )}
@@ -3243,14 +3307,14 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
         ${this._renderPopupGraphBodyFromSamples(
       `panel-total-${t}|${n}|${o}`,
       h,
-      p,
+      d,
       o,
       c,
-      d,
-      s
+      p,
+      r
     )}
-        ${s.overlayStateMessage ? f`<p class="graph-forecast-state">${s.overlayStateMessage}</p>` : v}
-        ${s.showEnableForecastButton ? f`
+        ${r.overlayStateMessage ? y`<p class="graph-forecast-state">${r.overlayStateMessage}</p>` : b}
+        ${r.showEnableForecastButton ? y`
               <div class="forecast-enable-row">
                 <button
                   class="inline-button"
@@ -3260,67 +3324,67 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
                   ${this._t("card.popup.forecast.enable_button")}
                 </button>
               </div>
-            ` : v}
+            ` : b}
       </div>
     `;
   }
-  _handleAggregatedPanelRangeChange(e, t, s, r, o) {
+  _handleAggregatedPanelRangeChange(e, t, r, s, o) {
     e.preventDefault(), e.stopPropagation();
     const n = this._captureScrollPositionsForPopupGraph(e);
     this._kpiCompareRangeHours = {
       ...this._kpiCompareRangeHours,
-      [s]: r
-    }, this._scheduleCapturedScrollRestore(n), this._ensurePanelCompareLoaded(t, s, r, n), o && this._ensurePopupGraphLoadedByEntity(o, r, n);
+      [r]: s
+    }, this._scheduleCapturedScrollRestore(n), this._ensurePanelCompareLoaded(t, r, s, n), o && this._ensurePopupGraphLoadedByEntity(o, s, n);
   }
-  _handlePanelCompareRangeChange(e, t, s, r) {
+  _handlePanelCompareRangeChange(e, t, r, s) {
     e.preventDefault(), e.stopPropagation();
     const o = this._captureScrollPositionsForPopupGraph(e);
     if (this._kpiCompareRangeHours = {
       ...this._kpiCompareRangeHours,
-      [s]: r
-    }, this._scheduleCapturedScrollRestore(o), this._kpiCompareExpanded[s] && this._ensurePanelCompareLoaded(t, s, r, o), !this._getSystemEntityIdForKind(s) && this._isForecastOverlayEnabled()) {
-      const n = this._getForecastEntityId(s);
-      n && this._ensurePopupGraphLoadedByEntity(n, r, o);
+      [r]: s
+    }, this._scheduleCapturedScrollRestore(o), this._kpiCompareExpanded[r] && this._ensurePanelCompareLoaded(t, r, s, o), !this._getSystemEntityIdForKind(r) && this._isForecastOverlayEnabled()) {
+      const n = this._getForecastEntityId(r);
+      n && this._ensurePopupGraphLoadedByEntity(n, s, o);
     }
   }
   _buildPanelCompareTargets(e, t) {
-    const s = new Map(
-      (this._config?.panels ?? []).map((r) => [r.id, r])
+    const r = new Map(
+      (this._config?.panels ?? []).map((s) => [s.id, s])
     );
-    return e.panels.filter((r) => !r.hiddenSlot && r.enabled).map((r) => {
-      const o = s.get(r.id), n = t === "energy" ? o?.energy_entity?.trim() : o?.power_entity?.trim();
+    return e.panels.filter((s) => !s.hiddenSlot && s.enabled).map((s) => {
+      const o = r.get(s.id), n = t === "energy" ? o?.energy_entity?.trim() : o?.power_entity?.trim();
       return n ? {
-        panelId: r.id,
-        label: r.label,
+        panelId: s.id,
+        label: s.label,
         entityId: n
       } : null;
-    }).filter((r) => !!r);
+    }).filter((s) => !!s);
   }
   _getPanelCompareSignature(e, t) {
-    return `${e}|${t.map((s) => `${s.panelId}:${s.entityId}`).join("|")}`;
+    return `${e}|${t.map((r) => `${r.panelId}:${r.entityId}`).join("|")}`;
   }
-  _getPanelCompareCacheKey(e, t, s) {
-    return `${e}|${t}|${s}`;
+  _getPanelCompareCacheKey(e, t, r) {
+    return `${e}|${t}|${r}`;
   }
-  async _ensurePanelCompareLoaded(e, t, s, r) {
+  async _ensurePanelCompareLoaded(e, t, r, s) {
     if (!this._config || !this.hass)
       return;
     const o = this._buildPanelCompareTargets(e, t);
     if (o.length === 0)
       return;
-    const n = this._getPanelCompareSignature(t, o), a = this._getPanelCompareCacheKey(t, n, s), l = this._kpiCompareCache[a], c = Date.now();
-    if (l?.loading || l && !l.error && l.loadedAt && c - l.loadedAt < yi)
+    const n = this._getPanelCompareSignature(t, o), a = this._getPanelCompareCacheKey(t, n, r), l = this._kpiCompareCache[a], c = Date.now();
+    if (l?.loading || l && !l.error && l.loadedAt && c - l.loadedAt < Ki)
       return;
-    const d = ++this._kpiCompareRequestToken;
-    if (this._kpiCompareLatestTokenByKey[a] = d, this._kpiCompareCache = {
+    const p = ++this._kpiCompareRequestToken;
+    if (this._kpiCompareLatestTokenByKey[a] = p, this._kpiCompareCache = {
       ...this._kpiCompareCache,
       [a]: {
         loading: !0,
         samplesByPanelId: l?.samplesByPanelId ?? {},
         loadedAt: l?.loadedAt
       }
-    }, this._scheduleCapturedScrollRestore(r), !this.hass.callApi && !this.hass.callWS) {
-      if (this._kpiCompareLatestTokenByKey[a] !== d)
+    }, this._scheduleCapturedScrollRestore(s), !this.hass.callApi && !this.hass.callWS) {
+      if (this._kpiCompareLatestTokenByKey[a] !== p)
         return;
       this._kpiCompareCache = {
         ...this._kpiCompareCache,
@@ -3332,62 +3396,62 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
           }),
           loadedAt: Date.now()
         }
-      }, this._scheduleCapturedScrollRestore(r);
+      }, this._scheduleCapturedScrollRestore(s);
       return;
     }
     try {
-      const p = [...new Set(o.map((w) => w.entityId))], h = {};
-      let _ = null;
-      const g = await Promise.allSettled(
-        p.map(async (w) => ({
-          entityId: w,
-          samples: await this._loadPopupGraphRecorderSamples(w, s)
+      const d = [...new Set(o.map((x) => x.entityId))], h = {};
+      let u = null;
+      const f = await Promise.allSettled(
+        d.map(async (x) => ({
+          entityId: x,
+          samples: await this._loadPopupGraphRecorderSamples(x, r)
         }))
       );
-      for (const w of g) {
-        if (w.status === "fulfilled") {
-          h[w.value.entityId] = w.value.samples;
+      for (const x of f) {
+        if (x.status === "fulfilled") {
+          h[x.value.entityId] = x.value.samples;
           continue;
         }
-        _ || (_ = rt(
-          st(w.reason, this._t("common.unknown_recorder_error"))
+        u || (u = gt(
+          ft(x.reason, this._t("common.unknown_recorder_error"))
         ));
       }
-      if (this._kpiCompareLatestTokenByKey[a] !== d)
+      if (this._kpiCompareLatestTokenByKey[a] !== p)
         return;
-      const x = Object.values(h).some(
-        (w) => w.length > 0
+      const g = Object.values(h).some(
+        (x) => x.length > 0
       );
-      if (Object.keys(h).length === 0 && _) {
+      if (Object.keys(h).length === 0 && u) {
         this._kpiCompareCache = {
           ...this._kpiCompareCache,
           [a]: {
             loading: !1,
             samplesByPanelId: {},
             error: this._t("card.popup.panel_compare.unable_load", {
-              error: _
+              error: u
             }),
             loadedAt: Date.now()
           }
-        }, this._scheduleCapturedScrollRestore(r);
+        }, this._scheduleCapturedScrollRestore(s);
         return;
       }
-      const P = {};
-      for (const w of o)
-        P[w.panelId] = h[w.entityId] ?? [];
+      const S = {};
+      for (const x of o)
+        S[x.panelId] = h[x.entityId] ?? [];
       this._kpiCompareCache = {
         ...this._kpiCompareCache,
         [a]: {
           loading: !1,
-          samplesByPanelId: P,
-          error: !x && _ ? this._t("card.popup.panel_compare.unable_load", {
-            error: _
+          samplesByPanelId: S,
+          error: !g && u ? this._t("card.popup.panel_compare.unable_load", {
+            error: u
           }) : void 0,
           loadedAt: Date.now()
         }
-      }, this._scheduleCapturedScrollRestore(r);
-    } catch (p) {
-      if (this._kpiCompareLatestTokenByKey[a] !== d)
+      }, this._scheduleCapturedScrollRestore(s);
+    } catch (d) {
+      if (this._kpiCompareLatestTokenByKey[a] !== p)
         return;
       this._kpiCompareCache = {
         ...this._kpiCompareCache,
@@ -3395,25 +3459,25 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
           loading: !1,
           samplesByPanelId: {},
           error: this._t("card.popup.panel_compare.unable_load", {
-            error: rt(st(p, this._t("common.unknown_recorder_error")))
+            error: gt(ft(d, this._t("common.unknown_recorder_error")))
           }),
           loadedAt: Date.now()
         }
-      }, this._scheduleCapturedScrollRestore(r);
+      }, this._scheduleCapturedScrollRestore(s);
     }
   }
   _renderInverterEvaluation(e) {
     return !e.inverterStatusDisplay || e.inverterStatusDisplay === this._t("common.unavailable") ? this._t("card.popup.inverter_eval.no_status") : e.inverterFaultMatched ? this._t("card.popup.inverter_eval.fault_match") : e.inverterWorkingMatched ? this._t("card.popup.inverter_eval.working_match") : this._t("card.popup.inverter_eval.no_match");
   }
   _renderLivePowerDialog(e) {
-    const t = this._getSystemPowerEntityId(), s = this._resolveSummaryPower(e), r = this._resolveForecastMetricDisplay(
+    const t = this._getSystemPowerEntityId(), r = this._resolveSummaryPower(e), s = this._resolveForecastMetricDisplay(
       "power",
       this._config?.power_decimals ?? 0,
       "W"
-    ), o = this._isForecastOverlayEnabled() && !!r.entityId, n = r.entityId ? this._isForecastOverlayEnabled() ? null : this._t("card.popup.forecast.disabled_hint") : this._t("card.popup.forecast.default_sensor_not_found", {
-      entity: r.expectedEntityId
-    }), a = !this._isForecastOverlayEnabled() && !!r.entityId, l = this.hass?.locale?.language ?? "en";
-    return f`
+    ), o = this._isForecastOverlayEnabled() && !!s.entityId, n = s.entityId ? this._isForecastOverlayEnabled() ? null : this._t("card.popup.forecast.disabled_hint") : this._t("card.popup.forecast.default_sensor_not_found", {
+      entity: s.expectedEntityId
+    }), a = !this._isForecastOverlayEnabled() && !!s.entityId, l = this.hass?.locale?.language ?? "en";
+    return y`
       <div class="spv-popup-backdrop" @click=${this._closeLivePowerPopup}>
         <div class="spv-popup" @click=${(c) => c.stopPropagation()}>
           ${this._renderPopupCloseButton(
@@ -3431,12 +3495,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       t,
       this._t("card.popup.history.system_power"),
       {
-        overlayEntityId: o ? r.entityId : null,
+        overlayEntityId: o ? s.entityId : null,
         overlayStateMessage: n,
         showEnableForecastButton: a
       }
     ) : this._renderAggregatedPanelGraph(e, "power", {
-      overlayEntityId: o ? r.entityId : null,
+      overlayEntityId: o ? s.entityId : null,
       overlayStateMessage: n,
       showEnableForecastButton: a
     })}
@@ -3445,10 +3509,10 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             <div class="detail-card">
               <span class="detail-label">${this._t("card.popup.detail.current")}</span>
               <span class="detail-value">
-                ${ke(
-      s.value,
+                ${Me(
+      r.value,
       this._config?.power_decimals ?? 0,
-      s.unit,
+      r.unit,
       this._t("common.unavailable"),
       l
     )}
@@ -3456,7 +3520,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             </div>
             <div class="detail-card">
               <span class="detail-label">${this._t("card.popup.detail.estimated_power_now")}</span>
-              <span class="detail-value">${r.display}</span>
+              <span class="detail-value">${s.display}</span>
             </div>
             <div class="detail-card detail-card-source">
               <span class="detail-label">${this._t("card.popup.detail.source")}</span>
@@ -3472,14 +3536,14 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     `;
   }
   _renderEnergyDialog(e) {
-    const t = this._getSystemEnergyEntityId(), s = this._resolveSummaryEnergy(e), r = this._resolveForecastMetricDisplay(
+    const t = this._getSystemEnergyEntityId(), r = this._resolveSummaryEnergy(e), s = this._resolveForecastMetricDisplay(
       "energy",
       this._config?.energy_decimals ?? 2,
       "kWh"
-    ), o = this._isForecastOverlayEnabled() && !!r.entityId, n = r.entityId ? this._isForecastOverlayEnabled() ? null : this._t("card.popup.forecast.disabled_hint") : this._t("card.popup.forecast.default_sensor_not_found", {
-      entity: r.expectedEntityId
-    }), a = !this._isForecastOverlayEnabled() && !!r.entityId, l = this.hass?.locale?.language ?? "en";
-    return f`
+    ), o = this._isForecastOverlayEnabled() && !!s.entityId, n = s.entityId ? this._isForecastOverlayEnabled() ? null : this._t("card.popup.forecast.disabled_hint") : this._t("card.popup.forecast.default_sensor_not_found", {
+      entity: s.expectedEntityId
+    }), a = !this._isForecastOverlayEnabled() && !!s.entityId, l = this.hass?.locale?.language ?? "en";
+    return y`
       <div class="spv-popup-backdrop" @click=${this._closeEnergyPopup}>
         <div class="spv-popup" @click=${(c) => c.stopPropagation()}>
           ${this._renderPopupCloseButton(this._closeEnergyPopup, this._t("card.popup.close_energy"))}
@@ -3494,12 +3558,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       t,
       this._t("card.popup.history.system_energy"),
       {
-        overlayEntityId: o ? r.entityId : null,
+        overlayEntityId: o ? s.entityId : null,
         overlayStateMessage: n,
         showEnableForecastButton: a
       }
     ) : this._renderAggregatedPanelGraph(e, "energy", {
-      overlayEntityId: o ? r.entityId : null,
+      overlayEntityId: o ? s.entityId : null,
       overlayStateMessage: n,
       showEnableForecastButton: a
     })}
@@ -3508,10 +3572,10 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             <div class="detail-card">
               <span class="detail-label">${this._t("card.popup.detail.current")}</span>
               <span class="detail-value">
-                ${ke(
-      s.value,
+                ${Me(
+      r.value,
       this._config?.energy_decimals ?? 2,
-      s.unit,
+      r.unit,
       this._t("common.unavailable"),
       l
     )}
@@ -3519,7 +3583,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             </div>
             <div class="detail-card">
               <span class="detail-label">${this._t("card.popup.detail.estimated_energy_now")}</span>
-              <span class="detail-value">${r.display}</span>
+              <span class="detail-value">${s.display}</span>
             </div>
             <div class="detail-card detail-card-source">
               <span class="detail-label">${this._t("card.popup.detail.source")}</span>
@@ -3535,10 +3599,10 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     `;
   }
   _renderCustomKpiDialog() {
-    const e = this._resolveCustomKpi(), t = e.title.length > 0 ? this._resolveCustomKpiTitle(e.title) : this._t("card.summary.custom_default_title"), s = this._getCustomKpiEntityId();
-    return f`
+    const e = this._resolveCustomKpi(), t = e.title.length > 0 ? this._resolveCustomKpiTitle(e.title) : this._t("card.summary.custom_default_title"), r = this._getCustomKpiEntityId();
+    return y`
       <div class="spv-popup-backdrop" @click=${this._closeCustomKpiPopup}>
-        <div class="spv-popup" @click=${(r) => r.stopPropagation()}>
+        <div class="spv-popup" @click=${(s) => s.stopPropagation()}>
           ${this._renderPopupCloseButton(
       this._closeCustomKpiPopup,
       this._t("card.popup.close_custom_kpi")
@@ -3558,28 +3622,28 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             <div class="detail-card">
               <span class="detail-label">${this._t("card.popup.detail.source")}</span>
               <span class="detail-value">
-                ${s ? this._t("card.summary.custom_sensor") : this._t("common.not_configured")}
+                ${r ? this._t("card.summary.custom_sensor") : this._t("common.not_configured")}
               </span>
             </div>
           </div>
 
-          ${s ? this._renderPopupGraphForEntity(
-      s,
+          ${r ? this._renderPopupGraphForEntity(
+      r,
       `${t} ${this._t("card.popup.history.power")}`,
       {
         fillStartWithFirstSample: !0,
         invertPrimaryValues: this._config?.invert_custom_kpi ?? !1
       }
-    ) : f`<p class="graph-state">${this._t("card.popup.history.custom_not_configured")}</p>`}
+    ) : y`<p class="graph-state">${this._t("card.popup.history.custom_not_configured")}</p>`}
         </div>
       </div>
     `;
   }
   _renderSystemHealthDialog(e) {
-    const t = this._buildSystemHealthSections(e), s = t.length > 0;
-    return f`
+    const t = this._buildSystemHealthSections(e), r = t.length > 0;
+    return y`
       <div class="spv-popup-backdrop" @click=${this._closeSystemHealthPopup}>
-        <div class="spv-popup" @click=${(r) => r.stopPropagation()}>
+        <div class="spv-popup" @click=${(s) => s.stopPropagation()}>
           ${this._renderPopupCloseButton(
       this._closeSystemHealthPopup,
       this._t("card.popup.close_system_health")
@@ -3591,32 +3655,32 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             </div>
           </div>
 
-          ${s ? t.map(
-      (r) => f`
+          ${r ? t.map(
+      (s) => y`
                   <div class="graph-section">
                     <div class="graph-header">
-                      <span class="graph-title">${r.title}</span>
+                      <span class="graph-title">${s.title}</span>
                     </div>
-                    ${r.items.map(
-        (o) => f`<p class="system-health-item">${o}</p>`
+                    ${s.items.map(
+        (o) => y`<p class="system-health-item">${o}</p>`
       )}
                   </div>
                 `
-    ) : f`<p class="system-health-item">${this._t("card.popup.system_health.everything_ok")}</p>`}
+    ) : y`<p class="system-health-item">${this._t("card.popup.system_health.everything_ok")}</p>`}
         </div>
       </div>
     `;
   }
   _renderMetricList(e, t) {
-    return f`
+    return y`
       <div class="graph-section">
         <div class="graph-header">
           <span class="graph-title">${e}</span>
         </div>
         ${t.map(
-      (s) => f`
+      (r) => y`
             <p class="subtitle">
-              ${s.label}: ${s.value}
+              ${r.label}: ${r.value}
             </p>
           `
     )}
@@ -3630,35 +3694,35 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       this._t("card.popup.history.power")
     );
   }
-  _renderPopupGraphForEntity(e, t, s = {}) {
-    return f`
+  _renderPopupGraphForEntity(e, t, r = {}) {
+    return y`
       <div class="graph-section">
         <div class="graph-header">
           <span class="graph-title">${t}</span>
           <div class="range-chips">
-            ${et.map(
-      (r) => f`
+            ${qe.map(
+      (s) => y`
                 <button
-                  class="range-chip ${this._popupGraphRangeHours === r ? "active" : ""}"
+                  class="range-chip ${this._popupGraphRangeHours === s ? "active" : ""}"
                   type="button"
                   @pointerdown=${this._preventRangeChipFocusScroll}
                   @mousedown=${this._preventRangeChipFocusScroll}
                   @click=${(o) => this._handlePopupGraphRangeChangeForEntity(
         o,
         e,
-        r,
-        s.overlayEntityId ?? void 0
+        s,
+        r.overlayEntityId ?? void 0
       )}
                 >
-                  ${r}h
+                  ${s}h
                 </button>
               `
     )}
           </div>
         </div>
-        ${e ? this._renderPopupGraphBody(e, s) : f`<p class="graph-state">${this._t("card.popup.history.graph_not_configured")}</p>`}
-        ${s.overlayStateMessage ? f`<p class="graph-forecast-state">${s.overlayStateMessage}</p>` : v}
-        ${s.showEnableForecastButton ? f`
+        ${e ? this._renderPopupGraphBody(e, r) : y`<p class="graph-state">${this._t("card.popup.history.graph_not_configured")}</p>`}
+        ${r.overlayStateMessage ? y`<p class="graph-forecast-state">${r.overlayStateMessage}</p>` : b}
+        ${r.showEnableForecastButton ? y`
               <div class="forecast-enable-row">
                 <button
                   class="inline-button"
@@ -3668,18 +3732,18 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
                   ${this._t("card.popup.forecast.enable_button")}
                 </button>
               </div>
-            ` : v}
+            ` : b}
       </div>
     `;
   }
   _renderPopupGraphBody(e, t = {}) {
-    const s = this._getPopupGraphCacheKey(e, this._popupGraphRangeHours), r = this._popupGraphCache[s], o = r?.loading ?? !1, n = r?.error, a = r?.samples ?? [], l = this._adjustGraphSamplesForEntity(e, a), c = t.invertPrimaryValues ? l.map((p) => ({
-      ts: p.ts,
-      value: te(p.value * -1)
-    })) : l, d = this._getUnitForEntity(e, "W");
+    const r = this._getPopupGraphCacheKey(e, this._popupGraphRangeHours), s = this._popupGraphCache[r], o = s?.loading ?? !1, n = s?.error, a = s?.samples ?? [], l = this._adjustGraphSamplesForEntity(e, a), c = t.invertPrimaryValues ? l.map((d) => ({
+      ts: d.ts,
+      value: re(d.value * -1)
+    })) : l, p = this._getUnitForEntity(e, "W");
     return this._renderPopupGraphBodyFromSamples(
-      s,
-      d,
+      r,
+      p,
       c,
       this._popupGraphRangeHours,
       o,
@@ -3687,78 +3751,78 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       t
     );
   }
-  _renderPopupGraphBodyFromSamples(e, t, s, r, o, n, a = {}) {
+  _renderPopupGraphBodyFromSamples(e, t, r, s, o, n, a = {}) {
     const l = this._fillRangeStartWithFirstSample(
-      s,
       r,
+      s,
       a.fillStartWithFirstSample ?? !1
-    ), c = As(l, {
-      rangeHours: r
-    }), d = this._expandSinglePointRangeSamples(
+    ), c = Qr(l, {
+      rangeHours: s
+    }), p = this._expandSinglePointRangeSamples(
       c,
-      r
-    ), p = a.overlayEntityId ?? null, h = p ? this._popupGraphCache[this._getPopupGraphCacheKey(p, r)] : void 0, _ = h?.samples ?? [], g = p ? this._expandSinglePointRangeSamples(
-      this._adjustGraphSamplesForEntity(p, _),
-      r
-    ) : [], x = p ? h?.loading ?? !1 : !1, C = p ? h?.error : void 0;
+      s
+    ), d = a.overlayEntityId ?? null, h = d ? this._popupGraphCache[this._getPopupGraphCacheKey(d, s)] : void 0, u = h?.samples ?? [], f = d ? this._expandSinglePointRangeSamples(
+      this._adjustGraphSamplesForEntity(d, u),
+      s
+    ) : [], g = d ? h?.loading ?? !1 : !1, P = d ? h?.error : void 0;
     if (o)
-      return f`<p class="graph-state">${this._t("card.popup.history.loading")}</p>`;
+      return y`<p class="graph-state">${this._t("card.popup.history.loading")}</p>`;
     if (n)
-      return f`<p class="graph-state">${n}</p>`;
-    if (d.length === 0)
-      return f`<p class="graph-state">${this._t("card.popup.history.no_data")}</p>`;
-    const P = ot(d, tt), w = this._computeGraphStats(d), T = Date.now(), R = T - r * 60 * 60 * 1e3, $ = T, E = p && !x && !C && g.length > 0 ? ot(g, tt) : [], D = d.map((G) => G.value).filter((G) => Number.isFinite(G)), A = E.map((G) => G.value).filter((G) => Number.isFinite(G)), m = [...D, ...A], b = m.length > 0 ? Math.min(...m) : null, k = m.length > 0 ? Math.max(...m) : null, F = b === null || k === null ? null : b === k ? b - 1 : b, M = b === null || k === null ? null : b === k ? k + 1 : k, O = F !== null && M !== null ? {
-      startTs: R,
+      return y`<p class="graph-state">${n}</p>`;
+    if (p.length === 0)
+      return y`<p class="graph-state">${this._t("card.popup.history.no_data")}</p>`;
+    const S = vt(p, mt), x = this._computeGraphStats(p), I = Date.now(), A = I - s * 60 * 60 * 1e3, $ = I, E = d && !g && !P && f.length > 0 ? vt(f, mt) : [], D = p.map((B) => B.value).filter((B) => Number.isFinite(B)), R = E.map((B) => B.value).filter((B) => Number.isFinite(B)), m = [...D, ...R], w = m.length > 0 ? Math.min(...m) : null, k = m.length > 0 ? Math.max(...m) : null, T = w === null || k === null ? null : w === k ? w - 1 : w, F = w === null || k === null ? null : w === k ? k + 1 : k, O = T !== null && F !== null ? {
+      startTs: A,
       endTs: $,
-      minValue: F,
-      maxValue: M
-    } : null, J = O !== null ? this._buildAlignedGraphLinePath(P, O, 320, 132, 10) : "", y = O !== null ? this._buildAlignedGraphAreaPath(P, O, 320, 132, 10) : "", S = O !== null && E.length > 0 ? this._buildAlignedGraphLinePath(E, O, 320, 132, 10) : "", U = this._buildGraphHourTicks(
+      minValue: T,
+      maxValue: F
+    } : null, ee = O !== null ? this._buildAlignedGraphLinePath(S, O, 320, 132, 10) : "", v = O !== null ? this._buildAlignedGraphAreaPath(S, O, 320, 132, 10) : "", C = O !== null && E.length > 0 ? this._buildAlignedGraphLinePath(E, O, 320, 132, 10) : "", U = this._buildGraphHourTicks(
       {
-        startTs: R,
+        startTs: A,
         endTs: $
       },
-      r
-    ), K = this._buildGraphAxisTicks(U), ee = w.max !== null && F !== null && M !== null ? this._toGraphY(w.max, F, M, 132, 10) : null, de = w.median !== null && F !== null && M !== null ? this._toGraphY(w.median, F, M, 132, 10) : null, we = w.min !== null && F !== null && M !== null ? this._toGraphY(w.min, F, M, 132, 10) : null, xe = `spv-graph-${e.replace(/[^a-zA-Z0-9_-]/g, "-")}`, he = w.max !== null ? this._t("card.popup.history.max", {
-      value: this._formatGraphPower(w.max, t)
-    }) : null, Oe = w.median !== null ? this._t("card.popup.history.median", {
-      value: this._formatGraphPower(w.median, t)
-    }) : null, $e = w.min !== null ? this._t("card.popup.history.min", {
-      value: this._formatGraphPower(w.min, t)
+      s
+    ), K = this._buildGraphAxisTicks(U), te = x.max !== null && T !== null && F !== null ? this._toGraphY(x.max, T, F, 132, 10) : null, _e = x.median !== null && T !== null && F !== null ? this._toGraphY(x.median, T, F, 132, 10) : null, Se = x.min !== null && T !== null && F !== null ? this._toGraphY(x.min, T, F, 132, 10) : null, Ce = `spv-graph-${e.replace(/[^a-zA-Z0-9_-]/g, "-")}`, me = x.max !== null ? this._t("card.popup.history.max", {
+      value: this._formatGraphPower(x.max, t)
+    }) : null, Ke = x.median !== null ? this._t("card.popup.history.median", {
+      value: this._formatGraphPower(x.median, t)
+    }) : null, Ee = x.min !== null ? this._t("card.popup.history.min", {
+      value: this._formatGraphPower(x.min, t)
     }) : null;
-    return f`
+    return y`
       <div class="graph-box">
-        ${he ? f`<span class="graph-overlay graph-overlay-max">${he}</span>` : v}
-        ${Oe ? f`
+        ${me ? y`<span class="graph-overlay graph-overlay-max">${me}</span>` : b}
+        ${Ke ? y`
               <span class="graph-overlay graph-overlay-median">
-                ${Oe}
+                ${Ke}
               </span>
-            ` : v}
-        ${$e ? f`<span class="graph-overlay graph-overlay-min">${$e}</span>` : v}
+            ` : b}
+        ${Ee ? y`<span class="graph-overlay graph-overlay-min">${Ee}</span>` : b}
         <svg class="graph-svg" viewBox="0 0 320 132" preserveAspectRatio="none">
           <defs>
-            <linearGradient id=${xe} x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id=${Ce} x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="rgba(142, 208, 114, 0.48)"></stop>
               <stop offset="100%" stop-color="rgba(142, 208, 114, 0.04)"></stop>
             </linearGradient>
           </defs>
           <path
-            d=${y}
-            fill=${`url(#${xe})`}
+            d=${v}
+            fill=${`url(#${Ce})`}
           ></path>
           ${U.map(
-      (G) => B`
+      (B) => z`
               <line
                 class="graph-hour-line"
-                x1=${G.x.toFixed(2)}
-                x2=${G.x.toFixed(2)}
+                x1=${B.x.toFixed(2)}
+                x2=${B.x.toFixed(2)}
                 y1="10"
                 y2="122"
               ></line>
             `
     )}
-          ${B`
+          ${z`
             <path
-            d=${J}
+            d=${ee}
             fill="none"
             stroke="rgba(186, 226, 106, 0.95)"
             stroke-width="2.2"
@@ -3766,9 +3830,9 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
             stroke-linecap="round"
             ></path>
           `}
-          ${S.length > 0 ? B`
+          ${C.length > 0 ? z`
                 <path
-                  d=${S}
+                  d=${C}
                   fill="none"
                   stroke="var(--spv-forecast-line)"
                   stroke-width="1.5"
@@ -3777,41 +3841,41 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
                   stroke-linecap="round"
                   opacity="0.82"
                 ></path>
-              ` : v}
-          ${ee !== null ? B`
+              ` : b}
+          ${te !== null ? z`
                 <line
                   class="graph-stat-line graph-stat-max"
                   x1="10"
                   x2="310"
-                  y1=${ee.toFixed(2)}
-                  y2=${ee.toFixed(2)}
+                  y1=${te.toFixed(2)}
+                  y2=${te.toFixed(2)}
                 ></line>
-              ` : v}
-          ${de !== null ? B`
+              ` : b}
+          ${_e !== null ? z`
                 <line
                   class="graph-stat-line graph-stat-median"
                   x1="10"
                   x2="310"
-                  y1=${de.toFixed(2)}
-                  y2=${de.toFixed(2)}
+                  y1=${_e.toFixed(2)}
+                  y2=${_e.toFixed(2)}
                 ></line>
-              ` : v}
-          ${we !== null ? B`
+              ` : b}
+          ${Se !== null ? z`
                 <line
                   class="graph-stat-line graph-stat-min"
                   x1="10"
                   x2="310"
-                  y1=${we.toFixed(2)}
-                  y2=${we.toFixed(2)}
+                  y1=${Se.toFixed(2)}
+                  y2=${Se.toFixed(2)}
                 ></line>
-              ` : v}
+              ` : b}
         </svg>
       </div>
       <div class="graph-axis">
         ${K.map(
-      (G) => f`
-            <span class="graph-axis-label" style=${`left:${G.leftPercent.toFixed(2)}%;`}>
-              ${G.label}
+      (B) => y`
+            <span class="graph-axis-label" style=${`left:${B.leftPercent.toFixed(2)}%;`}>
+              ${B.label}
             </span>
           `
     )}
@@ -3819,20 +3883,37 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       <div class="graph-meta">
         <span>
           ${this._t("card.popup.history.time_range", {
-      start: this._formatGraphTime(R),
+      start: this._formatGraphTime(A),
       end: this._formatGraphTime($)
     })}
         </span>
       </div>
-      ${p && x ? f`<p class="graph-forecast-state">${this._t("card.popup.history.loading")}</p>` : v}
-      ${p && !x && C ? f`<p class="graph-forecast-state">${C}</p>` : v}
-      ${p && !x && !C && g.length === 0 ? f`<p class="graph-forecast-state">${this._t("card.popup.history.no_data")}</p>` : v}
+      ${d && g ? y`<p class="graph-forecast-state">${this._t("card.popup.history.loading")}</p>` : b}
+      ${d && !g && P ? y`<p class="graph-forecast-state">${P}</p>` : b}
+      ${d && !g && !P && f.length === 0 ? y`<p class="graph-forecast-state">${this._t("card.popup.history.no_data")}</p>` : b}
     `;
   }
-  _handlePopupGraphRangeChangeForEntity(e, t, s, r) {
+  _handlePopupGraphRangeChangeForEntity(e, t, r, s) {
     e.preventDefault(), e.stopPropagation();
     const o = this._captureScrollPositionsForPopupGraph(e);
-    this._popupGraphRangeHours = s, this._scheduleCapturedScrollRestore(o), t && this._ensurePopupGraphLoadedByEntity(t, s, o), r && this._ensurePopupGraphLoadedByEntity(r, s, o);
+    this._popupGraphRangeHours = r, this._scheduleCapturedScrollRestore(o), t && this._ensurePopupGraphLoadedByEntity(t, r, o), s && this._ensurePopupGraphLoadedByEntity(s, r, o);
+  }
+  _toggleTelemetryGraph(e, t, r) {
+    e.preventDefault(), e.stopPropagation();
+    const s = this._captureScrollPositionsForPopupGraph(e);
+    if (this._telemetryGraphPanelId === t && this._telemetryGraphEntityId === r) {
+      this._clearTelemetryGraph(), this._scheduleCapturedScrollRestore(s);
+      return;
+    }
+    this._telemetryGraphPanelId = t, this._telemetryGraphEntityId = r, this._telemetryGraphRangeHours = 6, this._scheduleCapturedScrollRestore(s), this._ensurePopupGraphLoadedByEntity(r, this._telemetryGraphRangeHours, s);
+  }
+  _handleTelemetryGraphRangeChange(e, t, r) {
+    e.preventDefault(), e.stopPropagation();
+    const s = this._captureScrollPositionsForPopupGraph(e);
+    this._telemetryGraphRangeHours = r, this._scheduleCapturedScrollRestore(s), this._ensurePopupGraphLoadedByEntity(t, r, s);
+  }
+  _clearTelemetryGraph() {
+    this._telemetryGraphPanelId = null, this._telemetryGraphEntityId = null, this._telemetryGraphRangeHours = 6;
   }
   _getPopupGraphCacheKey(e, t) {
     return `${e}|${t}`;
@@ -3840,213 +3921,214 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   _getPanelConfig(e) {
     return this._config?.panels.find((t) => t.id === e);
   }
-  async _ensurePopupGraphLoaded(e, t, s) {
+  async _ensurePopupGraphLoaded(e, t, r) {
     if (!this._config || !this.hass)
       return;
     const o = this._getPanelConfig(e)?.power_entity;
-    o && await this._ensurePopupGraphLoadedByEntity(o, t, s);
+    o && await this._ensurePopupGraphLoadedByEntity(o, t, r);
   }
-  async _ensurePopupGraphLoadedByEntity(e, t, s) {
+  async _ensurePopupGraphLoadedByEntity(e, t, r) {
     if (!this._config || !this.hass)
       return;
-    const r = this._getPopupGraphCacheKey(e, t), o = this._popupGraphCache[r], n = Date.now();
-    if (o?.loading || o && !o.error && o.loadedAt && n - o.loadedAt < fi)
+    const s = this._getPopupGraphCacheKey(e, t), o = this._popupGraphCache[s], n = Date.now();
+    if (o?.loading || o && !o.error && o.loadedAt && n - o.loadedAt < Ui)
       return;
     const a = ++this._popupGraphRequestToken;
-    if (this._popupGraphLatestTokenByKey[r] = a, this._popupGraphCache = {
+    if (this._popupGraphLatestTokenByKey[s] = a, this._popupGraphCache = {
       ...this._popupGraphCache,
-      [r]: {
+      [s]: {
         loading: !0,
         samples: o?.samples ?? [],
         loadedAt: o?.loadedAt
       }
-    }, this._scheduleCapturedScrollRestore(s), !this.hass.callApi && !this.hass.callWS) {
-      if (this._popupGraphLatestTokenByKey[r] !== a)
+    }, this._scheduleCapturedScrollRestore(r), !this.hass.callApi && !this.hass.callWS) {
+      if (this._popupGraphLatestTokenByKey[s] !== a)
         return;
       this._popupGraphCache = {
         ...this._popupGraphCache,
-        [r]: {
+        [s]: {
           loading: !1,
           samples: [],
           error: "Unable to load panel history",
           loadedAt: Date.now()
         }
-      }, this._scheduleCapturedScrollRestore(s);
+      }, this._scheduleCapturedScrollRestore(r);
       return;
     }
     try {
-      if (this._popupGraphLatestTokenByKey[r] !== a)
+      if (this._popupGraphLatestTokenByKey[s] !== a)
         return;
       const l = await this._loadPopupGraphRecorderSamples(e, t);
-      if (this._popupGraphLatestTokenByKey[r] !== a)
+      if (this._popupGraphLatestTokenByKey[s] !== a)
         return;
       this._popupGraphCache = {
         ...this._popupGraphCache,
-        [r]: {
+        [s]: {
           loading: !1,
           samples: l,
           loadedAt: Date.now()
         }
-      }, this._scheduleCapturedScrollRestore(s);
+      }, this._scheduleCapturedScrollRestore(r);
     } catch (l) {
-      if (this._popupGraphLatestTokenByKey[r] !== a)
+      if (this._popupGraphLatestTokenByKey[s] !== a)
         return;
       this._popupGraphCache = {
         ...this._popupGraphCache,
-        [r]: {
+        [s]: {
           loading: !1,
           samples: [],
-          error: `Unable to load panel history (${rt(st(l))})`,
+          error: `Unable to load panel history (${gt(ft(l))})`,
           loadedAt: Date.now()
         }
-      }, this._scheduleCapturedScrollRestore(s);
+      }, this._scheduleCapturedScrollRestore(r);
     }
   }
   async _loadPopupGraphRecorderSamples(e, t) {
     if (!this.hass || !this.hass.callApi && !this.hass.callWS)
       throw new Error("Recorder API unavailable");
-    const s = Date.now(), r = Math.min(168, t + 6), o = new Date(s - r * 60 * 60 * 1e3).toISOString(), n = new Date(s).toISOString(), a = this._getSharedHistorySamplesForRange(e, t);
+    const r = Date.now(), s = Math.min(168, t + 6), o = new Date(r - s * 60 * 60 * 1e3).toISOString(), n = new Date(r).toISOString(), a = this._getSharedHistorySamplesForRange(e, t);
     if (a) {
-      const p = Ue(a, s, t), h = this._stabilizePopupRangeSamples(
+      const d = Ze(a, r, t), h = this._stabilizePopupRangeSamples(
         e,
         a,
-        p,
-        s,
+        d,
+        r,
         t
       );
-      if (this._hasPopupRangeCoverage(h, s, t))
+      if (this._hasPopupRangeCoverage(h, r, t))
         return h;
       try {
-        const _ = await this._fetchRecorderHistoryRaw(o, n, [e]), g = this._parseRecorderResponse(_, r, [e])[e] ?? [], x = this._mergeGraphSampleSets(a, g), C = Ue(x, s, t);
-        return this._stabilizePopupRangeSamples(e, x, C, s, t);
+        const u = await this._fetchRecorderHistoryRaw(o, n, [e]), f = this._parseRecorderResponse(u, s, [e])[e] ?? [], g = this._mergeGraphSampleSets(a, f), P = Ze(g, r, t);
+        return this._stabilizePopupRangeSamples(e, g, P, r, t);
       } catch {
         return h;
       }
     }
-    const l = await this._fetchRecorderHistoryRaw(o, n, [e]), c = this._parseRecorderResponse(l, r, [e])[e] ?? [], d = Ue(c, s, t);
-    return this._stabilizePopupRangeSamples(e, c, d, s, t);
+    const l = await this._fetchRecorderHistoryRaw(o, n, [e]), c = this._parseRecorderResponse(l, s, [e])[e] ?? [], p = Ze(c, r, t);
+    return this._stabilizePopupRangeSamples(e, c, p, r, t);
   }
   _getSharedHistorySamplesForRange(e, t) {
     if (!(this._config?.enable_array_checks ?? !1) || this._getHistoryHours() < t)
       return null;
-    const s = this._historyByEntityId[e];
-    return !s || s.length === 0 ? null : s;
+    const r = this._historyByEntityId[e];
+    return !r || r.length === 0 ? null : r;
   }
-  _stabilizePopupRangeSamples(e, t, s, r, o) {
-    const n = r - o * 60 * 60 * 1e3, a = [...t].sort((_, g) => _.ts - g.ts), l = [...s].sort((_, g) => _.ts - g.ts), c = a.filter((_) => _.ts < n).at(-1) ?? null, d = this._isForecastDefaultEntity(e), p = Number(this.hass?.states?.[e]?.state);
+  _stabilizePopupRangeSamples(e, t, r, s, o) {
+    const n = s - o * 60 * 60 * 1e3, a = [...t].sort((u, f) => u.ts - f.ts), l = [...r].sort((u, f) => u.ts - f.ts), c = a.filter((u) => u.ts < n).at(-1) ?? null, p = this._isForecastDefaultEntity(e), d = Number(this.hass?.states?.[e]?.state);
     if (l.length === 0)
-      d && Number.isFinite(p) ? l.push({ ts: n, value: p }) : c ? l.push({ ts: n, value: c.value }) : Number.isFinite(p) && l.push({ ts: n, value: p });
-    else if (l[0].ts > n && (c || d)) {
-      const _ = d ? l[0].value : c?.value ?? l[0].value;
-      l.unshift({ ts: n, value: _ });
+      p && Number.isFinite(d) ? l.push({ ts: n, value: d }) : c ? l.push({ ts: n, value: c.value }) : Number.isFinite(d) && l.push({ ts: n, value: d });
+    else if (l[0].ts > n && (c || p)) {
+      const u = p ? l[0].value : c?.value ?? l[0].value;
+      l.unshift({ ts: n, value: u });
     }
     const h = l[l.length - 1];
-    if (!h && Number.isFinite(p))
-      l.push({ ts: r, value: p });
-    else if (h && h.ts < r) {
-      const _ = Number.isFinite(p) ? p : h.value;
-      l.push({ ts: r, value: _ });
+    if (!h && Number.isFinite(d))
+      l.push({ ts: s, value: d });
+    else if (h && h.ts < s) {
+      const u = Number.isFinite(d) ? d : h.value;
+      l.push({ ts: s, value: u });
     }
-    return l.filter((_) => Number.isFinite(_.ts) && Number.isFinite(_.value)).sort((_, g) => _.ts - g.ts);
+    return l.filter((u) => Number.isFinite(u.ts) && Number.isFinite(u.value)).sort((u, f) => u.ts - f.ts);
   }
-  _hasPopupRangeCoverage(e, t, s) {
+  _hasPopupRangeCoverage(e, t, r) {
     if (e.length === 0)
       return !1;
-    const r = t - s * 60 * 60 * 1e3, o = e[0].ts, n = e[e.length - 1].ts, a = 900 * 1e3;
-    return o <= r + a && n >= t - a;
+    const s = t - r * 60 * 60 * 1e3, o = e[0].ts, n = e[e.length - 1].ts, a = 900 * 1e3;
+    return o <= s + a && n >= t - a;
   }
   _mergeGraphSampleSets(...e) {
     const t = /* @__PURE__ */ new Map();
-    for (const s of e)
-      for (const r of s)
-        !Number.isFinite(r.ts) || !Number.isFinite(r.value) || t.set(r.ts, r);
-    return [...t.values()].sort((s, r) => s.ts - r.ts);
+    for (const r of e)
+      for (const s of r)
+        !Number.isFinite(s.ts) || !Number.isFinite(s.value) || t.set(s.ts, s);
+    return [...t.values()].sort((r, s) => r.ts - s.ts);
   }
   _getUnitForEntity(e, t) {
-    const s = this.hass?.states?.[e]?.attributes?.unit_of_measurement;
-    return typeof s == "string" && s.trim().length > 0 ? s : t;
+    const r = this.hass?.states?.[e]?.attributes?.unit_of_measurement;
+    return typeof r == "string" && r.trim().length > 0 ? r : t;
   }
   _formatGraphPower(e, t) {
+    const r = t.trim();
     if (e === null)
-      return `0 ${t}`;
-    const s = this.hass?.locale?.language ?? "en", r = te(e), o = t.trim().toLowerCase(), n = o.includes("wh") || o.includes("kwh") ? this._config?.energy_decimals ?? 2 : this._config?.power_decimals ?? 0;
-    return `${new Intl.NumberFormat(s, {
-      minimumFractionDigits: n,
-      maximumFractionDigits: n
-    }).format(r)} ${t}`;
+      return r ? `0 ${t}` : "0";
+    const s = this.hass?.locale?.language ?? "en", o = re(e), n = r.toLowerCase(), a = n.includes("wh") || n.includes("kwh") ? this._config?.energy_decimals ?? 2 : this._config?.power_decimals ?? 0, l = new Intl.NumberFormat(s, {
+      minimumFractionDigits: a,
+      maximumFractionDigits: a
+    }).format(o);
+    return r ? `${l} ${t}` : l;
   }
   _computeGraphStats(e) {
     const t = e.map((a) => a.value).filter((a) => Number.isFinite(a)).sort((a, l) => a - l);
     if (t.length === 0)
       return { min: null, max: null, median: null };
-    const s = t[0] ?? null, r = t[t.length - 1] ?? null, o = Math.floor(t.length / 2), n = t.length % 2 === 0 ? (t[o - 1] + t[o]) / 2 : t[o];
-    return { min: s, max: r, median: n };
+    const r = t[0] ?? null, s = t[t.length - 1] ?? null, o = Math.floor(t.length / 2), n = t.length % 2 === 0 ? (t[o - 1] + t[o]) / 2 : t[o];
+    return { min: r, max: s, median: n };
   }
   _buildGraphHourTicks(e, t) {
     if (e.startTs === null || e.endTs === null)
       return [];
-    const s = e.startTs, r = e.endTs, o = Math.max(r - s, 1), n = 320, a = 10, l = n - a * 2, c = t === 1 ? 900 * 1e3 : t === 6 ? 3600 * 1e3 : 14400 * 1e3, d = [], p = (_) => {
-      const g = new Date(_), x = `${g.getHours()}`.padStart(2, "0"), C = `${g.getMinutes()}`.padStart(2, "0");
-      return t === 1 ? `${x}:${C}` : `${x}h`;
+    const r = e.startTs, s = e.endTs, o = Math.max(s - r, 1), n = 320, a = 10, l = n - a * 2, c = t === 1 ? 900 * 1e3 : t === 6 ? 3600 * 1e3 : 14400 * 1e3, p = [], d = (u) => {
+      const f = new Date(u), g = `${f.getHours()}`.padStart(2, "0"), P = `${f.getMinutes()}`.padStart(2, "0");
+      return t === 1 ? `${g}:${P}` : `${g}h`;
     };
-    let h = Math.ceil(s / c) * c;
-    for (; h < r; ) {
-      const _ = a + (h - s) / o * l;
-      d.push({
-        x: _,
-        label: p(h)
+    let h = Math.ceil(r / c) * c;
+    for (; h < s; ) {
+      const u = a + (h - r) / o * l;
+      p.push({
+        x: u,
+        label: d(h)
       }), h += c;
     }
-    if (t === 6 && d.length < 3) {
-      const _ = [0.25, 0.5, 0.75];
-      for (const g of _) {
-        const x = s + o * g, C = a + (x - s) / o * l;
-        d.push({
-          x: C,
-          label: p(x)
+    if (t === 6 && p.length < 3) {
+      const u = [0.25, 0.5, 0.75];
+      for (const f of u) {
+        const g = r + o * f, P = a + (g - r) / o * l;
+        p.push({
+          x: P,
+          label: d(g)
         });
       }
     }
-    return d.sort((_, g) => _.x - g.x), d;
+    return p.sort((u, f) => u.x - f.x), p;
   }
   _buildGraphAxisTicks(e) {
     if (e.length === 0)
       return [];
-    const t = 10, r = 320 - t * 2;
+    const t = 10, s = 320 - t * 2;
     return e.map((o) => ({
       label: o.label,
-      leftPercent: (o.x - t) / r * 100
+      leftPercent: (o.x - t) / s * 100
     }));
   }
-  _toGraphY(e, t, s, r, o) {
-    const n = Math.max(s - t, 1), a = Math.max(r - o * 2, 1);
-    return r - o - (e - t) / n * a;
+  _toGraphY(e, t, r, s, o) {
+    const n = Math.max(r - t, 1), a = Math.max(s - o * 2, 1);
+    return s - o - (e - t) / n * a;
   }
-  _buildAlignedGraphLinePath(e, t, s, r, o) {
-    const n = e.filter((h) => Number.isFinite(h.ts) && Number.isFinite(h.value)).sort((h, _) => h.ts - _.ts);
+  _buildAlignedGraphLinePath(e, t, r, s, o) {
+    const n = e.filter((h) => Number.isFinite(h.ts) && Number.isFinite(h.value)).sort((h, u) => h.ts - u.ts);
     if (n.length === 0)
       return "";
-    const a = Math.max(t.endTs - t.startTs, 1), l = Math.max(t.maxValue - t.minValue, 1), c = Math.max(s - o * 2, 1), d = Math.max(r - o * 2, 1), p = [];
+    const a = Math.max(t.endTs - t.startTs, 1), l = Math.max(t.maxValue - t.minValue, 1), c = Math.max(r - o * 2, 1), p = Math.max(s - o * 2, 1), d = [];
     for (const h of n) {
-      const _ = Math.min(Math.max(h.ts, t.startTs), t.endTs), g = o + (_ - t.startTs) / a * c, x = (h.value - t.minValue) / l, C = r - o - Math.min(Math.max(x, 0), 1) * d, P = p[p.length - 1];
-      P && Math.abs(P.x - g) < 0.01 && Math.abs(P.y - C) < 0.01 || p.push({ x: g, y: C });
+      const u = Math.min(Math.max(h.ts, t.startTs), t.endTs), f = o + (u - t.startTs) / a * c, g = (h.value - t.minValue) / l, P = s - o - Math.min(Math.max(g, 0), 1) * p, S = d[d.length - 1];
+      S && Math.abs(S.x - f) < 0.01 && Math.abs(S.y - P) < 0.01 || d.push({ x: f, y: P });
     }
-    return p.length === 0 ? "" : (p.length === 1 && p.push({ ...p[0] }), p.map(
-      (h, _) => `${_ === 0 ? "M" : "L"}${h.x.toFixed(2)},${h.y.toFixed(2)}`
+    return d.length === 0 ? "" : (d.length === 1 && d.push({ ...d[0] }), d.map(
+      (h, u) => `${u === 0 ? "M" : "L"}${h.x.toFixed(2)},${h.y.toFixed(2)}`
     ).join(" "));
   }
-  _buildAlignedGraphAreaPath(e, t, s, r, o) {
-    const n = this._buildAlignedGraphLinePath(e, t, s, r, o);
+  _buildAlignedGraphAreaPath(e, t, r, s, o) {
+    const n = this._buildAlignedGraphLinePath(e, t, r, s, o);
     if (!n)
       return "";
-    const a = e.filter((x) => Number.isFinite(x.ts) && Number.isFinite(x.value)).sort((x, C) => x.ts - C.ts);
+    const a = e.filter((g) => Number.isFinite(g.ts) && Number.isFinite(g.value)).sort((g, P) => g.ts - P.ts);
     if (a.length === 0)
       return "";
-    const l = Math.max(t.endTs - t.startTs, 1), c = Math.max(s - o * 2, 1), d = Math.min(Math.max(a[0].ts, t.startTs), t.endTs), p = Math.min(
+    const l = Math.max(t.endTs - t.startTs, 1), c = Math.max(r - o * 2, 1), p = Math.min(Math.max(a[0].ts, t.startTs), t.endTs), d = Math.min(
       Math.max(a[a.length - 1].ts, t.startTs),
       t.endTs
-    ), h = o + (d - t.startTs) / l * c, _ = o + (p - t.startTs) / l * c, g = r - o;
-    return `${n} L${_.toFixed(2)},${g.toFixed(2)} L${h.toFixed(2)},${g.toFixed(2)} Z`;
+    ), h = o + (p - t.startTs) / l * c, u = o + (d - t.startTs) / l * c, f = s - o;
+    return `${n} L${u.toFixed(2)},${f.toFixed(2)} L${h.toFixed(2)},${f.toFixed(2)} Z`;
   }
   _formatGraphTime(e) {
     if (e === null)
@@ -4086,9 +4168,9 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       deviation: this._config?.colors?.deviation ?? "#ff9667",
       setup: "#41c9d8",
       ok: "#8ed072"
-    }, s = e.inverterCount + e.errorCount;
-    return s > 0 ? {
-      label: `${s} Fault${s === 1 ? "" : "s"}`,
+    }, r = e.inverterCount + e.errorCount;
+    return r > 0 ? {
+      label: `${r} Fault${r === 1 ? "" : "s"}`,
       color: t.error
     } : e.offlineCount > 0 ? {
       label: `${e.offlineCount} Unavailable`,
@@ -4102,38 +4184,38 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     } : { label: "System OK", color: t.ok };
   }
   _buildSystemHealthSections(e) {
-    const t = e.panels.filter((d) => !d.hiddenSlot), s = (d) => t.filter((p) => p.status === d).map((p) => `Panel on ${this._formatSlotLabel(p.slotIndex)} (${p.label}): ${p.reason}`), r = [], o = s("inverter");
-    o.length > 0 && r.push({ title: "Inverter", items: o });
-    const n = s("error");
-    n.length > 0 && r.push({ title: "Error", items: n });
-    const a = s("deviation");
-    a.length > 0 && r.push({ title: "Deviation", items: a });
-    const l = s("offline");
-    l.length > 0 && r.push({ title: "Unavailable", items: l });
-    const c = s("unconfigured");
-    return c.length > 0 && r.push({ title: "Needs setup", items: c }), r;
+    const t = e.panels.filter((p) => !p.hiddenSlot), r = (p) => t.filter((d) => d.status === p).map((d) => `Panel on ${this._formatSlotLabel(d.slotIndex)} (${d.label}): ${d.reason}`), s = [], o = r("inverter");
+    o.length > 0 && s.push({ title: "Inverter", items: o });
+    const n = r("error");
+    n.length > 0 && s.push({ title: "Error", items: n });
+    const a = r("deviation");
+    a.length > 0 && s.push({ title: "Deviation", items: a });
+    const l = r("offline");
+    l.length > 0 && s.push({ title: "Unavailable", items: l });
+    const c = r("unconfigured");
+    return c.length > 0 && s.push({ title: "Needs setup", items: c }), s;
   }
   _computeRenderedColumns(e, t) {
-    const s = Math.max(1, Math.floor(e)), r = this._cardWidth > 0 ? this._cardWidth : t ?? 980, o = t ? Math.min(r, t) : r;
+    const r = Math.max(1, Math.floor(e)), s = this._cardWidth > 0 ? this._cardWidth : t ?? 980, o = t ? Math.min(s, t) : s;
     if (!Number.isFinite(o) || o <= 0)
-      return s;
-    const n = Math.max(120, o - 40), a = o <= 560 ? 8 : 10, l = o <= 760, c = l ? Math.min(s, 3) : s, d = this._getPanelWidthCapPx(), p = d !== null ? d : l ? 100 : Math.max(130, Math.min(220, n * 0.32)), h = Math.floor((n + a) / (p + a));
+      return r;
+    const n = Math.max(120, o - 40), a = o <= 560 ? 8 : 10, l = o <= 760, c = l ? Math.min(r, 3) : r, p = this._getPanelWidthCapPx(), d = p !== null ? p : l ? 100 : Math.max(130, Math.min(220, n * 0.32)), h = Math.floor((n + a) / (d + a));
     return Math.max(1, Math.min(c, h || 1));
   }
   _computeRenderedRows(e, t) {
-    const s = Math.max(1, e), r = Math.max(1, t);
-    return Math.max(1, Math.ceil(s / r));
+    const r = Math.max(1, e), s = Math.max(1, t);
+    return Math.max(1, Math.ceil(r / s));
   }
   _computeWidthBasedPanelHeight(e, t) {
-    const r = this._computeTileWidthPx(e, t) * 0.62;
-    return Math.round(Math.min(220, Math.max(92, r)));
+    const s = this._computeTileWidthPx(e, t) * 0.62;
+    return Math.round(Math.min(220, Math.max(92, s)));
   }
   _computePanelWidthPx(e, t) {
-    const s = this._computeTileWidthPx(e, t);
-    return Math.max(96, Math.round(s));
+    const r = this._computeTileWidthPx(e, t);
+    return Math.max(96, Math.round(r));
   }
   _computeTileWidthPx(e, t) {
-    const s = this._cardWidth > 0 ? this._cardWidth : t ?? 980, r = t ? Math.min(s, t) : s, o = r <= 560 ? 8 : 10, n = Math.max(120, r - 40), a = Math.max(1, e), l = (n - Math.max(0, a - 1) * o) / a;
+    const r = this._cardWidth > 0 ? this._cardWidth : t ?? 980, s = t ? Math.min(r, t) : r, o = s <= 560 ? 8 : 10, n = Math.max(120, s - 40), a = Math.max(1, e), l = (n - Math.max(0, a - 1) * o) / a;
     return this._applyPanelWidthCapPx(l);
   }
   _getPanelWidthCapPx() {
@@ -4146,19 +4228,19 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     const t = this._getPanelWidthCapPx();
     return t ? Math.min(e, t) : e;
   }
-  _computePanelHeightPx(e, t, s = this._config?.columns ?? 3, r) {
-    const o = this._computeWidthBasedPanelHeight(s, r);
+  _computePanelHeightPx(e, t, r = this._config?.columns ?? 3, s) {
+    const o = this._computeWidthBasedPanelHeight(r, s);
     if (!t || !Number.isFinite(t))
       return o;
-    const n = Math.max(1, e), a = 250, l = 36, c = Math.max(n - 1, 0) * 10, p = (t - a - l - c) / n;
-    if (!Number.isFinite(p))
+    const n = Math.max(1, e), a = 250, l = 36, c = Math.max(n - 1, 0) * 10, d = (t - a - l - c) / n;
+    if (!Number.isFinite(d))
       return o;
-    const h = Math.min(240, Math.max(96, p)), _ = Math.min(h, o * 1.6);
-    return Math.round(Math.min(220, Math.max(92, _)));
+    const h = Math.min(240, Math.max(96, d)), u = Math.min(h, o * 1.6);
+    return Math.round(Math.min(220, Math.max(92, u)));
   }
   _computePanelScale(e) {
-    const s = e / 128, r = Math.min(1.28, Math.max(0.76, s));
-    return Number(r.toFixed(3));
+    const r = e / 128, s = Math.min(1.28, Math.max(0.76, r));
+    return Number(s.toFixed(3));
   }
   _startResizeObserver() {
     if (typeof ResizeObserver > "u" || this._resizeObserver)
@@ -4171,34 +4253,34 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       e();
     }), this._resizeObserver.observe(this), e();
   }
-  _shouldShowPerformance(e, t, s) {
-    return e.performancePercent === null || e.ratedPowerW === null ? !1 : t >= 94 && s >= 110;
+  _shouldShowPerformance(e, t, r) {
+    return e.performancePercent === null || e.ratedPowerW === null ? !1 : t >= 94 && r >= 110;
   }
-  _formatPanelPerformanceText(e, t, s, r = this._buildPanelPerformanceLabelCandidates(e)) {
-    if (!r)
+  _formatPanelPerformanceText(e, t, r, s = this._buildPanelPerformanceLabelCandidates(e)) {
+    if (!s)
       return "";
-    const o = this._computePanelScale(s), a = Math.min(0.96, Math.max(0.62, 0.72 * o)) * 16;
-    return ai({
-      candidates: r,
+    const o = this._computePanelScale(r), a = Math.min(0.96, Math.max(0.62, 0.72 * o)) * 16;
+    return Ri({
+      candidates: s,
       panelWidthPx: t,
-      panelHeightPx: s,
+      panelHeightPx: r,
       fontPx: a,
-      reservedRightPx: vi,
+      reservedRightPx: Vi,
       measureTextWidthPx: (l, c) => this._measureTextWidthPx(l, c)
     }).text;
   }
   _buildPanelPerformanceLabelCandidates(e) {
     if (e.performancePercent === null || e.ratedPowerW === null)
       return null;
-    const t = e.performancePercent.toFixed(0), s = e.ratedPowerW.toFixed(0);
+    const t = e.performancePercent.toFixed(0), r = e.ratedPowerW.toFixed(0);
     return [
       {
         variant: "full",
-        text: this._t("card.panel.performance_full", { percent: t, rated: s })
+        text: this._t("card.panel.performance_full", { percent: t, rated: r })
       },
       {
         variant: "medium",
-        text: this._t("card.panel.performance_medium", { percent: t, rated: s })
+        text: this._t("card.panel.performance_medium", { percent: t, rated: r })
       },
       {
         variant: "compact",
@@ -4209,24 +4291,24 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   _measureTextWidthPx(e, t) {
     if (typeof document > "u")
       return e.length * t * 0.52;
-    if (le._textMeasureContext === void 0) {
-      const r = document.createElement("canvas");
-      le._textMeasureContext = r.getContext("2d");
+    if (ce._textMeasureContext === void 0) {
+      const s = document.createElement("canvas");
+      ce._textMeasureContext = s.getContext("2d");
     }
-    const s = le._textMeasureContext;
-    return s ? (s.font = `500 ${t}px system-ui, -apple-system, "Segoe UI", sans-serif`, s.measureText(e).width) : e.length * t * 0.52;
+    const r = ce._textMeasureContext;
+    return r ? (r.font = `500 ${t}px system-ui, -apple-system, "Segoe UI", sans-serif`, r.measureText(e).width) : e.length * t * 0.52;
   }
   _handlePanelClick(e) {
-    e.hiddenSlot || (this._config?.panel_tap_action ?? "details") === "details" && (this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._selectedPanelId = e.id, this._popupGraphRangeHours = 6, this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 }, this._ensurePopupGraphLoaded(e.id, 6));
+    e.hiddenSlot || (this._config?.panel_tap_action ?? "details") === "details" && (this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._selectedPanelId = e.id, this._popupGraphRangeHours = 6, this._clearTelemetryGraph(), this._kpiCompareExpanded = { power: !1, energy: !1 }, this._kpiCompareRangeHours = { power: 6, energy: 6 }, this._ensurePopupGraphLoaded(e.id, 6));
   }
   _resolveUnit(e, t) {
     if (!this._config)
       return t;
-    for (const s of this._config.panels) {
-      const r = s[e];
-      if (!r)
+    for (const r of this._config.panels) {
+      const s = r[e];
+      if (!s)
         continue;
-      const o = this.hass?.states?.[r]?.attributes?.unit_of_measurement;
+      const o = this.hass?.states?.[s]?.attributes?.unit_of_measurement;
       if (typeof o == "string" && o.trim().length > 0)
         return o;
     }
@@ -4248,39 +4330,39 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     return e === "energy" ? this._getSystemEnergyEntityId() : this._getSystemPowerEntityId();
   }
   _getForecastEntityId(e) {
-    return Rr(this.hass, e);
+    return ni(this.hass, e);
   }
   _isForecastDefaultEntity(e) {
-    return e === We("power") || e === We("energy");
+    return e === Qe("power") || e === Qe("energy");
   }
   _isForecastOverlayEnabled() {
     return this._config?.enable_forecast_overlay ?? !1;
   }
-  _resolveForecastMetricDisplay(e, t, s) {
-    const r = We(e), o = this._getForecastEntityId(e);
+  _resolveForecastMetricDisplay(e, t, r) {
+    const s = Qe(e), o = this._getForecastEntityId(e);
     if (!o)
       return {
-        expectedEntityId: r,
+        expectedEntityId: s,
         entityId: null,
         value: null,
-        unit: s,
+        unit: r,
         display: this._t("common.not_configured")
       };
-    const n = this._getUnitForEntity(o, s), a = Number(this.hass?.states?.[o]?.state), l = Number.isFinite(a) ? te(a) : null, c = this.hass?.locale?.language ?? "en";
+    const n = this._getUnitForEntity(o, r), a = Number(this.hass?.states?.[o]?.state), l = Number.isFinite(a) ? re(a) : null, c = this.hass?.locale?.language ?? "en";
     return {
-      expectedEntityId: r,
+      expectedEntityId: s,
       entityId: o,
       value: l,
       unit: n,
-      display: ke(l, t, n, this._t("common.unavailable"), c)
+      display: Me(l, t, n, this._t("common.unavailable"), c)
     };
   }
   _resolveSummaryPower(e) {
     const t = this._getSystemPowerEntityId();
     if (t) {
-      const s = this.hass?.states?.[t], r = Number(s?.state), o = Number.isFinite(r) ? r : null;
+      const r = this.hass?.states?.[t], s = Number(r?.state), o = Number.isFinite(s) ? s : null;
       return {
-        value: o === null ? null : this._config?.invert_system_power ? te(o * -1) : te(o),
+        value: o === null ? null : this._config?.invert_system_power ? re(o * -1) : re(o),
         unit: this._getUnitForEntity(t, "W")
       };
     }
@@ -4294,9 +4376,9 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     if (!this._config)
       return { value: null, unit: "kWh" };
     if (t) {
-      const s = this.hass?.states?.[t], r = Number(s?.state);
+      const r = this.hass?.states?.[t], s = Number(r?.state);
       return {
-        value: Number.isFinite(r) ? r : null,
+        value: Number.isFinite(s) ? s : null,
         unit: this._getUnitForEntity(t, "kWh")
       };
     }
@@ -4309,18 +4391,18 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     return this._config ? this._config.use_system_energy_entity ?? !1 ? !!this._config.system_energy_entity?.trim() : this._config.panels.some((e) => !!e.energy_entity) : !1;
   }
   _resolveCustomKpi() {
-    const e = this._config?.custom_kpi_title, t = e !== void 0 ? e : "Custom KPI", s = this._getCustomKpiEntityId();
-    if (!s)
-      return { title: t, value: "Not configured" };
-    const r = this.hass?.states?.[s];
+    const e = this._config?.custom_kpi_title, t = e !== void 0 ? e : "Custom KPI", r = this._getCustomKpiEntityId();
     if (!r)
+      return { title: t, value: "Not configured" };
+    const s = this.hass?.states?.[r];
+    if (!s)
       return { title: t, value: "Unavailable" };
-    const o = r.state?.toString().trim().toLowerCase();
+    const o = s.state?.toString().trim().toLowerCase();
     if (!o || o === "unknown" || o === "unavailable")
       return { title: t, value: "Unavailable" };
-    const n = Number(r.state);
+    const n = Number(s.state);
     if (Number.isFinite(n)) {
-      const a = this.hass?.locale?.language ?? "en", l = this._getUnitForEntity(s, ""), c = this._config?.invert_custom_kpi ? te(n * -1) : te(n), d = Mr(
+      const a = this.hass?.locale?.language ?? "en", l = this._getUnitForEntity(r, ""), c = this._config?.invert_custom_kpi ? re(n * -1) : re(n), p = ri(
         String(c),
         a,
         this._config?.custom_kpi_decimals ?? 0,
@@ -4328,10 +4410,10 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       );
       return {
         title: t,
-        value: d ?? r.state
+        value: p ?? s.state
       };
     }
-    return { title: t, value: r.state };
+    return { title: t, value: s.state };
   }
   _getCustomKpiEntityId() {
     const e = this._config?.custom_kpi_entity?.trim();
@@ -4341,22 +4423,22 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     e.preventDefault(), e.stopPropagation(), t();
   }
   _closeAllPopups() {
-    this._selectedPanelId = null, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._clearPopupScrollRestore();
+    this._selectedPanelId = null, this._showLivePowerPopup = !1, this._showEnergyPopup = !1, this._showCustomKpiPopup = !1, this._showSystemHealthPopup = !1, this._clearTelemetryGraph(), this._clearPopupScrollRestore();
   }
   _clearPopupScrollRestore() {
     const e = this._popupScrollRestore;
     e?.frameId !== null && typeof window < "u" && window.cancelAnimationFrame(e.frameId), this._popupScrollRestore = null, this._popupScrollRestoreToken++;
   }
   _captureScrollPositionsForPopupGraph(e) {
-    const r = (e?.currentTarget instanceof HTMLElement ? e.currentTarget : e?.target instanceof HTMLElement ? e.target : null)?.closest(".spv-popup") ?? null ?? this.renderRoot.querySelector(".spv-popup");
-    if (!r)
+    const s = (e?.currentTarget instanceof HTMLElement ? e.currentTarget : e?.target instanceof HTMLElement ? e.target : null)?.closest(".spv-popup") ?? null ?? this.renderRoot.querySelector(".spv-popup");
+    if (!s)
       return this._popupScrollRestore = null, null;
     const o = ++this._popupScrollRestoreToken;
     return this._popupScrollRestore = {
       token: o,
-      popup: r,
-      top: r.scrollTop,
-      left: r.scrollLeft,
+      popup: s,
+      top: s.scrollTop,
+      left: s.scrollLeft,
       expiresAt: Date.now() + 2500,
       frameId: null,
       framesRemaining: 0
@@ -4369,25 +4451,25 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       this._popupScrollRestore = null;
       return;
     }
-    const s = this._popupScrollRestore;
-    if (!(!s || s.token !== e)) {
-      if (s.expiresAt < Date.now()) {
+    const r = this._popupScrollRestore;
+    if (!(!r || r.token !== e)) {
+      if (r.expiresAt < Date.now()) {
         this._popupScrollRestore = null;
         return;
       }
-      s.framesRemaining = Math.max(s.framesRemaining, t), s.frameId === null && (s.frameId = window.requestAnimationFrame(() => {
-        const r = this._popupScrollRestore;
-        if (!(!r || r.token !== e)) {
-          if (r.frameId = null, !this._hasPopupOpen()) {
+      r.framesRemaining = Math.max(r.framesRemaining, t), r.frameId === null && (r.frameId = window.requestAnimationFrame(() => {
+        const s = this._popupScrollRestore;
+        if (!(!s || s.token !== e)) {
+          if (s.frameId = null, !this._hasPopupOpen()) {
             this._popupScrollRestore = null;
             return;
           }
-          if (r.expiresAt < Date.now()) {
+          if (s.expiresAt < Date.now()) {
             this._popupScrollRestore = null;
             return;
           }
-          if (r.popup.isConnected && (r.popup.scrollTop = r.top, r.popup.scrollLeft = r.left), r.framesRemaining = Math.max(0, r.framesRemaining - 1), r.framesRemaining > 0) {
-            this._scheduleCapturedScrollRestore(e, r.framesRemaining);
+          if (s.popup.isConnected && (s.popup.scrollTop = s.top, s.popup.scrollLeft = s.left), s.framesRemaining = Math.max(0, s.framesRemaining - 1), s.framesRemaining > 0) {
+            this._scheduleCapturedScrollRestore(e, s.framesRemaining);
             return;
           }
           this._popupScrollRestore = null;
@@ -4398,9 +4480,9 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   _renderInlinePanelConfig(e) {
     const t = this._config?.panels.find((o) => o.id === e.id);
     if (!t)
-      return v;
-    const s = this._getAvailableQuickSetupPowerEntities(e.id), r = !(t.enabled ?? !0);
-    return f`
+      return b;
+    const r = this._getAvailableQuickSetupPowerEntities(e.id), s = !(t.enabled ?? !0);
+    return y`
       <div class="inline-config">
         <p class="subtitle">Quick Setup:</p>
         <ha-selector
@@ -4410,17 +4492,17 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
           .selector=${{
       entity: {
         domain: "sensor",
-        include_entities: s
+        include_entities: r
       }
     }}
           .label=${"Select panel power sensor"}
           @value-changed=${(o) => this._updatePanelConfigFromCard(e.id, "power_entity", o.detail.value)}
         ></ha-selector>
-        ${s.length === 0 ? f`<p class="subtitle">No available W sensors found.</p>` : v}
+        ${r.length === 0 ? y`<p class="subtitle">No available W sensors found.</p>` : b}
         <div class="toggle">
           <ha-formfield label="Disable Panel (hide but keep slot when off)">
             <ha-switch
-              .checked=${r}
+              .checked=${s}
               @change=${(o) => this._updatePanelConfigFromCard(
       e.id,
       "enabled",
@@ -4435,54 +4517,54 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   _getAvailableQuickSetupPowerEntities(e) {
     if (!this._config || !this.hass)
       return [];
-    const s = this._config.panels.find((n) => n.id === e)?.power_entity, r = new Set(
+    const r = this._config.panels.find((n) => n.id === e)?.power_entity, s = new Set(
       this._config.panels.filter((n) => n.id !== e).map((n) => n.power_entity).filter((n) => !!n)
     ), o = [];
     for (const n of Object.values(this.hass.states)) {
       if (!n.entity_id.startsWith("sensor."))
         continue;
       const a = n.attributes?.unit_of_measurement;
-      typeof a != "string" || a.trim().toLowerCase() !== "w" || r.has(n.entity_id) && n.entity_id !== s || o.push(n.entity_id);
+      typeof a != "string" || a.trim().toLowerCase() !== "w" || s.has(n.entity_id) && n.entity_id !== r || o.push(n.entity_id);
     }
-    return typeof s == "string" && s.length > 0 && !o.includes(s) && o.push(s), o.sort((n, a) => n.localeCompare(a));
+    return typeof r == "string" && r.length > 0 && !o.includes(r) && o.push(r), o.sort(q);
   }
-  _updatePanelConfigFromCard(e, t, s) {
+  _updatePanelConfigFromCard(e, t, r) {
     if (!this._config)
       return;
-    const r = this._config.panels.findIndex((a) => a.id === e);
-    if (r < 0)
+    const s = this._config.panels.findIndex((a) => a.id === e);
+    if (s < 0)
       return;
     const o = this._config.panels.map((a, l) => {
-      if (l !== r)
+      if (l !== s)
         return a;
-      const c = { ...a, [t]: s };
+      const c = { ...a, [t]: r };
       if (t === "power_entity") {
-        const d = a.power_entity, p = typeof s == "string" ? s.trim() : "", h = this._getEntityFriendlyName(p);
-        h && this._shouldAutoRenamePanelName(a.name, a.id, d) && (c.name = h);
+        const p = a.power_entity, d = typeof r == "string" ? r.trim() : "", h = this._getEntityFriendlyName(d);
+        h && this._shouldAutoRenamePanelName(a.name, a.id, p) && (c.name = h);
       }
       return c;
-    }), n = Me({
+    }), n = Re({
       ...this._config,
       panels: o
     });
-    this._commitConfigFromCard(n), t === "power_entity" && (typeof s == "string" ? s.trim() : "").length > 0 && (this._selectedPanelId = e, this._ensurePopupGraphLoaded(e, this._popupGraphRangeHours));
+    this._commitConfigFromCard(n), t === "power_entity" && (typeof r == "string" ? r.trim() : "").length > 0 && (this._selectedPanelId = e, this._ensurePopupGraphLoaded(e, this._popupGraphRangeHours));
   }
   _getEntityFriendlyName(e) {
     const t = e?.trim();
     if (!t)
       return;
-    const r = this.hass?.states?.[t]?.attributes?.friendly_name;
-    if (typeof r != "string")
+    const s = this.hass?.states?.[t]?.attributes?.friendly_name;
+    if (typeof s != "string")
       return;
-    const o = r.trim();
+    const o = s.trim();
     return o.length > 0 ? o : void 0;
   }
-  _shouldAutoRenamePanelName(e, t, s) {
-    const r = e?.trim() ?? "";
-    if (!r || r === t || /^panel\s+\d+$/i.test(r))
+  _shouldAutoRenamePanelName(e, t, r) {
+    const s = e?.trim() ?? "";
+    if (!s || s === t || /^panel\s+\d+$/i.test(s))
       return !0;
-    const o = this._getEntityFriendlyName(s);
-    return !!(o && r === o);
+    const o = this._getEntityFriendlyName(r);
+    return !!(o && s === o);
   }
   _handleDragStart(e, t) {
     this._dragSourceSlotIndex = t, e.dataTransfer && (e.dataTransfer.effectAllowed = "move", e.dataTransfer.setData("text/plain", String(t)));
@@ -4490,14 +4572,14 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   _handleDrop(e, t) {
     if (e.preventDefault(), !this._config)
       return;
-    const s = this._dragSourceSlotIndex ?? Number(e.dataTransfer?.getData("text/plain") ?? Number.NaN);
-    if (!Number.isFinite(s) || s === t)
+    const r = this._dragSourceSlotIndex ?? Number(e.dataTransfer?.getData("text/plain") ?? Number.NaN);
+    if (!Number.isFinite(r) || r === t)
       return;
-    const r = [...this._config.panels], o = r[s], n = r[t];
-    !o || !n || (r[s] = n, r[t] = o, this._commitConfigFromCard(
-      Me({
+    const s = [...this._config.panels], o = s[r], n = s[t];
+    !o || !n || (s[r] = n, s[t] = o, this._commitConfigFromCard(
+      Re({
         ...this._config,
-        panels: r
+        panels: s
       })
     ));
   }
@@ -4509,7 +4591,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
         composed: !0
       })
     ), typeof window < "u" && window.dispatchEvent(
-      new CustomEvent(mi, {
+      new CustomEvent(Bi, {
         detail: { config: e }
       })
     ), this._persistConfigToLovelace(e);
@@ -4517,11 +4599,11 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
   async _persistConfigToLovelace(e) {
     if (!this.hass?.callWS)
       return;
-    const t = ++this._persistConfigToken, s = this._findLovelaceContext(), r = this._resolveDashboardUrlPath(s);
+    const t = ++this._persistConfigToken, r = this._findLovelaceContext(), s = this._resolveDashboardUrlPath(r);
     try {
-      const o = s && typeof s.config == "object" ? s.config : await this.hass.callWS({
+      const o = r && typeof r.config == "object" ? r.config : await this.hass.callWS({
         type: "lovelace/config",
-        ...r ? { url_path: r } : {}
+        ...s ? { url_path: s } : {}
       });
       if (t !== this._persistConfigToken)
         return;
@@ -4535,11 +4617,11 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       }
       if (await this.hass.callWS({
         type: "lovelace/config/save",
-        ...r ? { url_path: r } : {},
+        ...s ? { url_path: s } : {},
         config: n
       }), t !== this._persistConfigToken)
         return;
-      s && (s.config = n), this._sourceConfigRef = void 0;
+      r && (r.config = n), this._sourceConfigRef = void 0;
     } catch (o) {
       console.warn("Solar Panel Visualizer: Failed to persist dashboard config.", o);
     }
@@ -4550,12 +4632,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     for (; t && !e.has(t); ) {
       if (e.add(t), typeof t == "object" && t !== null && "lovelace" in t && t.lovelace && typeof t.lovelace == "object")
         return t.lovelace;
-      const s = t, r = typeof s.getRootNode == "function" ? s.getRootNode() : null, o = r && "host" in r ? r.host : null;
+      const r = t, s = typeof r.getRootNode == "function" ? r.getRootNode() : null, o = s && "host" in s ? s.host : null;
       if (o && o !== t) {
         t = o;
         continue;
       }
-      t = s.parentElement ?? null;
+      t = r.parentElement ?? null;
     }
     return null;
   }
@@ -4565,56 +4647,56 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       return t;
     if (typeof window > "u")
       return;
-    const s = window.location.pathname.replace(/^\/+/, "").split("/")[0]?.trim();
-    return s && s.length > 0 ? s : void 0;
+    const r = window.location.pathname.replace(/^\/+/, "").split("/")[0]?.trim();
+    return r && r.length > 0 ? r : void 0;
   }
   _replaceCardConfigInDashboardConfig(e, t) {
-    const s = this._replaceFirstMatch(
+    const r = this._replaceFirstMatch(
       e,
       (o) => !!this._sourceConfigRef && o === this._sourceConfigRef,
       t
     );
-    if (s.replaced)
+    if (r.replaced)
       return {
-        config: s.value,
+        config: r.value,
         replaced: !0
       };
-    const r = this._replaceFirstMatch(
+    const s = this._replaceFirstMatch(
       e,
       (o) => this._matchesCurrentCardSignature(o),
       t
     );
     return {
-      config: r.value,
-      replaced: r.replaced
+      config: s.value,
+      replaced: s.replaced
     };
   }
-  _replaceFirstMatch(e, t, s) {
-    let r = !1;
+  _replaceFirstMatch(e, t, r) {
+    let s = !1;
     const o = (n) => {
-      if (r)
+      if (s)
         return n;
       if (t(n))
-        return r = !0, s;
+        return s = !0, r;
       if (Array.isArray(n)) {
         let c = !1;
-        const d = n.map((p) => {
-          const h = o(p);
-          return h !== p && (c = !0), h;
+        const p = n.map((d) => {
+          const h = o(d);
+          return h !== d && (c = !0), h;
         });
-        return c ? d : n;
+        return c ? p : n;
       }
       if (typeof n != "object" || n === null)
         return n;
       let a = !1;
       const l = {};
-      for (const [c, d] of Object.entries(n)) {
-        const p = o(d);
-        l[c] = p, p !== d && (a = !0);
+      for (const [c, p] of Object.entries(n)) {
+        const d = o(p);
+        l[c] = d, d !== p && (a = !0);
       }
       return a ? l : n;
     };
-    return { value: o(e), replaced: r };
+    return { value: o(e), replaced: s };
   }
   _matchesCurrentCardSignature(e) {
     if (!this._config || typeof e != "object" || e === null)
@@ -4622,8 +4704,8 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     const t = e;
     if (t.type !== this._config.type)
       return !1;
-    const s = Number(t.rows), r = Number(t.columns);
-    if (s !== this._config.rows || r !== this._config.columns)
+    const r = Number(t.rows), s = Number(t.columns);
+    if (r !== this._config.rows || s !== this._config.columns)
       return !1;
     const n = (Array.isArray(t.panels) ? t.panels : []).map(
       (l) => typeof l == "object" && l !== null && typeof l.id == "string" ? l.id : ""
@@ -4631,23 +4713,23 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     return n.length > 0 && n === a;
   }
   _adjustGraphSamplesForEntity(e, t) {
-    const s = this._getSystemPowerEntityId(), r = (this._config?.invert_system_power ?? !1) && !!s && e === s;
+    const r = this._getSystemPowerEntityId(), s = (this._config?.invert_system_power ?? !1) && !!r && e === r;
     return t.map((o) => ({
       ts: o.ts,
-      value: te(r ? o.value * -1 : o.value)
+      value: re(s ? o.value * -1 : o.value)
     }));
   }
   _expandSinglePointRangeSamples(e, t) {
     if (e.length !== 1)
       return e;
-    const s = e[0].value, r = Date.now();
+    const r = e[0].value, s = Date.now();
     return [
-      { ts: r - t * 60 * 60 * 1e3, value: s },
-      { ts: r, value: s }
+      { ts: s - t * 60 * 60 * 1e3, value: r },
+      { ts: s, value: r }
     ];
   }
-  _fillRangeStartWithFirstSample(e, t, s) {
-    if (!s || e.length === 0)
+  _fillRangeStartWithFirstSample(e, t, r) {
+    if (!r || e.length === 0)
       return e;
     const o = Date.now() - t * 60 * 60 * 1e3, n = [...e].sort((l, c) => l.ts - c.ts), a = n[0];
     return !a || a.ts <= o ? n : [{ ts: o, value: a.value }, ...n];
@@ -4677,12 +4759,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     const e = this._config?.deviation_restart_entity;
     if (!e)
       return;
-    const t = this.hass?.states?.[e], s = t?.state?.toString().trim();
-    if (!s)
+    const t = this.hass?.states?.[e], r = t?.state?.toString().trim();
+    if (!r)
       return;
-    const r = Date.parse(s);
-    if (Number.isFinite(r))
-      return String(r);
+    const s = Date.parse(r);
+    if (Number.isFinite(s))
+      return String(s);
     const o = [
       t?.attributes?.last_restart,
       t?.attributes?.last_reset,
@@ -4697,30 +4779,30 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       if (Number.isFinite(a))
         return String(a);
     }
-    if (!/^[-+]?\d+(\.\d+)?$/.test(s))
-      return s;
+    if (!/^[-+]?\d+(\.\d+)?$/.test(r))
+      return r;
   }
   _historyCacheKey() {
-    return `${_i}${this._getHistorySignature()}`;
+    return `${zi}${this._getHistorySignature()}`;
   }
   _pruneSamples(e, t = this._getHistoryHours()) {
-    const r = Date.now() - t * 60 * 60 * 1e3;
-    return e.filter((o) => o.ts >= r && Number.isFinite(o.value)).sort((o, n) => o.ts - n.ts);
+    const s = Date.now() - t * 60 * 60 * 1e3;
+    return e.filter((o) => o.ts >= s && Number.isFinite(o.value)).sort((o, n) => o.ts - n.ts);
   }
   _syncLiveSamplesFromHass() {
     if (!this.hass || !this._config)
       return;
     let e = !1;
     const t = Date.now();
-    for (const s of this._config.panels) {
-      const r = s.power_entity;
-      if (!r)
+    for (const r of this._config.panels) {
+      const s = r.power_entity;
+      if (!s)
         continue;
-      const o = this.hass.states[r], n = Number(o?.state);
+      const o = this.hass.states[s], n = Number(o?.state);
       if (!Number.isFinite(n))
         continue;
-      const l = [...this._historyByEntityId[r] ?? []], c = l[l.length - 1];
-      (!c || Math.abs(t - c.ts) > 6e4 || Math.abs(c.value - n) > 0.01) && (l.push({ ts: t, value: n }), this._historyByEntityId[r] = this._pruneSamples(l), e = !0);
+      const l = [...this._historyByEntityId[s] ?? []], c = l[l.length - 1];
+      (!c || Math.abs(t - c.ts) > 6e4 || Math.abs(c.value - n) > 0.01) && (l.push({ ts: t, value: n }), this._historyByEntityId[s] = this._pruneSamples(l), e = !0);
     }
     e && this._saveHistoryCache();
   }
@@ -4728,7 +4810,7 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     if (typeof window > "u" || !this._config)
       return;
     const e = {
-      v: Gt,
+      v: sr,
       savedAt: Date.now(),
       samples: this._historyByEntityId,
       reason: this._historyStateReason
@@ -4745,12 +4827,12 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
         if (!e)
           return;
         const t = JSON.parse(e);
-        if (t.v !== Gt || !t.samples)
+        if (t.v !== sr || !t.samples)
           return;
-        const s = {};
-        for (const [r, o] of Object.entries(t.samples))
-          s[r] = this._pruneSamples(o);
-        this._historyByEntityId = s;
+        const r = {};
+        for (const [s, o] of Object.entries(t.samples))
+          r[s] = this._pruneSamples(o);
+        this._historyByEntityId = r;
       } catch {
       }
   }
@@ -4764,18 +4846,18 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     const e = this._getHistorySignature();
     if (!e || e === this._historySignature && this._historyState !== "idle")
       return;
-    const t = this._getHistoryQuerySignature(), s = Date.now();
+    const t = this._getHistoryQuerySignature(), r = Date.now();
     if (this._historyState === "loading" && t === this._historyQuerySignature) {
       this._historySignature = e;
       return;
     }
-    if (t === this._historyQuerySignature && this._historyState !== "idle" && s - this._historyLastLoadMs < gi) {
+    if (t === this._historyQuerySignature && this._historyState !== "idle" && r - this._historyLastLoadMs < Wi) {
       this._historySignature = e;
       return;
     }
-    this._historySignature = e, this._historyQuerySignature = t, this._historyLastLoadMs = s, this._historyByEntityId = {}, this._loadHistoryCache();
-    const r = ++this._historyLoadToken;
-    this._loadHistoryFromRecorder(r);
+    this._historySignature = e, this._historyQuerySignature = t, this._historyLastLoadMs = r, this._historyByEntityId = {}, this._loadHistoryCache();
+    const s = ++this._historyLoadToken;
+    this._loadHistoryFromRecorder(s);
   }
   async _loadHistoryFromRecorder(e) {
     if (!this.hass || !this._config)
@@ -4789,10 +4871,10 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
       this._historyState = "unavailable", this._historyStateReason = "Solar panel history API unavailable in this Home Assistant build.", this._refreshDerived(), this.requestUpdate();
       return;
     }
-    const s = Date.now(), r = new Date(s - this._getHistoryHours() * 60 * 60 * 1e3).toISOString(), o = new Date(s).toISOString();
+    const r = Date.now(), s = new Date(r - this._getHistoryHours() * 60 * 60 * 1e3).toISOString(), o = new Date(r).toISOString();
     this._historyState = "loading", this._historyStateReason = void 0, this.requestUpdate();
     try {
-      const n = await this._fetchRecorderHistoryRaw(r, o, t);
+      const n = await this._fetchRecorderHistoryRaw(s, o, t);
       if (e !== this._historyLoadToken)
         return;
       const a = this._parseRecorderResponse(n, this._getHistoryHours(), t);
@@ -4807,33 +4889,33 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
     }
     this._syncLiveSamplesFromHass(), this._saveHistoryCache(), this._refreshDerived(), this.requestUpdate();
   }
-  async _fetchRecorderHistoryRaw(e, t, s) {
+  async _fetchRecorderHistoryRaw(e, t, r) {
     if (!this.hass)
       throw new Error("Home Assistant context unavailable");
-    const r = [], o = s.join(","), n = `history/period/${e}`, a = `history/period/${encodeURIComponent(e)}`, l = [], c = {
+    const s = [], o = r.join(","), n = `history/period/${e}`, a = `history/period/${encodeURIComponent(e)}`, l = [], c = {
       end_time: t,
       filter_entity_id: o,
       no_attributes: !0,
       significant_changes_only: !1,
       minimal_response: !0
-    }, d = {
+    }, p = {
       end_time: t,
       filter_entity_id: o
     };
-    if (l.push({ path: n, params: d }), l.push({ path: n, params: c }), a !== n && (l.push({ path: a, params: d }), l.push({ path: a, params: c })), this.hass.callApi)
-      for (const p of l)
+    if (l.push({ path: n, params: p }), l.push({ path: n, params: c }), a !== n && (l.push({ path: a, params: p }), l.push({ path: a, params: c })), this.hass.callApi)
+      for (const d of l)
         try {
-          return await this.hass.callApi("GET", p.path, p.params);
+          return await this.hass.callApi("GET", d.path, d.params);
         } catch (h) {
-          r.push(h);
+          s.push(h);
         }
     if (this.hass.callWS) {
-      const p = [
+      const d = [
         {
           type: "history/history_during_period",
           start_time: e,
           end_time: t,
-          entity_ids: s,
+          entity_ids: r,
           no_attributes: !0,
           significant_changes_only: !1,
           minimal_response: !0
@@ -4842,75 +4924,75 @@ const Y = (i, e, t) => Math.max(e, Math.min(t, i)), Tt = (i, e) => Math.abs(i - 
           type: "history/history_during_period",
           start_time: e,
           end_time: t,
-          entity_ids: s
+          entity_ids: r
         }
       ];
-      for (const h of p)
+      for (const h of d)
         try {
           return await this.hass.callWS(h);
-        } catch (_) {
-          r.push(_);
+        } catch (u) {
+          s.push(u);
         }
     }
-    throw r.length > 0 ? r[r.length - 1] : new Error("Recorder API unavailable");
+    throw s.length > 0 ? s[s.length - 1] : new Error("Recorder API unavailable");
   }
-  _parseRecorderResponse(e, t = this._getHistoryHours(), s = []) {
-    const r = {}, o = (l) => {
+  _parseRecorderResponse(e, t = this._getHistoryHours(), r = []) {
+    const s = {}, o = (l) => {
       if (typeof l == "number" && Number.isFinite(l))
         return l > 1e11 ? l : l * 1e3;
       if (typeof l == "string" && l.trim().length > 0) {
-        const c = l.trim(), d = Number(c);
-        if (Number.isFinite(d) && /^\d+(\.\d+)?$/.test(c))
-          return d > 1e11 ? d : d * 1e3;
-        const p = Date.parse(c);
-        if (Number.isFinite(p))
-          return p;
+        const c = l.trim(), p = Number(c);
+        if (Number.isFinite(p) && /^\d+(\.\d+)?$/.test(c))
+          return p > 1e11 ? p : p * 1e3;
+        const d = Date.parse(c);
+        if (Number.isFinite(d))
+          return d;
       }
       return Number.NaN;
     }, n = (l, c) => {
       if (!Array.isArray(l) || l.length === 0)
         return;
-      let d = c;
-      for (const p of l) {
-        if (Array.isArray(p)) {
-          if (!d || p.length < 2)
+      let p = c;
+      for (const d of l) {
+        if (Array.isArray(d)) {
+          if (!p || d.length < 2)
             continue;
-          const P = o(p[0]), w = Number(p[1]), T = o(p[1]), R = Number(p[0]);
-          let $ = P, E = w;
-          if ((!Number.isFinite($) || !Number.isFinite(E)) && ($ = T, E = R), !Number.isFinite($) || !Number.isFinite(E))
+          const S = o(d[0]), x = Number(d[1]), I = o(d[1]), A = Number(d[0]);
+          let $ = S, E = x;
+          if ((!Number.isFinite($) || !Number.isFinite(E)) && ($ = I, E = A), !Number.isFinite($) || !Number.isFinite(E))
             continue;
-          r[d] || (r[d] = []), r[d].push({ ts: $, value: E });
+          s[p] || (s[p] = []), s[p].push({ ts: $, value: E });
           continue;
         }
-        if (typeof p != "object" || p === null)
+        if (typeof d != "object" || d === null)
           continue;
-        const h = p, _ = typeof h.entity_id == "string" && h.entity_id.length > 0 ? h.entity_id : typeof h.e == "string" && h.e.length > 0 ? h.e : d;
-        if (!_)
+        const h = d, u = typeof h.entity_id == "string" && h.entity_id.length > 0 ? h.entity_id : typeof h.e == "string" && h.e.length > 0 ? h.e : p;
+        if (!u)
           continue;
-        d = _;
-        const g = Number(h.state ?? h.s);
-        if (!Number.isFinite(g))
+        p = u;
+        const f = Number(h.state ?? h.s);
+        if (!Number.isFinite(f))
           continue;
-        const x = typeof h.last_changed == "string" ? h.last_changed : typeof h.last_updated == "string" ? h.last_updated : h.lc ?? h.lu ?? h.last_changed_ts ?? h.last_updated_ts ?? h.ts, C = o(x);
-        Number.isFinite(C) && (r[_] || (r[_] = []), r[_].push({ ts: C, value: g }));
+        const g = typeof h.last_changed == "string" ? h.last_changed : typeof h.last_updated == "string" ? h.last_updated : h.lc ?? h.lu ?? h.last_changed_ts ?? h.last_updated_ts ?? h.ts, P = o(g);
+        Number.isFinite(P) && (s[u] || (s[u] = []), s[u].push({ ts: P, value: f }));
       }
     }, a = typeof e == "object" && e !== null && "result" in e ? e.result : e;
     if (Array.isArray(a))
       for (const [l, c] of a.entries())
-        n(c, s[l]);
+        n(c, r[l]);
     else if (typeof a == "object" && a !== null)
       for (const [l, c] of Object.entries(
         a
       ))
         n(c, l);
     else
-      return r;
-    for (const [l, c] of Object.entries(r))
-      r[l] = this._pruneSamples(c, t);
-    return r;
+      return s;
+    for (const [l, c] of Object.entries(s))
+      s[l] = this._pruneSamples(c, t);
+    return s;
   }
 };
-le.properties = {
+ce.properties = {
   hass: { attribute: !1 },
   _config: { state: !0 },
   _derived: { state: !0 },
@@ -4922,10 +5004,13 @@ le.properties = {
   _showSystemHealthPopup: { state: !0 },
   _popupGraphRangeHours: { state: !0 },
   _popupGraphCache: { state: !0 },
+  _telemetryGraphPanelId: { state: !0 },
+  _telemetryGraphEntityId: { state: !0 },
+  _telemetryGraphRangeHours: { state: !0 },
   _kpiCompareExpanded: { state: !0 },
   _kpiCompareRangeHours: { state: !0 },
   _kpiCompareCache: { state: !0 }
-}, le.styles = [dt`
+}, ce.styles = [Ct`
     :host {
       display: block;
       width: 100%;
@@ -5648,6 +5733,65 @@ le.properties = {
       gap: 10px;
     }
 
+    .telemetry-card {
+      overflow: hidden;
+    }
+
+    .telemetry-card.is-open {
+      grid-column: 1 / -1;
+    }
+
+    .telemetry-card.is-expandable {
+      padding: 0;
+    }
+
+    .telemetry-card-toggle {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      min-width: 0;
+      padding: 12px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .telemetry-card-main {
+      min-width: 0;
+    }
+
+    .telemetry-card-affordance {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid var(--spv-surface-border);
+      color: var(--spv-text-muted);
+      background: color-mix(in srgb, var(--spv-surface-bg) 62%, transparent);
+      line-height: 1;
+    }
+
+    .telemetry-card.is-open .telemetry-card-affordance {
+      color: var(--spv-text-primary);
+      border-color: var(--spv-surface-border-hover);
+      background: var(--spv-surface-bg-hover);
+    }
+
+    .telemetry-card-graph {
+      border-top: 1px solid var(--spv-surface-border);
+      padding: 10px 12px 12px;
+      display: grid;
+      gap: 8px;
+    }
+
     .telemetry-empty {
       margin: 0;
       font-size: 0.82rem;
@@ -6026,54 +6170,174 @@ le.properties = {
       }
     }
 
-  `, Jr];
-let nt = le;
-class Rs extends nt {
+  `, Si];
+let bt = ce;
+class Zr extends bt {
 }
-customElements.get("solar-panel-visualizer") || customElements.define("solar-panel-visualizer", Rs);
+customElements.get("solar-panel-visualizer") || customElements.define("solar-panel-visualizer", Zr);
 if (!customElements.get("solar-panel-visualizer-card")) {
-  class i extends Rs {
+  class i extends Zr {
   }
   customElements.define("solar-panel-visualizer-card", i);
 }
-const wi = /(\d+)/, Ut = (i) => {
-  const e = wi.exec(i);
-  if (!e)
+const Yi = /[._\-\s]+/, qi = /^\d+$/, Jr = /^(?=.*[a-z])(?=.*\d)[a-z0-9]{6,}$/i, es = /* @__PURE__ */ new Set([
+  "sensor",
+  "power",
+  "current",
+  "voltage",
+  "temperature",
+  "temp",
+  "device",
+  "serial",
+  "inverter",
+  "panel",
+  "map",
+  "ac",
+  "dc",
+  "pv"
+]), Xi = /* @__PURE__ */ new Set([
+  "status",
+  "state",
+  "mode",
+  "operation",
+  "operating",
+  "work",
+  "working",
+  "run",
+  "running",
+  "fault",
+  "alarm",
+  "error"
+]), Qi = /* @__PURE__ */ new Set(["sensor", "binary_sensor"]), Zi = /* @__PURE__ */ new Set([
+  "battery",
+  "bms",
+  "cloud",
+  "connection",
+  "communication",
+  "firmware",
+  "grid",
+  "meter",
+  "network",
+  "online",
+  "update",
+  "wifi"
+]), $e = (i, e) => {
+  if (e === "friendlyName") {
+    const t = i.friendlyName?.trim();
+    if (t)
+      return t;
+  }
+  return i.entityId;
+}, ze = (i) => i.split(Yi).map((e) => e.trim()).filter((e) => e.length > 0), Ji = (i, e, t = {}) => {
+  if (i.length < (t.minCandidates ?? 4))
     return null;
-  const t = Number(e[1]);
-  return Number.isFinite(t) ? t : null;
-}, xi = (i) => {
-  const e = Ut(i.entityId);
-  return e !== null ? e : i.friendlyName ? Ut(i.friendlyName) : null;
-}, $i = (i) => {
-  const e = i.map((s) => ({
-    ...s,
-    sortNumber: xi(s)
-  }));
-  return e.some((s) => s.sortNumber !== null) ? [...e].sort((s, r) => s.sortNumber === null && r.sortNumber === null ? s.entityId.localeCompare(r.entityId) : s.sortNumber === null ? 1 : r.sortNumber === null ? -1 : s.sortNumber !== r.sortNumber ? s.sortNumber - r.sortNumber : s.entityId.localeCompare(r.entityId)).map(({ entityId: s, friendlyName: r }) => ({ entityId: s, friendlyName: r })) : [...e].sort((s, r) => s.entityId.localeCompare(r.entityId)).map(({ entityId: s, friendlyName: r }) => ({ entityId: s, friendlyName: r }));
-}, Pi = (i, e, t) => {
+  const r = i.map(
+    (o) => ze($e(o, e))
+  ), s = Math.min(...r.map((o) => o.length));
+  if (s < 3)
+    return null;
+  for (let o = s - 1; o > 0; o -= 1) {
+    const n = r.map((p) => p[o].toLowerCase()), a = new Set(n);
+    if (!t.allowSingleGroup && a.size <= 1 || a.size >= i.length || [...a].every((p) => es.has(p)) || !t.allowNumericGroup && [...a].every((p) => qi.test(p)))
+      continue;
+    const l = /* @__PURE__ */ new Map();
+    for (const p of n)
+      l.set(p, (l.get(p) ?? 0) + 1);
+    if (!(![...l.values()].some((p) => p > 1) || new Set(
+      r.map((p) => p[o - 1].toLowerCase())
+    ).size !== 1))
+      return { sortBy: e, tokenIndex: o };
+  }
+  return null;
+}, We = (i, e = {}) => {
+  const t = ["entityId", "friendlyName"];
+  for (const r of t) {
+    const s = Ji(i, r, e);
+    if (s)
+      return s;
+  }
+  return null;
+}, ts = (i, e) => [...i].sort((t, r) => {
+  const s = q(
+    $e(t, e),
+    $e(r, e)
+  );
+  return s !== 0 ? s : q(t.entityId, r.entityId);
+}), or = (i, e, t = {}) => {
+  const r = We(i, t);
+  return r ? [...i].sort((s, o) => {
+    const n = ze($e(s, r.sortBy)), a = ze($e(o, r.sortBy)), l = n[r.tokenIndex] ?? "", c = a[r.tokenIndex] ?? "", p = q(l, c);
+    if (p !== 0)
+      return p;
+    const d = n.filter((f, g) => g !== r.tokenIndex).join(" "), h = a.filter((f, g) => g !== r.tokenIndex).join(" "), u = q(d, h);
+    return u !== 0 ? u : q(s.entityId, o.entityId);
+  }) : ts(i, e);
+}, eo = (i, e = "auto", t = "entityId") => (e === "grouped" ? or(i, t, { allowNumericGroup: !0 }) : e === "auto" && We(i) ? or(i, t) : ts(
+  i,
+  e === "friendlyName" || e === "entityId" ? e : t
+)).map((s) => ({
+  entityId: s.entityId,
+  friendlyName: s.friendlyName
+})), rs = (i, e, t, r) => {
   const s = e.trim().replace(/\*+$/, "");
   if (s.length === 0)
     return [];
-  const r = s.startsWith("sensor."), o = s.toLowerCase(), n = [];
-  for (const [a, l] of Object.entries(i)) {
-    if (!a.startsWith("sensor."))
+  const o = s.startsWith("sensor."), n = s.toLowerCase(), a = [];
+  for (const [l, c] of Object.entries(i)) {
+    if (!l.startsWith("sensor."))
       continue;
-    const c = l.attributes?.unit_of_measurement;
-    if (typeof c != "string")
+    const p = c.attributes?.unit_of_measurement;
+    if (typeof p != "string")
       continue;
-    const d = c.trim().toLowerCase();
+    const d = p.trim().toLowerCase();
     if (!t(d))
       continue;
-    const p = typeof l.attributes?.friendly_name == "string" ? l.attributes.friendly_name : void 0, h = p?.trim().toLowerCase();
-    (r ? a.startsWith(s) : h?.includes(o)) && n.push({
-      entityId: a,
-      friendlyName: p
+    const h = typeof c.attributes?.friendly_name == "string" ? c.attributes.friendly_name : void 0, u = h?.trim().toLowerCase();
+    (o ? l.startsWith(s) : u?.includes(n)) && a.push({
+      entityId: l,
+      friendlyName: h
     });
   }
-  return $i(n);
-}, Kt = (i, e, t, s, r) => {
-  const o = s.trim().replace(/\*+$/, "");
+  return eo(
+    a,
+    r,
+    o ? "entityId" : "friendlyName"
+  );
+}, ss = (i, e, t, r, s, o = "auto") => {
+  const n = r.trim().replace(/\*+$/, "");
+  if (n.length === 0)
+    return {
+      panels: [...i],
+      matched: 0,
+      filled: 0,
+      skipped: i.length
+    };
+  const a = rs(
+    e,
+    n,
+    s,
+    o
+  ), l = new Set(
+    i.map((f) => f[t]).filter((f) => typeof f == "string" && f.length > 0)
+  ), c = a.map((f) => f.entityId).filter((f) => !l.has(f));
+  let p = 0, d = 0, h = 0;
+  return {
+    panels: i.map((f) => {
+      const g = { ...f };
+      if (g.enabled === !1)
+        return h += 1, g;
+      const P = g[t];
+      if (typeof P == "string" && P.trim().length > 0)
+        return h += 1, g;
+      const S = c[p];
+      return S ? (g[t] = S, p += 1, d += 1, g) : (h += 1, g);
+    }),
+    matched: a.length,
+    filled: d,
+    skipped: h
+  };
+}, to = (i, e, t, r, s = "auto") => {
+  const o = t.trim().replace(/\*+$/, "");
   if (o.length === 0)
     return {
       panels: [...i],
@@ -6081,41 +6345,299 @@ const wi = /(\d+)/, Ut = (i) => {
       filled: 0,
       skipped: i.length
     };
-  const n = Pi(e, o, r), a = new Set(
-    i.map((_) => _[t]).filter((_) => typeof _ == "string" && _.length > 0)
-  ), l = n.map((_) => _.entityId).filter((_) => !a.has(_));
-  let c = 0, d = 0, p = 0;
+  const n = rs(
+    e,
+    o,
+    r,
+    s
+  ), a = i.filter((f) => f.power_entity?.trim()).map((f) => {
+    const g = f.power_entity ? e[f.power_entity] : void 0;
+    return {
+      entityId: f.power_entity ?? "",
+      friendlyName: ue(g)
+    };
+  }), l = We(a, {
+    allowNumericGroup: !0,
+    allowSingleGroup: !0,
+    minCandidates: 2
+  });
+  if (!l)
+    return ss(
+      i,
+      e,
+      "energy_entity",
+      o,
+      r,
+      s
+    );
+  let c = 0, p = 0;
+  const d = /* @__PURE__ */ new Set(), h = n.flatMap((f) => {
+    const g = e[f.entityId];
+    return g ? [{
+      entityId: f.entityId,
+      entity: g,
+      tokens: Ue(f.entityId, g)
+    }] : [];
+  });
   return {
-    panels: i.map((_) => {
-      const g = { ..._ };
+    panels: i.map((f) => {
+      const g = { ...f };
       if (g.enabled === !1)
         return p += 1, g;
-      const x = g[t];
-      if (typeof x == "string" && x.trim().length > 0)
-        return p += 1, g;
-      const C = l[c];
-      return C ? (g[t] = C, c += 1, d += 1, g) : (p += 1, g);
+      const P = ct(g, e, l), S = g.energy_entity;
+      if (typeof S == "string" && S.trim().length > 0)
+        return P && d.add(P), p += 1, g;
+      const x = po(
+        g,
+        i,
+        e,
+        l,
+        P
+      ), I = ns(h, P);
+      if (I.length === 1) {
+        const $ = P ?? I[0].entityId;
+        return d.has($) ? (p += 1, g) : (g.energy_entity = I[0].entityId, d.add($), c += 1, g);
+      }
+      const A = st(I, ($) => {
+        const E = pt($.tokens, P ?? void 0);
+        return os(x, E);
+      });
+      return A ? (g.energy_entity = A.entityId, c += 1, g) : (p += 1, g);
     }),
     matched: n.length,
-    filled: d,
+    filled: c,
     skipped: p
   };
-}, Si = (i, e, t, s) => {
-  const r = i?.trim() ?? "";
-  if (!r || r === e || /^panel\s+\d+$/i.test(r))
-    return !0;
-  const o = s(t);
-  return !!(o && r === o);
-}, Ci = (i, e) => i.map((t) => {
-  const s = t.power_entity?.trim();
+}, at = (i) => typeof i.attributes?.unit_of_measurement == "string" ? i.attributes.unit_of_measurement.trim().toLowerCase() : "", lt = (i) => typeof i.attributes?.device_class == "string" ? i.attributes.device_class.trim().toLowerCase() : "", nr = (i) => ["w", "kw"].includes(at(i)) || lt(i) === "power", ar = (i) => ["v", "kv", "mv"].includes(at(i)) || lt(i) === "voltage", lr = (i) => ["a", "ma"].includes(at(i)) || lt(i) === "current", ro = (i) => ["°c", "°f", "℃", "℉", "c", "f"].includes(at(i)) || lt(i) === "temperature", ue = (i) => {
+  const e = i?.attributes?.friendly_name;
+  if (typeof e != "string")
+    return;
+  const t = e.trim();
+  return t.length > 0 ? t : void 0;
+}, is = (i, e) => typeof e.entity_id == "string" && e.entity_id.trim().length > 0 ? e.entity_id : i, so = (i) => i.split(".")[0] ?? "", Ue = (i, e) => ze(`${i} ${ue(e) ?? ""}`).map((t) => t.toLowerCase()), pt = (i, e) => i.filter((t) => e && t === e.toLowerCase() || es.has(t) ? !1 : t.length > 0), os = (i, e) => {
+  const t = new Set(e);
+  return i.filter((r) => t.has(r)).length;
+}, Je = (i, e) => {
+  const t = new Set(i.tokens);
+  return e.some((r) => t.has(r));
+}, ae = (i, e) => Object.entries(i).map(([t, r]) => ({
+  entityId: is(t, r),
+  entity: r
+})).filter(({ entityId: t, entity: r }) => t.startsWith("sensor.") && e(r)).map(({ entityId: t, entity: r }) => ({
+  entityId: t,
+  entity: r,
+  tokens: Ue(t, r)
+})).sort((t, r) => q(t.entityId, r.entityId)), io = (i) => i.tokens.some((e) => Xi.has(e)), oo = (i) => Object.entries(i).map(([e, t]) => ({
+  entityId: is(e, t),
+  entity: t
+})).filter(({ entityId: e }) => Qi.has(so(e))).map(({ entityId: e, entity: t }) => ({
+  entityId: e,
+  entity: t,
+  tokens: Ue(e, t)
+})).filter(io).sort((e, t) => q(e.entityId, t.entityId)), st = (i, e) => {
+  const t = i.map((r) => ({
+    candidate: r,
+    score: e(r)
+  })).filter((r) => r.score > 0).sort((r, s) => s.score - r.score || q(r.candidate.entityId, s.candidate.entityId));
+  return t.length === 0 || t.length > 1 && t[0].score === t[1].score ? null : t[0].candidate;
+}, ns = (i, e) => {
+  if (!e)
+    return [];
+  const t = e.toLowerCase();
+  return i.filter((r) => r.tokens.includes(t));
+}, no = (i, e) => {
+  const t = new Set(
+    e.map((r) => r.toLowerCase())
+  );
+  return t.size === 0 ? [] : i.filter(
+    (r) => r.tokens.some((s) => t.has(s))
+  );
+}, ct = (i, e, t) => {
+  if (!t || !i.power_entity)
+    return null;
+  const r = e[i.power_entity];
+  return ze(
+    $e(
+      {
+        entityId: i.power_entity,
+        friendlyName: ue(r)
+      },
+      t.sortBy
+    )
+  )[t.tokenIndex]?.toLowerCase() ?? null;
+}, wt = (i, e, t) => i.power_entity ? pt(
+  Ue(i.power_entity, e[i.power_entity]),
+  t ?? void 0
+) : [], ao = (i, e) => i.power_entity ? pt(
+  Ue(i.power_entity, e[i.power_entity])
+).filter((t) => Jr.test(t)) : [], lo = (i, e, t) => {
+  const r = ct(i, e, t), s = ao(i, e), o = r && Jr.test(r) ? [r, ...s] : [...s, r];
+  return [
+    ...new Set(
+      o.filter((n) => !!n).map((n) => n.toLowerCase())
+    )
+  ];
+}, po = (i, e, t, r, s) => {
+  const o = wt(i, t, s);
   if (!s)
+    return o;
+  const n = /* @__PURE__ */ new Map();
+  for (const a of e) {
+    if (a.enabled === !1 || !a.power_entity?.trim() || ct(a, t, r) !== s)
+      continue;
+    const l = new Set(
+      wt(a, t, s)
+    );
+    for (const c of l)
+      n.set(c, (n.get(c) ?? 0) + 1);
+  }
+  return o.filter((a) => n.get(a) === 1);
+}, co = (i, e, t, r, s) => {
+  if (i === "panel_power_entity")
+    return e.power_entity?.trim() || null;
+  const o = ns(t[i], r);
+  if (o.length === 0)
+    return null;
+  if (i === "inverter_temp_entity") {
+    const n = o.filter(
+      (a) => Je(a, ["temp", "temperature", "inverter"])
+    );
+    return n.length === 1 ? n[0].entityId : o.length === 1 ? o[0].entityId : null;
+  }
+  return i === "inverter_ac_power_entity" || i === "inverter_ac_voltage_entity" || i === "inverter_ac_current_entity" ? st(o, (a) => Je(a, ["ac", "inverter"]) ? 2 : 0)?.entityId ?? null : i === "panel_current_entity" || i === "panel_voltage_entity" ? st(o, (a) => {
+    const l = pt(a.tokens, r ?? void 0), c = os(s, l);
+    if (c === 0)
+      return 0;
+    const p = Je(a, ["ac", "inverter"]) ? 1 : 0;
+    return c * 2 - p;
+  })?.entityId ?? null : null;
+}, ho = (i) => {
+  let e = 0;
+  const t = `${i.entityId} ${ue(i.entity) ?? ""}`.toLowerCase();
+  /device[._\-\s]+status/.test(t) && (e += 120), /inverter[._\-\s]+status/.test(t) && (e += 100), ue(i.entity)?.trim().toLowerCase() === "device status" && (e += 80);
+  for (const r of i.tokens)
+    r === "status" ? e += 20 : r === "state" ? e += 12 : ["fault", "alarm", "error"].includes(r) ? e += 10 : ["mode", "operation", "operating"].includes(r) ? e += 5 : ["work", "working", "run", "running"].includes(r) && (e += 3);
+  Je(i, ["inverter"]) && (e += 2);
+  for (const r of i.tokens)
+    Zi.has(r) && (e -= 8);
+  return e;
+}, uo = (i, e) => {
+  const r = i.filter(
+    (p) => typeof p.power_entity == "string" && p.power_entity.trim().length > 0
+  ).map((p) => {
+    const d = p.power_entity ? e[p.power_entity] : void 0;
+    return {
+      entityId: p.power_entity ?? "",
+      friendlyName: ue(d)
+    };
+  }), s = We(r, {
+    allowNumericGroup: !0,
+    allowSingleGroup: !0,
+    minCandidates: 2
+  }), o = oo(e), n = /* @__PURE__ */ new Map();
+  let a = 0, l = 0;
+  return {
+    panels: i.map((p) => {
+      if (p.enabled === !1 || !p.power_entity?.trim())
+        return l += 1, p;
+      if (typeof p.inverter_status_entity == "string" && p.inverter_status_entity.trim().length > 0)
+        return p;
+      const d = lo(p, e, s);
+      if (d.length === 0)
+        return l += 1, p;
+      const h = d[0];
+      if (!n.has(h)) {
+        const f = no(
+          o,
+          d
+        ), g = f.length === 1 ? f[0] : st(f, ho);
+        n.set(h, g?.entityId ?? null);
+      }
+      const u = n.get(h);
+      return u ? (a += 1, {
+        ...p,
+        inverter_status_entity: u
+      }) : (l += 1, p);
+    }),
+    filled: a,
+    skippedPanels: l
+  };
+}, _o = (i, e) => {
+  const r = i.filter(
+    (c) => c.enabled !== !1 && typeof c.power_entity == "string" && c.power_entity.trim().length > 0
+  ).map((c) => {
+    const p = c.power_entity ? e[c.power_entity] : void 0;
+    return {
+      entityId: c.power_entity ?? "",
+      friendlyName: ue(p)
+    };
+  }), s = We(r, {
+    allowNumericGroup: !0,
+    allowSingleGroup: !0,
+    minCandidates: 2
+  }), o = {
+    inverter_ac_power_entity: ae(e, nr),
+    inverter_ac_voltage_entity: ae(e, ar),
+    inverter_ac_current_entity: ae(e, lr),
+    inverter_temp_entity: ae(e, ro),
+    panel_current_entity: ae(e, lr),
+    panel_voltage_entity: ae(e, ar),
+    panel_power_entity: ae(e, nr)
+  };
+  let n = 0, a = 0;
+  return {
+    panels: i.map((c) => {
+      if (c.enabled === !1 || !c.power_entity?.trim())
+        return a += 1, c;
+      const p = ct(c, e, s), d = wt(c, e, p), h = {
+        ...c.advanced_metrics ?? {}
+      };
+      let u = !1;
+      const f = [
+        "inverter_ac_power_entity",
+        "inverter_ac_voltage_entity",
+        "inverter_ac_current_entity",
+        "inverter_temp_entity",
+        "panel_current_entity",
+        "panel_voltage_entity",
+        "panel_power_entity"
+      ];
+      for (const g of f) {
+        if (typeof h[g] == "string" && h[g]?.trim())
+          continue;
+        const P = co(
+          g,
+          c,
+          o,
+          p,
+          d
+        );
+        P && (h[g] = P, n += 1, u = !0);
+      }
+      return u ? {
+        ...c,
+        advanced_metrics: h
+      } : c;
+    }),
+    filled: n,
+    skippedPanels: a
+  };
+}, mo = (i, e, t, r) => {
+  const s = i?.trim() ?? "";
+  if (!s || s === e || /^panel\s+\d+$/i.test(s))
+    return !0;
+  const o = r(t);
+  return !!(o && s === o);
+}, fo = (i, e) => i.map((t) => {
+  const r = t.power_entity?.trim();
+  if (!r)
     return t;
-  const r = e(s);
-  return r ? {
+  const s = e(r);
+  return s ? {
     ...t,
-    name: r
+    name: s
   } : t;
-}), Vt = "spv-card-config-updated", Ei = (i, e) => {
+}), pr = "spv-card-config-updated", go = (i, e) => {
   i.dispatchEvent(
     new CustomEvent("config-changed", {
       detail: { config: e },
@@ -6123,58 +6645,58 @@ const wi = /(\d+)/, Ut = (i) => {
       composed: !0
     })
   );
-}, Ns = (i) => typeof i == "string" ? i.trim().toLowerCase() : "", ne = (i, e) => {
-  const t = Ns(i.attributes?.unit_of_measurement);
+}, as = (i) => typeof i == "string" ? i.trim().toLowerCase() : "", le = (i, e) => {
+  const t = as(i.attributes?.unit_of_measurement);
   return t.length > 0 && e.includes(t);
-}, ae = (i, e) => {
-  const t = Ns(i.attributes?.device_class);
+}, pe = (i, e) => {
+  const t = as(i.attributes?.device_class);
   return t.length > 0 && e.includes(t);
-}, jt = [
+}, cr = (i, e) => typeof e.entity_id == "string" && e.entity_id.trim().length > 0 ? e.entity_id : i, dr = [
   {
     key: "inverter_ac_power_entity",
     labelKey: "editor.field.advanced_inverter_ac_power",
-    matcher: (i) => ne(i, ["w", "kw"]) || ae(i, ["power"])
+    matcher: (i) => le(i, ["w", "kw"]) || pe(i, ["power"])
   },
   {
     key: "inverter_ac_voltage_entity",
     labelKey: "editor.field.advanced_inverter_ac_voltage",
-    matcher: (i) => ne(i, ["v", "kv", "mv"]) || ae(i, ["voltage"])
+    matcher: (i) => le(i, ["v", "kv", "mv"]) || pe(i, ["voltage"])
   },
   {
     key: "inverter_ac_current_entity",
     labelKey: "editor.field.advanced_inverter_ac_current",
-    matcher: (i) => ne(i, ["a", "ma"]) || ae(i, ["current"])
+    matcher: (i) => le(i, ["a", "ma"]) || pe(i, ["current"])
   },
   {
     key: "inverter_temp_entity",
     labelKey: "editor.field.advanced_inverter_temp",
-    matcher: (i) => ae(i, ["temperature"]) || ne(i, ["°c", "°f", "℃", "℉", "c", "f"])
+    matcher: (i) => pe(i, ["temperature"]) || le(i, ["°c", "°f", "℃", "℉", "c", "f"])
   },
   {
     key: "panel_current_entity",
     labelKey: "editor.field.advanced_panel_current",
-    matcher: (i) => ne(i, ["a", "ma"]) || ae(i, ["current"])
+    matcher: (i) => le(i, ["a", "ma"]) || pe(i, ["current"])
   },
   {
     key: "panel_voltage_entity",
     labelKey: "editor.field.advanced_panel_voltage",
-    matcher: (i) => ne(i, ["v", "kv", "mv"]) || ae(i, ["voltage"])
+    matcher: (i) => le(i, ["v", "kv", "mv"]) || pe(i, ["voltage"])
   },
   {
     key: "panel_power_entity",
     labelKey: "editor.field.advanced_panel_power",
-    matcher: (i) => ne(i, ["w", "kw"]) || ae(i, ["power"])
+    matcher: (i) => le(i, ["w", "kw"]) || pe(i, ["power"])
   }
-], Ye = class Ye extends ye {
+], ot = class ot extends we {
   constructor() {
     super(...arguments), this._config = this._normalizeEditorConfig({
       type: this._getCardType()
-    }), this._autoFillPowerPrefix = "", this._autoFillEnergyPrefix = "", this._autoFillResultMessage = "", this._applyDefaultRatedPowerToAllPanels = () => {
+    }), this._autoFillPowerPrefix = "", this._autoFillEnergyPrefix = "", this._autoFillSortMode = "auto", this._autoFillInverterStatus = !1, this._autoFillAdvancedTelemetry = !1, this._autoFillResultMessage = "", this._applyDefaultRatedPowerToAllPanels = () => {
       const e = this._config.default_panel_rated_power_w;
       if (!e)
         return;
-      const t = this._config.panels.map((s) => ({
-        ...s,
+      const t = this._config.panels.map((r) => ({
+        ...r,
         rated_power_w: e
       }));
       this._commit(
@@ -6187,22 +6709,23 @@ const wi = /(\d+)/, Ut = (i) => {
       if (!this.hass)
         return;
       const e = this._autoFillPowerPrefix.trim(), t = this._autoFillEnergyPrefix.trim();
-      if (!e && !t) {
+      if (!e && !t && !this._autoFillInverterStatus && !this._autoFillAdvancedTelemetry) {
         this._autoFillResultMessage = this._t("editor.autofill.enter_prefix");
         return;
       }
-      let s = [...this._config.panels];
-      const r = [];
+      let r = [...this._config.panels];
+      const s = [];
       if (e) {
-        s = s.map((n) => ({ ...n, power_entity: void 0 }));
-        const o = Kt(
-          s,
+        r = r.map((n) => ({ ...n, power_entity: void 0 }));
+        const o = ss(
+          r,
           this.hass.states,
           "power_entity",
           e,
-          (n) => n === "w"
+          (n) => n === "w",
+          this._autoFillSortMode
         );
-        s = o.panels, r.push(
+        r = o.panels, s.push(
           this._t("editor.autofill.power_summary", {
             matched: o.matched,
             filled: o.filled,
@@ -6211,15 +6734,15 @@ const wi = /(\d+)/, Ut = (i) => {
         );
       }
       if (t) {
-        s = s.map((n) => ({ ...n, energy_entity: void 0 }));
-        const o = Kt(
-          s,
+        r = r.map((n) => ({ ...n, energy_entity: void 0 }));
+        const o = to(
+          r,
           this.hass.states,
-          "energy_entity",
           t,
-          (n) => n === "kwh" || n === "wh"
+          (n) => n === "kwh" || n === "wh",
+          this._autoFillSortMode
         );
-        s = o.panels, r.push(
+        r = o.panels, s.push(
           this._t("editor.autofill.energy_summary", {
             matched: o.matched,
             filled: o.filled,
@@ -6227,13 +6750,37 @@ const wi = /(\d+)/, Ut = (i) => {
           })
         );
       }
-      s = Ci(
-        s,
+      if (r = fo(
+        r,
         (o) => this._getEntityFriendlyName(o)
-      ), this._autoFillResultMessage = r.join(" "), this._commit(
+      ), this._autoFillInverterStatus) {
+        const o = uo(
+          r,
+          this.hass.states
+        );
+        r = o.panels, s.push(
+          this._t("editor.autofill.inverter_status_summary", {
+            filled: o.filled,
+            skipped: o.skippedPanels
+          })
+        );
+      }
+      if (this._autoFillAdvancedTelemetry) {
+        const o = _o(
+          r,
+          this.hass.states
+        );
+        r = o.panels, s.push(
+          this._t("editor.autofill.advanced_summary", {
+            filled: o.filled,
+            skipped: o.skippedPanels
+          })
+        );
+      }
+      this._autoFillResultMessage = s.join(" "), this._commit(
         this._normalizeEditorConfig({
           ...this._config,
-          panels: s
+          panels: r
         })
       );
     }, this._handleRemoveAllPanelSensors = () => {
@@ -6253,41 +6800,41 @@ const wi = /(\d+)/, Ut = (i) => {
         })
       );
     }, this._handleCardConfigSync = (e) => {
-      const s = e.detail?.config;
-      if (!s || typeof s != "object")
+      const r = e.detail?.config;
+      if (!r || typeof r != "object")
         return;
-      const r = this._normalizeEditorConfig(
-        s
+      const s = this._normalizeEditorConfig(
+        r
       );
-      this._isReorderOnlySync(r) && this._commit(r);
+      this._isReorderOnlySync(s) && this._commit(s);
     };
   }
   connectedCallback() {
-    super.connectedCallback(), window.addEventListener(Vt, this._handleCardConfigSync);
+    super.connectedCallback(), window.addEventListener(pr, this._handleCardConfigSync);
   }
   disconnectedCallback() {
-    window.removeEventListener(Vt, this._handleCardConfigSync), super.disconnectedCallback();
+    window.removeEventListener(pr, this._handleCardConfigSync), super.disconnectedCallback();
   }
   setConfig(e) {
     this._config = this._normalizeEditorConfig(e ?? {});
   }
   _getCardType() {
-    return at;
+    return xt;
   }
   _normalizeEditorConfig(e) {
-    return Me(e);
+    return Re(e);
   }
   _renderExtraSections() {
-    return v;
+    return b;
   }
   _t(e, t) {
-    return Ps(this.hass, e, t);
+    return Br(this.hass, e, t);
   }
   render() {
     if (!this.hass)
-      return v;
-    const e = !!this.hass.states["sensor.power_production_now"], t = !!this.hass.states["sensor.energy_production_today"], s = e && t ? this._t("editor.forecast.detected") : this._t("editor.forecast.missing");
-    return f`
+      return b;
+    const e = !!this.hass.states["sensor.power_production_now"], t = !!this.hass.states["sensor.energy_production_today"], r = e && t ? this._t("editor.forecast.detected") : this._t("editor.forecast.missing");
+    return y`
       <div class="editor">
         <section class="section">
           <div class="section-header">
@@ -6388,9 +6935,9 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.use_system_power")}>
               <ha-switch
                 .checked=${this._config.use_system_power_entity ?? !1}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "use_system_power_entity",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6403,15 +6950,15 @@ const wi = /(\d+)/, Ut = (i) => {
           domain: "sensor"
         }
       },
-      (r) => this._updateRootValue("system_power_entity", r)
+      (s) => this._updateRootValue("system_power_entity", s)
     )}
           <div class="toggle">
             <ha-formfield label=${this._t("editor.toggle.invert_system_power")}>
               <ha-switch
                 .checked=${this._config.invert_system_power ?? !1}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "invert_system_power",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6420,9 +6967,9 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.use_system_energy")}>
               <ha-switch
                 .checked=${this._config.use_system_energy_entity ?? !1}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "use_system_energy_entity",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6435,7 +6982,7 @@ const wi = /(\d+)/, Ut = (i) => {
           domain: "sensor"
         }
       },
-      (r) => this._updateRootValue("system_energy_entity", r)
+      (s) => this._updateRootValue("system_energy_entity", s)
     )}
           ${this._renderSelectorWithClear(
       this._t("editor.field.custom_kpi_sensor"),
@@ -6445,15 +6992,15 @@ const wi = /(\d+)/, Ut = (i) => {
           domain: "sensor"
         }
       },
-      (r) => this._updateRootValue("custom_kpi_entity", r)
+      (s) => this._updateRootValue("custom_kpi_entity", s)
     )}
           <div class="toggle">
             <ha-formfield label=${this._t("editor.toggle.invert_custom_kpi")}>
               <ha-switch
                 .checked=${this._config.invert_custom_kpi ?? !1}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "invert_custom_kpi",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6467,9 +7014,9 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.show_custom_kpi")}>
               <ha-switch
                 .checked=${this._config.show_custom_kpi ?? !0}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "show_custom_kpi",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6478,9 +7025,9 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.limit_panel_width")}>
               <ha-switch
                 .checked=${this._config.limit_panel_width ?? !1}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "limit_panel_width",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6488,10 +7035,10 @@ const wi = /(\d+)/, Ut = (i) => {
           ${this._renderEditorInput(
       this._t("editor.field.max_panel_tile_width"),
       String(this._config.panel_max_width_px ?? 220),
-      (r) => this._updateRootValue(
+      (s) => this._updateRootValue(
         "panel_max_width_px",
         this._parseNumberWithClamp(
-          r,
+          s,
           this._config.panel_max_width_px ?? 220,
           120,
           320
@@ -6524,14 +7071,14 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.enable_forecast_overlay")}>
               <ha-switch
                 .checked=${this._config.enable_forecast_overlay ?? !1}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "enable_forecast_overlay",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
           </div>
-          <p class="section-copy">${s}</p>
+          <p class="section-copy">${r}</p>
         </section>
 
         <section class="section">
@@ -6545,9 +7092,9 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.enable_array_health")}>
               <ha-switch
                 .checked=${this._config.enable_array_checks ?? !1}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "enable_array_checks",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6626,18 +7173,18 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.enable_inverter_status")}>
               <ha-switch
                 .checked=${this._config.enable_inverter_status ?? !1}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "enable_inverter_status",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
             <ha-formfield label=${this._t("editor.toggle.show_inverter_status_tiles")}>
               <ha-switch
                 .checked=${this._config.show_inverter_status_on_tiles ?? !1}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "show_inverter_status_on_tiles",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6645,17 +7192,17 @@ const wi = /(\d+)/, Ut = (i) => {
           ${this._renderEditorInput(
       this._t("editor.field.fault_terms"),
       (this._config.inverter_fault_terms ?? []).join(", "),
-      (r) => this._updateRootValue(
+      (s) => this._updateRootValue(
         "inverter_fault_terms",
-        r
+        s
       )
     )}
           ${this._renderEditorInput(
       this._t("editor.field.working_terms"),
       (this._config.inverter_working_terms ?? []).join(", "),
-      (r) => this._updateRootValue(
+      (s) => this._updateRootValue(
         "inverter_working_terms",
-        r
+        s
       )
     )}
           <p class="section-copy">
@@ -6693,9 +7240,9 @@ const wi = /(\d+)/, Ut = (i) => {
               max="1.6"
               step="0.05"
               .value=${String(this._config.production_color_intensity ?? 1)}
-              @input=${(r) => this._updateRootValue(
+              @input=${(s) => this._updateRootValue(
       "production_color_intensity",
-      Number(r.currentTarget.value)
+      Number(s.currentTarget.value)
     )}
             />
           </label>
@@ -6712,9 +7259,9 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.motion_enabled")}>
               <ha-switch
                 .checked=${this._config.motion_enabled ?? !0}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "motion_enabled",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6723,9 +7270,9 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.motion_power_flow")}>
               <ha-switch
                 .checked=${this._config.motion_power_flow ?? !0}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "motion_power_flow",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6734,9 +7281,9 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.motion_update_shimmer")}>
               <ha-switch
                 .checked=${this._config.motion_update_shimmer ?? !0}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "motion_update_shimmer",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6745,9 +7292,9 @@ const wi = /(\d+)/, Ut = (i) => {
             <ha-formfield label=${this._t("editor.toggle.motion_alert_ripple")}>
               <ha-switch
                 .checked=${this._config.motion_alert_ripple ?? !0}
-                @change=${(r) => this._updateRootValue(
+                @change=${(s) => this._updateRootValue(
       "motion_alert_ripple",
-      r.currentTarget.checked
+      s.currentTarget.checked
     )}
               ></ha-switch>
             </ha-formfield>
@@ -6778,7 +7325,7 @@ const wi = /(\d+)/, Ut = (i) => {
       this._t("editor.field.default_panel_rated_power"),
       this._config.default_panel_rated_power_w,
       1,
-      2e3
+      et
     )}
             </div>
             <div class="button-row">
@@ -6799,20 +7346,47 @@ const wi = /(\d+)/, Ut = (i) => {
               ${this._renderEditorInput(
       this._t("editor.field.power_prefix"),
       this._autoFillPowerPrefix,
-      (r) => {
-        this._autoFillPowerPrefix = r;
+      (s) => {
+        this._autoFillPowerPrefix = s;
       }
     )}
               ${this._renderEditorInput(
       this._t("editor.field.energy_prefix"),
       this._autoFillEnergyPrefix,
-      (r) => {
-        this._autoFillEnergyPrefix = r;
+      (s) => {
+        this._autoFillEnergyPrefix = s;
       }
     )}
+              ${this._renderAutoFillSortModeField()}
             </div>
             <p class="section-copy">
               ${this._t("editor.helper.autofill_search_help")}
+            </p>
+            <label class="autofill-option">
+              <input
+                type="checkbox"
+                .checked=${this._autoFillInverterStatus}
+                @change=${(s) => {
+      this._autoFillInverterStatus = s.currentTarget.checked;
+    }}
+              />
+              <span>${this._t("editor.toggle.autofill_inverter_status")}</span>
+            </label>
+            <p class="section-copy">
+              ${this._t("editor.helper.autofill_inverter_status_help")}
+            </p>
+            <label class="autofill-option">
+              <input
+                type="checkbox"
+                .checked=${this._autoFillAdvancedTelemetry}
+                @change=${(s) => {
+      this._autoFillAdvancedTelemetry = s.currentTarget.checked;
+    }}
+              />
+              <span>${this._t("editor.toggle.autofill_advanced_telemetry")}</span>
+            </label>
+            <p class="section-copy">
+              ${this._t("editor.helper.autofill_advanced_help")}
             </p>
             <div class="button-row">
               <button class="secondary-button" type="button" @click=${this._handleAutoPopulateSensors}>
@@ -6822,12 +7396,12 @@ const wi = /(\d+)/, Ut = (i) => {
                 ${this._t("editor.button.remove_all_sensors")}
               </button>
             </div>
-            ${this._autoFillResultMessage ? f`<p class="section-copy">${this._autoFillResultMessage}</p>` : v}
+            ${this._autoFillResultMessage ? y`<p class="section-copy">${this._autoFillResultMessage}</p>` : b}
           </div>
 
           <div class="panel-list">
             ${this._config.panels.map(
-      (r, o) => this._renderPanelEditor(r, o)
+      (s, o) => this._renderPanelEditor(s, o)
     )}
           </div>
         </section>
@@ -6837,16 +7411,16 @@ const wi = /(\d+)/, Ut = (i) => {
     `;
   }
   _renderPanelEditor(e, t) {
-    const s = this._getAvailableSensorEntityIdsByUnit(
+    const r = this._getAvailableSensorEntityIdsByUnit(
       t,
       "power_entity",
       (o) => o === "w"
-    ), r = this._getAvailableSensorEntityIdsByUnit(
+    ), s = this._getAvailableSensorEntityIdsByUnit(
       t,
       "energy_entity",
       (o) => o === "kwh" || o === "wh"
     );
-    return f`
+    return y`
       <details ?open=${t === 0}>
         <summary>
           <span>${this._formatPanelSlotTitle(t)}</span>
@@ -6859,14 +7433,14 @@ const wi = /(\d+)/, Ut = (i) => {
       "power_entity",
       this._t("editor.field.power_sensor"),
       e.power_entity,
-      s
+      r
     )}
           ${this._renderPanelSensorSelector(
       t,
       "energy_entity",
       this._t("editor.field.energy_sensor"),
       e.energy_entity,
-      r
+      s
     )}
           <div class="toggle">
             <ha-formfield label=${this._t("editor.field.panel_energy_toggle")}>
@@ -6886,7 +7460,7 @@ const wi = /(\d+)/, Ut = (i) => {
       this._t("editor.field.panel_rated_power"),
       e.rated_power_w,
       1,
-      2e3
+      et
     )}
           ${this._renderPanelNumberField(
       t,
@@ -6924,30 +7498,30 @@ const wi = /(\d+)/, Ut = (i) => {
     `;
   }
   _renderPanelAdvancedSection(e, t) {
-    return f`
+    return y`
       <details class="panel-advanced">
         <summary>${this._t("editor.section.advanced_title")}</summary>
         <div class="panel-advanced-grid">
           <p class="section-copy">
             ${this._t("editor.section.advanced_copy")}
           </p>
-          ${jt.map(
-      (s) => this._renderPanelAdvancedSensorSelector(
+          ${dr.map(
+      (r) => this._renderPanelAdvancedSensorSelector(
         e,
-        s.key,
-        this._t(s.labelKey),
-        t.advanced_metrics?.[s.key],
-        this._getAdvancedSensorEntityIds(e, s.key, s.matcher)
+        r.key,
+        this._t(r.labelKey),
+        t.advanced_metrics?.[r.key],
+        this._getAdvancedSensorEntityIds(e, r.key, r.matcher)
       )
     )}
         </div>
       </details>
     `;
   }
-  _renderPanelAdvancedSensorSelector(e, t, s, r, o) {
+  _renderPanelAdvancedSensorSelector(e, t, r, s, o) {
     return this._renderSelectorWithClear(
-      s,
       r,
+      s,
       {
         entity: {
           domain: "sensor",
@@ -6958,13 +7532,13 @@ const wi = /(\d+)/, Ut = (i) => {
     );
   }
   _formatPanelSlotTitle(e) {
-    const t = Math.floor(e / this._config.columns) + 1, s = e % this._config.columns + 1;
-    return this._t("editor.panel_slot_title", { row: t, column: s });
+    const t = Math.floor(e / this._config.columns) + 1, r = e % this._config.columns + 1;
+    return this._t("editor.panel_slot_title", { row: t, column: r });
   }
-  _renderPanelEntityPicker(e, t, s, r, o) {
+  _renderPanelEntityPicker(e, t, r, s, o) {
     return this._renderSelectorWithClear(
-      s,
       r,
+      s,
       {
         entity: {
           domain: o
@@ -6973,17 +7547,17 @@ const wi = /(\d+)/, Ut = (i) => {
       (n) => this._updatePanelValue(e, t, n)
     );
   }
-  _renderTextField(e, t, s) {
+  _renderTextField(e, t, r) {
     return this._renderEditorInput(
       t,
-      s,
-      (r) => this._updateRootValue(e, r)
+      r,
+      (s) => this._updateRootValue(e, s)
     );
   }
-  _renderPanelSensorSelector(e, t, s, r, o) {
+  _renderPanelSensorSelector(e, t, r, s, o) {
     return this._renderSelectorWithClear(
-      s,
       r,
+      s,
       {
         entity: {
           domain: "sensor",
@@ -6993,53 +7567,53 @@ const wi = /(\d+)/, Ut = (i) => {
       (n) => this._updatePanelValue(e, t, n)
     );
   }
-  _renderSelectorWithClear(e, t, s, r) {
-    return f`
+  _renderSelectorWithClear(e, t, r, s) {
+    return y`
       <ha-selector
         .hass=${this.hass}
         .value=${t}
-        .selector=${s}
+        .selector=${r}
         .label=${e}
         .required=${!1}
-        @value-changed=${(o) => r(
+        @value-changed=${(o) => s(
       typeof o.detail?.value == "string" ? o.detail.value : ""
     )}
       ></ha-selector>
     `;
   }
-  _renderNumberField(e, t, s, r, o) {
+  _renderNumberField(e, t, r, s, o) {
     return this._renderEditorInput(
       t,
-      String(s),
+      String(r),
       (n) => this._updateRootValue(
         e,
-        this._parseNumberWithClamp(n, s, r, o)
+        this._parseNumberWithClamp(n, r, s, o)
       ),
-      { type: "number", min: r, max: o, updateOn: "change" }
+      { type: "number", min: s, max: o, updateOn: "change" }
     );
   }
-  _renderOptionalNumberField(e, t, s, r, o) {
+  _renderOptionalNumberField(e, t, r, s, o) {
     return this._renderEditorInput(
       t,
-      s !== void 0 ? String(s) : "",
+      r !== void 0 ? String(r) : "",
       (n) => this._updateRootValue(
         e,
-        this._parseOptionalNumber(n, r, o)
+        this._parseOptionalNumber(n, s, o)
       ),
-      { type: "number", min: r, max: o, updateOn: "change" }
+      { type: "number", min: s, max: o, updateOn: "change" }
     );
   }
-  _renderPanelTextField(e, t, s, r) {
+  _renderPanelTextField(e, t, r, s) {
     return this._renderEditorInput(
-      s,
       r,
+      s,
       (o) => this._updatePanelValue(e, t, o)
     );
   }
-  _renderPanelOptionalNumberField(e, t, s, r, o, n) {
+  _renderPanelOptionalNumberField(e, t, r, s, o, n) {
     return this._renderEditorInput(
-      s,
-      r !== void 0 ? String(r) : "",
+      r,
+      s !== void 0 ? String(s) : "",
       (a) => this._updatePanelValue(
         e,
         t,
@@ -7048,113 +7622,136 @@ const wi = /(\d+)/, Ut = (i) => {
       { type: "number", min: o, max: n, updateOn: "change" }
     );
   }
-  _renderPanelNumberField(e, t, s, r, o, n) {
+  _renderPanelNumberField(e, t, r, s, o, n) {
     return this._renderEditorInput(
-      s,
-      String(r),
+      r,
+      String(s),
       (a) => this._updatePanelValue(
         e,
         t,
-        this._parseNumberWithClamp(a, r, o, n)
+        this._parseNumberWithClamp(a, s, o, n)
       ),
       { type: "number", min: o, max: n, updateOn: "change" }
     );
   }
-  _renderEditorInput(e, t, s, r = {}) {
-    const o = r.updateOn ?? "input", n = (l) => {
-      o === "input" && s(l.currentTarget.value);
+  _renderEditorInput(e, t, r, s = {}) {
+    const o = s.updateOn ?? "input", n = (l) => {
+      o === "input" && r(l.currentTarget.value);
     }, a = (l) => {
-      o === "change" && s(l.currentTarget.value);
+      o === "change" && r(l.currentTarget.value);
     };
-    return f`
+    return y`
       <label class="field">
         <span class="field-label">${e}</span>
         <input
           class="text-input"
-          type=${r.type ?? "text"}
+          type=${s.type ?? "text"}
           .value=${t}
-          min=${r.min === void 0 ? v : String(r.min)}
-          max=${r.max === void 0 ? v : String(r.max)}
-          ?disabled=${r.disabled ?? !1}
+          min=${s.min === void 0 ? b : String(s.min)}
+          max=${s.max === void 0 ? b : String(s.max)}
+          ?disabled=${s.disabled ?? !1}
           @input=${n}
           @change=${a}
         />
       </label>
     `;
   }
-  _renderSelectField(e, t, s, r) {
-    return f`
+  _renderSelectField(e, t, r, s) {
+    return y`
       <label class="color-field">
         <span>${t}</span>
         <select
-          .value=${s}
+          .value=${r}
           @change=${(o) => this._updateRootValue(e, o.currentTarget.value)}
         >
-          ${r.map(
-      (o) => f`<option value=${o.value}>${o.label}</option>`
+          ${s.map(
+      (o) => y`<option value=${o.value}>${o.label}</option>`
+    )}
+        </select>
+      </label>
+    `;
+  }
+  _renderAutoFillSortModeField() {
+    const e = [
+      { value: "auto", label: this._t("editor.select.autofill_sort_auto") },
+      { value: "entityId", label: this._t("editor.select.autofill_sort_entity") },
+      { value: "friendlyName", label: this._t("editor.select.autofill_sort_friendly") },
+      { value: "grouped", label: this._t("editor.select.autofill_sort_grouped") }
+    ];
+    return y`
+      <label class="color-field">
+        <span>${this._t("editor.field.autofill_sort_mode")}</span>
+        <select
+          .value=${this._autoFillSortMode}
+          @change=${(t) => {
+      this._autoFillSortMode = t.currentTarget.value;
+    }}
+        >
+          ${e.map(
+      (t) => y`<option value=${t.value}>${t.label}</option>`
     )}
         </select>
       </label>
     `;
   }
   _renderColorField(e, t) {
-    const s = this._config.colors?.[e] ?? "";
-    return f`
+    const r = this._config.colors?.[e] ?? "";
+    return y`
       <label class="color-field">
         <span>${t}</span>
         <input
           type="color"
-          .value=${s}
-          @input=${(r) => this._updateColor(e, r.currentTarget.value)}
+          .value=${r}
+          @input=${(s) => this._updateColor(e, s.currentTarget.value)}
         />
       </label>
     `;
   }
   _updateRootValue(e, t) {
-    const s = this._normalizeEditorConfig({
+    const r = this._normalizeEditorConfig({
       ...this._config,
       [e]: t
     });
-    this._commit(s);
+    this._commit(r);
   }
   _updateColor(e, t) {
-    const s = this._normalizeEditorConfig({
+    const r = this._normalizeEditorConfig({
       ...this._config,
       colors: {
         ...this._config.colors ?? {},
         [e]: t
       }
     });
-    this._commit(s);
+    this._commit(r);
   }
-  _updatePanelValue(e, t, s) {
-    const r = this._config.panels.map((n, a) => {
+  _updatePanelValue(e, t, r) {
+    const s = this._config.panels.map((n, a) => {
       if (a !== e)
         return n;
-      const l = { ...n, [t]: s };
+      const l = { ...n, [t]: r };
       if (t === "power_entity") {
-        const c = n.power_entity, d = typeof s == "string" ? s.trim() : "";
-        if (d.length > 0) {
-          const p = this._getEntityFriendlyName(d);
-          p && this._shouldAutoRenamePanel(n.name, n.id, c) && (l.name = p);
+        const c = n.power_entity, p = typeof r == "string" ? r.trim() : "";
+        if (p.length > 0) {
+          const d = this._getEntityFriendlyName(p);
+          d && this._shouldAutoRenamePanel(n.name, n.id, c) && (l.name = d);
         }
       }
-      return t === "enabled" && s === !1 && (l.power_entity = void 0, l.energy_entity = void 0, l.show_energy = !1, l.inverter_status_entity = void 0, l.error_entity = void 0, l.advanced_metrics = void 0), l;
+      return t === "enabled" && r === !1 && (l.power_entity = void 0, l.energy_entity = void 0, l.show_energy = !1, l.inverter_status_entity = void 0, l.error_entity = void 0, l.advanced_metrics = void 0), l;
     }), o = this._normalizeEditorConfig({
       ...this._config,
-      panels: r
+      panels: s
     });
     this._commit(o);
   }
-  _updatePanelAdvancedMetricValue(e, t, s) {
-    const r = typeof s == "string" && s.trim().length > 0 ? s.trim() : void 0, o = this._config.panels.map((a, l) => {
+  _updatePanelAdvancedMetricValue(e, t, r) {
+    const s = typeof r == "string" && r.trim().length > 0 ? r.trim() : void 0, o = this._config.panels.map((a, l) => {
       if (l !== e)
         return a;
       const c = {
         ...a.advanced_metrics ?? {}
       };
-      return c[t] = r, jt.every(
-        (d) => !c[d.key] || c[d.key]?.trim().length === 0
+      return c[t] = s, dr.every(
+        (p) => !c[p.key] || c[p.key]?.trim().length === 0
       ) ? {
         ...a,
         advanced_metrics: void 0
@@ -7168,103 +7765,109 @@ const wi = /(\d+)/, Ut = (i) => {
     });
     this._commit(n);
   }
-  _parseOptionalNumber(e, t, s) {
+  _parseOptionalNumber(e, t, r) {
     if (e.trim() === "")
       return;
-    const r = Number(e);
-    if (Number.isFinite(r))
-      return Math.min(Math.max(r, t), s);
+    const s = Number(e);
+    if (Number.isFinite(s))
+      return Math.min(Math.max(s, t), r);
   }
-  _parseNumberWithClamp(e, t, s, r) {
+  _parseNumberWithClamp(e, t, r, s) {
     const o = Number(e);
-    return Number.isFinite(o) ? Math.min(Math.max(o, s), r) : t;
+    return Number.isFinite(o) ? Math.min(Math.max(o, r), s) : t;
   }
-  _getAvailableSensorEntityIdsByUnit(e, t, s) {
+  _getAvailableSensorEntityIdsByUnit(e, t, r) {
     if (!this.hass)
       return [];
-    const r = new Set(
+    const s = new Set(
       this._config.panels.map((a, l) => l === e ? void 0 : a[t]).filter((a) => typeof a == "string" && a.length > 0)
     ), o = this._config.panels[e]?.[t], n = [];
-    for (const a of Object.values(this.hass.states)) {
-      if (!a.entity_id.startsWith("sensor."))
+    for (const [a, l] of Object.entries(this.hass.states)) {
+      const c = cr(a, l);
+      if (!c.startsWith("sensor."))
         continue;
-      const l = a.attributes?.unit_of_measurement;
-      if (typeof l != "string")
+      const p = l.attributes?.unit_of_measurement;
+      if (typeof p != "string")
         continue;
-      const c = l.trim().toLowerCase();
-      s(c) && (r.has(a.entity_id) && a.entity_id !== o || n.push(a.entity_id));
+      const d = p.trim().toLowerCase();
+      r(d) && (s.has(c) && c !== o || n.push(c));
     }
-    return typeof o == "string" && o.length > 0 && !n.includes(o) && n.push(o), n.sort((a, l) => a.localeCompare(l));
+    return typeof o == "string" && o.length > 0 && !n.includes(o) && n.push(o), n.sort(q);
   }
-  _getAdvancedSensorEntityIds(e, t, s) {
+  _getAdvancedSensorEntityIds(e, t, r) {
     if (!this.hass)
       return [];
-    const r = this._config.panels[e]?.advanced_metrics?.[t], o = [];
-    for (const n of Object.values(this.hass.states))
-      n.entity_id.startsWith("sensor.") && s(n) && o.push(n.entity_id);
-    return typeof r == "string" && r.length > 0 && !o.includes(r) && o.push(r), o.sort((n, a) => n.localeCompare(a));
+    const s = this._config.panels[e]?.advanced_metrics?.[t], o = [];
+    for (const [n, a] of Object.entries(this.hass.states)) {
+      const l = cr(n, a);
+      l.startsWith("sensor.") && r(a) && o.push(l);
+    }
+    return typeof s == "string" && s.length > 0 && !o.includes(s) && o.push(s), o.sort(q);
   }
   _getEntityFriendlyName(e) {
     const t = e?.trim();
     if (!this.hass || !t)
       return;
-    const r = this.hass.states[t]?.attributes?.friendly_name;
-    if (typeof r != "string")
+    const s = this.hass.states[t]?.attributes?.friendly_name;
+    if (typeof s != "string")
       return;
-    const o = r.trim();
+    const o = s.trim();
     return o.length > 0 ? o : void 0;
   }
-  _shouldAutoRenamePanel(e, t, s) {
-    return Si(
+  _shouldAutoRenamePanel(e, t, r) {
+    return mo(
       e,
       t,
-      s,
-      (r) => this._getEntityFriendlyName(r)
+      r,
+      (s) => this._getEntityFriendlyName(s)
     );
   }
   _commit(e) {
-    this._config = e, Ei(this, e);
+    this._config = e, go(this, e);
   }
   _isReorderOnlySync(e) {
     if (e.type !== this._getCardType() || e.rows !== this._config.rows || e.columns !== this._config.columns || e.panels.length !== this._config.panels.length)
       return !1;
-    const t = this._toPanelSignatureMap(this._config.panels), s = this._toPanelSignatureMap(e.panels);
-    if (t.size !== s.size)
+    const t = this._toPanelSignatureMap(this._config.panels), r = this._toPanelSignatureMap(e.panels);
+    if (t.size !== r.size)
       return !1;
     for (const [n, a] of t.entries())
-      if (s.get(n) !== a)
+      if (r.get(n) !== a)
         return !1;
-    const r = this._config.panels.map((n) => n.id).join("|"), o = e.panels.map((n) => n.id).join("|");
-    return r !== o;
+    const s = this._config.panels.map((n) => n.id).join("|"), o = e.panels.map((n) => n.id).join("|");
+    return s !== o;
   }
   _toPanelSignatureMap(e) {
     const t = /* @__PURE__ */ new Map();
-    for (const s of e)
+    for (const r of e)
       t.set(
-        s.id,
+        r.id,
         JSON.stringify({
-          name: s.name ?? "",
-          power_entity: s.power_entity ?? "",
-          energy_entity: s.energy_entity ?? "",
-          inverter_status_entity: s.inverter_status_entity ?? "",
-          error_entity: s.error_entity ?? "",
-          show_energy: s.show_energy ?? !1,
-          enabled: s.enabled ?? !0,
-          rated_power_w: s.rated_power_w ?? null,
-          deviation_derate_percent: s.deviation_derate_percent ?? 100,
-          advanced_metrics: s.advanced_metrics ?? {}
+          name: r.name ?? "",
+          power_entity: r.power_entity ?? "",
+          energy_entity: r.energy_entity ?? "",
+          inverter_status_entity: r.inverter_status_entity ?? "",
+          error_entity: r.error_entity ?? "",
+          show_energy: r.show_energy ?? !1,
+          enabled: r.enabled ?? !0,
+          rated_power_w: r.rated_power_w ?? null,
+          deviation_derate_percent: r.deviation_derate_percent ?? 100,
+          advanced_metrics: r.advanced_metrics ?? {}
         })
       );
     return t;
   }
 };
-Ye.properties = {
+ot.properties = {
   hass: { attribute: !1 },
   _config: { state: !0 },
   _autoFillPowerPrefix: { state: !0 },
   _autoFillEnergyPrefix: { state: !0 },
+  _autoFillSortMode: { state: !0 },
+  _autoFillInverterStatus: { state: !0 },
+  _autoFillAdvancedTelemetry: { state: !0 },
   _autoFillResultMessage: { state: !0 }
-}, Ye.styles = dt`
+}, ot.styles = Ct`
     :host {
       display: block;
     }
@@ -7400,6 +8003,25 @@ Ye.properties = {
       gap: 12px;
     }
 
+    .autofill-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 32px;
+      color: var(--primary-text-color);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .autofill-option input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--primary-color);
+      cursor: pointer;
+    }
+
     .button-row {
       display: flex;
       gap: 10px;
@@ -7466,23 +8088,23 @@ Ye.properties = {
       color: var(--secondary-text-color);
     }
   `;
-let je = Ye;
-class Ls extends je {
+let it = ot;
+class ls extends it {
 }
 customElements.get("solar-panel-visualizer-card-editor") || customElements.define(
   "solar-panel-visualizer-card-editor",
-  Ls
+  ls
 );
-const ki = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const yo = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  SolarPanelVisualizerBaseCardEditor: je,
-  SolarPanelVisualizerCardEditor: Ls
-}, Symbol.toStringTag, { value: "Module" })), Yt = typeof navigator < "u" ? navigator.language : "en";
+  SolarPanelVisualizerBaseCardEditor: it,
+  SolarPanelVisualizerCardEditor: ls
+}, Symbol.toStringTag, { value: "Module" })), hr = typeof navigator < "u" ? navigator.language : "en";
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: qt,
-  name: Ke(Yt, "meta.card_name"),
-  description: Ke(Yt, "meta.card_description"),
+  type: ur,
+  name: tt(hr, "meta.card_name"),
+  description: tt(hr, "meta.card_description"),
   icon: "mdi:solar-panel",
   preview: !0
 });
