@@ -11,12 +11,13 @@ It gives you a clear visual map of each panel slot, live power and energy KPIs, 
 
 ## ✨ Top highlights
 
-- **Default HACS install, no YAML required**: install from the normal HACS store and configure everything in the Home Assistant GUI editor.
+- **10-second setup with auto-populate search**: search by entity ID or friendly name, fill panel sensors, inverter status, and telemetry from matching serial/device groups, then drag panels into the right slots.
 - **Live panel-level array overview**: see each panel slot with power, energy, status color, row/column labels, and system KPIs in one card.
-- **Fast setup tools**: tap unconfigured panels, auto-populate sensors by entity ID or friendly name, and drag panels into the right slots.
 - **Array Health Check**: compare panels against peers to spot underperformance, deviation, inverter faults, and unavailable sensors.
 - **Useful diagnostics popups**: open panel, Power, Energy, and Custom KPI popups with recorder graphs, virtual total graphs, comparison graphs, and `1h`, `6h`, and `24h` ranges.
 - **Forecast.Solar, themes, and motion**: add forecast overlays, inverter status checks, light/dark modes, power-flow animation, and alert effects.
+- **Default HACS install, no YAML required**: install from the normal HACS store and configure everything in the Home Assistant GUI editor.
+
 
 ## 🎬 Animated tour
 
@@ -62,6 +63,7 @@ Right-click and select "Play animation" on Safari macOS if a GIF does not start 
 - Tap-to-configure unconfigured panel slots.
 - Drag-and-drop panel reordering directly on the card.
 - Entity ID or friendly-name sensor auto-fill, friendly-name panel naming, and bulk sensor removal tools.
+- Safer multi-inverter auto-fill with natural sorting, repeated serial/device grouping, optional inverter status fill, optional advanced telemetry fill, and shared daily energy protection.
 - Advanced per-panel telemetry fields for inverter and panel diagnostics.
 - Scales to large arrays, including 100+ panel slots.
 
@@ -123,6 +125,7 @@ The editor covers the full card setup:
 - **Status Colors**: production gradient, deviation/error/unavailable colors, and intensity.
 - **Motion**: power flow, update shimmer, and alert ripple controls.
 - **Panels**: per-slot sensor selectors, names, rated power, energy display, derate, inverter status, advanced telemetry, and visibility.
+- **Auto-populate sensors**: power and energy search, sort mode, optional inverter status fill, optional advanced telemetry fill, and bulk sensor removal.
 
 ## 🔍 Feature details
 
@@ -176,6 +179,8 @@ Forecast overlays can add a dashed reference line to Power and Energy popup grap
 Inverter status checks help catch panel or micro-inverter issues that raw power values may not explain.
 
 - Configure an inverter status sensor per panel.
+- The Auto-populate section can fill empty inverter status sensors from configured panel power sensors by matching the same serial/device/group.
+- For integrations with both `Device Status` and `Online Status`, auto-fill prefers the actual device status sensor for inverter evaluation.
 - Enable global inverter status checks from the GUI.
 - Add working terms and fault terms as comma-separated text.
 - Matching fault terms can mark the panel as inverter/error state.
@@ -216,6 +221,8 @@ Per panel, the GUI can map:
 
 Configured telemetry is grouped in the panel popup, and missing optional telemetry is handled cleanly.
 
+The Auto-populate section can fill empty advanced telemetry fields from each panel's configured power sensor. This is useful for integrations that expose related sensors with the same serial/device/group in the entity ID or friendly name. Shared inverter-level telemetry, such as inverter temperature, can be reused across multiple panels on the same inverter.
+
 </details>
 
 <details>
@@ -224,11 +231,15 @@ Configured telemetry is grouped in the panel popup, and missing optional telemet
 The card is built for both small residential arrays and large panel layouts.
 
 - Rows and columns define fixed panel slots.
+- Rated power supports individual panels and string-level sensors up to `10000 W`.
 - Disabled panels keep their visual slot but are excluded from active sensor behavior.
 - Drag-and-drop swaps panel slots and saves the order to the card config.
 - Tap-to-configure opens a quick setup popup for unconfigured panels.
-- Auto-fill can fill power and energy sensors in slot order by `sensor.` entity ID prefix or friendly-name search.
+- Auto-fill can fill power and energy sensors by `sensor.` entity ID prefix or friendly-name search.
+- Auto-fill sort modes include Auto detect, literal entity ID order, literal friendly-name order, and grouped repeated-suffix order for multi-inverter naming.
 - Power sensor auto-fill also refreshes panel display names from the selected sensors' friendly names.
+- Energy auto-fill avoids assigning one shared inverter daily energy sensor to multiple panels in the same serial group, so summed Energy totals do not double count that inverter.
+- Optional inverter status and advanced telemetry auto-fill use configured panel power sensors as anchors and preserve existing manual selections.
 - Bulk remove clears panel sensors when rebuilding the layout.
 - Panel width limits help keep large dashboards readable.
 

@@ -4,7 +4,29 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.3] - 2026-05-31
+
+### Added
+- Auto-populate now includes editor-only options to fill inverter status sensors and advanced telemetry from already configured panel power sensors.
+- Advanced telemetry auto-fill can reuse shared inverter-level sensors, such as inverter temperature, across panels that belong to the same detected serial/device group.
+
+### Changed
+- Auto-populate sort detection now handles natural numeric names and repeated serial/device suffixes more reliably for multi-inverter systems.
+- Auto-populate search controls for inverter status and advanced telemetry now use native checkbox rows so they remain visible in the Home Assistant editor.
+- Panel rated power and default rated power now allow values up to `10000 W`, supporting string-level sensors as well as individual panel sensors.
+- README setup documentation now explains the safer auto-fill behavior for power, energy, inverter status, and advanced telemetry.
+
+### Fixed
+- Energy auto-fill no longer assigns one shared inverter daily energy sensor to multiple panels in the same serial group, preventing doubled virtual total energy.
+- Per-panel daily energy sensors still map by matching local/input tokens when distinct same-serial energy sensors are available.
+- Inverter status auto-fill now prefers `Device Status` over less specific same-serial sensors such as `Online Status`, Wi-Fi status, or battery status.
+- Inverter status auto-fill can match serial-like tokens directly when repeated group detection would otherwise choose an input token such as `mppt1`.
+- Inverter status and advanced telemetry selector lists now tolerate Home Assistant state objects that rely on the `hass.states` key rather than an `entity_id` field.
+
 ## [0.2.2] - 2026-05-30
+
+### Added
+- Panel advanced telemetry cards can now expand into inline recorder graphs inside the same telemetry pill, with independent `1h`, `6h`, and `24h` ranges.
 
 ### Fixed
 - Energy KPI popups now use a virtual total panel energy history when no system energy sensor is selected, so Forecast.Solar production can be compared against the summed configured panel energy sensors.
