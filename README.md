@@ -23,13 +23,13 @@ It gives you a clear visual map of each panel slot, live power and energy KPIs, 
 
 Right-click and select "Play animation" on Safari macOS if a GIF does not start automatically.
 
+### GUI auto-populate 10s setup
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/auto-populate.gif" width=65% height=65%>
+
 ### Tap-to-configure, drag-and-drop, and panel diagnostics
 
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/drag-and-drop-panel-info.gif" width=65% height=65%>
-
-### GUI auto-populate setup
-
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/auto-populate.gif" width=65% height=65%>
 
 ### KPI popups and graph ranges
 
