@@ -7,29 +7,29 @@
 
 Solar Panel Visualizer is a Home Assistant Lovelace card for building a live, panel-level solar array overview. It is available in the default HACS store, is configured fully from the Home Assistant GUI, and is designed for arrays from a few panels to large 100+ panel systems.
 
-It gives you a clear visual map of each panel slot, live power and energy KPIs, health coloring, popup graphs, inverter status checks, Forecast.Solar overlays, and practical setup tools without requiring YAML.
+It gives you a clear visual map of each panel slot, live power and energy KPIs, health coloring, popup graphs, inverter or panel status checks, Forecast.Solar overlays, and practical setup tools without requiring YAML.
 
 ## ✨ Top highlights
 
-- **10-second setup with auto-populate search**: search by entity ID or friendly name, fill panel sensors, inverter status, and telemetry from matching serial/device groups, then drag panels into the right slots.
+- **10-second setup with auto-populate search**: search by entity ID or friendly name, fill panel sensors, inverter/panel status, and telemetry from matching serial/device groups, then drag panels into the right slots.
 - **Live panel-level array overview**: see each panel slot with power, energy, status color, row/column labels, and system KPIs in one card.
+- **String inverter friendly setup tree**: choose strings, panel counts, and per-string power/energy sensors; shared values are split by rated W so totals and graphs do not double-count.
 - **Array Health Check**: compare panels against peers to spot underperformance, deviation, inverter faults, and unavailable sensors.
 - **Useful diagnostics popups**: open panel, Power, Energy, and Custom KPI popups with recorder graphs, virtual total graphs, comparison graphs, and `1h`, `6h`, and `24h` ranges.
-- **Forecast.Solar, themes, and motion**: add forecast overlays, inverter status checks, light/dark modes, power-flow animation, and alert effects.
-- **Default HACS install, no YAML required**: install from the normal HACS store and configure everything in the Home Assistant GUI editor.
+- **Forecast.Solar, themes, and motion**: add forecast overlays, status checks, light/dark modes, power-flow animation, and alert effects.
 
 
 ## 🎬 Animated tour
 
 Right-click and select "Play animation" on Safari macOS if a GIF does not start automatically.
 
-### GUI auto-populate 10s setup
-
-<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/auto-populate.gif" width=65% height=65%>
-
 ### Tap-to-configure, drag-and-drop, and panel diagnostics
 
 <img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/drag-and-drop-panel-info.gif" width=65% height=65%>
+
+### GUI auto-populate setup
+
+<img src="https://github.com/NoUsername10/Solar-Panel-Visualizer/blob/main/assets/gif/auto-populate.gif" width=65% height=65%>
 
 ### KPI popups and graph ranges
 
@@ -49,21 +49,22 @@ Right-click and select "Play animation" on Safari macOS if a GIF does not start 
 - 100% GUI configuration in the Home Assistant card editor.
 - Visual solar array layout with rows, columns, fixed slots, status chips, and row/column labels.
 - Live Power, Energy, Alerts, and optional Custom KPI summary cards.
-- Panel tiles with production coloring, rated-power percentage, optional energy, and optional inverter status text.
+- Panel tiles with production coloring, rated-power percentage, optional energy, and optional inverter/panel status text.
 - Live tile values update directly from Home Assistant entity states; recorder data is used only for graphs and health history.
 - Array Health Check for peer comparison, underperformance detection, warm-up handling, smoothing, and low-light guardrails.
 - Panel, Power, Energy, and Custom KPI popups with recorder history graphs.
 - Virtual total Power and Energy histories from panel sensors when no system KPI sensor is configured.
+- Saved string setup tree for string inverters where one power or energy sensor represents multiple physical panels.
 - Panel comparison graphs inside Power and Energy KPI popups.
 - `1h`, `6h`, and `24h` graph ranges with max, median, and min reference lines.
 - Forecast.Solar overlay support for Home Assistant's default forecast sensors.
-- Inverter working/fault term matching with clear panel and system health feedback.
+- Inverter or panel status working/fault term matching with clear panel and system health feedback.
 - Light, dark, and automatic theme modes.
 - Built-in motion effects for power flow, KPI updates, and alerts.
 - Tap-to-configure unconfigured panel slots.
 - Drag-and-drop panel reordering directly on the card.
 - Entity ID or friendly-name sensor auto-fill, friendly-name panel naming, and bulk sensor removal tools.
-- Safer multi-inverter auto-fill with natural sorting, repeated serial/device grouping, optional inverter status fill, optional advanced telemetry fill, and shared daily energy protection.
+- Safer multi-inverter auto-fill with natural sorting, repeated serial/device grouping, optional inverter/panel status fill, optional advanced telemetry fill, and shared daily energy protection.
 - Advanced per-panel telemetry fields for inverter and panel diagnostics.
 - Scales to large arrays, including 100+ panel slots.
 
@@ -121,13 +122,65 @@ The editor covers the full card setup:
 - **Display**: decimals, panel tap behavior, system KPI sensors, custom KPI, and panel width limits.
 - **Forecast**: enable Forecast.Solar overlays when default Home Assistant forecast sensors are available.
 - **Array Health Check**: peer comparison thresholds, sample gates, smoothing, dynamic floor, and history window.
-- **Inverter Status**: status entity matching, fault terms, working terms, and optional tile text.
+- **Status Checks**: inverter or panel status entity matching, fault terms, working terms, and optional tile text.
 - **Status Colors**: production gradient, deviation/error/unavailable colors, and intensity.
 - **Motion**: power flow, update shimmer, and alert ripple controls.
-- **Panels**: per-slot sensor selectors, names, rated power, energy display, derate, inverter status, advanced telemetry, and visibility.
-- **Auto-populate sensors**: power and energy search, sort mode, optional inverter status fill, optional advanced telemetry fill, and bulk sensor removal.
+- **Panels**: per-slot sensor selectors, names, rated power, string setup tree, energy display, derate, inverter/panel status, advanced telemetry, and visibility.
+- **Auto-populate sensors**: power, energy, and optional status search, sort mode, optional inverter/panel status fill, optional advanced telemetry fill, and bulk sensor removal.
+
+## ☀️ Configure a string-based system
+
+Use **String of panels** when Home Assistant exposes one power or energy sensor for a complete string instead of one sensor for every physical panel. Everything is configured from the GUI:
+
+1. Open **Panels** in the card editor.
+2. Open the **String of panels** section.
+3. Enable **String of panels / share duplicate sensors**.
+4. Set **Number of strings**.
+5. Expand each string and select:
+   - **String name** (optional)
+   - **Number of panels**
+   - **String power sensor**
+   - **String energy sensor** (optional)
+6. Set or apply the rated power for the generated panel slots.
+
+The card builds the array automatically:
+
+- Each string becomes one visual row.
+- The longest string determines the number of columns.
+- Shorter strings receive hidden filler slots, preserving the aligned grid.
+- Each string supports up to **30 panels**, and the card supports up to **30 strings**.
+- Generated panels are named automatically, for example `String 1 Panel 1`.
+- Existing custom panel names are preserved where possible; default names such as `Panel 1` are regenerated for the new string layout.
+- Existing rated power, derate, status, and telemetry settings are preserved by their previous row/column position where possible.
+
+Example: configuring String 1 with 5 panels and String 2 with 12 panels creates a `2 × 12` layout. String 1 uses its first 5 slots and has 7 hidden filler slots; String 2 uses all 12 slots.
+
+### How shared values are divided
+
+The same string sensor is assigned internally to every physical panel in that string, but it is counted only once:
+
+- With rated power configured for every panel, each panel receives its rated-power share of the string value.
+- If any panel in the string is missing rated power, the value is divided equally across that string.
+- The same rule applies to both power and energy sensors.
+- Panel tiles, top totals, popups, history graphs, comparison graphs, and Forecast.Solar overlays all use the divided values.
+
+For example, a `1,700 W` string sensor shared by five equally rated panels displays `340 W` per panel, while the Power total remains `1,700 W`, not `8,500 W`.
 
 ## 🔍 Feature details
+
+<details>
+<summary><b>String of panels / shared string sensors</b></summary><br>
+
+Some systems expose one power or daily energy sensor for a full string instead of one sensor per physical panel. The card can handle that without inflating totals.
+
+- String setup is saved with the card and can be edited later.
+- One visual row is generated per string, with up to 30 panels per row.
+- Duplicate power and energy sensors are intentional in this mode and are divided without inflating totals.
+- Rated-power weighting supports strings containing panels with different ratings.
+- Shared power groups show labels such as `String 1 · R1C2` in the tile slot label.
+- Disable string mode to return to the normal manually configured panel grid; the saved string definitions remain available if string mode is enabled again.
+
+</details>
 
 <details>
 <summary><b>Array Health Check</b></summary><br>
@@ -174,18 +227,21 @@ Forecast overlays can add a dashed reference line to Power and Energy popup grap
 </details>
 
 <details>
-<summary><b>Inverter status checks</b></summary><br>
+<summary><b>Inverter and panel status checks</b></summary><br>
 
-Inverter status checks help catch panel or micro-inverter issues that raw power values may not explain.
+Status checks help catch panel, string, or inverter issues that raw power values may not explain.
 
-- Configure an inverter status sensor per panel.
-- The Auto-populate section can fill empty inverter status sensors from configured panel power sensors by matching the same serial/device/group.
-- For integrations with both `Device Status` and `Online Status`, auto-fill prefers the actual device status sensor for inverter evaluation.
-- Enable global inverter status checks from the GUI.
+- Configure an inverter or panel status sensor per panel.
+- The Auto-populate section can fill empty status sensors from configured panel power sensors.
+- Auto-fill first tries clear one-to-one panel status matches, such as panel power and panel status sensors with the same local numbering.
+- If no clear one-to-one match exists, auto-fill falls back to one shared inverter/string status sensor for matching panels.
+- Use **Status search** to narrow candidates by entity ID prefix or friendly-name text when an integration has several status-like sensors.
+- For integrations with both `Device Status` and `Online Status`, shared-status auto-fill prefers the actual device status sensor for evaluation.
+- Enable global status checks from the GUI.
 - Add working terms and fault terms as comma-separated text.
-- Matching fault terms can mark the panel as inverter/error state.
-- Matching working terms help distinguish normal inverter status from unknown text.
-- Optional tile text can show a compact inverter summary directly on each panel.
+- Matching fault terms can mark the panel as an error state.
+- Matching working terms help distinguish normal status from unknown text.
+- Optional tile text can show a compact status summary directly on each panel.
 
 </details>
 
@@ -230,16 +286,17 @@ The Auto-populate section can fill empty advanced telemetry fields from each pan
 
 The card is built for both small residential arrays and large panel layouts.
 
-- Rows and columns define fixed panel slots.
+- Rows and columns define fixed panel slots, up to `30` rows and `30` columns.
 - Rated power supports individual panels and string-level sensors up to `10000 W`.
 - Disabled panels keep their visual slot but are excluded from active sensor behavior.
 - Drag-and-drop swaps panel slots and saves the order to the card config.
 - Tap-to-configure opens a quick setup popup for unconfigured panels.
 - Auto-fill can fill power and energy sensors by `sensor.` entity ID prefix or friendly-name search.
-- Auto-fill sort modes include Auto detect, literal entity ID order, literal friendly-name order, and grouped repeated-suffix order for multi-inverter naming.
+- Auto-fill sort modes include Auto detect, literal entity ID order, literal friendly-name order, and grouped repeated-suffix order for multi-inverter naming, including serial-like endings such as `powerdc1_SERIAL`.
+- String sensor sharing lets duplicate power and energy sensors be intentional for string-inverter setups. The saved GUI tree can create one visual row per string and assign each string sensor across its physical panels.
 - Power sensor auto-fill also refreshes panel display names from the selected sensors' friendly names.
-- Energy auto-fill avoids assigning one shared inverter daily energy sensor to multiple panels in the same serial group, so summed Energy totals do not double count that inverter.
-- Optional inverter status and advanced telemetry auto-fill use configured panel power sensors as anchors and preserve existing manual selections.
+- Energy auto-fill can find daily yield sensors by friendly name or energy device class, and avoids assigning one shared inverter daily energy sensor to multiple panels in the same serial group so summed Energy totals do not double count that inverter.
+- Optional inverter/panel status and advanced telemetry auto-fill use configured panel power sensors as anchors and preserve existing manual selections.
 - Bulk remove clears panel sensors when rebuilding the layout.
 - Panel width limits help keep large dashboards readable.
 
@@ -301,6 +358,20 @@ rows: 2
 columns: 3
 enable_array_checks: true
 enable_inverter_status: true
+enable_string_sensor_sharing: false
+# To use string mode, set enable_string_sensor_sharing to true and add groups.
+# Rows and columns are then derived automatically from the string definitions:
+# string_groups:
+#   - id: string-1
+#     name: String 1
+#     panel_count: 5
+#     power_entity: sensor.string_1_power
+#     energy_entity: sensor.string_1_energy
+#   - id: string-2
+#     name: String 2
+#     panel_count: 12
+#     power_entity: sensor.string_2_power
+#     energy_entity: sensor.string_2_energy
 enable_forecast_overlay: true
 motion_enabled: true
 use_system_power_entity: true

@@ -4,6 +4,32 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.4] - 2026-06-21
+
+### Added
+- Added an editor-only **Status search** field so status auto-fill can be narrowed by entity ID prefix or friendly-name text without adding a YAML option.
+- Added optional **String of panels / share duplicate sensors** mode for string-inverter setups where one power or energy sensor represents multiple physical panels.
+- Added a saved **String of panels** setup tree where users choose the number of strings, each string's panel count, and each string's power/energy sensors.
+
+### Changed
+- Auto-populate Auto detect now also recognizes serial-like trailing suffixes after changing input tokens, so names like `powerdc1_SERIAL` and `powerdc2_SERIAL` fill inverter-by-inverter instead of all string 1 sensors first.
+- String setup is now grouped into its own Panels editor section instead of a loose switch.
+- When saved string groups are enabled, the card derives layout from the tree: one row per string, columns from the longest string, and disabled filler slots for shorter strings.
+- Layout rows and columns now support values up to `30`.
+- When string sensor sharing is enabled, duplicate power and energy sensors are split by rated W across the panels sharing that sensor, with equal split when rated W is incomplete.
+- Shared string values now flow through panel tiles, top totals, panel popups, virtual total graphs, panel comparison graphs, and Forecast.Solar comparisons.
+- Status UI copy now describes the existing per-panel status field as **Inverter / panel status sensor** instead of inverter-only.
+- Panel rated power and default rated power now allow values up to `10000 W`, supporting string-level sensors as well as individual panel sensors.
+- README setup documentation now explains the safer auto-fill behavior for power, energy, inverter/panel status, and advanced telemetry.
+
+### Fixed
+- Energy auto-fill and energy selectors now accept Home Assistant `device_class: energy`, so friendly-name searches such as `Yield Today` can find inverter daily yield sensors even when the unit is missing or unusual.
+- Status auto-fill now tries clear one-to-one panel status matches before falling back to shared inverter/string status, fixing panels named like `sensor.power_1_0_#` with matching `sensor.status_1_0_#`.
+- String setup now regenerates old automatic names such as `String 2 Panel 3` after layout changes, preventing duplicate stale panel names while preserving custom names.
+- Converting a default panel grid to string setup now treats default names such as `Panel 1` as generated names and preserves existing metadata by old row/column position where possible.
+- Popup click handling is now more stable after scrolling or changing graph ranges by anchoring the popup layer outside the card scroll area and cancelling stale graph scroll restoration on the next popup interaction.
+- Energy auto-fill can intentionally assign one same-serial daily energy sensor to multiple panels only when string sensor sharing is enabled, so the split avoids duplicated totals.
+
 ## [0.2.3] - 2026-05-31
 
 ### Added
@@ -13,8 +39,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 - Auto-populate sort detection now handles natural numeric names and repeated serial/device suffixes more reliably for multi-inverter systems.
 - Auto-populate search controls for inverter status and advanced telemetry now use native checkbox rows so they remain visible in the Home Assistant editor.
-- Panel rated power and default rated power now allow values up to `10000 W`, supporting string-level sensors as well as individual panel sensors.
-- README setup documentation now explains the safer auto-fill behavior for power, energy, inverter status, and advanced telemetry.
 
 ### Fixed
 - Energy auto-fill no longer assigns one shared inverter daily energy sensor to multiple panels in the same serial group, preventing doubled virtual total energy.
