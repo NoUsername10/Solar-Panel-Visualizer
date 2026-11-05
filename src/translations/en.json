@@ -1,0 +1,380 @@
+{
+  "meta": {
+    "card_name": "Solar Panel Visualizer",
+    "card_description": "GUI-first solar array card with panel health, animated power rails, forecasts, history graphs, and light/dark themes."
+  },
+  "common": {
+    "unavailable": "Unavailable",
+    "not_configured": "Not configured",
+    "disabled": "Disabled",
+    "unknown_recorder_error": "Unknown recorder error"
+  },
+  "card": {
+    "default_title": "Solar Array",
+    "eyebrow": "Solar Panel Visualizer",
+    "subtitle": {
+      "loading_history": "Loading shared {hours}h solar panel history...",
+      "warmup": "Deviation checks are warming up.",
+      "deviation_detected": "{count} panel{suffix} below expected output",
+      "tap_diagnostics": "Tap a panel for detailed diagnostics",
+      "drag_hint": "Drag and drop panel tiles to swap positions."
+    },
+    "summary": {
+      "power": "Power",
+      "energy": "Energy",
+      "alerts": "Alerts",
+      "system_sensor": "System sensor",
+      "sum_panel_sensors": "Sum of panel sensors",
+      "custom_sensor": "Custom KPI sensor",
+      "custom_default_title": "Custom KPI"
+    },
+    "panel": {
+      "hidden": "hidden",
+      "hidden_name": "Hidden Panel",
+      "hidden_performance": "Hidden",
+      "info_label": "Info",
+      "info_title": "Open panel details",
+      "inverter_prefix": "Status: {status}",
+      "inverter_short": {
+        "ok": "Status: OK",
+        "deviation": "Status: Deviation",
+        "error": "Status: Error"
+      },
+      "performance_compact": "{percent}%",
+      "performance_medium": "{percent}% of {rated}W",
+      "performance_full": "{percent}% of {rated}W Panel",
+      "string_label": "String {index}",
+      "slot_label": "R{row}C{column}",
+      "status": {
+        "normal": "normal",
+        "deviation": "deviation",
+        "inverter": "inverter",
+        "error": "error",
+        "offline": "offline",
+        "unconfigured": "unconfigured",
+        "disabled": "hidden"
+      }
+    },
+    "popup": {
+      "close_detail": "Close detail",
+      "close_live_power": "Close live power detail",
+      "close_energy": "Close energy detail",
+      "close_custom_kpi": "Close custom KPI detail",
+      "close_system_health": "Close system health",
+      "panel_eyebrow": "Panel Detail {slot}",
+      "power_eyebrow": "Power Detail",
+      "power_title": "Live Power",
+      "energy_eyebrow": "Energy Detail",
+      "energy_title": "Energy",
+      "custom_eyebrow": "Custom KPI Detail",
+      "system_health_eyebrow": "System Health",
+      "system_health_title": "Overview",
+      "detail": {
+        "status": "Status",
+        "power": "Power",
+        "energy": "Energy",
+        "estimated_power_now": "Forecast production",
+        "estimated_energy_now": "Forecast production",
+        "deviation": "Deviation",
+        "rated_performance": "Rated / Performance",
+        "information": "Information",
+        "current": "Current",
+        "source": "Source"
+      },
+      "deviation": {
+        "inverter_mismatch": "Status mismatch",
+        "below_peers": "{percent}% below peers",
+        "within_range": "Within range"
+      },
+      "rated_performance": {
+        "format": "{rated} W / {percent}",
+        "na": "n/a"
+      },
+      "info": {
+        "power_source": "Power source: {value}",
+        "string_share": "{label}: {percent}% of {source}",
+        "current_inverter_status": "Current status: \"{value}\"",
+        "inverter_evaluation": "Status evaluation: {value}",
+        "inverter_source": "Status source: {value}"
+      },
+      "inverter_eval": {
+        "no_status": "No status available",
+        "fault_match": "Fault term matched",
+        "working_match": "Working term matched",
+        "no_match": "No configured term matched"
+      },
+      "telemetry": {
+        "title": "Panel / Inverter Info",
+        "configured_title": "Configured",
+        "unconfigured_title": "Unconfigured",
+        "none_configured": "No advanced telemetry configured for this panel.",
+        "setup_hint": "Configure in Panels > Advanced telemetry.",
+        "label": {
+          "inverter_status": "Inverter / panel status",
+          "inverter_ac_power": "Inverter AC power",
+          "inverter_ac_voltage": "Inverter AC voltage",
+          "inverter_ac_current": "Inverter AC current",
+          "inverter_temp": "Inverter temperature",
+          "panel_current": "Panel current",
+          "panel_voltage": "Panel voltage",
+          "panel_power": "Panel power"
+        }
+      },
+      "history": {
+        "power": "Power History",
+        "system_power": "System Power History",
+        "total_panel_power": "Total Panel Power History",
+        "system_energy": "System Energy History",
+        "total_panel_energy": "Total Panel Energy History",
+        "panel_power_values": "Panel Power Values",
+        "panel_energy_values": "Panel Energy Values",
+        "panel_compare": "Panel Performance Comparison",
+        "panel_compare_power": "Panel Power Comparison",
+        "panel_compare_energy": "Panel Energy Comparison",
+        "overlay_forecast": "Forecast",
+        "graph_not_configured": "No sensor configured for graph.",
+        "custom_not_configured": "No sensor configured for Custom KPI.",
+        "loading": "Loading sensor history...",
+        "no_data": "No history data for selected range.",
+        "unable_load": "Unable to load panel history ({error})",
+        "unable_load_plain": "Unable to load panel history",
+        "max": "Max {value}",
+        "median": "Median {value}",
+        "min": "Min {value}",
+        "time_range": "{start} - {end}"
+      },
+      "forecast": {
+        "enable_button": "Enable forecasts",
+        "disabled_hint": "Forecast overlay is disabled.",
+        "not_configured": "Forecast.Solar not configured.",
+        "default_sensor_not_found": "Default forecast sensor not found ({entity}).",
+        "power_compare_requires_system": "System power sensor is required for power forecast comparison.",
+        "energy_compare_requires_system": "System energy sensor is required for energy forecast comparison."
+      },
+      "panel_compare": {
+        "toggle": "Compare Panel Performance",
+        "toggle_power": "Compare Panel Power",
+        "toggle_energy": "Compare Panel Energy",
+        "loading": "Loading panel comparison history...",
+        "no_panels": "No configured panel sensors available for comparison.",
+        "no_panels_power": "No configured panel power sensors available for comparison.",
+        "no_panels_energy": "No configured panel energy sensors available for comparison.",
+        "no_data": "No comparison data for selected range.",
+        "unable_load": "Unable to load panel comparison history ({error}).",
+        "render_failure": "Comparison data loaded, but traces could not be drawn.",
+        "diagnostics_title": "Compare graph diagnostics (temporary)",
+        "diagnostics_summary": "model hasData={hasData}, drawable={drawable}, series={series}, range={range}h",
+        "diagnostics_reason_render_failure": "Series exist but no drawable traces were produced.",
+        "diagnostics_reason_suspect": "One or more series produced an invalid drawable shape.",
+        "diagnostics_row": "{label}: samples={samples}, points={points}, first={first}, last={last}, min={min}, max={max}"
+      },
+      "system_health": {
+        "everything_ok": "Everything is working well.",
+        "section": {
+          "inverter": "Inverter",
+          "error": "Error",
+          "deviation": "Deviation",
+          "offline": "Unavailable",
+          "setup": "Needs setup"
+        },
+        "item": "Panel on {slot} ({label}): {reason}"
+      }
+    },
+    "quick_setup": {
+      "title": "Quick Setup:",
+      "select_power_sensor": "Select panel power sensor:",
+      "selector_label": "Select panel power sensor",
+      "no_sensors": "No available W sensors found.",
+      "disable_panel": "Disable Panel (hide but keep slot when off)"
+    },
+    "system_health_chip": {
+      "faults": "{count} Fault{suffix}",
+      "unavailable": "{count} Unavailable",
+      "deviation": "{count} Deviation",
+      "needs_setup": "{count} Needs Setup",
+      "ok": "System OK"
+    }
+  },
+  "state": {
+    "reason": {
+      "slot_hidden": "Panel slot is hidden in the card configuration.",
+      "select_power_sensor": "Select a power sensor to activate this panel slot.",
+      "power_entity_missing": "Power entity {entity} was not found.",
+      "power_entity_unavailable": "{entity} is unavailable.",
+      "inverter_fault_match": "Current status: \"{status}\" matches configured fault terms.",
+      "inverter_working_mismatch": "Current status: \"{status}\" does not match configured working terms.",
+      "producing_expected": "Producing within the expected array range.",
+      "producing_adjusted": "Producing within array-adjusted target range.",
+      "rated_not_configured": "Rated power not configured; excluded from deviation checks.",
+      "output_below_target": "Output is {percent}% and {shortfall} W below array target.",
+      "array_check_disabled": "Array Health Check is disabled.",
+      "need_non_derated_panels": "Need at least {count} non-derated active rated panels for deviation checks.",
+      "collecting_samples": "Collecting samples ({current}/{required}).",
+      "warmup_progress": "Warm-up in progress ({current}/{required} min).",
+      "low_light_pause": "Low-light pause: waiting above {floor} W target floor."
+    },
+    "status_display": {
+      "disabled": "Disabled",
+      "not_configured": "Not configured"
+    },
+    "energy": {
+      "default_unit": "kWh"
+    },
+    "power": {
+      "default_unit": "W"
+    }
+  },
+  "editor": {
+    "section": {
+      "layout_title": "Layout",
+      "layout_copy": "Set the array size first. Panel slots expand automatically from the row and column values.",
+      "display_title": "Display",
+      "display_copy": "Tune precision and panel detail behavior.",
+      "appearance_title": "Appearance",
+      "appearance_copy": "Auto follows the active Home Assistant theme. Force Light or Dark if a dashboard theme needs a specific card style.",
+      "forecast_title": "Forecast.Solar",
+      "forecast_copy": "Auto-detects Home Assistant default forecast sensors and overlays estimated production in Power/Energy KPI popups.",
+      "array_health_title": "Array Health Check",
+      "array_health_copy": "Automatically checks panel health by comparing active panels against each other using rated power, shared solar panel history, and configurable guardrails.",
+      "array_health_smoothing_help": "Smoothing window averages recent samples before checks; 0 means no smoothing.",
+      "inverter_title": "Status Checks",
+      "inverter_copy": "Track textual status from each panel’s inverter or panel status sensor. A panel turns red only when status text contains one of the configured fault terms. The current status is shown in the panel popup.",
+      "status_colors_title": "Status Colors",
+      "status_colors_copy": "Production colors blend based on panel output. Alert colors override the production scale.",
+      "motion_title": "Motion",
+      "motion_copy": "Animate live production with left-collector power rails, Power/Energy KPI impact effects, and repeated alert ripples. Motion automatically respects reduced-motion preferences.",
+      "panels_title": "Panels",
+      "panels_copy": "Each generated slot can be configured with its own power, energy, and optional inverter/panel status sensor. Disable a slot to hide that panel while keeping grid spacing.",
+      "panels_drag_hint": "In the card view, drag and drop panel tiles to swap their positions.",
+      "string_setup_title": "String of panels",
+      "string_setup_copy": "Use this when one power or energy sensor represents a full string of physical panels. The tree creates one visual row per string.",
+      "panel_defaults_title": "Panel default rated power",
+      "panel_defaults_copy": "Set a common default panel power and apply it to all panel slots.",
+      "autofill_title": "Auto-populate sensors",
+      "autofill_copy": "Fill panel sensors in slot order. Use sensor. for exact entity ID prefixes, or type friendly-name text to search sensor names.",
+      "advanced_title": "Advanced telemetry",
+      "advanced_copy": "Optional manual telemetry mappings shown in the panel popup when pressing INFO."
+    },
+    "field": {
+      "title": "Title",
+      "rows": "Rows",
+      "columns": "Columns",
+      "max_card_width": "Max card width (px)",
+      "max_card_height": "Max card height (px)",
+      "theme_mode": "Theme mode",
+      "power_decimals": "Power decimals",
+      "energy_decimals": "Energy decimals",
+      "custom_kpi_decimals": "Custom KPI decimals",
+      "panel_tap_action": "Panel tap action",
+      "system_power_sensor": "System power sensor (W)",
+      "system_energy_sensor": "System daily energy sensor",
+      "custom_kpi_sensor": "Custom KPI sensor",
+      "custom_kpi_heading": "Custom KPI heading",
+      "max_panel_tile_width": "Max panel tile width (px)",
+      "deviation_threshold": "Deviation threshold (%)",
+      "deviation_absolute_shortfall": "Absolute shortfall threshold (W)",
+      "deviation_check_time": "Deviation check time (minutes)",
+      "deviation_min_active_panels": "Minimum active panels",
+      "deviation_min_samples": "Minimum samples per panel",
+      "deviation_smoothing": "Smoothing window (minutes)",
+      "deviation_dynamic_floor": "Dynamic floor start (W)",
+      "deviation_history_window": "Shared history window (hours)",
+      "fault_terms": "Fault terms (comma-separated)",
+      "working_terms": "Working terms (comma-separated)",
+      "production_base": "Production base",
+      "production_mid": "Production mid",
+      "production_peak": "Production peak",
+      "deviation_color": "Deviation",
+      "error_color": "Error",
+      "unavailable_color": "Unavailable",
+      "production_intensity": "Production color intensity ({value})",
+      "default_panel_rated_power": "Default panel rated power (W)",
+      "power_prefix": "Power search",
+      "energy_prefix": "Energy search (optional)",
+      "status_prefix": "Status search (optional)",
+      "autofill_sort_mode": "Auto-fill sort order",
+      "string_group_count": "Number of strings",
+      "string_group_name": "String name",
+      "string_group_panel_count": "Number of panels",
+      "string_group_power_sensor": "String power sensor",
+      "string_group_energy_sensor": "String energy sensor (optional)",
+      "display_name": "Display name",
+      "power_sensor": "Power sensor P(W)",
+      "energy_sensor": "Energy sensor (kWh/Wh)",
+      "panel_rated_power": "Panel rated power (W)",
+      "deviation_derate": "Deviation derate (%)",
+      "inverter_status_sensor": "Inverter / panel status sensor (optional)",
+      "advanced_inverter_ac_power": "Inverter AC power (W)",
+      "advanced_inverter_ac_voltage": "Inverter AC voltage (V)",
+      "advanced_inverter_ac_current": "Inverter AC current (A)",
+      "advanced_inverter_temp": "Inverter temperature (\u00B0C/\u00B0F)",
+      "advanced_panel_current": "Panel current (A)",
+      "advanced_panel_voltage": "Panel voltage (V)",
+      "advanced_panel_power": "Panel power (W)",
+      "panel_energy_toggle": "Show panel energy",
+      "panel_enabled_toggle": "Show panel tile (hide but keep slot when off)"
+    },
+    "toggle": {
+      "use_system_power": "Use one system power sensor for top KPI",
+      "invert_system_power": "Invert system power value",
+      "use_system_energy": "Use one system daily energy sensor for top KPI",
+      "invert_custom_kpi": "Invert Custom KPI value",
+      "enable_forecast_overlay": "Enable forecast overlays in popups",
+      "motion_enabled": "Enable motion",
+      "motion_power_flow": "Power-rail flow to Power KPI",
+      "motion_update_shimmer": "Power/Energy KPI update effect",
+      "motion_alert_ripple": "Alert ripple for deviation/inverter/error",
+      "show_custom_kpi": "Show Custom KPI box",
+      "limit_panel_width": "Limit panel tile max width",
+      "enable_array_health": "Enable Array Health Check",
+      "enable_inverter_status": "Enable status checks",
+      "show_inverter_status_tiles": "Show status on panel tiles",
+      "enable_string_sensor_sharing": "String of panels / share duplicate sensors",
+      "autofill_inverter_status": "Fill inverter or panel status",
+      "autofill_advanced_telemetry": "Fill advanced telemetry"
+    },
+    "select": {
+      "theme_auto": "Auto",
+      "theme_dark": "Dark",
+      "theme_light": "Light",
+      "panel_tap_details": "Open detail popover",
+      "panel_tap_none": "No action",
+      "autofill_sort_auto": "Auto detect (recommended)",
+      "autofill_sort_entity": "Literal entity ID order",
+      "autofill_sort_friendly": "Literal friendly name order",
+      "autofill_sort_grouped": "Group by repeated suffix"
+    },
+    "button": {
+      "apply_default_rated_power": "Apply default rated W to all panels",
+      "autofill_sensors": "Auto-fill panel sensors",
+      "remove_all_sensors": "Remove all sensors"
+    },
+    "helper": {
+      "fault_example": "Example: fault, alarm, error, failed, failure, trip",
+      "working_example": "Working example: normal, ok, running, waiting, waiting for operation, producing",
+      "derate_help": "Used only by Array Health Check for naturally shaded panels.",
+      "autofill_search_help": "Search with sensor.panel_ to match entity IDs by prefix, or type words like Roof Panel or Daily Energy to search friendly names. Auto detect is recommended for most setups: it uses natural sorting and can group matching sensors by repeated serial/device parts or serial-like suffixes when that better matches the physical layout. Use the other sort modes only when Auto does not match your array.",
+      "string_sensor_sharing_help": "Turn this on to allow duplicate string sensors. Shared power and energy values are split across the generated panels by rated W, with equal split if rated W is missing.",
+      "autofill_inverter_status_help": "When enabled, status is filled from configured panel power sensors. The card first tries one-to-one panel status matches, then falls back to a shared inverter/string status sensor. Use Status search only when you need to narrow the candidates.",
+      "autofill_advanced_help": "When enabled, advanced telemetry is filled from configured panel power sensors by matching the same repeated serial/device/group. Existing advanced telemetry choices are preserved."
+    },
+    "forecast": {
+      "default_sensors": "Uses: sensor.power_production_now and sensor.energy_production_today.",
+      "line_help": "The forecast reference is a thin dashed line shown only for the selected history range up to the current time, with no future projection.",
+      "detected": "Forecast.Solar default sensors detected.",
+      "missing": "Forecast.Solar default sensors not fully detected. Expected: sensor.power_production_now and sensor.energy_production_today."
+    },
+    "panel_slot_title": "Row {row}, Column {column}",
+    "autofill": {
+      "enter_prefix": "Enter at least one prefix to run auto-fill.",
+      "power_summary": "Power matched {matched}, filled {filled}, skipped {skipped}.",
+      "energy_summary": "Energy matched {matched}, filled {filled}, skipped {skipped}.",
+      "inverter_status_summary": "Status filled {filled} panels, skipped {skipped} panels.",
+      "advanced_summary": "Advanced telemetry filled {filled} fields, skipped {skipped} panels.",
+      "cleared": "Cleared power, energy, inverter, and advanced telemetry sensors on all panels."
+    },
+    "string_group": {
+      "panel_count_chip": "{count} panels"
+    }
+  }
+}

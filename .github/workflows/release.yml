@@ -1,0 +1,128 @@
+name: Create Draft Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing version tag on main, for example 0.2.5"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: draft-release-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    outputs:
+      release_sha: ${{ steps.verify.outputs.release_sha }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Verify main, tag, version, and release notes
+        id: verify
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "Run Create Draft Release from the main branch." >&2
+            exit 1
+          fi
+          if [[ ! "$RELEASE_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Enter a version such as 0.2.5, without a v prefix." >&2
+            exit 1
+          fi
+          git fetch origin main:refs/remotes/origin/main
+          git fetch origin "refs/tags/$RELEASE_TAG:refs/tags/$RELEASE_TAG"
+          release_sha=$(git rev-parse "refs/tags/$RELEASE_TAG^{commit}")
+          if ! git merge-base --is-ancestor "$release_sha" origin/main; then
+            echo "Tag $RELEASE_TAG must point to a commit on main." >&2
+            exit 1
+          fi
+          tag_version=$(git show "$release_sha:package.json" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>process.stdout.write(JSON.parse(s).version))')
+          if [[ "$tag_version" != "$RELEASE_TAG" ]]; then
+            echo "Tag $RELEASE_TAG does not match package.json version $tag_version." >&2
+            exit 1
+          fi
+          git show "$release_sha:CHANGELOG.md" | grep -Fq "## [$RELEASE_TAG] -"
+          git show "$release_sha:RELEASE_NOTES.md" | grep -Fq "# Solar Panel Visualizer $RELEASE_TAG"
+          echo "release_sha=$release_sha" >> "$GITHUB_OUTPUT"
+
+  checks:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.preflight.outputs.release_sha }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build:release
+      - run: node --check solar-panel-visualizer.js
+      - name: Build and verify install package
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: python3 scripts/package_release.py --version "$RELEASE_TAG" --output-dir dist
+      - uses: actions/upload-artifact@v8
+        with:
+          name: solar-panel-visualizer-release
+          path: dist/solar-panel-visualizer-${{ inputs.tag }}.zip
+          if-no-files-found: error
+
+  validate-hacs:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.preflight.outputs.release_sha }}
+      - name: HACS plugin validation
+        uses: hacs/action@main
+        with:
+          category: plugin
+
+  draft-release:
+    needs: [preflight, checks, validate-hacs]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.preflight.outputs.release_sha }}
+      - uses: actions/download-artifact@v8
+        with:
+          name: solar-panel-visualizer-release
+          path: dist
+      - name: Recheck tag before creating draft
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+          RELEASE_SHA: ${{ needs.preflight.outputs.release_sha }}
+        run: |
+          git fetch origin "refs/tags/$RELEASE_TAG:refs/tags/$RELEASE_TAG"
+          test "$(git rev-parse "refs/tags/$RELEASE_TAG^{commit}")" = "$RELEASE_SHA"
+      - name: Create unpublished draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_PROMPT_DISABLED: "1"
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "A GitHub release already exists for $RELEASE_TAG." >&2
+            exit 1
+          fi
+          gh release create "$RELEASE_TAG" \
+            "dist/solar-panel-visualizer-$RELEASE_TAG.zip" \
+            --draft --verify-tag \
+            --title "Solar Panel Visualizer $RELEASE_TAG" \
+            --notes-file RELEASE_NOTES.md

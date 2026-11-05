@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.5] - 2026-11-05
+
+### Fixed
+- Restored GUI switch labels for Home Assistant 2026.11 and later by using the supported `ha-switch` label slot.
+- Added a tested GitHub Actions draft-release flow for the packaged HACS card.
+- Fixed strict TypeScript errors so type checking can run as a release gate.
+
 ## [0.2.4] - 2026-06-21
 
 ### Added
@@ -23,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - README setup documentation now explains the safer auto-fill behavior for power, energy, inverter/panel status, and advanced telemetry.
 
 ### Fixed
+- Added `waiting` to the default inverter/panel working status terms, so a plain `Waiting` state is treated as normal.
 - Energy auto-fill and energy selectors now accept Home Assistant `device_class: energy`, so friendly-name searches such as `Yield Today` can find inverter daily yield sensors even when the unit is missing or unusual.
 - Status auto-fill now tries clear one-to-one panel status matches before falling back to shared inverter/string status, fixing panels named like `sensor.power_1_0_#` with matching `sensor.status_1_0_#`.
 - String setup now regenerates old automatic names such as `String 2 Panel 3` after layout changes, preventing duplicate stale panel names while preserving custom names.
