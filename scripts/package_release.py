@@ -15,6 +15,7 @@ RELEASE_FILES = (
     "hacs.json",
     "README.md",
     "LICENSE",
+    "assets/solar-panel-visualizer-icon.svg",
 )
 VERSION_PATTERN = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
 
