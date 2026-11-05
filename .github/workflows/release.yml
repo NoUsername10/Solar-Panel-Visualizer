@@ -73,7 +73,7 @@ jobs:
         env:
           RELEASE_TAG: ${{ inputs.tag }}
         run: python3 scripts/package_release.py --version "$RELEASE_TAG" --output-dir dist
-      - uses: actions/upload-artifact@v8
+      - uses: actions/upload-artifact@v7
         with:
           name: solar-panel-visualizer-release
           path: dist/solar-panel-visualizer-${{ inputs.tag }}.zip
@@ -100,7 +100,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           ref: ${{ needs.preflight.outputs.release_sha }}
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@v7
         with:
           name: solar-panel-visualizer-release
           path: dist
