@@ -1,5 +1,7 @@
 # Solar Panel Visualizer
 
+<p align="center"><img src="assets/solar-panel-visualizer-icon.svg" alt="Solar Panel Visualizer icon" width="128"></p>
+
 [![coffee_badge](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-orange.svg)](https://www.buymeacoffee.com/DefaultLogin)
 [![HACS Default](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/default)
 

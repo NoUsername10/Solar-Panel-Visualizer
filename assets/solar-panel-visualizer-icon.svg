@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Solar Panel Visualizer</title>
+  <desc id="desc">A cyan solar array beneath a warm yellow sun on a dark rounded square.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#252a2e"/>
+      <stop offset="1" stop-color="#15191c"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#22c7f2"/>
+      <stop offset="1" stop-color="#0789b4"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe17a"/>
+      <stop offset="1" stop-color="#ffad42"/>
+    </linearGradient>
+    <clipPath id="panel-clip">
+      <path d="M103 222 371 190 414 354 145 389Z"/>
+    </clipPath>
+  </defs>
+
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#background)"/>
+  <rect x="17" y="17" width="478" height="478" rx="111" fill="none" stroke="#ffffff" stroke-opacity=".08" stroke-width="2"/>
+
+  <g fill="none" stroke="url(#sun)" stroke-linecap="round" stroke-width="10">
+    <path d="M350 92v-18M405 113l13-13M427 166h18M296 113l-13-13M274 166h-18"/>
+  </g>
+  <circle cx="350" cy="166" r="39" fill="url(#sun)"/>
+
+  <path d="M96 217 374 183 422 360 140 397Z" fill="#071c24" stroke="#4dd9ff" stroke-linejoin="round" stroke-width="12"/>
+  <path d="M103 222 371 190 414 354 145 389Z" fill="url(#panel)"/>
+  <g clip-path="url(#panel-clip)" fill="none" stroke="#b9f2ff" stroke-opacity=".86" stroke-width="7">
+    <path d="m190 211 43 169M279 201l43 168M105 276l292-35M121 331l292-35"/>
+  </g>
+
+  <path d="m270 248-35 58h31l-13 42 55-68h-34l15-32Z" fill="#fff4c3" stroke="#fff4c3" stroke-linejoin="round" stroke-width="5"/>
+  <path d="m171 410 204-27" fill="none" stroke="#27c5ed" stroke-linecap="round" stroke-width="12"/>
+  <path d="m235 435 42-6" fill="none" stroke="#27c5ed" stroke-linecap="round" stroke-opacity=".55" stroke-width="9"/>
+</svg>
